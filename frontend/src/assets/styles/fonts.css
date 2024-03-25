@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "dana";
+  src: url("../fonts/DanaFaNum-Regular.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "danaBold";
+  src: url("../fonts/DanaFaNum-Bold.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "danaThin";
+  src: url("../fonts/DanaFaNum-Thin.ttf");
+  font-display: swap;
+}
