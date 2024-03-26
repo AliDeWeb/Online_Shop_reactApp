@@ -21,10 +21,12 @@ export default {
       },
     },
   },
-  plugins: [
-    function ({ addVariant }) {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+    function({ addVariant }) {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");
     },
-  ],
+  },
 };
