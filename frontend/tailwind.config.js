@@ -10,6 +10,7 @@ export default {
   theme: {
     container: {
       center: true,
+      padding: 16,
     },
     extend: {
       fontFamily: {
