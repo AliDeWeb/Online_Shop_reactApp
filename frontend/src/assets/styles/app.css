@@ -7,3 +7,7 @@
 *::before {
   box-sizing: border-box;
 }
+
+body {
+  background: #eff1f5;
+}

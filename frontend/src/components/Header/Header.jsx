@@ -9,7 +9,7 @@ import { FaUser } from "react-icons/fa";
 
 export default function Header() {
   return (
-    <header className="py-3">
+    <header className="py-3 bg-white">
       <div className="container">
         <div className="flex items-center justify-between flex-wrap gap-5 lg:gap-0 lg:flex-nowrap">
           <div className="order-1 lg:order-1 w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]">
