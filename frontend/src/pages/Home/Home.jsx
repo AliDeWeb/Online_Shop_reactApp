@@ -7,6 +7,7 @@ import {
   LongBanner,
   CategoriesSection,
   WeblogBox,
+  HeadSection,
 } from "../../configs/Layout/Layout";
 
 // Swiper
@@ -18,6 +19,7 @@ import "swiper/css/navigation";
 export default function Home() {
   return (
     <main>
+      <HeadSection />
       <CategoriesSection />
       <SectionsWrapper title={"جدیدترین ها"}>
         <Swiper
