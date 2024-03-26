@@ -7,3 +7,4 @@ export { default as Header } from "../../components/Header/Header";
 export { default as Footer } from "../../components/Footer/Footer";
 export { default as ProductsSections } from "../../components/ProductsSections/ProductsSections";
 export { default as ProductBox } from "../../components/ProductBox/ProductBox";
+export { default as LongBanner } from "../../components/LongBanner/LongBanner";

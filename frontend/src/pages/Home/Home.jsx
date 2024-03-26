@@ -1,7 +1,11 @@
 import React from "react";
 
 // Components
-import { ProductsSections, ProductBox } from "../../configs/Layout/Layout";
+import {
+  ProductsSections,
+  ProductBox,
+  LongBanner,
+} from "../../configs/Layout/Layout";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -86,6 +90,7 @@ export default function Home() {
           </SwiperSlide>
         </Swiper>
       </ProductsSections>
+      <LongBanner />
       <ProductsSections title={"محبوب ترین ها"}>
         <Swiper
           spaceBetween={50}
