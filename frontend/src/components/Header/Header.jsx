@@ -44,7 +44,7 @@ export default function Header() {
                     `currentColor`
                   );
                 }}
-                className="h-[35px] bg-[#F4F6F8] p-2 rounded-md font-dana text-[#696969] flex items-center gap-2 transition-all hover:text-[#673AB7] text-sm md:text-base"
+                className="h-[35px] bg-[#F4F6F8] py-2 px-5 rounded-md font-dana text-[#696969] flex items-center gap-2 transition-all hover:text-[#673AB7] text-sm md:text-base"
               >
                 <FaUser
                   className="transition-all"
