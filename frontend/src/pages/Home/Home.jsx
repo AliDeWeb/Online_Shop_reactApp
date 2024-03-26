@@ -2,7 +2,7 @@ import React from "react";
 
 // Components
 import {
-  ProductsSections,
+  SectionsWrapper,
   ProductBox,
   LongBanner,
   CategoriesSection,
@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <main>
       <CategoriesSection />
-      <ProductsSections title={"جدیدترین ها"}>
+      <SectionsWrapper title={"جدیدترین ها"}>
         <Swiper
           spaceBetween={50}
           slidesPerView={1}
@@ -91,9 +91,9 @@ export default function Home() {
             <ProductBox />
           </SwiperSlide>
         </Swiper>
-      </ProductsSections>
+      </SectionsWrapper>
       <LongBanner />
-      <ProductsSections title={"محبوب ترین ها"}>
+      <SectionsWrapper title={"محبوب ترین ها"}>
         <Swiper
           spaceBetween={50}
           slidesPerView={1}
@@ -166,7 +166,7 @@ export default function Home() {
             <ProductBox />
           </SwiperSlide>
         </Swiper>
-      </ProductsSections>
+      </SectionsWrapper>
     </main>
   );
 }
