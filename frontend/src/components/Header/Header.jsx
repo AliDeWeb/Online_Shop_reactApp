@@ -20,7 +20,7 @@ export default function Header() {
                 <IoIosSearch size="1.5rem" color="#696969" />
               </button>
               <input
-                className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-danaBold text-[#696969]"
+                className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-danaBold text-[#696969] text-sm md:text-base"
                 type="text"
                 placeholder="جستجو در محصولات"
               />
@@ -43,19 +43,19 @@ export default function Header() {
                     `currentColor`
                   );
                 }}
-                className="bg-[#F4F6F8] p-2 rounded-md font-danaBold text-[#696969] flex items-center gap-2 transition-all hover:text-[#673AB7]"
+                className="h-[35px] bg-[#F4F6F8] p-2 rounded-md font-danaBold text-[#696969] flex items-center gap-2 transition-all hover:text-[#673AB7] text-sm md:text-base"
               >
                 <FaUser
                   className="transition-all"
-                  size="1.1rem"
+                  size="1rem"
                   color="#696969"
                 />
                 ثبت نام
               </button>
             </div>
             <div>
-              <button className="bg-[#673AB7] p-2 rounded-md">
-                <IoIosCart size="1.5rem" color="#fff" />
+              <button className="bg-[#673AB7] p-2 rounded-md size-[35px]">
+                <IoIosCart size="1.2rem" color="#fff" />
               </button>
             </div>
           </div>
