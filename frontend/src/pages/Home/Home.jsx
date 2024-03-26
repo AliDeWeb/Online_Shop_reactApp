@@ -6,6 +6,7 @@ import {
   ProductBox,
   LongBanner,
   CategoriesSection,
+  WeblogBox,
 } from "../../configs/Layout/Layout";
 
 // Swiper
@@ -164,6 +165,83 @@ export default function Home() {
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
+          </SwiperSlide>
+        </Swiper>
+      </SectionsWrapper>
+      <SectionsWrapper title={"وبلاگ"}>
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          modules={[Navigation, A11y]}
+          navigation
+          breakpoints={{
+            300: {
+              slidesPerView: 1,
+            },
+            390: {
+              slidesPerView: 1.2,
+            },
+            435: {
+              slidesPerView: 1.7,
+            },
+            515: {
+              slidesPerView: 2,
+            },
+            590: {
+              slidesPerView: 2.3,
+            },
+            640: {
+              slidesPerView: 2.3,
+            },
+            768: {
+              slidesPerView: 2.4,
+            },
+            1024: {
+              slidesPerView: 3.2,
+            },
+            1280: {
+              slidesPerView: 4.3,
+            },
+            1536: {
+              slidesPerView: 5,
+            },
+          }}
+        >
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <WeblogBox />
           </SwiperSlide>
         </Swiper>
       </SectionsWrapper>

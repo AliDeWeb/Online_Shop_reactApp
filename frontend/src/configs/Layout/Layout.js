@@ -9,3 +9,4 @@ export { default as SectionsWrapper } from "../../components/SectionsWrapper/Sec
 export { default as ProductBox } from "../../components/ProductBox/ProductBox";
 export { default as LongBanner } from "../../components/LongBanner/LongBanner";
 export { default as CategoriesSection } from "../../components/CategoriesSection/CategoriesSection";
+export { default as WeblogBox } from "../../components/WeblogBox/WeblogBox";
