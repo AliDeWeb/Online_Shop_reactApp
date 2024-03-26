@@ -8,6 +8,9 @@ export default {
     "./index.html",
   ],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
       fontFamily: {
         dana: "dana",
