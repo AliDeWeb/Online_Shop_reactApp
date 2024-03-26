@@ -23,8 +23,19 @@
 *::before {
   box-sizing: border-box;
 }
-
+:root {
+  --swiper-navigation-color: #3b3b3b;
+  --swiper-navigation-size: 24px;
+}
 body {
   background: #eff1f5;
   overflow-x: hidden;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  box-sizing: content-box;
+  padding: 0.5rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
 }

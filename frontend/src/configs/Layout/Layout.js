@@ -6,3 +6,4 @@ export { default as Home } from "../../pages/Home/Home";
 export { default as Header } from "../../components/Header/Header";
 export { default as Footer } from "../../components/Footer/Footer";
 export { default as ProductsSections } from "../../components/ProductsSections/ProductsSections";
+export { default as ProductBox } from "../../components/ProductBox/ProductBox";

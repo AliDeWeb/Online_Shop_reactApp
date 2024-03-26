@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Icons
 import { BsArrowLeftShort } from "react-icons/bs";
 
-export default function ProductsSections() {
+export default function ProductsSections(props) {
   return (
     <section className="py-5">
       <div className="container">
@@ -14,7 +14,9 @@ export default function ProductsSections() {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="font-dana lg:font-danaBold text-lg lg:text-xl text-[#494949]">
-                جدیـدترین ها
+                 {
+                  props.title
+                 }
               </h2>
             </div>
             <div>
@@ -26,6 +28,7 @@ export default function ProductsSections() {
               </Link>
             </div>
           </div>
+          <div>{props.children}</div>
         </div>
       </div>
     </section>
