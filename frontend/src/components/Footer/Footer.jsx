@@ -22,7 +22,7 @@ export default function Footer() {
       <div>
         <div>
           <div className="container">
-            <div className="flex items-center justify-evenly flex-wrap lg:flex-nowrap child:w-1/4 gap-6 lg:gap-0 lg:child:w-auto">
+            <div className="flex items-center justify-evenly flex-wrap lg:flex-nowrap child:w-1/4 gap-6 lg:gap-0 lg:child:w-auto text-[#494949]">
               <div className="flex flex-col justify-center items-center gap-3 font-dana">
                 <div className="w-[44px]">
                   <img src={shoppingBasket} alt="icon" />
@@ -93,7 +93,7 @@ export default function Footer() {
           <div className="container">
             <div className="flex sm:flex-nowrap flex-wrap child:w-full sm:child:w-1/2 sm:gap-0 gap-5">
               <div className="sm:pl-5">
-                <h3 className="font-danaBold lg:text-lg">
+                <h3 className="font-danaBold lg:text-lg text-[#494949]">
                   با تیمچه ، آنلاین و ارزان خرید کنید
                 </h3>
                 <p className="font-dana mt-2.5 lg:text-base text-sm lg:line-clamp-none line-clamp-5 text-[#727272]">
@@ -109,7 +109,9 @@ export default function Footer() {
                 </p>
               </div>
               <div className="sm:pr-5">
-                <h3 className="font-danaBold lg:text-lg">تماس با ما</h3>
+                <h3 className="font-danaBold lg:text-lg text-[#494949]">
+                  تماس با ما
+                </h3>
 
                 <ul className="text-[#727272] mt-2.5 font-dana lg:text-base text-sm">
                   <li className="flex items-center mb-1.5">
@@ -150,7 +152,7 @@ export default function Footer() {
           <div className="container">
             <div className="flex lg:items-start lg:justify-start flex-wrap lg:flex-nowrap child:w-full gap-4 lg:gap-0 lg:child:w-1/2">
               <div>
-                <h3 className="font-danaBold lg:text-lg">
+                <h3 className="font-danaBold lg:text-lg text-[#494949]">
                   خبرنامه فروشگاه تیمچه
                 </h3>
                 <div className="mt-4 border-2 border-[#f4f6f8] border-solid rounded-md py-1.5 px-4 w-full lg:w-max">
@@ -165,7 +167,7 @@ export default function Footer() {
                 </div>
               </div>
               <div>
-                <h3 className="font-danaBold lg:text-lg">
+                <h3 className="font-danaBold lg:text-lg text-[#494949]">
                   دانلود اپلیکیشن تیمچه
                 </h3>
                 <div className="mt-4 lg:w-max flex items-center justify-between lg:justify-start lg:gap-6 w-full">
@@ -198,7 +200,7 @@ export default function Footer() {
 
         <div className="py-5 bg-[#e3e3eb]">
           <p
-            className="flex items-center justify-center font-poppins text-sm"
+            className="flex items-center justify-center font-poppins text-sm text-[#494949]"
             style={{ direction: `ltr` }}
           >
             &copy; <a href="https://www.github.com/AliDeWeb">AliDeWeb</a>,
