@@ -13,3 +13,8 @@
   src: url("../fonts/DanaFaNum-Thin.ttf");
   font-display: swap;
 }
+@font-face {
+  font-family: "poppins";
+  src: url("../fonts/Poppins-Regular.ttf");
+  font-display: swap;
+}

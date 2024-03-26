@@ -1,5 +1,6 @@
 import React from "react";
 
+// Imgs
 import siteLogo from "../../assets/imgs/site-logo.svg";
 
 // Icons

@@ -17,6 +17,7 @@ export default {
         dana: "dana",
         danaBold: "danaBold",
         danaThin: "danaThin",
+        poppins: "poppins",
       },
     },
   },
