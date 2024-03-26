@@ -5,6 +5,7 @@ import {
   ProductsSections,
   ProductBox,
   LongBanner,
+  CategoriesSection,
 } from "../../configs/Layout/Layout";
 
 // Swiper
@@ -16,6 +17,7 @@ import "swiper/css/navigation";
 export default function Home() {
   return (
     <main>
+      <CategoriesSection />
       <ProductsSections title={"جدیدترین ها"}>
         <Swiper
           spaceBetween={50}
