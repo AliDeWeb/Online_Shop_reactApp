@@ -26,6 +26,8 @@
 :root {
   --swiper-navigation-color: #3b3b3b;
   --swiper-navigation-size: 24px;
+
+  user-select: none;
 }
 body {
   background: #eff1f5;
