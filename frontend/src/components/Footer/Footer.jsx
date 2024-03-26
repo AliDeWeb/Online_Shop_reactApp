@@ -201,7 +201,10 @@ export default function Footer() {
             className="flex items-center justify-center font-poppins text-sm"
             style={{ direction: `ltr` }}
           >
-            &copy; <a href="https://www.github.com/AliDeWeb">AliDeWeb</a>
+            &copy; <a href="https://www.github.com/AliDeWeb">AliDeWeb</a>,
+            <a href="https://www.github.com/mahdidesignerrr" className="ml-2">
+              Mahdi
+            </a>
           </p>
         </div>
       </div>
