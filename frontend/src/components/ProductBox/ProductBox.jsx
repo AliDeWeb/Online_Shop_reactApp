@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 
 export default function ProductBox() {
   return (
-    <div className="h-[400px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
-      <div>
+    <div className="h-[340px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
+      <div className="lg:block flex flex-col items-center">
         <div className="size-[160px] mx-auto">
           <img src={productImg} alt="product-img" />
         </div>
@@ -34,7 +34,7 @@ export default function ProductBox() {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center gap-2">
+      <div className="flex justify-evenly items-center gap-2 lg:flex-col lg:justify-center">
         <div className="text-[#6e7177]">
           <span className="ml-1 font-danaBold">820000</span>
           <span className=" font-dana">تومان</span>
@@ -56,7 +56,7 @@ export default function ProductBox() {
               size="1rem"
               color="#999999"
             />
-            افزودن به سبد خرید
+            <span className="lg:inline hidden">افزودن به سبد خرید</span>
           </button>
         </div>
       </div>

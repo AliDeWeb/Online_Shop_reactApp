@@ -813,6 +813,10 @@ img {
   height: 100%;
 }
 
+.h-\[340px\] {
+  height: 340px;
+}
+
 .w-\[100px\] {
   width: 100px;
 }
@@ -1468,8 +1472,16 @@ img {
     display: block;
   }
 
+  .lg\:inline {
+    display: inline;
+  }
+
   .lg\:h-\[38px\] {
     height: 38px;
+  }
+
+  .lg\:h-\[380px\] {
+    height: 380px;
   }
 
   .lg\:w-\[137px\] {
@@ -1493,6 +1505,14 @@ img {
     width: max-content;
   }
 
+  .lg\:flex-row {
+    flex-direction: row;
+  }
+
+  .lg\:flex-col {
+    flex-direction: column;
+  }
+
   .lg\:flex-nowrap {
     flex-wrap: nowrap;
   }
@@ -1503,6 +1523,10 @@ img {
 
   .lg\:justify-start {
     justify-content: flex-start;
+  }
+
+  .lg\:justify-center {
+    justify-content: center;
   }
 
   .lg\:gap-0 {

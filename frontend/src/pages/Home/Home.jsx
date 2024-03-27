@@ -24,16 +24,16 @@ export default function Home() {
       <CategoriesSection />
       <SectionsWrapper title={"جدیدترین ها"}>
         <Swiper
-          spaceBetween={50}
+          spaceBetween={20}
           slidesPerView={1}
           modules={[Navigation, A11y]}
           navigation
           breakpoints={{
             300: {
-              slidesPerView: 1,
-            },
-            390: {
               slidesPerView: 1.2,
+            },
+            370: {
+              slidesPerView: 1.4,
             },
             435: {
               slidesPerView: 1.7,
@@ -99,16 +99,16 @@ export default function Home() {
       <LongBanner />
       <SectionsWrapper title={"محبوب ترین ها"}>
         <Swiper
-          spaceBetween={50}
+          spaceBetween={20}
           slidesPerView={1}
           modules={[Navigation, A11y]}
           navigation
           breakpoints={{
             300: {
-              slidesPerView: 1,
-            },
-            390: {
               slidesPerView: 1.2,
+            },
+            370: {
+              slidesPerView: 1.4,
             },
             435: {
               slidesPerView: 1.7,
