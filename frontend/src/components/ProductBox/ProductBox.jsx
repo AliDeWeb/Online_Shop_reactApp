@@ -47,7 +47,7 @@ export default function ProductBox({ discounted, price, num }) {
               {discounted ? (
                 <>
                   <span className="ml-1 font-danaBold">
-                    {((price * discounted) / 100).toLocaleString()}
+                    {(price - (price * discounted) / 100).toLocaleString()}
                   </span>
                   <del className="ml-1 font-danaBold text-gray-400">
                     {price.toLocaleString()}
