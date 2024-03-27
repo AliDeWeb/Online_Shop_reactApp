@@ -12,15 +12,9 @@ import { Link } from "react-router-dom";
 export default function ProductBox({ discounted, price, num }) {
   return (
     <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
-      {num ? (
-        discounted && (
-          <div className="absolute top-2.5 left-2.5 bg-orange-300 text-white size-[40px] rounded-full flex justify-center items-center font-danaBold">
-            {discounted}
-          </div>
-        )
-      ) : (
-        <div className="absolute top-2.5 left-2.5 bg-red-400 text-white size-[40px] rounded-full flex justify-center items-center font-danaBold">
-          -
+      {!!num && !!discounted && (
+        <div className="absolute top-2.5 left-2.5 bg-orange-300 text-white size-[40px] rounded-full flex justify-center items-center font-danaBold">
+          {discounted}
         </div>
       )}
 
@@ -53,14 +47,16 @@ export default function ProductBox({ discounted, price, num }) {
               {discounted ? (
                 <>
                   <span className="ml-1 font-danaBold">
-                    {(price * discounted) / 100}
+                    {((price * discounted) / 100).toLocaleString()}
                   </span>
                   <del className="ml-1 font-danaBold text-gray-400">
-                    {price}
+                    {price.toLocaleString()}
                   </del>
                 </>
               ) : (
-                <span className="ml-1 font-danaBold">850000</span>
+                <span className="ml-1 font-danaBold">
+                  {(850000).toLocaleString()}
+                </span>
               )}
               <span className=" font-dana">تومان</span>
             </div>
