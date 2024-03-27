@@ -16,7 +16,7 @@ export default function ProductBox() {
         <div className="size-[160px] mx-auto">
           <img src={productImg} alt="product-img" />
         </div>
-        <div className="flex items-center gap-0.5 mt-1.5">
+        <div className="flex items-center gap-0.5 mt-2">
           <FaStar size="1rem" color="#FACC15" />
           <FaStar size="1rem" color="#FACC15" />
           <FaStar size="1rem" color="#FACC15" />

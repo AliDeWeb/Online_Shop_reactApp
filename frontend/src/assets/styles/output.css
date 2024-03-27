@@ -801,8 +801,8 @@ img {
   width: 0px;
 }
 
-.w-40 {
-  width: 10rem;
+.w-28 {
+  width: 7rem;
 }
 
 .w-\[100px\] {
@@ -841,8 +841,16 @@ img {
   width: 100vw;
 }
 
-.w-28 {
-  width: 7rem;
+.w-\[\] {
+  width: ;
+}
+
+.w-\[60px\] {
+  width: 60px;
+}
+
+.w-\[70px\] {
+  width: 70px;
 }
 
 .rotate-180 {
@@ -858,8 +866,20 @@ img {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
 .grid-rows-1 {
   grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1031,11 +1051,6 @@ img {
   padding: 1.25rem;
 }
 
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1180,6 +1195,10 @@ img {
   opacity: 0;
 }
 
+.mix-blend-multiply {
+  mix-blend-mode: multiply;
+}
+
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1270,6 +1289,12 @@ img {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .hover\:bg-orange-200\/40:hover {
   background-color: rgb(254 215 170 / 0.4);
 }
@@ -1312,6 +1337,11 @@ img {
 
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
+}
+
+.child\:mx-auto > * {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .child\:w-1\/3 > * {
@@ -1365,6 +1395,10 @@ img {
     width: 135px;
   }
 
+  .sm\:w-\[100px\] {
+    width: 100px;
+  }
+
   .sm\:flex-nowrap {
     flex-wrap: nowrap;
   }
@@ -1406,10 +1440,6 @@ img {
 
   .md\:h-\[335px\] {
     height: 335px;
-  }
-
-  .md\:w-40 {
-    width: 10rem;
   }
 
   .md\:gap-6 {
@@ -1483,8 +1513,12 @@ img {
     width: max-content;
   }
 
-  .lg\:w-40 {
-    width: 10rem;
+  .lg\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .lg\:grid-rows-1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
   }
 
   .lg\:flex-col {
@@ -1563,10 +1597,6 @@ img {
 }
 
 @media (min-width: 1280px) {
-  .xl\:h-\[320px\] {
-    height: 320px;
-  }
-
   .xl\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
