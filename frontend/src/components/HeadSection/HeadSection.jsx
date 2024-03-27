@@ -95,7 +95,6 @@ export default function HeadSection() {
           </div>
           <div className="hidden lg:block lg:col-span-1 lg:h-[400px]">
             <Swiper
-              spaceBetween={50}
               slidesPerView={1}
               modules={[Navigation, Autoplay, A11y]}
               navigation

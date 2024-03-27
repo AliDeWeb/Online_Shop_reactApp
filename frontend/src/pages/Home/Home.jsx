@@ -26,8 +26,13 @@ export default function Home() {
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
-          modules={[Navigation, A11y]}
+          modules={[Navigation, Autoplay, A11y]}
           navigation
+          autoplay={{
+            delay: 2500,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
           breakpoints={{
             300: {
               slidesPerView: 1.2,
@@ -101,8 +106,13 @@ export default function Home() {
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
-          modules={[Navigation, A11y]}
+          modules={[Navigation, Autoplay, A11y]}
           navigation
+          autoplay={{
+            delay: 2500,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
           breakpoints={{
             300: {
               slidesPerView: 1.2,
@@ -175,8 +185,13 @@ export default function Home() {
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
-          modules={[Navigation, A11y]}
+          modules={[Navigation, Autoplay, A11y]}
           navigation
+          autoplay={{
+            delay: 2500,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
           breakpoints={{
             340: {
               slidesPerView: 2.6,
@@ -242,12 +257,175 @@ export default function Home() {
           </SwiperSlide>
         </Swiper>
       </SectionsWrapper>
-      <SectionsWrapper title={"وبلاگ"}>
+      <SectionsWrapper title={"لپ تاپ"}>
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
-          modules={[Navigation, A11y]}
+          modules={[Navigation, Autoplay, A11y]}
           navigation
+          autoplay={{
+            delay: 2500,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
+          breakpoints={{
+            300: {
+              slidesPerView: 1.2,
+            },
+            370: {
+              slidesPerView: 1.4,
+            },
+            435: {
+              slidesPerView: 1.7,
+            },
+            515: {
+              slidesPerView: 2,
+            },
+            590: {
+              slidesPerView: 2.3,
+            },
+            640: {
+              slidesPerView: 2.3,
+            },
+            768: {
+              slidesPerView: 2.4,
+            },
+            1024: {
+              slidesPerView: 3.2,
+            },
+            1280: {
+              slidesPerView: 4.3,
+            },
+            1536: {
+              slidesPerView: 5,
+            },
+          }}
+        >
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+        </Swiper>
+      </SectionsWrapper>
+      <SectionsWrapper title={"پوشاک"}>
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          modules={[Navigation, Autoplay, A11y]}
+          navigation
+          autoplay={{
+            delay: 2500,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
+          breakpoints={{
+            300: {
+              slidesPerView: 1.2,
+            },
+            370: {
+              slidesPerView: 1.4,
+            },
+            435: {
+              slidesPerView: 1.7,
+            },
+            515: {
+              slidesPerView: 2,
+            },
+            590: {
+              slidesPerView: 2.3,
+            },
+            640: {
+              slidesPerView: 2.3,
+            },
+            768: {
+              slidesPerView: 2.4,
+            },
+            1024: {
+              slidesPerView: 3.2,
+            },
+            1280: {
+              slidesPerView: 4.3,
+            },
+            1536: {
+              slidesPerView: 5,
+            },
+          }}
+        >
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+        </Swiper>
+      </SectionsWrapper>
+      <SectionsWrapper title={"مقالات"}>
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          modules={[Navigation, Autoplay, A11y]}
+          navigation
+          autoplay={{
+            delay: 2500,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
           breakpoints={{
             350: {
               slidesPerView: 1.3,
