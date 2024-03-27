@@ -40,22 +40,8 @@ export default function ProductBox() {
           <span className=" font-dana">تومان</span>
         </div>
         <div>
-          <button
-            onMouseEnter={(e) => {
-              e.target.firstElementChild.setAttribute(`fill`, `#fff`);
-              e.target.firstElementChild.setAttribute(`stroke`, `#fff`);
-            }}
-            onMouseLeave={(e) => {
-              e.target.firstElementChild.setAttribute(`fill`, `currentColor`);
-              e.target.firstElementChild.setAttribute(`stroke`, `currentColor`);
-            }}
-            className="text-gray-400 font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-gray-100 hover:bg-teal-600 transition-all hover:text-white"
-          >
-            <FaShoppingCart
-              className="transition-all"
-              size="1rem"
-              color="#9CA3AF"
-            />
+          <button className="text-gray-400 font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-gray-100 hover:bg-teal-600 transition-all hover:text-white">
+            <FaShoppingCart className="transition-all" size="1rem" />
             <span className="lg:inline hidden">افزودن به سبد خرید</span>
           </button>
         </div>
