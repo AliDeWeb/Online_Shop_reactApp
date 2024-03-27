@@ -18,7 +18,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="pt-8 bg-white">
+    <footer className="pt-8 bg-white rounded-t-lg">
       <div>
         <div>
           <div className="container">

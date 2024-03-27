@@ -15,7 +15,7 @@ export default function CategoriesSection() {
   return (
     <div className="py-5">
       <div className="container">
-        <div className="child:w-1/3 sm:child:w-1/4 md:child:w-1/6 flex font-dana flex-wrap md:flex-nowrap justify-center gap-4 md:gap-0">
+        <div className="child:w-1/3 sm:child:w-1/4 lg:child:w-1/6 flex font-dana flex-wrap lg:flex-nowrap justify-evenly sm:justify-between lg:justify-center gap-4 lg:gap-0">
           <div>
             <div className="md:mx-2 bg-white flex flex-col items-center justify-center hover:scale-105 transition-all rounded-md overflow-hidden">
               <Link className="flex flex-col items-center justify-center">
