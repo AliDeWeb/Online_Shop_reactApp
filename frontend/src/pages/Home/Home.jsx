@@ -173,43 +173,31 @@ export default function Home() {
       </SectionsWrapper>
       <SectionsWrapper title={"برند های برگزیده"}>
         <Swiper
-          className="px-12"
-          spaceBetween={50}
+          spaceBetween={20}
           slidesPerView={1}
-          modules={[Autoplay, Navigation, A11y]}
+          modules={[Navigation, A11y]}
           navigation
-          autoplay={{
-            delay: 3000,
-            pauseOnMouseEnter: true,
-          }}
-          loop={true}
           breakpoints={{
-            300: {
-              slidesPerView: 1,
-            },
-            370: {
-              slidesPerView: 1.7,
-            },
-            460: {
-              slidesPerView: 2.2,
-            },
-            515: {
+            340: {
               slidesPerView: 2.6,
             },
-            590: {
-              slidesPerView: 2.8,
+            490: {
+              slidesPerView: 3.8,
+            },
+            680: {
+              slidesPerView: 4.2,
             },
             768: {
-              slidesPerView: 3.6,
+              slidesPerView: 5.4,
             },
             1024: {
-              slidesPerView: 5,
+              slidesPerView: 6.8,
             },
             1280: {
-              slidesPerView: 6,
+              slidesPerView: 7.6,
             },
             1536: {
-              slidesPerView: 7,
+              slidesPerView: 8.4,
             },
           }}
         >
@@ -256,16 +244,13 @@ export default function Home() {
       </SectionsWrapper>
       <SectionsWrapper title={"وبلاگ"}>
         <Swiper
-          spaceBetween={50}
+          spaceBetween={20}
           slidesPerView={1}
           modules={[Navigation, A11y]}
           navigation
           breakpoints={{
-            300: {
-              slidesPerView: 1,
-            },
-            390: {
-              slidesPerView: 1.2,
+            350: {
+              slidesPerView: 1.3,
             },
             435: {
               slidesPerView: 1.7,

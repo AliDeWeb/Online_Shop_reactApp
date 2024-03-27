@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function TopBrandsSection() {
   return (
     <div>
-      <div className="overflow-hidden rounded-lg w-40">
+      <div className="overflow-hidden rounded-lg w-28">
         <Link>
           <img src={brands1} alt="brandsImg" />
         </Link>

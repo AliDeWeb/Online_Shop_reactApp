@@ -789,10 +789,6 @@ img {
   height: 35px;
 }
 
-.h-\[400px\] {
-  height: 400px;
-}
-
 .h-\[40px\] {
   height: 40px;
 }
@@ -843,6 +839,10 @@ img {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-28 {
+  width: 7rem;
 }
 
 .rotate-180 {
@@ -1408,6 +1408,10 @@ img {
     height: 335px;
   }
 
+  .md\:w-40 {
+    width: 10rem;
+  }
+
   .md\:gap-6 {
     gap: 1.5rem;
   }
@@ -1477,6 +1481,10 @@ img {
   .lg\:w-max {
     width: -moz-max-content;
     width: max-content;
+  }
+
+  .lg\:w-40 {
+    width: 10rem;
   }
 
   .lg\:flex-col {
