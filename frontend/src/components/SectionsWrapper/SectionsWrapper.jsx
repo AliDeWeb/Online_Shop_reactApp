@@ -13,7 +13,7 @@ export default function ProductsSections(props) {
         <div>
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="font-dana lg:font-danaBold text-lg lg:text-xl text-zinc-700">
+              <h2 className="font-dana sm:font-danaBold text-lg lg:text-xl text-zinc-700">
                 {props.title}
               </h2>
             </div>

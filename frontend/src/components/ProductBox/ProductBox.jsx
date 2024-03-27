@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 export default function ProductBox({ discounted, price, num }) {
   return (
-    <div className="relative h-[340px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
+    <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
       {num ? (
         discounted && (
           <div className="absolute top-2.5 left-2.5 bg-orange-300 text-white size-[40px] rounded-full flex justify-center items-center font-danaBold">
@@ -46,7 +46,7 @@ export default function ProductBox({ discounted, price, num }) {
           </Link>
         </div>
       </div>
-      <div className="flex justify-evenly items-center gap-2 lg:flex-col lg:justify-center">
+      <div className="flex justify-evenly items-center gap-2 lg:flex-col lg:justify-center flex-wrap">
         {num ? (
           <>
             <div className="text-teal-600">
@@ -62,7 +62,6 @@ export default function ProductBox({ discounted, price, num }) {
               ) : (
                 <span className="ml-1 font-danaBold">850000</span>
               )}
-
               <span className=" font-dana">تومان</span>
             </div>
             <div>

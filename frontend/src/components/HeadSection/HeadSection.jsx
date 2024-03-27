@@ -99,7 +99,7 @@ export default function HeadSection() {
               modules={[Navigation, Autoplay, A11y]}
               navigation
               autoplay={{
-                delay: 2500,
+                delay: 5000,
                 pauseOnMouseEnter: true,
               }}
               loop={true}
