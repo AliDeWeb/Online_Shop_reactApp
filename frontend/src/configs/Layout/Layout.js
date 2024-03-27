@@ -11,3 +11,5 @@ export { default as LongBanner } from "../../components/LongBanner/LongBanner";
 export { default as CategoriesSection } from "../../components/CategoriesSection/CategoriesSection";
 export { default as WeblogBox } from "../../components/WeblogBox/WeblogBox";
 export { default as HeadSection } from "../../components/HeadSection/HeadSection";
+export { default as TopBrandsSection } from "../../components/TopBrandsSection/TopBrandsSection";
+

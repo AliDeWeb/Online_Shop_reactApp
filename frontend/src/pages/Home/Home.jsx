@@ -8,11 +8,12 @@ import {
   CategoriesSection,
   WeblogBox,
   HeadSection,
+  TopBrandsSection,
 } from "../../configs/Layout/Layout";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, A11y } from "swiper/modules";
+import { Navigation, Autoplay, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -167,6 +168,89 @@ export default function Home() {
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
+          </SwiperSlide>
+        </Swiper>
+      </SectionsWrapper>
+      <SectionsWrapper title={"برند های برگزیده"}>
+        <Swiper
+          className="px-12"
+          spaceBetween={50}
+          slidesPerView={1}
+          modules={[Autoplay, Navigation, A11y]}
+          navigation
+          autoplay={{
+            delay: 3000,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
+          breakpoints={{
+            300: {
+              slidesPerView: 1,
+            },
+            370: {
+              slidesPerView: 1.7,
+            },
+            460: {
+              slidesPerView: 2.2,
+            },
+            515: {
+              slidesPerView: 2.6,
+            },
+            590: {
+              slidesPerView: 2.8,
+            },
+            768: {
+              slidesPerView: 3.6,
+            },
+            1024: {
+              slidesPerView: 5,
+            },
+            1280: {
+              slidesPerView: 6,
+            },
+            1536: {
+              slidesPerView: 7,
+            },
+          }}
+        >
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TopBrandsSection />
           </SwiperSlide>
         </Swiper>
       </SectionsWrapper>
