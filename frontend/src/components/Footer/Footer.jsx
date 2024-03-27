@@ -155,7 +155,7 @@ export default function Footer() {
                   <input
                     type="text"
                     placeholder="آدرس ایمیل"
-                    className="text-zinc-700 border-none outline-none font-poppins text-lg bg-transparent px-2.5 w-[calc(100%-(68.77px))] lg:w-[350px]"
+                    className="text-zinc-700 border-none outline-none font-poppins bg-transparent px-2.5 w-[calc(100%-(68.77px))] lg:w-[350px]"
                   />
                   <button className="text-zinc-700 font-dana bg-gray-100 py-1.5 px-2 rounded-md text-sm">
                     عضوم کن

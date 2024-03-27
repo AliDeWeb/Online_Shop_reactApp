@@ -34,7 +34,9 @@ body {
   background: #f3f4f6;
   overflow-x: hidden;
 }
-
+input::placeholder {
+  font-family: dana;
+}
 .swiper-button-next,
 .swiper-button-prev {
   box-sizing: content-box;
