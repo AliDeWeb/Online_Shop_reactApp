@@ -13,14 +13,12 @@ export default function ProductsSections(props) {
         <div>
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="font-dana lg:font-danaBold text-lg lg:text-xl text-[#494949]">
-                 {
-                  props.title
-                 }
+              <h2 className="font-dana lg:font-danaBold text-lg lg:text-xl text-zinc-700">
+                {props.title}
               </h2>
             </div>
             <div>
-              <Link className="flex items-center gap-0.5 font-dana bg-[#d7dae1] lg:py-2 py-1 lg:px-4 px-3 rounded-md group text-[#494949]">
+              <Link className="flex items-center gap-0.5 font-dana bg-[#d7dae1] lg:py-2 py-1 lg:px-4 px-3 rounded-md group text-zinc-700">
                 <span className="group-hover:pl-3 transition-all text-sm">
                   مشاهده همه
                 </span>

@@ -85,47 +85,31 @@ export default function Header() {
             <img className="size-full" src={siteLogo} alt="site-logo" />
           </div>
           <div className="order-3 lg:order-2 w-full lg:w-[500px]">
-            <div className="flex items-center gap-4 bg-[#F4F6F8] h-[40px] px-6 w-full rounded-md">
+            <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md">
               <button>
                 <IoIosSearch size="1.5rem" color="#696969" />
               </button>
               <input
-                className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-dana text-[#696969] text-sm md:text-base"
+                className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
                 type="text"
                 placeholder="جستجو در محصولات"
               />
             </div>
           </div>
-          <div className="order-2 lg:order-3  flex items-center gap-3 md:gap-6 lg:gap-8">
+          <div className="order-2 lg:order-3  flex items-center gap-3 md:gap-6">
             <div>
-              <button
-                onMouseEnter={(e) => {
-                  e.target.firstElementChild.setAttribute(`fill`, `#673AB7`);
-                  e.target.firstElementChild.setAttribute(`stroke`, `#673AB7`);
-                }}
-                onMouseLeave={(e) => {
-                  e.target.firstElementChild.setAttribute(
-                    `fill`,
-                    `currentColor`
-                  );
-                  e.target.firstElementChild.setAttribute(
-                    `stroke`,
-                    `currentColor`
-                  );
-                }}
-                className="h-[35px] bg-[#F4F6F8] py-2 px-5 rounded-md font-dana text-[#696969] flex items-center gap-2 transition-all hover:text-[#673AB7] text-sm md:text-base"
-              >
+              <button className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 py-2 px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base">
                 <FaUser
                   className="transition-all"
                   size="1rem"
-                  color="#696969"
+                  color="rgb(251,146,60)"
                 />
                 ثبت نام
               </button>
             </div>
             <div>
-              <button className="bg-[#673AB7] p-2 rounded-md size-[35px]">
-                <IoIosCart size="1.2rem" color="#fff" />
+              <button className="p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all">
+                <IoIosCart size="1.2rem" color="rgb(251,146,60)" />
               </button>
             </div>
           </div>
@@ -133,25 +117,11 @@ export default function Header() {
       </div>
       <nav className="font-dana mt-4 border-t-2 border-solid border-gray-100 pt-3">
         <div className="container">
-          <ul className="text-[#696969] flex items-center gap-3">
-            <li className="hover:text-[#000000] transition-all relative group">
+          <ul className="text-zinc-700 flex items-center gap-3">
+            <li className=" transition-all relative group">
               <button
                 onClick={() => setIsHamburgerMenuOpen(true)}
                 className="flex items-center gap-1"
-                onMouseEnter={(e) => {
-                  e.target.firstElementChild.setAttribute(`fill`, `#000000`);
-                  e.target.firstElementChild.setAttribute(`stroke`, `#000000`);
-                }}
-                onMouseLeave={(e) => {
-                  e.target.firstElementChild.setAttribute(
-                    `fill`,
-                    `currentColor`
-                  );
-                  e.target.firstElementChild.setAttribute(
-                    `stroke`,
-                    `currentColor`
-                  );
-                }}
               >
                 <IoIosMenu
                   className="transition-all"
@@ -190,13 +160,13 @@ export default function Header() {
                 </ul>
               </div>
             </li>
-            <li className="hover:text-[#050505] transition-all hidden sm:block">
+            <li className="hidden sm:block">
               <Link>تخفیفات شگفت انگیز</Link>
             </li>
-            <li className="hover:text-[#050505] transition-all hidden sm:block">
+            <li className="hidden sm:block">
               <Link>ما کی هستیم؟</Link>
             </li>
-            <li className="hover:text-[#050505] transition-all hidden sm:block">
+            <li className="hidden sm:block">
               <Link>تماس با ما</Link>
             </li>
           </ul>

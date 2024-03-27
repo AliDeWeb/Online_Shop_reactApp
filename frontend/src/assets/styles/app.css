@@ -24,14 +24,14 @@
   box-sizing: border-box;
 }
 :root {
-  --swiper-navigation-color: #3b3b3b;
-  --swiper-navigation-size: 24px;
-  --swiper-pagination-color: #3b3b3b;
+  --swiper-navigation-color: #3b3b3bb6;
+  --swiper-navigation-size: 20px;
+  --swiper-pagination-color: #3b3b3bb6;
 
   user-select: none;
 }
 body {
-  background: #eff1f5;
+  background: #f3f4f6;
   overflow-x: hidden;
 }
 
@@ -39,6 +39,6 @@ body {
 .swiper-button-prev {
   box-sizing: content-box;
   padding: 0.5rem;
-  background-color: #fff;
+  background-color: #ffffff40;
   border-radius: 0.5rem;
 }

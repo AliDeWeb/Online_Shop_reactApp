@@ -22,7 +22,7 @@ export default function HeadSection() {
     <div className="py-5">
       <div className="container">
         <div className="grid grid-rows-1 grid-cols-4 gap-x-4">
-          <div className="col-span-4 lg:col-span-3 h-[320px] sm:h-[400px]">
+          <div className="col-span-4 lg:col-span-3 h-[340px] lg:h-[380px]">
             <Swiper
               spaceBetween={50}
               slidesPerView={1}
@@ -36,56 +36,56 @@ export default function HeadSection() {
               loop={true}
             >
               <SwiperSlide>
-                <div className="h-[300px] sm:h-[400px]">
+                <div className="h-[340px] lg:h-[380px]">
                   <Link>
                     <img className="rounded-lg" src={banner1} alt="banner" />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="h-[300px] sm:h-[400px]">
+                <div className="h-[340px] lg:h-[380px]">
                   <Link>
                     <img className="rounded-lg" src={banner2} alt="banner" />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="h-[300px] sm:h-[400px]">
+                <div className="h-[340px] lg:h-[380px]">
                   <Link>
                     <img className="rounded-lg" src={banner2} alt="banner" />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="h-[300px] sm:h-[400px]">
+                <div className="h-[340px] lg:h-[380px]">
                   <Link>
                     <img className="rounded-lg" src={banner2} alt="banner" />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="h-[300px] sm:h-[400px]">
+                <div className="h-[340px] lg:h-[380px]">
                   <Link>
                     <img className="rounded-lg" src={banner2} alt="banner" />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="h-[300px] sm:h-[400px]">
+                <div className="h-[340px] lg:h-[380px]">
                   <Link>
                     <img className="rounded-lg" src={banner2} alt="banner" />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="h-[300px] sm:h-[400px]">
+                <div className="h-[340px] lg:h-[380px]">
                   <Link>
                     <img className="rounded-lg" src={banner2} alt="banner" />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="h-[300px] sm:h-[400px]">
+                <div className="h-[340px] lg:h-[380px]">
                   <Link>
                     <img className="rounded-lg" src={banner2} alt="banner" />
                   </Link>
