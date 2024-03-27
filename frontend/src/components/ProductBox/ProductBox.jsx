@@ -13,8 +13,12 @@ export default function ProductBox({ discounted, price, num }) {
   return (
     <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
       {!!num && !!discounted && (
-        <div className="absolute top-2.5 left-2.5 bg-orange-300 text-white size-[40px] rounded-full flex justify-center items-center font-danaBold">
-          {discounted}
+        <div
+          className={`absolute top-2.5 left-2.5 ${
+            discounted >= 60 ? "bg-red-400" : "bg-orange-300"
+          } text-white size-[45px] rounded-full flex justify-center items-center font-danaBold`}
+        >
+          {`%${discounted}`}
         </div>
       )}
 
@@ -40,13 +44,13 @@ export default function ProductBox({ discounted, price, num }) {
           </Link>
         </div>
       </div>
-      <div className="flex justify-evenly items-center gap-2 lg:flex-col lg:justify-center flex-wrap">
+      <div className="flex items-center gap-2 flex-col justify-center">
         {num ? (
           <>
-            <div className="text-teal-600">
+            <div className="text-teal-600 my-0.5">
               {discounted ? (
                 <>
-                  <span className="ml-1 font-danaBold">
+                  <span className="ml-1 font-danaBold text-sm sm:text-base">
                     {(price - (price * discounted) / 100).toLocaleString()}
                   </span>
                   <del className="ml-1 font-danaBold text-gray-400">
@@ -54,7 +58,7 @@ export default function ProductBox({ discounted, price, num }) {
                   </del>
                 </>
               ) : (
-                <span className="ml-1 font-danaBold">
+                <span className="ml-1 font-danaBold text-sm sm:text-base">
                   {(850000).toLocaleString()}
                 </span>
               )}
@@ -63,7 +67,7 @@ export default function ProductBox({ discounted, price, num }) {
             <div>
               <button className="text-gray-400 font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-gray-100 hover:bg-teal-600 transition-all hover:text-white">
                 <FaShoppingCart className="transition-all" size="1rem" />
-                <span className="lg:inline hidden">افزودن به سبد خرید</span>
+                <span>افزودن به سبد خرید</span>
               </button>
             </div>
           </>
