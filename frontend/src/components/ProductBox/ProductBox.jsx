@@ -9,14 +9,26 @@ import { FaStar, FaShoppingCart } from "react-icons/fa";
 // React Router
 import { Link } from "react-router-dom";
 
-export default function ProductBox() {
+export default function ProductBox({ discounted, price, num }) {
   return (
-    <div className="h-[340px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
+    <div className="relative h-[340px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
+      {num ? (
+        discounted && (
+          <div className="absolute top-2.5 left-2.5 bg-orange-300 text-white size-[40px] rounded-full flex justify-center items-center font-danaBold">
+            {discounted}
+          </div>
+        )
+      ) : (
+        <div className="absolute top-2.5 left-2.5 bg-red-400 text-white size-[40px] rounded-full flex justify-center items-center font-danaBold">
+          -
+        </div>
+      )}
+
       <div className="lg:block flex flex-col items-center">
         <div className="size-[160px] mx-auto">
           <img src={productImg} alt="product-img" />
         </div>
-        <div className="flex items-center gap-0.5 mt-2">
+        <div className="flex items-center justify-center gap-0.5 mt-2">
           <FaStar size="1rem" color="#FACC15" />
           <FaStar size="1rem" color="#FACC15" />
           <FaStar size="1rem" color="#FACC15" />
@@ -35,16 +47,34 @@ export default function ProductBox() {
         </div>
       </div>
       <div className="flex justify-evenly items-center gap-2 lg:flex-col lg:justify-center">
-        <div className="text-teal-600">
-          <span className="ml-1 font-danaBold">820000</span>
-          <span className=" font-dana">تومان</span>
-        </div>
-        <div>
-          <button className="text-gray-400 font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-gray-100 hover:bg-teal-600 transition-all hover:text-white">
-            <FaShoppingCart className="transition-all" size="1rem" />
-            <span className="lg:inline hidden">افزودن به سبد خرید</span>
-          </button>
-        </div>
+        {num ? (
+          <>
+            <div className="text-teal-600">
+              {discounted ? (
+                <>
+                  <span className="ml-1 font-danaBold">
+                    {(price * discounted) / 100}
+                  </span>
+                  <del className="ml-1 font-danaBold text-gray-400">
+                    {price}
+                  </del>
+                </>
+              ) : (
+                <span className="ml-1 font-danaBold">850000</span>
+              )}
+
+              <span className=" font-dana">تومان</span>
+            </div>
+            <div>
+              <button className="text-gray-400 font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-gray-100 hover:bg-teal-600 transition-all hover:text-white">
+                <FaShoppingCart className="transition-all" size="1rem" />
+                <span className="lg:inline hidden">افزودن به سبد خرید</span>
+              </button>
+            </div>
+          </>
+        ) : (
+          <span className="text-red-400 font-danaBold">کالا موجود نیست</span>
+        )}
       </div>
     </div>
   );

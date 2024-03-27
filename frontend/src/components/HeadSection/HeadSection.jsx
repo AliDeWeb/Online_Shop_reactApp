@@ -105,7 +105,7 @@ export default function HeadSection() {
               loop={true}
             >
               <SwiperSlide>
-                <ProductBox />
+                <ProductBox discounted={60} price={700000} num={14} />
               </SwiperSlide>
               <SwiperSlide>
                 <ProductBox />

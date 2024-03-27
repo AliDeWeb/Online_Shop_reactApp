@@ -22,6 +22,97 @@ export default function Home() {
     <main>
       <HeadSection />
       <CategoriesSection />
+      <SectionsWrapper title={"محصولات شگفت انگیز"}>
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          modules={[Navigation, Autoplay, A11y]}
+          navigation
+          autoplay={{
+            delay: 2500,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
+          breakpoints={{
+            300: {
+              slidesPerView: 1.2,
+            },
+            370: {
+              slidesPerView: 1.4,
+            },
+            435: {
+              slidesPerView: 1.7,
+            },
+            515: {
+              slidesPerView: 2,
+            },
+            590: {
+              slidesPerView: 2.3,
+            },
+            640: {
+              slidesPerView: 2.3,
+            },
+            768: {
+              slidesPerView: 2.4,
+            },
+            1024: {
+              slidesPerView: 3.2,
+            },
+            1280: {
+              slidesPerView: 4.3,
+            },
+            1536: {
+              slidesPerView: 5,
+            },
+          }}
+        >
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} num={5} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} num={5} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} num={5} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} num={5} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} num={5} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} num={0} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} num={12} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox discounted={60} price={700000} />
+          </SwiperSlide>
+        </Swiper>
+      </SectionsWrapper>
       <SectionsWrapper title={"جدیدترین ها"}>
         <Swiper
           spaceBetween={20}
@@ -67,7 +158,25 @@ export default function Home() {
           }}
         >
           <SwiperSlide>
+            <ProductBox num={12} />
+          </SwiperSlide>
+          <SwiperSlide>
             <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox num={12} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox num={12} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox num={12} />
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
@@ -76,25 +185,7 @@ export default function Home() {
             <ProductBox />
           </SwiperSlide>
           <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
+            <ProductBox num={12} />
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
@@ -150,7 +241,19 @@ export default function Home() {
             <ProductBox />
           </SwiperSlide>
           <SwiperSlide>
+            <ProductBox num={12} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox num={12} />
+          </SwiperSlide>
+          <SwiperSlide>
             <ProductBox />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox num={12} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ProductBox num={12} />
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
@@ -162,19 +265,7 @@ export default function Home() {
             <ProductBox />
           </SwiperSlide>
           <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
+            <ProductBox num={12} />
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
@@ -311,19 +402,19 @@ export default function Home() {
             <ProductBox />
           </SwiperSlide>
           <SwiperSlide>
-            <ProductBox />
+            <ProductBox discounted={99} price={120000000} num={13} />
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
           </SwiperSlide>
           <SwiperSlide>
-            <ProductBox />
+            <ProductBox discounted={0} price={120000000} num={13} />
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
           </SwiperSlide>
           <SwiperSlide>
-            <ProductBox />
+            <ProductBox discounted={30} price={120000000} num={13} />
           </SwiperSlide>
           <SwiperSlide>
             <ProductBox />
