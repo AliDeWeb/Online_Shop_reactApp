@@ -181,14 +181,17 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-3 md:gap-6">
             <div>
-              <button className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base">
+              <Link
+                to="/register"
+                className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base"
+              >
                 <FaUser
                   className="transition-all"
                   size="1rem"
                   color="rgb(251,146,60)"
                 />
                 <span className="lg:inline hidden">ثبت نام</span>
-              </button>
+              </Link>
             </div>
             <div>
               <button className="p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all">

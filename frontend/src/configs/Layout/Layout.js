@@ -1,6 +1,7 @@
 // Pages
 export { default as Index } from "../../pages/Index/Index";
 export { default as Home } from "../../pages/Home/Home";
+export { default as Register } from "../../pages/UsersValidation/Register";
 
 // Components
 export { default as Header } from "../../components/Header/Header";

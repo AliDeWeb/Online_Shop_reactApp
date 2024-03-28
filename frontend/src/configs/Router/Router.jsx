@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Index, Home } from "../Layout/Layout";
+import { Index, Home, Register } from "../Layout/Layout";
 
 export default () => {
   return (
@@ -8,6 +8,7 @@ export default () => {
       <Routes>
         <Route path="/" element={<Index />}>
           <Route path="home" element={<Home />} />
+          <Route path="register" element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>
