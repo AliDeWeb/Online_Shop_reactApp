@@ -7,3 +7,22 @@
     @apply size-full;
   }
 }
+@layer components {
+  .product-desc {
+    font-family: "dana";
+    h3 {
+      font-family: "danaBold";
+      @apply sm:text-[1.6rem] text-xl md:mt-6 md:mb-4 mt-4 mb-1;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    img {
+      border-radius: 1rem;
+      @apply sm:text-base text-sm md:my-3 mt-1;
+      display: inline-block;
+    }
+    p {
+      @apply sm:text-base text-sm md:my-4 mt-2;
+    }
+  }
+}
