@@ -17,7 +17,14 @@
   background-color: #7e7f85;
   border-radius: 0.2rem;
 }
-
+::selection {
+  background-color: rgb(254, 215, 170);
+  color: #097a7a;
+}
+::-moz-selection {
+  background-color: rgb(254, 215, 170);
+  color: #097a7a;
+}
 *,
 *::after,
 *::before {
