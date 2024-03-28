@@ -6,6 +6,7 @@ import {
   Register,
   Login,
   ProductsDetails,
+  Page404,
 } from "../Layout/Layout";
 
 export default () => {
@@ -18,6 +19,7 @@ export default () => {
           <Route path="login" element={<Login />} />
           <Route path="product/:id" element={<ProductsDetails />} />
         </Route>
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
   );
