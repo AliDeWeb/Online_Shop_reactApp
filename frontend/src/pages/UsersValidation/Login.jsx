@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Axios
 import { usersValidation } from "../../configs/axios/axiosConfigs";
@@ -12,8 +12,12 @@ import siteLogo from "../../assets/imgs/site-logo.svg";
 // React Router
 import { useNavigate, Link } from "react-router-dom";
 
+// React Spinners
+import ClipLoader from "react-spinners/ClipLoader";
+
 export default function Login() {
   const navigator = useNavigate();
+  const [isDataFetching, setIsDataFetching] = useState(false);
 
   const {
     register,
@@ -22,6 +26,7 @@ export default function Login() {
   } = useForm();
 
   const submitForm = (data) => {
+    setIsDataFetching(true);
     let userData = {
       email: data.emailAddress,
       password: data.password,
@@ -30,11 +35,15 @@ export default function Login() {
     usersValidation({
       url: "/login",
       data: userData,
-    }).then(() =>
-      setTimeout(() => {
-        navigator("/home");
-      }, 3000)
-    );
+    })
+      .then(() =>
+        setTimeout(() => {
+          navigator("/home");
+        }, 3000)
+      )
+      .finally(() => {
+        setIsDataFetching(false);
+      });
   };
 
   const pageWrapper = useRef();
@@ -108,7 +117,7 @@ export default function Login() {
               })}
               id="password"
               type="password"
-              placeholder="رمز عبور قوی انتخاب نمایید"
+              placeholder="رمز عبور"
               className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.password && (
@@ -116,11 +125,16 @@ export default function Login() {
                 * {errors.password.message}
               </span>
             )}
-            <input
-              className="font-danaBold mt-4 cursor-pointer w-full h-[40px] bg-orange-100 hover:bg-orange-200 hover:scale-90 transition-all rounded-lg"
+            <button
+              className="font-danaBold mt-4 cursor-pointer w-full h-[40px] bg-orange-100 hover:bg-orange-200 hover:scale-90 transition-all rounded-lg flex justify-center items-center"
               type="submit"
-              value="برو بریم..."
-            />
+            >
+              {isDataFetching ? (
+                <ClipLoader color="#d97706" size="18" />
+              ) : (
+                "برو بریم..."
+              )}
+            </button>
             <Link
               to="/register"
               className="inline-block mt-4 font-dana text-sm text-zinc-700"

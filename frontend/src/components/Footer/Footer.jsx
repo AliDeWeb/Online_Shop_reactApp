@@ -19,16 +19,21 @@ import { CiMobile3 } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 
+// React Spinners
+import ClipLoader from "react-spinners/ClipLoader";
+
 // Regex
 const emailRegex =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i;
 
 export default function Footer() {
   const userEmailInput = useRef();
+  const [isUserEmailFetching, setIsUserEmailFetching] = useState(false);
 
   const [userNewsLetterEmail, setUserNewsLetterEmail] = useState("");
   const newLetterSubmit = useCallback(() => {
     if (userNewsLetterEmail.match(emailRegex)) {
+      setIsUserEmailFetching(true);
       userEmailInput.current.classList.remove(`text-red-400`);
       userEmailInput.current.classList.add(`text-zinc-700`);
       newLetter({
@@ -36,6 +41,8 @@ export default function Footer() {
         data: {
           email: userNewsLetterEmail,
         },
+      }).finally(() => {
+        setIsUserEmailFetching(false);
       });
     } else {
       userEmailInput.current.classList.remove(`text-zinc-700`);
@@ -183,7 +190,7 @@ export default function Footer() {
                 <h3 className="font-danaBold lg:text-lg text-zinc-700">
                   خبرنامه فروشگاه تیمچه
                 </h3>
-                <div className="mt-4 border-2 border-gray-100 border-solid rounded-md py-1.5 px-4 w-full lg:w-max">
+                <div className="mt-4 border-2 border-gray-100 border-solid rounded-md py-1.5 px-4 w-full lg:w-max flex items-center">
                   <input
                     ref={userEmailInput}
                     value={userNewsLetterEmail}
@@ -194,9 +201,14 @@ export default function Footer() {
                   />
                   <button
                     onClick={newLetterSubmit}
-                    className="text-zinc-700 font-dana bg-gray-100 py-1.5 px-2 rounded-md text-sm"
+                    className="cursor-pointer hover:scale-90 transition-all flex justify-center items-center text-zinc-700 font-dana bg-gray-100 py-1.5 px-2 rounded-md text-sm w-[70px]"
+                    type="submit"
                   >
-                    عضوم کن
+                    {isUserEmailFetching ? (
+                      <ClipLoader color="rgb(63,63,70)" size="18" />
+                    ) : (
+                      "عضوم کن"
+                    )}
                   </button>
                 </div>
               </div>
