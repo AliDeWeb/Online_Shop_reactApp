@@ -19,7 +19,7 @@ export default function CategoriesSection() {
           <div>
             <div className="md:mx-2 font-dana w-[70px] sm:w-[100px] flex flex-col items-center justify-center hover:scale-110 transition-all rounded-md overflow-hidden">
               <Link className="flex flex-col items-center justify-center">
-                <img src={categories1} alt="categoriesImg" />
+                <img loading="lazy" src={categories1} alt="categoriesImg" />
                 <span>دیجیتال</span>
               </Link>
             </div>
@@ -27,7 +27,7 @@ export default function CategoriesSection() {
           <div>
             <div className="md:mx-2 font-dana w-[70px] sm:w-[100px] flex flex-col items-center justify-center hover:scale-110 transition-all rounded-md overflow-hidden">
               <Link className="flex flex-col items-center justify-center">
-                <img src={categories2} alt="categoriesImg" />
+                <img loading="lazy" src={categories2} alt="categoriesImg" />
                 <span>موبایل</span>
               </Link>
             </div>
@@ -35,7 +35,7 @@ export default function CategoriesSection() {
           <div>
             <div className="md:mx-2 font-dana w-[70px] sm:w-[100px] flex flex-col items-center justify-center hover:scale-110 transition-all rounded-md overflow-hidden">
               <Link className="flex flex-col items-center justify-center">
-                <img src={categories3} alt="categoriesImg" />
+                <img loading="lazy" src={categories3} alt="categoriesImg" />
                 <span>مد و پوشاک</span>
               </Link>
             </div>
@@ -43,7 +43,7 @@ export default function CategoriesSection() {
           <div>
             <div className="md:mx-2 font-dana w-[70px] sm:w-[100px] flex flex-col items-center justify-center hover:scale-110 transition-all rounded-md overflow-hidden">
               <Link className="flex flex-col items-center justify-center">
-                <img src={categories4} alt="categoriesImg" />
+                <img loading="lazy" src={categories4} alt="categoriesImg" />
                 <span>لوازم التحریر</span>
               </Link>
             </div>
@@ -51,7 +51,7 @@ export default function CategoriesSection() {
           <div>
             <div className="md:mx-2 font-dana w-[70px] sm:w-[100px] flex flex-col items-center justify-center hover:scale-110 transition-all rounded-md overflow-hidden">
               <Link className="flex flex-col items-center justify-center">
-                <img src={categories5} alt="categoriesImg" />
+                <img loading="lazy" src={categories5} alt="categoriesImg" />
                 <span>ورزش و سفر</span>
               </Link>
             </div>
@@ -59,7 +59,7 @@ export default function CategoriesSection() {
           <div>
             <div className="md:mx-2 font-dana w-[70px] sm:w-[100px] flex flex-col items-center justify-center hover:scale-110 transition-all rounded-md overflow-hidden">
               <Link className="flex flex-col items-center justify-center">
-                <img src={categories6} alt="categoriesImg" />
+                <img loading="lazy" src={categories6} alt="categoriesImg" />
                 <span>لوازم خانگی</span>
               </Link>
             </div>

@@ -24,7 +24,7 @@ export default function ProductBox({ discounted, price, num }) {
 
       <div className="lg:block flex flex-col items-center">
         <div className="size-[160px] mx-auto">
-          <img src={productImg} alt="product-img" />
+          <img loading="lazy" src={productImg} alt="product-img" />
         </div>
         <div className="flex items-center justify-center gap-0.5 mt-2">
           <FaStar size="1rem" color="#FACC15" />

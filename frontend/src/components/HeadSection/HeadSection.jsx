@@ -38,56 +38,96 @@ export default function HeadSection() {
               <SwiperSlide>
                 <div className="lg:h-[380px]">
                   <Link>
-                    <img className="rounded-lg" src={banner1} alt="banner" />
+                    <img
+                      loading="lazy"
+                      className="rounded-lg"
+                      src={banner1}
+                      alt="banner"
+                    />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="lg:h-[380px]">
                   <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
+                    <img
+                      loading="lazy"
+                      className="rounded-lg"
+                      src={banner2}
+                      alt="banner"
+                    />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="lg:h-[380px]">
                   <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
+                    <img
+                      loading="lazy"
+                      className="rounded-lg"
+                      src={banner2}
+                      alt="banner"
+                    />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="lg:h-[380px]">
                   <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
+                    <img
+                      loading="lazy"
+                      className="rounded-lg"
+                      src={banner2}
+                      alt="banner"
+                    />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="lg:h-[380px]">
                   <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
+                    <img
+                      loading="lazy"
+                      className="rounded-lg"
+                      src={banner2}
+                      alt="banner"
+                    />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="lg:h-[380px]">
                   <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
+                    <img
+                      loading="lazy"
+                      className="rounded-lg"
+                      src={banner2}
+                      alt="banner"
+                    />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="lg:h-[380px]">
                   <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
+                    <img
+                      loading="lazy"
+                      className="rounded-lg"
+                      src={banner2}
+                      alt="banner"
+                    />
                   </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="lg:h-[380px]">
                   <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
+                    <img
+                      loading="lazy"
+                      className="rounded-lg"
+                      src={banner2}
+                      alt="banner"
+                    />
                   </Link>
                 </div>
               </SwiperSlide>

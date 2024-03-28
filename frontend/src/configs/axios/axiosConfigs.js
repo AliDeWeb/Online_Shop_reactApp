@@ -31,7 +31,11 @@ usersValidation.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    if (error?.response?.status === 401) {
+      errorSwal(error.response.data.message);
+    } else {
+      errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    }
     return Promise.reject(error);
   }
 );

@@ -10,7 +10,7 @@ export default function TopBrandsSection() {
     <div>
       <div className="overflow-hidden rounded-lg w-28">
         <Link>
-          <img src={brands1} alt="brandsImg" />
+          <img loading="lazy" src={brands1} alt="brandsImg" />
         </Link>
       </div>
     </div>
