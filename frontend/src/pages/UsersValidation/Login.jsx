@@ -12,7 +12,7 @@ import siteLogo from "../../assets/imgs/site-logo.svg";
 // React Router
 import { useNavigate, Link } from "react-router-dom";
 
-export default function Register() {
+export default function Login() {
   const navigator = useNavigate();
 
   const {
@@ -23,17 +23,12 @@ export default function Register() {
 
   const submitForm = (data) => {
     let userData = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      phone: data.phoneNumber,
-      userName: `${data.firstName}${data.lastName}${Math.random().toFixed(6)}`,
       email: data.emailAddress,
       password: data.password,
-      address: "unset",
     };
 
     usersValidation({
-      url: "/register",
+      url: "/login",
       data: userData,
     }).then(() =>
       setTimeout(() => {
@@ -66,74 +61,16 @@ export default function Register() {
               <div className="w-[80px]">
                 <img src={siteLogo} alt="img" />
               </div>
-              <Link
-                to="/home"
-                className="text-sm font-dana text-gray-400"
-              >
+              <Link to="/home" className="text-sm font-dana text-gray-400">
                 بازگشت
               </Link>
             </div>
             <h2 className="font-danaBold text-xl mb-2 text-zinc-700">
-              خوش اومدی ;)
+              خوش برگشتی ;)
             </h2>
             <p className="text-gray-400 text-xs sm:text-sm mb-6">
               خرید جدیدترین محصولات با کیفیت روز با تیمچه
             </p>
-            <label htmlFor="firstName" className="mb-1.5">
-              نام
-            </label>
-            <input
-              {...register(`firstName`, {
-                required: "این فیلد نمیتواند خالی باشد",
-              })}
-              id="firstName"
-              type="text"
-              placeholder="علی..."
-              className="mb-4 mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
-            />
-            {errors.firstName && (
-              <span className="text-red-400 mb-4 text-xs sm:text-sm">
-                * {errors.firstName.message}
-              </span>
-            )}
-            <label htmlFor="lastName" className="mb-1.5">
-              نام خانوادگی
-            </label>
-            <input
-              {...register(`lastName`, {
-                required: "این فیلد نمیتواند خالی باشد",
-              })}
-              id="lastName"
-              type="text"
-              placeholder="احمدی..."
-              className="mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
-            />
-            {errors.lastName && (
-              <span className="text-red-400 mb-4 text-xs sm:text-sm">
-                * {errors.lastName.message}
-              </span>
-            )}
-            <label htmlFor="phoneNumber" className="mb-1.5">
-              شماره تماس
-            </label>
-            <input
-              {...register(`phoneNumber`, {
-                required: "این فیلد نمیتواند خالی باشد",
-                pattern: {
-                  value: /^((?:\+98|0|98)?)(?:9\d{9})$/i,
-                  message: "شماره تلفن را به درستی وارد نمایید",
-                },
-              })}
-              id="phoneNumber"
-              type="text"
-              placeholder="989123456789"
-              className="mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
-            />
-            {errors.phoneNumber && (
-              <span className="text-red-400 mb-4 text-xs sm:text-sm">
-                * {errors.phoneNumber.message}
-              </span>
-            )}
             <label htmlFor="emailAddress" className="mb-1.5">
               ایمیل
             </label>
@@ -183,10 +120,10 @@ export default function Register() {
               value="برو بریم..."
             />
             <Link
-              to="/login"
+              to="/register"
               className="inline-block mt-4 font-dana text-sm text-zinc-700"
             >
-              حساب کاربری داری؟ ورود
+              حساب کاربری نداری؟ ثبت نام
             </Link>
           </form>
         </div>
