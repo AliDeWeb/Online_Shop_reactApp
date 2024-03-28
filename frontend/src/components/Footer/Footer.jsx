@@ -207,6 +207,7 @@ export default function Footer() {
                 <div className="mt-4 lg:w-max flex items-center justify-between lg:justify-start lg:gap-6 w-full">
                   <a href="#">
                     <img
+                      loading="lazy"
                       className="w-[90px] sm:w-[135px] h-[25px] sm:h-[40px]"
                       src={bazar}
                       alt="icon"
@@ -214,6 +215,7 @@ export default function Footer() {
                   </a>
                   <a href="#">
                     <img
+                      loading="lazy"
                       className="w-[90px] sm:w-[135px] h-[25px] sm:h-[40px]"
                       src={googlePlay}
                       alt="icon"
@@ -221,6 +223,7 @@ export default function Footer() {
                   </a>
                   <a href="#">
                     <img
+                      loading="lazy"
                       className="w-[90px] sm:w-[135px] h-[25px] sm:h-[40px]"
                       src={appleStore}
                       alt="icon"

@@ -12,7 +12,7 @@ export default function LongBanner() {
       <div className="container">
         <div className="rounded-md overflow-hidden">
           <Link>
-            <img loading="lazy" src={banner} alt="banner" />
+            <img src={banner} alt="banner" />
           </Link>
         </div>
       </div>
