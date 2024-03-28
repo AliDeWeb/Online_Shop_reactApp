@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import siteLogo from "../../assets/imgs/site-logo.svg";
 
 // React Router
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Register() {
   const navigator = useNavigate();
@@ -184,6 +184,12 @@ export default function Register() {
               type="submit"
               value="برو بریم..."
             />
+            <Link
+              to="/login"
+              className="inline-block mt-4 font-dana text-sm text-zinc-700"
+            >
+              حساب کاربری داری؟ ورود
+            </Link>
           </form>
         </div>
       </div>
