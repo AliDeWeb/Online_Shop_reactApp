@@ -3,6 +3,7 @@ export { default as Index } from "../../pages/Index/Index";
 export { default as Home } from "../../pages/Home/Home";
 export { default as Register } from "../../pages/UsersValidation/Register";
 export { default as Login } from "../../pages/UsersValidation/Login";
+export { default as ProductsDetails } from "../../pages/ProductsDetails/ProductsDetails";
 
 // Components
 export { default as Header } from "../../components/Header/Header";
