@@ -1,12 +1,10 @@
-import axios from "axios";
-
-//? Swal
+// Swal
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-const successSwal = () => {
+const successSwal = (text) => {
   withReactContent(Swal).fire({
     title: "خوش اومدی!",
-    text: "بزن بریم محصولات شگفت انگیز این هفته رو ببینیم!",
+    text: text,
     icon: "success",
   });
 };
@@ -18,16 +16,18 @@ const errorSwal = (text) => {
   });
 };
 
+// Axios
+import axios from "axios";
 const apiUrl = "https://ma-api.liara.run";
 
+//? User Validation
 export const usersValidation = axios.create({
   baseURL: `${apiUrl}/v1/auth`,
   method: "POST",
 });
-
 usersValidation.interceptors.response.use(
   function (response) {
-    successSwal();
+    successSwal("بزن بریم محصولات شگفت انگیز این هفته رو ببینیم!");
     return response;
   },
   function (error) {
@@ -39,3 +39,9 @@ usersValidation.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// TODO: newsLetter should be fixed
+// NewLetter
+export const newLetter = axios.create({
+  baseURL: `${apiUrl}/v1/newsletters`,
+});

@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
+
+// Axios
+import { newLetter } from "../../configs/axios/axiosConfigs";
 
 // Imgs
 import discount from "../../assets/imgs/icons/discount.svg";
@@ -16,7 +19,37 @@ import { CiMobile3 } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 
+// Regex
+const emailRegex =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i;
+
 export default function Footer() {
+  const userEmailInput = useRef();
+
+  // TODO: newsLetter should be fixed
+  const [userNewsLetterEmail, setUserNewsLetterEmail] = useState("");
+  const newLetterSubmit = useCallback(() => {
+    if (userNewsLetterEmail.match(emailRegex)) {
+      userEmailInput.current.classList.remove(`text-red-400`);
+      userEmailInput.current.classList.add(`text-zinc-700`);
+      newLetter({
+        method: `POST`,
+        data: {
+          email: userNewsLetterEmail,
+        },
+      });
+    } else {
+      userEmailInput.current.classList.remove(`text-zinc-700`);
+      userEmailInput.current.classList.add(`text-red-400`);
+    }
+  }, [userNewsLetterEmail]);
+  const changeUserNewsLetterEmailValue = useCallback(
+    (e) => {
+      setUserNewsLetterEmail(e.target.value);
+    },
+    [userNewsLetterEmail]
+  );
+
   return (
     <footer className="pt-8 bg-white rounded-t-lg">
       <div>
@@ -153,11 +186,17 @@ export default function Footer() {
                 </h3>
                 <div className="mt-4 border-2 border-gray-100 border-solid rounded-md py-1.5 px-4 w-full lg:w-max">
                   <input
+                    ref={userEmailInput}
+                    value={userNewsLetterEmail}
+                    onChange={changeUserNewsLetterEmailValue}
                     type="text"
                     placeholder="آدرس ایمیل"
                     className="text-zinc-700 border-none outline-none font-poppins bg-transparent px-2.5 w-[calc(100%-(68.77px))] lg:w-[350px]"
                   />
-                  <button className="text-zinc-700 font-dana bg-gray-100 py-1.5 px-2 rounded-md text-sm">
+                  <button
+                    onClick={newLetterSubmit}
+                    className="text-zinc-700 font-dana bg-gray-100 py-1.5 px-2 rounded-md text-sm"
+                  >
                     عضوم کن
                   </button>
                 </div>
