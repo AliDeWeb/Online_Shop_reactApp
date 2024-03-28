@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Imgs
 import siteLogo from "../../assets/imgs/site-logo.svg";
@@ -20,14 +20,19 @@ import {
 import { CiShoppingBasket } from "react-icons/ci";
 
 // React Router
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
+  const location = useLocation();
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const [isHamburgerMenuShopItemShow, setIsHamburgerMenuShopItemShow] =
     useState(true);
   const [isHamburgerMenuServiceItemShow, setIsHamburgerMenuServiceItemShow] =
     useState(true);
+
+  useEffect(() => {
+    setIsHamburgerMenuOpen(false);
+  }, [location]);
 
   return (
     <header className="py-3 bg-white rounded-b-lg">
@@ -46,10 +51,13 @@ export default function Header() {
         </div>
         <hr className="my-5" />
         <div>
-          <span className="flex items-center font-dana gap-1 text-orange-400 bg-orange-100/50 py-1.5 px-2 rounded-md">
+          <Link
+            to="/home"
+            className="flex items-center font-dana gap-1 text-orange-400 bg-orange-100/50 py-1.5 px-2 rounded-md"
+          >
             <AiOutlineHome size="1.1rem" />
             خانه
-          </span>
+          </Link>
           <div className="mt-4 text-zinc-700">
             <div
               onClick={() => {
@@ -128,7 +136,7 @@ export default function Header() {
         <hr className="my-5" />
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-3 font-dana text-orange-400">
-            <Link className="flex items-center gap-1.5">
+            <Link to="/register" className="flex items-center gap-1.5">
               <FaUser size="0.8rem" />
               ورود | ثبت نام
             </Link>
