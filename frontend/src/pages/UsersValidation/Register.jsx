@@ -35,7 +35,11 @@ export default function Register() {
     usersValidation({
       url: "/register",
       data: userData,
-    }).then((res) => console.log(res));
+    }).then(() =>
+      setTimeout(() => {
+        navigator("/home");
+      }, 3000)
+    );
   };
 
   const pageWrapper = useRef();

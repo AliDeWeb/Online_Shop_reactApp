@@ -15,7 +15,7 @@ export default function Index() {
     if (location.pathname === "/") {
       navigator("/home");
     }
-  }, []);
+  }, [location]);
 
   return (
     <>
