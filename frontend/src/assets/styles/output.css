@@ -862,18 +862,18 @@ img {
   -webkit-line-clamp: 2;
 }
 
-.line-clamp-5 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-}
-
 .line-clamp-4 {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+}
+
+.line-clamp-5 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
 }
 
 .block {
@@ -938,6 +938,10 @@ img {
   height: 100dvh;
 }
 
+.h-\[150px\] {
+  height: 150px;
+}
+
 .h-\[230px\] {
   height: 230px;
 }
@@ -968,14 +972,6 @@ img {
 
 .h-full {
   height: 100%;
-}
-
-.h-\[\] {
-  height: ;
-}
-
-.h-\[150px\] {
-  height: 150px;
 }
 
 .min-h-\[100dvh\] {
@@ -2016,6 +2012,10 @@ img {
   .lg\:py-2 {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+  }
+
+  .lg\:font-danaBold {
+    font-family: danaBold;
   }
 
   .lg\:text-base {

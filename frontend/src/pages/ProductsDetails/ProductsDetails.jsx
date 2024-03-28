@@ -286,7 +286,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
@@ -302,7 +304,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
@@ -318,7 +322,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
@@ -334,7 +340,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
@@ -350,7 +358,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
@@ -366,7 +376,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
@@ -382,7 +394,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
@@ -399,7 +413,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
@@ -415,7 +431,9 @@ export default function ProductsDetails() {
                 <SwiperSlide>
                   <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
                     <div className="flex items-center justify-between">
-                      <span className="font-danaBold text-xl">احمد</span>
+                      <span className="font-dana lg:font-danaBold lg:text-xl">
+                        احمد
+                      </span>
                       <span className="font-dana text-sm">2 روز پیش</span>
                     </div>
                     <p className="line-clamp-4 mt-1.5 text-sm">
