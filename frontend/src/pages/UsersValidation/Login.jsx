@@ -59,7 +59,9 @@ export default function Login() {
           >
             <div className="flex items-center justify-between mb-8">
               <div className="w-[80px]">
-                <img src={siteLogo} alt="img" />
+                <Link className="w-[80px]" to="/home">
+                  <img src={siteLogo} alt="img" />
+                </Link>
               </div>
               <Link to="/home" className="text-sm font-dana text-gray-400">
                 بازگشت

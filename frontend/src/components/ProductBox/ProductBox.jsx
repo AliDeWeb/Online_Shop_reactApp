@@ -53,7 +53,7 @@ export default function ProductBox({ discounted, price, num }) {
                   <span className="ml-1 font-danaBold text-sm sm:text-base">
                     {(price - (price * discounted) / 100).toLocaleString()}
                   </span>
-                  <del className="ml-1 font-danaBold text-gray-400">
+                  <del className="ml-1 font-danaBold text-gray-400 text-xs">
                     {price.toLocaleString()}
                   </del>
                 </>

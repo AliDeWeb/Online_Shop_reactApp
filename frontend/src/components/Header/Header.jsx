@@ -43,7 +43,9 @@ export default function Header() {
       >
         <div className="flex justify-between items-center">
           <div className="w-[100px]">
-            <img src={siteLogo} alt="siteLogo" />
+            <Link to="/home" className="w-[100px]">
+              <img src={siteLogo} alt="siteLogo" />
+            </Link>
           </div>
           <button onClick={() => setIsHamburgerMenuOpen(false)}>
             <IoIosClose size="2rem" />
@@ -173,7 +175,8 @@ export default function Header() {
             </button>
           </div>
           <div className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]">
-            <img className="size-full" src={siteLogo} alt="site-logo" />
+            <Link className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]" to="/home">
+            <img className="size-full" src={siteLogo} alt="site-logo" /></Link>
           </div>
           <div className="w-full lg:w-[500px] lg:block hidden">
             <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md">
