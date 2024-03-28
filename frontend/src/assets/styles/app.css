@@ -51,3 +51,9 @@ input::placeholder {
   background-color: #ffffff40;
   border-radius: 0.5rem;
 }
+.swal2-container {
+  font-family: "dana";
+}
+.swal2-title {
+  font-family: "danaBold";
+}

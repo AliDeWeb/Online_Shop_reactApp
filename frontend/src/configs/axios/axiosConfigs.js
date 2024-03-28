@@ -40,8 +40,17 @@ usersValidation.interceptors.response.use(
   }
 );
 
-// TODO: newsLetter should be fixed
 // NewLetter
 export const newLetter = axios.create({
   baseURL: `${apiUrl}/v1/newsletters`,
 });
+newLetter.interceptors.response.use(
+  function (response) {
+    successSwal("الان دیگه عضوی از مایی ;(");
+    return response;
+  },
+  function (error) {
+    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    return Promise.reject(error);
+  }
+);

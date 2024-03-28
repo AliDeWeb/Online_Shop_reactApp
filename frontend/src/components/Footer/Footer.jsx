@@ -26,7 +26,6 @@ const emailRegex =
 export default function Footer() {
   const userEmailInput = useRef();
 
-  // TODO: newsLetter should be fixed
   const [userNewsLetterEmail, setUserNewsLetterEmail] = useState("");
   const newLetterSubmit = useCallback(() => {
     if (userNewsLetterEmail.match(emailRegex)) {
