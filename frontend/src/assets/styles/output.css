@@ -1212,6 +1212,10 @@ img {
   border-top-width: 2px;
 }
 
+.border-b-\[1\.5px\] {
+  border-bottom-width: 1.5px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -1238,6 +1242,15 @@ img {
 .border-orange-300 {
   --tw-border-opacity: 1;
   border-color: rgb(253 186 116 / var(--tw-border-opacity));
+}
+
+.border-b-orange-300 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(253 186 116 / var(--tw-border-opacity));
+}
+
+.border-b-\[\] {
+  border-bottom-color: ;
 }
 
 .bg-\[\#d7dae1\] {
@@ -1460,6 +1473,10 @@ img {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
 }
 
 .text-center {
