@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -44,8 +46,14 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderRadius: 16,
 }));
 
-export default function () {
+export default function (props) {
+  const [showCommentsArr, setShowCommentsArr] = useState([]);
+  const [showCommentsNum, setShowCommentsNum] = useState(4);
   const [expanded, setExpanded] = React.useState("panel1");
+
+  useEffect(() => {
+    setShowCommentsArr(props.comments.slice(0, showCommentsNum));
+  }, [showCommentsNum]);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -57,170 +65,6 @@ export default function () {
         defaultExpanded
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
-      >
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography className="font-danaBold mr-2">نظرات</Typography>
-        </AccordionSummary>
-        <AccordionDetails className="flex flex-col gap-2.5">
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-          <Typography>
-            <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="font-dana lg:font-danaBold lg:text-xl">
-                  احمد
-                </span>
-                <span className="font-dana text-sm">2 روز پیش</span>
-              </div>
-              <p className="line-clamp-4 mt-1.5 text-sm">
-                که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است. اپل
-                برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال اخیرش
-                استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super Retina
-                مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه کند. این
-                نمایشگر رزولوشن بسیار بالایی دارد؛
-              </p>
-            </div>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel2"}
-        onChange={handleChange("panel2")}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography className="font-danaBold mr-2">مشخصات محصول</Typography>
@@ -240,6 +84,47 @@ export default function () {
               </span>
             </div>
           </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel2"}
+        onChange={handleChange("panel2")}
+      >
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+          <Typography className="font-danaBold mr-2">نظرات</Typography>
+        </AccordionSummary>
+        <AccordionDetails className="flex flex-col gap-2.5">
+          {showCommentsArr.map((el) => (
+            <Typography>
+              <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <span className="font-dana lg:font-danaBold lg:text-xl">
+                    احمد
+                  </span>
+                  <span className="font-dana text-sm">2 روز پیش</span>
+                </div>
+                <p className="line-clamp-4 mt-1.5 text-sm">
+                  که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است.
+                  اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال
+                  اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super
+                  Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه
+                  کند. این نمایشگر رزولوشن بسیار بالایی دارد؛
+                </p>
+              </div>
+            </Typography>
+          ))}
+          <button
+            onClick={() => {
+              setShowCommentsNum((prev) => {
+                if (props.comments.length > showCommentsNum - 4) {
+                  return prev + 4;
+                }
+              });
+            }}
+            className="font-dana w-[100px] text-sm mx-auto text-zinc-700 py-1 px-2 rounded-lg border border-solid border-orange-300 transition-all hover:bg-orange-100 "
+          >
+            بیشتر
+          </button>
         </AccordionDetails>
       </Accordion>
       <Accordion
