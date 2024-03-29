@@ -9,14 +9,22 @@ import "swiper/css/navigation";
 // React Router
 import { Link } from "react-router-dom";
 
+// Components
+import { Accordion, SectionsWrapper } from "../../configs/Layout/Layout";
+
 // Icon
 import { BiSolidCategoryAlt } from "react-icons/bi";
-import { FaCalendarCheck, FaStore, FaShoppingCart } from "react-icons/fa";
+import {
+  FaCalendarCheck,
+  FaStore,
+  FaShoppingCart,
+  FaRegStar,
+  FaStar,
+} from "react-icons/fa";
 import { PiWarningCircle } from "react-icons/pi";
 
 // imgs
 import img3 from "../../assets/imgs/productImg3.png";
-import desc from "../../assets/imgs/descriptionImg.jpg";
 
 export default function ProductsDetails() {
   return (
@@ -181,272 +189,33 @@ export default function ProductsDetails() {
               </div>
             </div>
           </div>
-          <div className="mt-6">
-            <h2 className="font-danaBold mb-8 border-solid border-b-2 border-orange-300 w-max pb-0.5">
-              توضیحات
-            </h2>
-            <div className="product-desc">
-              <h3>آیفون جدید؛ سروصدای جدید</h3>
-              <img src={desc} alt="img" />
-              <p>
-                در ماه اکتبر 2020، اپل بازهم با تشریفات و سروصدای همیشگی نسل
-                جدید آیفون را روانه بازار کرد تا بتواند بازار پررونقی برای سری
-                گوشی‌های جدیدش دست‌وپا کند. خانواده جدید اپل امسال پرجمعیت‌تر از
-                همیشه و با 4 عضو ظاهر شده است؛ iPhone 12، 12mini، 12pro و 12pro
-                max. درست است که آیفون 12پرو در مقایسه با آیفون 12، قاب فولاد
-                مستحکمی دارد و در حافظه و رنگ‌های بیشتری عرضه شده اما به‌جرئت
-                می‌توان گفت اپل، پسوند pro را بیشتر به دلیل قابلیت‌های بیشتر
-                دوربین به این گوشی چسبانده است. حسگر LiDAR و قابلیت زوم اپتیکال
-                2برابر، دیگر ویژگی‌هایی هستند که نسخه پرو را متمایز کرده‌اند.
-                البته اگر iPhone 11 Pro را هم در این مقایسه بگنجانیم، تفاوت‌ها
-                خیلی بیشتر هم می‌شود؛ درست است که از LiDAR صحبت کردیم اما اجازه
-                دهید صرفاً برای تأکید دوباره اسمی از این سنسور جدید ببریم.
-                درکنار این سنسور، تراشه سریع‌تر، شبکه ارتباطی 5G، مقاومت بیشتر
-                دربرابر ضربه، حالت شب بهتر دوربین، Dolby Vision برای ضبط ویدئو و
-                فناوری جدید MagSafe هم در این محصول جدید دیده می‌شوند.
-              </p>
-              <h3>آیفون جدید؛ سروصدای جدید</h3>
-              <img src={desc} alt="img" />
-              <p>
-                در ماه اکتبر 2020، اپل بازهم با تشریفات و سروصدای همیشگی نسل
-                جدید آیفون را روانه بازار کرد تا بتواند بازار پررونقی برای سری
-                گوشی‌های جدیدش دست‌وپا کند. خانواده جدید اپل امسال پرجمعیت‌تر از
-                همیشه و با 4 عضو ظاهر شده است؛ iPhone 12، 12mini، 12pro و 12pro
-                max. درست است که آیفون 12پرو در مقایسه با آیفون 12، قاب فولاد
-                مستحکمی دارد و در حافظه و رنگ‌های بیشتری عرضه شده اما به‌جرئت
-                می‌توان گفت اپل، پسوند pro را بیشتر به دلیل قابلیت‌های بیشتر
-                دوربین به این گوشی چسبانده است. حسگر LiDAR و قابلیت زوم اپتیکال
-                2برابر، دیگر ویژگی‌هایی هستند که نسخه پرو را متمایز کرده‌اند.
-                البته اگر iPhone 11 Pro را هم در این مقایسه بگنجانیم، تفاوت‌ها
-                خیلی بیشتر هم می‌شود؛ درست است که از LiDAR صحبت کردیم اما اجازه
-                دهید صرفاً برای تأکید دوباره اسمی از این سنسور جدید ببریم.
-                درکنار این سنسور، تراشه سریع‌تر، شبکه ارتباطی 5G، مقاومت بیشتر
-                دربرابر ضربه، حالت شب بهتر دوربین، Dolby Vision برای ضبط ویدئو و
-                فناوری جدید MagSafe هم در این محصول جدید دیده می‌شوند.
-              </p>
-              <h3>آیفون جدید؛ سروصدای جدید</h3>
-              <img src={desc} alt="img" />
-              <p>
-                در ماه اکتبر 2020، اپل بازهم با تشریفات و سروصدای همیشگی نسل
-                جدید آیفون را روانه بازار کرد تا بتواند بازار پررونقی برای سری
-                گوشی‌های جدیدش دست‌وپا کند. خانواده جدید اپل امسال پرجمعیت‌تر از
-                همیشه و با 4 عضو ظاهر شده است؛ iPhone 12، 12mini، 12pro و 12pro
-                max. درست است که آیفون 12پرو در مقایسه با آیفون 12، قاب فولاد
-                مستحکمی دارد و در حافظه و رنگ‌های بیشتری عرضه شده اما به‌جرئت
-                می‌توان گفت اپل، پسوند pro را بیشتر به دلیل قابلیت‌های بیشتر
-                دوربین به این گوشی چسبانده است. حسگر LiDAR و قابلیت زوم اپتیکال
-                2برابر، دیگر ویژگی‌هایی هستند که نسخه پرو را متمایز کرده‌اند.
-                البته اگر iPhone 11 Pro را هم در این مقایسه بگنجانیم، تفاوت‌ها
-                خیلی بیشتر هم می‌شود؛ درست است که از LiDAR صحبت کردیم اما اجازه
-                دهید صرفاً برای تأکید دوباره اسمی از این سنسور جدید ببریم.
-                درکنار این سنسور، تراشه سریع‌تر، شبکه ارتباطی 5G، مقاومت بیشتر
-                دربرابر ضربه، حالت شب بهتر دوربین، Dolby Vision برای ضبط ویدئو و
-                فناوری جدید MagSafe هم در این محصول جدید دیده می‌شوند.
-              </p>
-            </div>
-          </div>
-          <div className="mt-6">
-            <h2 className="font-danaBold mb-8 border-solid border-b-2 border-orange-300 w-max pb-0.5">
-              نظرات
-            </h2>
-            <div>
-              <Swiper
-                slidesPerView={1}
-                spaceBetween={20}
-                modules={[Navigation, A11y]}
-                navigation
-                loop={true}
-                breakpoints={{
-                  300: {
-                    slidesPerView: 1.2,
-                  },
-                  370: {
-                    slidesPerView: 1.4,
-                  },
-                  435: {
-                    slidesPerView: 1.7,
-                  },
-                  515: {
-                    slidesPerView: 2,
-                  },
-                  590: {
-                    slidesPerView: 2.3,
-                  },
-                  768: {
-                    slidesPerView: 2.4,
-                  },
-                  1024: {
-                    slidesPerView: 3.2,
-                  },
-                  1280: {
-                    slidesPerView: 4.3,
-                  },
-                }}
-              >
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
 
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="font-dana bg-gray-100 py-2 px-4 rounded-lg h-[150px]">
-                    <div className="flex items-center justify-between">
-                      <span className="font-dana lg:font-danaBold lg:text-xl">
-                        احمد
-                      </span>
-                      <span className="font-dana text-sm">2 روز پیش</span>
-                    </div>
-                    <p className="line-clamp-4 mt-1.5 text-sm">
-                      که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده
-                      است. اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول
-                      چند سال اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX
-                      به پنل Super Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی
-                      را به کاربر عرضه کند. این نمایشگر رزولوشن بسیار بالایی
-                      دارد؛
-                    </p>
-                  </div>
-                </SwiperSlide>
-              </Swiper>
+          <div className="grid grid-cols-1 justify-center lg:justify-normal lg:grid-cols-4 gap-3 items-start">
+            <div className="lg:col-span-3">
+              <Accordion />
+            </div>
+            <div className="bg-[#00000008] rounded-lg py-4 px-3 w-full">
+              <span className="font-danaBold">امتیاز محصول</span>
+              <div className="mt-4 font-dana text-gray-400 text-sm">
+                <span className="font-danaBold text-xl ml-2">3</span>
+                از 5 امتیاز
+              </div>
+              <div className="mt-2 flex items-center gap-0.5 flex-wrap">
+                <FaStar size="1rem" color="#FACC15" />
+                <FaStar size="1rem" color="#FACC15" />
+                <FaStar size="1rem" color="#FACC15" />
+                <FaRegStar size="1rem" color="#FACC15" />
+                <FaRegStar size="1rem" color="#FACC15" />
+                <span className="inline-block w-full font-dana text-xs text-gray-400 mt-1">
+                  از مجموع 20 امتیاز
+                </span>
+              </div>
+
+              <div className="mt-4 ">
+                <button className="font-danaBold w-full border-2 border-solid border-orange-300 py-1.5 px-3 rounded-lg transition-all text-zinc-700 hover:bg-orange-100">
+                  ثبت دیدگاه
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -57,3 +57,7 @@ input::placeholder {
 .swal2-title {
   font-family: "danaBold";
 }
+.MuiButtonBase-root {
+  border-radius: 0.6rem;
+  margin-bottom: 0.5rem;
+}
