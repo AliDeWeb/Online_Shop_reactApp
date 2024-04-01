@@ -33,24 +33,25 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function Header() {
   const { userToken } = useUserToken();
-  const { data } = useQuery(
+  const { data, refetch } = useQuery(
     `userDate`,
     async () => {
-      const res = await getUserData({
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      });
+      if (userToken) {
+        const res = await getUserData({
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        });
 
-      return res.data;
+        return res.data;
+      }
     },
     {
       staleTime: 50000,
-      refetchInterval: 2000,
-      refetchOnMount: true,
+      refetchOnMount: false,
       refetchOnReconnect: true,
-      refetchOnWindowFocus: true,
-      refetchIntervalInBackground: true,
+      refetchOnWindowFocus: false,
+      refetchIntervalInBackground: false,
     }
   );
 
@@ -64,6 +65,9 @@ export default function Header() {
   useEffect(() => {
     setIsHamburgerMenuOpen(false);
   }, [location]);
+  useEffect(() => {
+    refetch();
+  }, [userToken]);
 
   return (
     <header className="py-3 bg-white rounded-b-lg">
