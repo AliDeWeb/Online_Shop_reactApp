@@ -49,8 +49,8 @@ export default function ProductsDetails() {
     <div className="py-5">
       <div className="container">
         <div className="bg-white sm:py-5 sm:px-8 py-2.5 px-3 rounded-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
-            <div className="2xl:col-span-1 lg:col-span-2 size-[300px] sm:size-[450px]  lg:size-[650px] 2xl:size-[450px] mx-auto 2xl:mx-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 lg:justify-items-center 2xl:justify-items-stretch">
+            <div className="lg:col-span-1 size-[300px] sm:size-[450px] mx-auto 2xl:mx-0">
               <Swiper
                 slidesPerView={1}
                 modules={[Navigation, A11y]}
@@ -89,7 +89,7 @@ export default function ProductsDetails() {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div>
+            <div className="col-span-1">
               <h1 className="font-danaBold text-xl">
                 سویشرت مردانه نایک کلاه دار
               </h1>
@@ -156,8 +156,8 @@ export default function ProductsDetails() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col justify-center">
-              <div className="bg-gray-100 p-4 rounded-xl">
+            <div className="2xl:col-span-1 lg:col-span-2 col-span-1 flex flex-col justify-center">
+              <div className="bg-gray-100 p-4 rounded-xl lg:w-[600px] 2xl:w-auto">
                 <div className="flex items-center gap-x-4 gap-y-2 flex-wrap">
                   <div className="w-full font-danaBold text-zinc-700">
                     رنگ ها
@@ -171,7 +171,7 @@ export default function ProductsDetails() {
                   <div className="w-full font-danaBold text-zinc-700">
                     گارانتی
                   </div>
-                  <select className="font-dana text-zinc-700 mt-1.5 w-full lg:w-3/4 outline-none border-gray-400 border-solid border py-1 px-2 rounded-lg">
+                  <select className="font-dana text-zinc-700 mt-1.5 w-full 2xl:w-3/4 outline-none border-gray-400 border-solid border py-1 px-2 rounded-lg">
                     <option value="alborz">گارانتی شرکت البرز</option>
                     <option value="alborz">گارانتی شرکت البرز</option>
                     <option value="alborz">گارانتی شرکت البرز</option>
@@ -181,7 +181,7 @@ export default function ProductsDetails() {
                   </select>
                 </div>
                 <div className="mt-4">
-                  <div className="sm:text-base text-sm flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-blue-100 text-blue-700 lg:w-3/4 w-full">
+                  <div className="sm:text-base text-sm flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-blue-100 text-blue-700 2xl:w-3/4 w-full">
                     <FaStore size="0.95rem" />
                     موجودی انبار:
                     <span>44</span>
@@ -208,7 +208,7 @@ export default function ProductsDetails() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 justify-center lg:justify-normal lg:grid-cols-4 gap-3 items-start">
+          <div className="grid grid-cols-1 justify-center lg:justify-normal lg:grid-cols-4 gap-3 items-start mt-4">
             <div className="lg:col-span-3">
               <Accordion comments={comments} />
             </div>

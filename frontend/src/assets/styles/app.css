@@ -50,6 +50,11 @@ input::placeholder {
   padding: 0.5rem;
   background-color: #ffffff40;
   border-radius: 0.5rem;
+  transition: all ease-in-out 150ms 20ms;
+
+  &:hover {
+    background-color: #00000010;
+  }
 }
 .swal2-container {
   font-family: "dana";
