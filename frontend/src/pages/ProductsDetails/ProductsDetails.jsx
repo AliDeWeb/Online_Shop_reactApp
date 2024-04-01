@@ -121,7 +121,7 @@ export default function ProductsDetails() {
                 </span>
               </div>
               <div className="mt-4 text-sm flex items-center gap-2 font-dana text-white child:w-[90px] child:h-[30px] child:flex child:justify-center child:items-center child:rounded-lg">
-                <span className="bg-orange-300">غیر اصل</span>
+                <span className="bg-orange-400">غیر اصل</span>
                 <span className="bg-blue-700">تحویل فوری</span>
               </div>
               <ul className="mt-4 text-gray-400 font-dana list-disc pr-5 grid grid-cols-2 gap-y-2">
@@ -142,7 +142,7 @@ export default function ProductsDetails() {
                   <span className="text-zinc-700 mr-1">نخی</span>
                 </li>
               </ul>
-              <div className="flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-teal-100 text-green-700 w-full lg:w-3/4 text-sm sm:text-base">
+              <div className="flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-teal-600 text-white w-full lg:w-3/4 text-sm sm:text-base">
                 <FaCalendarCheck size="0.95rem" />
                 حداکثر زمان تحویل 4 روز می باشد.
               </div>
@@ -181,7 +181,7 @@ export default function ProductsDetails() {
                   </select>
                 </div>
                 <div className="mt-4">
-                  <div className="sm:text-base text-sm flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-blue-100 text-blue-700">
+                  <div className="sm:text-base text-sm flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-red-500 text-white">
                     <FaStore size="0.95rem" />
                     موجودی انبار:
                     <span>44</span>
@@ -192,9 +192,6 @@ export default function ProductsDetails() {
                   <div className="font-dana flex items-center justify-between mt-2">
                     <span className="font-danaBold text-teal-600 w-full sm:w-max text-center">
                       {(800000).toLocaleString()} تومان
-                    </span>
-                    <span className="text-sm sm:inline hidden">
-                      آخرین بروزرسانی قیمت: 4 مرداد
                     </span>
                   </div>
                   <div className="mt-2 sm:mt-4 w-full">
