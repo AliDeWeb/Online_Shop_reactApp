@@ -28,14 +28,16 @@ export const usersValidation = axios.create({
 usersValidation.interceptors.response.use(
   function (response) {
     successSwal("بزن بریم محصولات شگفت انگیز این هفته رو ببینیم!");
+    document.cookie =
+      "token=" +
+      response.data.token +
+      ";path=/;expires=" +
+      new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
+
     return response;
   },
   function (error) {
-    if (error?.response?.status === 401) {
-      errorSwal(error.response.data.message);
-    } else {
-      errorSwal(`متاسفیم، خطایی رخ داد!!!`);
-    }
+    errorSwal(error.response.data.message);
     return Promise.reject(error);
   }
 );

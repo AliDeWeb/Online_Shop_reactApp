@@ -128,13 +128,13 @@ export default function Register() {
               {...register(`phoneNumber`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 pattern: {
-                  value: /^((?:\+98|0|98)?)(?:9\d{9})$/i,
+                  value: /^09\d{9}$/i,
                   message: "شماره تلفن را به درستی وارد نمایید",
                 },
               })}
               id="phoneNumber"
               type="text"
-              placeholder="989123456789"
+              placeholder="09123456789"
               className="mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.phoneNumber && (
