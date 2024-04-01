@@ -51,7 +51,7 @@ export default function Footer() {
   }, [userNewsLetterEmail]);
   const changeUserNewsLetterEmailValue = useCallback(
     (e) => {
-      setUserNewsLetterEmail(e.target.value);
+      setUserNewsLetterEmail(e.target.value.trim());
     },
     [userNewsLetterEmail]
   );
@@ -193,7 +193,7 @@ export default function Footer() {
                 <div className="mt-4 border-2 border-gray-100 border-solid rounded-md py-1.5 px-4 w-full lg:w-max flex items-center">
                   <input
                     ref={userEmailInput}
-                    value={userNewsLetterEmail}
+                    value={userNewsLetterEmail.trim()}
                     onChange={changeUserNewsLetterEmailValue}
                     type="text"
                     placeholder="آدرس ایمیل"

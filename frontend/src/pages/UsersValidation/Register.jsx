@@ -28,12 +28,12 @@ export default function Register() {
   const submitForm = (data) => {
     setIsDataFetching(true);
     let userData = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      phone: data.phoneNumber,
+      firstName: data.firstName.trim(),
+      lastName: data.lastName.trim(),
+      phone: data.phoneNumber.trim(),
       userName: `${data.firstName}${data.lastName}${Math.random().toFixed(6)}`,
-      email: data.emailAddress,
-      password: data.password,
+      email: data.emailAddress.trim(),
+      password: data.password.trim(),
       address: "unset",
     };
 

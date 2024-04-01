@@ -28,8 +28,8 @@ export default function Login() {
   const submitForm = (data) => {
     setIsDataFetching(true);
     let userData = {
-      email: data.emailAddress,
-      password: data.password,
+      email: data.emailAddress.trim(),
+      password: data.password.trim(),
     };
 
     usersValidation({
