@@ -41,6 +41,9 @@ const AccordionSummary = styled((props) => (
 // Imgs
 import desc from "../../assets/imgs/descriptionImg.jpg";
 
+// Icons
+import { FaStar } from "react-icons/fa";
+
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderRadius: 16,
@@ -94,25 +97,45 @@ export default function (props) {
           <Typography className="font-danaBold mr-2">نظرات</Typography>
         </AccordionSummary>
         <AccordionDetails className="flex flex-col gap-2.5">
-          {showCommentsArr.map((el) => (
-            <Typography key={Math.random()}>
-              <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
-                <div className="flex items-center justify-between">
-                  <span className="font-dana lg:font-danaBold lg:text-xl">
-                    احمد
-                  </span>
-                  <span className="font-dana text-sm">2 روز پیش</span>
+          <div className="divide-y divide-gray-100 divide-solid">
+            {showCommentsArr.map((el) => (
+              <Typography key={Math.random()}>
+                <div className="p-4">
+                  <div className="flex items-center gap-1 font-dana  text-sm text-gray-400">
+                    <div>احمد</div>
+                    <span className="bg-teal-400/50 py-1 px-2 rounded-lg font-danaBold text-xs text-gray-700 mr-1">
+                      خریدار
+                    </span>
+                    <span className="mx-3">|</span>
+                    <span>1 روز پیش</span>
+                  </div>
+                  <div className="mt-2.5 flex gap-0.5 items-center text-[#facc15]">
+                    <FaStar size="1rem" />
+                    <FaStar size="1rem" />
+                    <FaStar size="1rem" />
+                  </div>
+                  <p className="font-dana mt-4 text-zinc-700 sm:text-base text-sm">
+                    در ماه اکتبر 2020، اپل بازهم با تشریفات و سروصدای همیشگی نسل
+                    جدید آیفون را روانه بازار کرد تا بتواند بازار پررونقی برای
+                    سری گوشی‌های جدیدش دست‌وپا کند. خانواده جدید اپل امسال
+                    پرجمعیت‌تر از همیشه و با 4 عضو ظاهر شده است؛ iPhone 12،
+                    12mini، 12pro و 12pro max. درست است که آیفون 12پرو در مقایسه
+                    با آیفون 12، قاب فولاد مستحکمی دارد و در حافظه و رنگ‌های
+                    بیشتری عرضه شده اما به‌جرئت می‌توان گفت اپل، پسوند pro را
+                    بیشتر به دلیل قابلیت‌های بیشتر دوربین به این گوشی چسبانده
+                    است. حسگر LiDAR و قابلیت زوم اپتیکال 2برابر، دیگر ویژگی‌هایی
+                    هستند که نسخه پرو را متمایز کرده‌اند. البته اگر iPhone 11
+                    Pro را هم در این مقایسه بگنجانیم، تفاوت‌ها خیلی بیشتر هم
+                    می‌شود؛ درست است که از LiDAR صحبت کردیم اما اجازه دهید صرفاً
+                    برای تأکید دوباره اسمی از این سنسور جدید ببریم. درکنار این
+                    سنسور، تراشه سریع‌تر، شبکه ارتباطی 5G، مقاومت بیشتر دربرابر
+                    ضربه، حالت شب بهتر دوربین، Dolby Vision برای ضبط ویدئو و
+                    فناوری جدید MagSafe هم در این محصول جدید دیده می‌شوند.
+                  </p>
                 </div>
-                <p className="line-clamp-4 mt-1.5 text-sm">
-                  که با چند ویژگی جدید و دوربین چهارگانه روانه بازار شده است.
-                  اپل برای ویژگی‌ها و طراحی کلی این گوشی از همان فرمول چند سال
-                  اخیرش استفاده کرده است. نمایشگر آیفون 12 Pro MAX به پنل Super
-                  Retina مجهز ‌شده است تا تصاویر بسیار مطلوبی را به کاربر عرضه
-                  کند. این نمایشگر رزولوشن بسیار بالایی دارد؛
-                </p>
-              </div>
-            </Typography>
-          ))}
+              </Typography>
+            ))}
+          </div>
           <button
             onClick={() => {
               setShowCommentsNum((prev) => {
