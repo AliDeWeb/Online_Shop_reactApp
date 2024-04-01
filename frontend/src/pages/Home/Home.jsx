@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Components
 import {
@@ -18,6 +18,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "تیمچه - صفحه اصلی";
+  }, []);
+
   return (
     <main>
       <HeadSection />
