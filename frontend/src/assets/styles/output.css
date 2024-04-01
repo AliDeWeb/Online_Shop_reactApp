@@ -1256,6 +1256,16 @@ img {
   border-color: rgb(253 186 116 / var(--tw-border-opacity));
 }
 
+.border-teal-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(45 212 191 / var(--tw-border-opacity));
+}
+
+.border-teal-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(13 148 136 / var(--tw-border-opacity));
+}
+
 .border-b-orange-300 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(253 186 116 / var(--tw-border-opacity));

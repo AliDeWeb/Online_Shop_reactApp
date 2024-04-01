@@ -171,7 +171,7 @@ export default function ProductsDetails() {
                   <div className="w-full font-danaBold text-zinc-700">
                     گارانتی
                   </div>
-                  <select className="font-dana text-zinc-700 mt-1.5 w-full 2xl:w-3/4 outline-none border-gray-400 border-solid border py-1 px-2 rounded-lg">
+                  <select className="font-dana text-zinc-700 mt-1.5 w-full outline-none border-gray-400 border-solid border py-1 px-2 rounded-lg">
                     <option value="alborz">گارانتی شرکت البرز</option>
                     <option value="alborz">گارانتی شرکت البرز</option>
                     <option value="alborz">گارانتی شرکت البرز</option>
@@ -181,7 +181,7 @@ export default function ProductsDetails() {
                   </select>
                 </div>
                 <div className="mt-4">
-                  <div className="sm:text-base text-sm flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-blue-100 text-blue-700 2xl:w-3/4 w-full">
+                  <div className="sm:text-base text-sm flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-blue-100 text-blue-700">
                     <FaStore size="0.95rem" />
                     موجودی انبار:
                     <span>44</span>
@@ -198,7 +198,7 @@ export default function ProductsDetails() {
                     </span>
                   </div>
                   <div className="mt-2 sm:mt-4 w-full">
-                    <button className="font-dana text-gray-400 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600">
+                    <button className="border border-solid border-teal-600 font-dana text-teal-600 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600">
                       <FaShoppingCart />
                       افزودن به سبد خرید
                     </button>
