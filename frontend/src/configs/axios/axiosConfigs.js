@@ -42,7 +42,13 @@ usersValidation.interceptors.response.use(
   }
 );
 
-// NewLetter
+//? GetUserData
+export const getUserData = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}/v1/users/getMe`,
+});
+
+//? NewLetter
 export const newLetter = axios.create({
   baseURL: `${apiUrl}/v1/newsletters`,
 });

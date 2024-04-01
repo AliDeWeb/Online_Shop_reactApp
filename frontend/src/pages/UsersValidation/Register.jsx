@@ -44,7 +44,7 @@ export default function Register() {
       .then(() =>
         setTimeout(() => {
           navigator("/home");
-        }, 3000)
+        }, 2000)
       )
       .finally(() => {
         setIsDataFetching(false);

@@ -22,7 +22,38 @@ import { CiShoppingBasket } from "react-icons/ci";
 // React Router
 import { Link, useLocation } from "react-router-dom";
 
+// Axios
+import { getUserData } from "../../configs/axios/axiosConfigs";
+
+// React Query
+import { useQuery } from "react-query";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
 export default function Header() {
+  const { userToken } = useUserToken();
+  const { data } = useQuery(
+    `userDate`,
+    async () => {
+      const res = await getUserData({
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+
+      return res.data;
+    },
+    {
+      staleTime: 50000,
+      refetchInterval: 2000,
+      refetchOnMount: true,
+      refetchOnReconnect: true,
+      refetchOnWindowFocus: true,
+      refetchIntervalInBackground: true,
+    }
+  );
+
   const location = useLocation();
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const [isHamburgerMenuShopItemShow, setIsHamburgerMenuShopItemShow] =
@@ -138,10 +169,17 @@ export default function Header() {
         <hr className="my-5" />
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-3 font-dana text-orange-400">
-            <Link to="/register" className="flex items-center gap-1.5">
-              <FaUser size="0.8rem" />
-              ورود | ثبت نام
-            </Link>
+            {data?.firstName && data?.lastName ? (
+              <Link className="flex items-center gap-1.5">
+                <FaUser size="0.8rem" />
+                {`${data.firstName} ${data.lastName}`}
+              </Link>
+            ) : (
+              <Link to="/register" className="flex items-center gap-1.5">
+                <FaUser size="0.8rem" />
+                ورود | ثبت نام
+              </Link>
+            )}
           </div>
           <div className="flex flex-col gap-3 font-dana text-orange-400">
             <Link className="flex items-center gap-1.5">
@@ -175,8 +213,12 @@ export default function Header() {
             </button>
           </div>
           <div className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]">
-            <Link className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]" to="/home">
-            <img className="size-full" src={siteLogo} alt="site-logo" /></Link>
+            <Link
+              className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]"
+              to="/home"
+            >
+              <img className="size-full" src={siteLogo} alt="site-logo" />
+            </Link>
           </div>
           <div className="w-full lg:w-[500px] lg:block hidden">
             <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md">
@@ -192,17 +234,28 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-3 md:gap-6">
             <div>
-              <Link
-                to="/register"
-                className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base"
-              >
-                <FaUser
-                  className="transition-all"
-                  size="1rem"
-                  color="rgb(251,146,60)"
-                />
-                <span className="lg:inline hidden">ثبت نام</span>
-              </Link>
+              {data?.firstName && data?.lastName ? (
+                <Link className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base">
+                  <FaUser
+                    className="transition-all"
+                    size="1rem"
+                    color="rgb(251,146,60)"
+                  />
+                  <span className="lg:inline hidden">{`${data.firstName} ${data.lastName}`}</span>
+                </Link>
+              ) : (
+                <Link
+                  to="/register"
+                  className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base"
+                >
+                  <FaUser
+                    className="transition-all"
+                    size="1rem"
+                    color="rgb(251,146,60)"
+                  />
+                  <span className="lg:inline hidden">ورود / ثبت نام</span>
+                </Link>
+              )}
             </div>
             <div>
               <button className="p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all">

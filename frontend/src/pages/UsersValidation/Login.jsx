@@ -39,7 +39,7 @@ export default function Login() {
       .then(() =>
         setTimeout(() => {
           navigator("/home");
-        }, 3000)
+        }, 2000)
       )
       .finally(() => {
         setIsDataFetching(false);
