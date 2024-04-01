@@ -95,7 +95,7 @@ export default function (props) {
         </AccordionSummary>
         <AccordionDetails className="flex flex-col gap-2.5">
           {showCommentsArr.map((el) => (
-            <Typography>
+            <Typography key={Math.random()}>
               <div className="font-dana bg-gray-100 py-4 px-4 rounded-lg">
                 <div className="flex items-center justify-between">
                   <span className="font-dana lg:font-danaBold lg:text-xl">
