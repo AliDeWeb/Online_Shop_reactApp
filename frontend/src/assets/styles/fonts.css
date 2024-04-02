@@ -1,20 +1,20 @@
 @font-face {
   font-family: "dana";
-  src: url("../fonts/DanaFaNum-Regular.ttf");
+  src: url("../fonts/DanaFaNum-Regular.woff2") format("woff2");
   font-display: swap;
 }
 @font-face {
   font-family: "danaBold";
-  src: url("../fonts/DanaFaNum-Bold.ttf");
+  src: url("../fonts/DanaFaNum-Bold.woff2") format("woff2");
   font-display: swap;
 }
 @font-face {
   font-family: "danaThin";
-  src: url("../fonts/DanaFaNum-Thin.ttf");
+  src: url("../fonts/DanaFaNum-Thin.woff2") format("woff2");
   font-display: swap;
 }
 @font-face {
   font-family: "poppins";
-  src: url("../fonts/Poppins-Regular.ttf");
+  src: url("../fonts/Poppins-Regular.woff2") format("woff2");
   font-display: swap;
 }
