@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // Components
 import {
@@ -17,14 +17,28 @@ import { Navigation, Autoplay, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+// Axios
+import { getMainPageData } from "../../configs/axios/axiosConfigs";
+import { useQuery } from "react-query";
+
 export default function Home() {
   useEffect(() => {
     document.title = "تیمچه - صفحه اصلی";
   }, []);
 
+  const { data, isLoading } = useQuery(`mainPageData`, async () => {
+    let mainData = await getMainPageData();
+
+    return mainData.data.sections;
+  });
+
+  useEffect(() => {
+    console.log(data);
+  });
+
   return (
     <main>
-      <HeadSection />
+      <HeadSection banners={!isLoading && data.slider1.slidersOne.covers} />
       <CategoriesSection />
       <SectionsWrapper title={"محصولات شگفت انگیز"}>
         <Swiper

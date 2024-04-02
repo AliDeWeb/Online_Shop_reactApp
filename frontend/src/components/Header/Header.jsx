@@ -47,11 +47,8 @@ export default function Header() {
       }
     },
     {
-      staleTime: 50000,
-      refetchOnMount: false,
-      refetchOnReconnect: true,
+      staleTime: 50000000,
       refetchOnWindowFocus: false,
-      refetchIntervalInBackground: false,
     }
   );
 

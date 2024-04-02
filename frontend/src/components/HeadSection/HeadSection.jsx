@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,22 +7,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// Components
-import { ProductBox } from "../../configs/Layout/Layout";
-
 // React Router
 import { Link } from "react-router-dom";
 
-// Img
-import banner1 from "../../assets/imgs/banner1.jpg";
-import banner2 from "../../assets/imgs/banner2.jpg";
+import { apiUrl } from "../../configs/axios/axiosConfigs";
 
-export default function HeadSection() {
+export default function HeadSection({ banners }) {
   return (
     <div className="py-5">
       <div className="container">
-        <div className="grid grid-rows-1 grid-cols-4 gap-x-4">
-          <div className="col-span-4 lg:col-span-3">
+        <div>
+          <div>
             <Swiper
               spaceBetween={50}
               slidesPerView={1}
@@ -35,108 +30,21 @@ export default function HeadSection() {
               }}
               loop={true}
             >
-              <SwiperSlide>
-                <div className="lg:h-[380px]">
-                  <Link>
-                    <img className="rounded-lg" src={banner1} alt="banner" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="lg:h-[380px]">
-                  <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="lg:h-[380px]">
-                  <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="lg:h-[380px]">
-                  <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="lg:h-[380px]">
-                  <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="lg:h-[380px]">
-                  <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="lg:h-[380px]">
-                  <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="lg:h-[380px]">
-                  <Link>
-                    <img className="rounded-lg" src={banner2} alt="banner" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-            </Swiper>
-          </div>
-          <div className="hidden lg:block lg:col-span-1 lg:h-[400px]">
-            <Swiper
-              slidesPerView={1}
-              modules={[Navigation, Autoplay, A11y]}
-              navigation
-              autoplay={{
-                delay: 5000,
-                pauseOnMouseEnter: true,
-              }}
-              loop={true}
-            >
-              <SwiperSlide>
-                <ProductBox discounted={60} price={700000} num={14} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductBox />
-              </SwiperSlide>
+              {banners &&
+                banners.map((el) => (
+                  <SwiperSlide key={Math.random()}>
+                    {console.log(el)}
+                    <div className="lg:h-[380px]">
+                      <Link>
+                        <img
+                          className="rounded-lg"
+                          src={`${apiUrl}/${el}`}
+                          alt="banner"
+                        />
+                      </Link>
+                    </div>
+                  </SwiperSlide>
+                ))}
             </Swiper>
           </div>
         </div>

@@ -18,7 +18,22 @@ const errorSwal = (text) => {
 
 // Axios
 import axios from "axios";
-const apiUrl = "https://ma-api.liara.run";
+export const apiUrl = "https://ma-api.liara.run";
+
+//? Main Page Data
+export const getMainPageData = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}/v1/product/mainPage`,
+});
+getMainPageData.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    return Promise.reject(error);
+  }
+);
 
 //? User Validation
 export const usersValidation = axios.create({
