@@ -34,14 +34,12 @@ export default function Home() {
     return mainData.data.sections;
   });
 
-  useEffect(() => {
-    console.log(data);
-  });
-
   return (
     <main>
       <HeadSection banners={!isLoading && data.slider1.slidersOne.covers} />
-      <CategoriesSection />
+      <CategoriesSection
+        categories={!isLoading && data.categories.categories}
+      />
       <SectionsWrapper title={!isLoading && data?.slider2?.title}>
         <Swiper
           spaceBetween={20}
