@@ -6,6 +6,16 @@ const successSwal = (text) => {
     title: "خوش اومدی!",
     text: text,
     icon: "success",
+    timer: 2500,
+    toast: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+    animation: true,
+    position: "top-right",
+    showConfirmButton: false,
+    timerProgressBar: true,
   });
 };
 const errorSwal = (text) => {
@@ -13,6 +23,16 @@ const errorSwal = (text) => {
     title: "متاسفیم!",
     text: text,
     icon: "error",
+    timer: 2500,
+    toast: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+    animation: true,
+    position: "top-right",
+    showConfirmButton: false,
+    timerProgressBar: true,
   });
 };
 
