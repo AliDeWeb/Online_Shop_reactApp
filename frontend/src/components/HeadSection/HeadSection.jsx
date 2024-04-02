@@ -14,7 +14,7 @@ import { apiUrl } from "../../configs/axios/axiosConfigs";
 
 export default function HeadSection({ banners }) {
   return (
-    <div className="py-5">
+    <div className="py-5 hidden md:block">
       <div className="container">
         <div>
           <div>
@@ -33,7 +33,7 @@ export default function HeadSection({ banners }) {
               {banners &&
                 banners.map((el) => (
                   <SwiperSlide key={Math.random()}>
-                    <div className="lg:h-[380px]">
+                    <div>
                       <Link>
                         <img
                           className="rounded-lg"
