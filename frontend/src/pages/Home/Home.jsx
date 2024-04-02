@@ -18,7 +18,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // Axios
-import { getMainPageData } from "../../configs/axios/axiosConfigs";
+import { getMainPageData, apiUrl } from "../../configs/axios/axiosConfigs";
+
+// React Query
 import { useQuery } from "react-query";
 
 export default function Home() {
@@ -325,45 +327,12 @@ export default function Home() {
             },
           }}
         >
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TopBrandsSection />
-          </SwiperSlide>
+          {!isLoading &&
+            data?.brands?.brands?.map((el) => (
+              <SwiperSlide key={el._id}>
+                <TopBrandsSection img={`${apiUrl}/${el.cover}`} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </SectionsWrapper>
       <SectionsWrapper title={"لپ تاپ"}>

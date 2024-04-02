@@ -985,6 +985,10 @@ img {
   height: 100%;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .min-h-\[100dvh\] {
   min-height: 100dvh;
 }
@@ -1375,6 +1379,11 @@ img {
 
 .bg-zinc-900\/70 {
   background-color: rgb(24 24 27 / 0.7);
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-2 {

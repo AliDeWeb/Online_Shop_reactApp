@@ -33,7 +33,6 @@ export default function HeadSection({ banners }) {
               {banners &&
                 banners.map((el) => (
                   <SwiperSlide key={Math.random()}>
-                    {console.log(el)}
                     <div className="lg:h-[380px]">
                       <Link>
                         <img
