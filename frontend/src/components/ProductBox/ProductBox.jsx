@@ -1,15 +1,12 @@
 import React from "react";
 
-// Imgs
-import productImg from "../../assets/imgs/productImg.jpg";
-
 // Icons
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 
 // React Router
 import { Link } from "react-router-dom";
 
-export default function ProductBox({ discounted, price, num }) {
+export default function ProductBox({ discounted, price, num, title,cover }) {
   return (
     <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
       {!!num && !!discounted && (
@@ -24,7 +21,7 @@ export default function ProductBox({ discounted, price, num }) {
 
       <div className="lg:block flex flex-col items-center">
         <div className="size-[160px] mx-auto">
-          <img src={productImg} alt="product-img" />
+          <img src={cover} alt="product-img" />
         </div>
         <div className="flex items-center justify-center gap-0.5 mt-2">
           <FaStar size="1rem" color="#FACC15" />
@@ -33,7 +30,7 @@ export default function ProductBox({ discounted, price, num }) {
           <FaStar size="1rem" color="#FACC15" />
         </div>
         <div className="mt-4 font-danaBold text-sm text-zinc-700">
-          <Link className="line-clamp-1">سویشرت مردانه نایک کلاه دار</Link>
+          <Link className="line-clamp-1">{title}</Link>
         </div>
         <div className="mt-2 font-dana text-sm text-gray-400">
           <Link

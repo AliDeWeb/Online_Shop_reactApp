@@ -42,7 +42,7 @@ export default function Home() {
     <main>
       <HeadSection banners={!isLoading && data.slider1.slidersOne.covers} />
       <CategoriesSection />
-      <SectionsWrapper title={"محصولات شگفت انگیز"}>
+      <SectionsWrapper title={!isLoading && data?.slider2?.title}>
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
@@ -86,54 +86,37 @@ export default function Home() {
             },
           }}
         >
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} num={5} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} num={5} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} num={5} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} num={5} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} num={5} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} num={0} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={60} price={700000} />
-          </SwiperSlide>
+          {!isLoading &&
+            data?.slider2?.discountedProducts?.map((el) => (
+              <SwiperSlide key={el.href}>
+                <ProductBox
+                  cover={`${apiUrl}/${el.covers[0]}`}
+                  title={el.title}
+                  discounted={
+                    el.off
+                      ? el.off
+                      : el.colors[0]
+                      ? el.colors[0]?.off
+                      : el.sizes[0].off
+                      ? el.sizes[0].off
+                      : 0
+                  }
+                  price={
+                    el.mainPrice
+                      ? el.mainPrice
+                      : el.colors[0]
+                      ? el.colors[0]?.price
+                      : el.sizes[0].price
+                      ? el.sizes[0].price
+                      : 0
+                  }
+                  num={12}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </SectionsWrapper>
-      <SectionsWrapper title={"جدیدترین ها"}>
+      <SectionsWrapper title={!isLoading && data?.slider3?.title}>
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
@@ -177,43 +160,38 @@ export default function Home() {
             },
           }}
         >
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
+          {!isLoading &&
+            data?.slider3?.popularProductsForMainPage?.map((el) => (
+              <SwiperSlide key={el.href}>
+                <ProductBox
+                  cover={`${apiUrl}/${el.covers[0]}`}
+                  title={el.title}
+                  discounted={
+                    el.off
+                      ? el.off
+                      : el.colors[0]
+                      ? el.colors[0]?.off
+                      : el.sizes[0].off
+                      ? el.sizes[0].off
+                      : 0
+                  }
+                  price={
+                    el.mainPrice
+                      ? el.mainPrice
+                      : el.colors[0]
+                      ? el.colors[0]?.price
+                      : el.sizes[0].price
+                      ? el.sizes[0].price
+                      : 0
+                  }
+                  num={12}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </SectionsWrapper>
       <LongBanner />
-      <SectionsWrapper title={"محبوب ترین ها"}>
+      <SectionsWrapper title={!isLoading && data?.slider4?.title}>
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
@@ -257,42 +235,37 @@ export default function Home() {
             },
           }}
         >
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox num={12} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
+          {!isLoading &&
+            data?.slider4?.resultSellProducts?.map((el) => (
+              <SwiperSlide key={el.href}>
+                <ProductBox
+                  cover={`${apiUrl}/${el.covers[0]}`}
+                  title={el.title}
+                  discounted={
+                    el.off
+                      ? el.off
+                      : el.colors[0]
+                      ? el.colors[0]?.off
+                      : el.sizes[0].off
+                      ? el.sizes[0].off
+                      : 0
+                  }
+                  price={
+                    el.mainPrice
+                      ? el.mainPrice
+                      : el.colors[0]
+                      ? el.colors[0]?.price
+                      : el.sizes[0].price
+                      ? el.sizes[0].price
+                      : 0
+                  }
+                  num={12}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </SectionsWrapper>
-      <SectionsWrapper title={"برند های برگزیده"}>
+      <SectionsWrapper title={!isLoading && data?.brands?.title}>
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
@@ -333,164 +306,6 @@ export default function Home() {
                 <TopBrandsSection img={`${apiUrl}/${el.cover}`} />
               </SwiperSlide>
             ))}
-        </Swiper>
-      </SectionsWrapper>
-      <SectionsWrapper title={"لپ تاپ"}>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={1}
-          modules={[Navigation, Autoplay, A11y]}
-          navigation
-          autoplay={{
-            delay: 5000,
-            pauseOnMouseEnter: true,
-          }}
-          loop={true}
-          breakpoints={{
-            300: {
-              slidesPerView: 1.2,
-            },
-            370: {
-              slidesPerView: 1.4,
-            },
-            435: {
-              slidesPerView: 1.7,
-            },
-            515: {
-              slidesPerView: 2,
-            },
-            590: {
-              slidesPerView: 2.3,
-            },
-            640: {
-              slidesPerView: 2.3,
-            },
-            768: {
-              slidesPerView: 2.4,
-            },
-            1024: {
-              slidesPerView: 3.2,
-            },
-            1280: {
-              slidesPerView: 4.3,
-            },
-            1536: {
-              slidesPerView: 5,
-            },
-          }}
-        >
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={99} price={120000000} num={13} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={0} price={120000000} num={13} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox discounted={30} price={120000000} num={13} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-        </Swiper>
-      </SectionsWrapper>
-      <SectionsWrapper title={"پوشاک"}>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={1}
-          modules={[Navigation, Autoplay, A11y]}
-          navigation
-          autoplay={{
-            delay: 5000,
-            pauseOnMouseEnter: true,
-          }}
-          loop={true}
-          breakpoints={{
-            300: {
-              slidesPerView: 1.2,
-            },
-            370: {
-              slidesPerView: 1.4,
-            },
-            435: {
-              slidesPerView: 1.7,
-            },
-            515: {
-              slidesPerView: 2,
-            },
-            590: {
-              slidesPerView: 2.3,
-            },
-            640: {
-              slidesPerView: 2.3,
-            },
-            768: {
-              slidesPerView: 2.4,
-            },
-            1024: {
-              slidesPerView: 3.2,
-            },
-            1280: {
-              slidesPerView: 4.3,
-            },
-            1536: {
-              slidesPerView: 5,
-            },
-          }}
-        >
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductBox />
-          </SwiperSlide>
         </Swiper>
       </SectionsWrapper>
       <SectionsWrapper title={"مقالات"}>
