@@ -1,7 +1,7 @@
 import React from "react";
 
 // Icons
-import { FaStar, FaShoppingCart } from "react-icons/fa";
+import { FaStar, FaRegStar, FaShoppingCart } from "react-icons/fa";
 
 // React Router
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ export default function ProductBox({
   title,
   cover,
   href,
+  averageScore,
 }) {
   return (
     <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
@@ -37,10 +38,16 @@ export default function ProductBox({
           </Link>
         </div>
         <div className="flex items-center justify-center gap-0.5 mt-2">
-          <FaStar size="1rem" color="#FACC15" />
-          <FaStar size="1rem" color="#FACC15" />
-          <FaStar size="1rem" color="#FACC15" />
-          <FaStar size="1rem" color="#FACC15" />
+          {Array(averageScore)
+            .fill(0)
+            .map(() => (
+              <FaStar size="1rem" color="#FACC15" />
+            ))}
+          {Array(5 - averageScore)
+            .fill(0)
+            .map(() => (
+              <FaRegStar size="1rem" color="#FACC15" />
+            ))}
         </div>
         <div className="mt-4 font-danaBold text-sm text-zinc-700">
           <Link
@@ -74,7 +81,7 @@ export default function ProductBox({
                 </>
               ) : (
                 <span className="ml-1 font-danaBold text-sm sm:text-base">
-                  {(price).toLocaleString()}
+                  {price.toLocaleString()}
                 </span>
               )}
               <span className=" font-dana">تومان</span>

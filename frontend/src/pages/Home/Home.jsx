@@ -120,7 +120,8 @@ export default function Home() {
                       ? el.sizes[0].price
                       : 0
                   }
-                  num={12}
+                  num={el.Availability}
+                  averageScore={el.averageScore}
                 />
               </SwiperSlide>
             ))}
@@ -196,7 +197,8 @@ export default function Home() {
                       ? el.sizes[0].price
                       : 0
                   }
-                  num={12}
+                  num={el.Availability}
+                  averageScore={el.averageScore}
                 />
               </SwiperSlide>
             ))}
@@ -314,7 +316,8 @@ export default function Home() {
                       ? el.sizes[0].price
                       : 0
                   }
-                  num={12}
+                  num={el.Availability}
+                  averageScore={el.averageScore}
                 />
               </SwiperSlide>
             ))}

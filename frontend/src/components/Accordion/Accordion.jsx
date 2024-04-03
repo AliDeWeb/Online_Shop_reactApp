@@ -47,7 +47,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function (props) {
-  const [showCommentsNum, setShowCommentsNum] = useState(4);
   const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -119,18 +118,6 @@ export default function (props) {
                 </Typography>
               ))}
           </div>
-          <button
-            onClick={() => {
-              setShowCommentsNum((prev) => {
-                if (props.comments.length > showCommentsNum - 4) {
-                  return prev + 4;
-                }
-              });
-            }}
-            className="font-dana w-[100px] text-sm mx-auto text-zinc-700 py-1 px-2 rounded-lg border border-solid border-orange-300 transition-all hover:bg-orange-100 "
-          >
-            بیشتر
-          </button>
         </AccordionDetails>
       </Accordion>
       <Accordion
