@@ -8,7 +8,7 @@ import { BsArrowLeftShort } from "react-icons/bs";
 
 export default function ProductsSections(props) {
   return (
-    <section className="py-5">
+    <section className={`py-5 ${props.className}`}>
       <div className="container">
         <div>
           <div className="flex items-center justify-between mb-4">

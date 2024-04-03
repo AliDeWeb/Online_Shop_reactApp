@@ -125,6 +125,7 @@ export default function Home() {
             ))}
         </Swiper>
       </SectionsWrapper>
+      <LongBanner />
       <SectionsWrapper title={!isLoading && data?.slider3?.title}>
         <Swiper
           spaceBetween={20}
@@ -199,7 +200,49 @@ export default function Home() {
             ))}
         </Swiper>
       </SectionsWrapper>
-      <LongBanner />
+      <SectionsWrapper title={!isLoading && data?.brands?.title}>
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          modules={[Navigation, Autoplay, A11y]}
+          navigation
+          autoplay={{
+            delay: 5000,
+            pauseOnMouseEnter: true,
+          }}
+          loop={true}
+          breakpoints={{
+            340: {
+              slidesPerView: 2.6,
+            },
+            490: {
+              slidesPerView: 3.8,
+            },
+            680: {
+              slidesPerView: 4.2,
+            },
+            768: {
+              slidesPerView: 5.4,
+            },
+            1024: {
+              slidesPerView: 6.8,
+            },
+            1280: {
+              slidesPerView: 7.6,
+            },
+            1536: {
+              slidesPerView: 8.4,
+            },
+          }}
+        >
+          {!isLoading &&
+            data?.brands?.brands?.map((el) => (
+              <SwiperSlide key={el._id}>
+                <TopBrandsSection img={`${apiUrl}/${el.cover}`} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </SectionsWrapper>
       <SectionsWrapper title={!isLoading && data?.slider4?.title}>
         <Swiper
           spaceBetween={20}
@@ -274,50 +317,7 @@ export default function Home() {
             ))}
         </Swiper>
       </SectionsWrapper>
-      <SectionsWrapper title={!isLoading && data?.brands?.title}>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={1}
-          modules={[Navigation, Autoplay, A11y]}
-          navigation
-          autoplay={{
-            delay: 5000,
-            pauseOnMouseEnter: true,
-          }}
-          loop={true}
-          breakpoints={{
-            340: {
-              slidesPerView: 2.6,
-            },
-            490: {
-              slidesPerView: 3.8,
-            },
-            680: {
-              slidesPerView: 4.2,
-            },
-            768: {
-              slidesPerView: 5.4,
-            },
-            1024: {
-              slidesPerView: 6.8,
-            },
-            1280: {
-              slidesPerView: 7.6,
-            },
-            1536: {
-              slidesPerView: 8.4,
-            },
-          }}
-        >
-          {!isLoading &&
-            data?.brands?.brands?.map((el) => (
-              <SwiperSlide key={el._id}>
-                <TopBrandsSection img={`${apiUrl}/${el.cover}`} />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </SectionsWrapper>
-      <SectionsWrapper title={"مقالات"}>
+      <SectionsWrapper className="hidden lg:block" title={"مقالات"}>
         <Swiper
           spaceBetween={20}
           slidesPerView={1}

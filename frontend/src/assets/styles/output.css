@@ -1988,6 +1988,10 @@ img {
     display: inline;
   }
 
+  .lg\:flex {
+    display: flex;
+  }
+
   .lg\:hidden {
     display: none;
   }
