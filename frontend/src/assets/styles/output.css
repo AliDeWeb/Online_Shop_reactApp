@@ -936,24 +936,14 @@ img {
   height: 45px;
 }
 
-.size-full {
-  width: 100%;
-  height: 100%;
-}
-
-.size-\[100px\] {
-  width: 100px;
-  height: 100px;
-}
-
-.size-\[60px\] {
-  width: 60px;
-  height: 60px;
-}
-
 .size-\[70px\] {
   width: 70px;
   height: 70px;
+}
+
+.size-full {
+  width: 100%;
+  height: 100%;
 }
 
 .h-0 {
@@ -1075,6 +1065,10 @@ img {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.resize {
+  resize: both;
 }
 
 .list-disc {
@@ -1388,6 +1382,11 @@ img {
   background-color: rgb(24 24 27 / 0.7);
 }
 
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -1630,10 +1629,6 @@ img {
   transition-duration: 300ms;
 }
 
-.\*\:flex > * {
-  display: flex;
-}
-
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
@@ -1859,10 +1854,6 @@ img {
 
   .sm\:h-auto {
     height: auto;
-  }
-
-  .sm\:w-\[100px\] {
-    width: 100px;
   }
 
   .sm\:w-\[135px\] {

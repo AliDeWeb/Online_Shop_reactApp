@@ -34,9 +34,20 @@ export default function Home() {
     return mainData.data.sections;
   });
 
+  useEffect(() => {
+    console.log(data);
+  });
+
   return (
     <main>
-      <HeadSection banners={!isLoading && data.slider1.slidersOne.covers} />
+      <HeadSection
+        banners={
+          !isLoading &&
+          (window.innerWidth >= 1024
+            ? data.slider1.slidersOne.desktopBanners
+            : data.slider1.slidersOne.phoneBanners)
+        }
+      />
       <CategoriesSection
         categories={!isLoading && data.categories.categories}
       />

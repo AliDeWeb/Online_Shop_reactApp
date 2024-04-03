@@ -13,13 +13,16 @@ import { Link } from "react-router-dom";
 import { apiUrl } from "../../configs/axios/axiosConfigs";
 
 export default function HeadSection({ banners }) {
+  useEffect(() => {
+    console.log(banners);
+  });
   return (
-    <div className="py-5 hidden md:block">
-      <div className="container">
+    <div className="py-5">
+      <div className={`${window.innerWidth < 1024 && "container"}`}>
         <div>
           <div>
             <Swiper
-              spaceBetween={50}
+              spaceBetween={20}
               slidesPerView={1}
               modules={[Autoplay, Navigation, Pagination, A11y]}
               pagination={{ clickable: true }}
