@@ -45,8 +45,8 @@ export default function Home() {
         banners={
           !isLoading &&
           (window.innerWidth >= 1024
-            ? data.slider1.slidersOne.desktopBanners
-            : data.slider1.slidersOne.phoneBanners)
+            ? data.slider1.slidersOne[0].desktopBanners
+            : data.slider1.slidersOne[0].phoneBanners)
         }
       />
       <CategoriesSection
