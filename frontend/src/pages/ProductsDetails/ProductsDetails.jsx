@@ -178,9 +178,19 @@ export default function ProductsDetails() {
                   {!isLoading &&
                     (data.product.colors.length
                       ? data.product.colors.map((el) => (
-                          <button className="flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300">
+                          <button
+                            onClick={(e) => {
+                              document
+                                .querySelectorAll(`.active-size-color`)
+                                .forEach((el) => {
+                                  el.classList.remove(`active-size-color`);
+                                });
+                              e.target.classList.add(`active-size-color`);
+                            }}
+                            className="flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300"
+                          >
                             <span
-                              className={`size-[20px] rounded-full`}
+                              className={`size-[20px] rounded-full outline-none`}
                               style={{ backgroundColor: el.hex }}
                             ></span>
                             {el.title}
@@ -188,7 +198,17 @@ export default function ProductsDetails() {
                         ))
                       : data.product.sizes.length
                       ? data.product.sizes.map((el) => (
-                          <button className="flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300">
+                          <button
+                            onClick={(e) => {
+                              document
+                                .querySelectorAll(`.active-size-color`)
+                                .forEach((el) => {
+                                  el.classList.remove(`active-size-color`);
+                                });
+                              e.target.classList.add(`active-size-color`);
+                            }}
+                            className="flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300"
+                          >
                             {el.title}
                           </button>
                         ))

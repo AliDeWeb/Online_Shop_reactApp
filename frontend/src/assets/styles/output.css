@@ -667,6 +667,12 @@ img {
   }
 }
 
+.active-size-color {
+  outline-style: solid;
+  outline-offset: 1px;
+  outline-color: #9ca3af;
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -990,10 +996,6 @@ img {
   height: 100%;
 }
 
-.h-\[450px\] {
-  height: 450px;
-}
-
 .min-h-\[100dvh\] {
   min-height: 100dvh;
 }
@@ -1301,11 +1303,6 @@ img {
   background-color: rgb(227 227 235 / var(--tw-bg-opacity));
 }
 
-.bg-amber-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(245 158 11 / var(--tw-bg-opacity));
-}
-
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
@@ -1363,11 +1360,6 @@ img {
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
 }
 
-.bg-teal-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 118 110 / var(--tw-bg-opacity));
-}
-
 .bg-transparent {
   background-color: transparent;
 }
@@ -1377,28 +1369,13 @@ img {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-yellow-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
-}
-
 .bg-zinc-900\/70 {
   background-color: rgb(24 24 27 / 0.7);
-}
-
-.object-contain {
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.object-fill {
-  -o-object-fit: fill;
-     object-fit: fill;
 }
 
 .object-center {
@@ -1887,12 +1864,12 @@ img {
     height: 40px;
   }
 
-  .sm\:h-auto {
-    height: auto;
-  }
-
   .sm\:h-\[450px\] {
     height: 450px;
+  }
+
+  .sm\:h-auto {
+    height: auto;
   }
 
   .sm\:w-\[135px\] {
@@ -1917,11 +1894,6 @@ img {
 
   .sm\:gap-0 {
     gap: 0px;
-  }
-
-  .sm\:object-center {
-    -o-object-position: center;
-       object-position: center;
   }
 
   .sm\:px-8 {

@@ -25,4 +25,7 @@
       @apply sm:text-base text-sm md:my-4 mt-2;
     }
   }
+  .active-size-color {
+    @apply outline outline-gray-400 outline-offset-1;
+  }
 }
