@@ -125,7 +125,10 @@ export default function Header() {
             >
               {categories &&
                 categories.map((el) => (
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
+                  <li
+                    key={Math.random()}
+                    className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto"
+                  >
                     <Link>{el.title}</Link>
                   </li>
                 ))}
@@ -289,7 +292,7 @@ export default function Header() {
                 <ul className="child:py-1.5">
                   {categories &&
                     categories.map((el) => (
-                      <li>
+                      <li key={Math.random()}>
                         <Link className="hover:text-orange-400 transition-all duration-300 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
                           {el.title}
                         </Link>

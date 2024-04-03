@@ -41,12 +41,12 @@ export default function ProductBox({
           {Array(averageScore)
             .fill(0)
             .map(() => (
-              <FaStar size="1rem" color="#FACC15" />
+              <FaStar key={Math.random()} size="1rem" color="#FACC15" />
             ))}
           {Array(5 - averageScore)
             .fill(0)
             .map(() => (
-              <FaRegStar size="1rem" color="#FACC15" />
+              <FaRegStar key={Math.random()} size="1rem" color="#FACC15" />
             ))}
         </div>
         <div className="mt-4 font-danaBold text-sm text-zinc-700">
