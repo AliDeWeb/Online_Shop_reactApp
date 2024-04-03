@@ -29,11 +29,21 @@ export default function Home() {
     document.documentElement.scrollTop = 0;
   }, []);
 
-  const { data, isLoading } = useQuery(`mainPageData`, async () => {
-    let mainData = await getMainPageData();
+  const { data, isLoading, refetch } = useQuery(
+    `mainPageData`,
+    async () => {
+      let mainData = await getMainPageData();
+      console.log(`now`);
 
-    return mainData.data.sections;
-  });
+      return mainData.data.sections;
+    },
+    {
+      refetchInterval: 10000,
+      onError: () => {
+        refetch();
+      },
+    }
+  );
 
   useEffect(() => {
     console.log(data);
@@ -45,12 +55,12 @@ export default function Home() {
         banners={
           !isLoading &&
           (window.innerWidth >= 1024
-            ? data.slider1.slidersOne[0].desktopBanners
-            : data.slider1.slidersOne[0].phoneBanners)
+            ? data?.slider1?.slidersOne[0]?.desktopBanners
+            : data?.slider1?.slidersOne[0]?.phoneBanners)
         }
       />
       <CategoriesSection
-        categories={!isLoading && data.categories.categories}
+        categories={!isLoading && data?.categories?.categories}
       />
       <SectionsWrapper title={!isLoading && data?.slider2?.title}>
         <Swiper
@@ -128,7 +138,9 @@ export default function Home() {
             ))}
         </Swiper>
       </SectionsWrapper>
-      <LongBanner banners={!isLoading && data.slider1.slidersOne[1].covers} />
+      <LongBanner
+        banners={!isLoading && data?.slider1?.slidersOne[1]?.covers}
+      />
       <SectionsWrapper title={!isLoading && data?.slider3?.title}>
         <Swiper
           spaceBetween={20}

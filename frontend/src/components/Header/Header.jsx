@@ -50,7 +50,9 @@ export default function Header() {
     },
     {
       staleTime: 50000000,
-      refetchOnWindowFocus: false,
+      onError: () => {
+        refetch();
+      },
     }
   );
 

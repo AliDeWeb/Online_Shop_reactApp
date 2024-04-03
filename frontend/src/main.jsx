@@ -10,7 +10,7 @@ const client = new QueryClient({
     queries: {
       cacheTime: 120000,
       staleTime: 120000,
-      refetchIntervalInBackground: false,
+      refetchIntervalInBackground: true,
       refetchOnWindowFocus: true,
       refetchOnReconnect: true,
       refetchOnMount: false,

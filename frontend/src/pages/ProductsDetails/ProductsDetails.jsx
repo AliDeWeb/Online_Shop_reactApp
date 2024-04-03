@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // React Router
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 // Components
 import { Accordion } from "../../configs/Layout/Layout";
@@ -31,10 +31,13 @@ import { useQuery } from "react-query";
 
 export default function ProductsDetails() {
   const param = useParams();
+  const navigator = useNavigate();
 
   const { data, isLoading } = useQuery(`product${param.href}`, async () => {
     const res = await getProductsInfos({
       url: `/${param.href}`,
+    }).catch((err) => {
+      navigator("/404");
     });
 
     return res.data;
