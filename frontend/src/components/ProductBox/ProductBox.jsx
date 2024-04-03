@@ -6,7 +6,7 @@ import { FaStar, FaShoppingCart } from "react-icons/fa";
 // React Router
 import { Link } from "react-router-dom";
 
-export default function ProductBox({ discounted, price, num, title,cover }) {
+export default function ProductBox({ discounted, price, num, title, cover }) {
   return (
     <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
       {!!num && !!discounted && (
@@ -62,7 +62,7 @@ export default function ProductBox({ discounted, price, num, title,cover }) {
               <span className=" font-dana">تومان</span>
             </div>
             <div>
-              <button className="text-gray-400 font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-gray-100 hover:bg-teal-600 transition-all hover:text-white">
+              <button className="font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-teal-600 transition-all text-white hover:scale-95 hover:shadow-xl">
                 <FaShoppingCart className="transition-all" size="1rem" />
                 <span>افزودن به سبد خرید</span>
               </button>
