@@ -40,14 +40,11 @@ export default function ProductsDetails() {
     return res.data;
   });
 
+  const [productPrice, setProductPrice] = useState();
+
   useEffect(() => {
     document.documentElement.scrollTop = 0;
   }, []);
-
-  useEffect(() => {
-    document.title = !isLoading ? data.product.title : "";
-    console.log(data);
-  });
 
   return (
     <div className="py-5">
@@ -302,12 +299,16 @@ export default function ProductsDetails() {
                 {Array(Math.floor(!isLoading && data?.score))
                   .fill(0)
                   .map(() => (
-                    <FaStar size="1rem" color="#FACC15" />
+                    <FaStar key={Math.random()} size="1rem" color="#FACC15" />
                   ))}
                 {Array(Math.floor(!isLoading && 5 - data?.score))
                   .fill(0)
                   .map(() => (
-                    <FaRegStar size="1rem" color="#FACC15" />
+                    <FaRegStar
+                      key={Math.random()}
+                      size="1rem"
+                      color="#FACC15"
+                    />
                   ))}
 
                 <span className="inline-block w-full font-dana text-xs text-gray-400 mt-1">

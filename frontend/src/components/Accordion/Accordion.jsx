@@ -67,7 +67,7 @@ export default function (props) {
           <Typography className="flex flex-col gap-2.5">
             {props.details &&
               props?.details?.map((el) => (
-                <div className="flex items-center">
+                <div key={Math.random()} className="flex items-center">
                   <span className="text-zinc-700 font-danaBold ml-5 ">
                     {el.title}:
                   </span>
