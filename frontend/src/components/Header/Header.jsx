@@ -23,7 +23,7 @@ import { CiShoppingBasket } from "react-icons/ci";
 import { Link, useLocation } from "react-router-dom";
 
 // Axios
-import { getUserData } from "../../configs/axios/axiosConfigs";
+import { getUserData, getCategories } from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery } from "react-query";
@@ -32,6 +32,8 @@ import { useQuery } from "react-query";
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function Header() {
+  const [categories, setCategories] = useState(null);
+
   const { userToken } = useUserToken();
   const { data, refetch } = useQuery(
     `userDate`,
@@ -51,6 +53,12 @@ export default function Header() {
       refetchOnWindowFocus: false,
     }
   );
+
+  useEffect(() => {
+    getCategories().then((res) => {
+      setCategories(res.data);
+    });
+  }, []);
 
   const location = useLocation();
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
@@ -115,18 +123,12 @@ export default function Header() {
                 isHamburgerMenuShopItemShow || "h-0 mb-0"
               }`}
             >
-              <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                <Link>لپ تاپ</Link>
-              </li>
-              <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                <Link>لوازم خانگی</Link>
-              </li>
-              <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                <Link>پوشاک</Link>
-              </li>
-              <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                <Link>عطر و ادکلن</Link>
-              </li>
+              {categories &&
+                categories.map((el) => (
+                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
+                    <Link>{el.title}</Link>
+                  </li>
+                ))}
             </ul>
           </div>
           <div className="mb-5 text-zinc-700">
@@ -285,31 +287,14 @@ export default function Header() {
               </button>
               <div className="hidden sm:block absolute z-10 bg-white w-[250px] p-5 rounded-lg right-0 top-12 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-hover:top-9 transition-all delay-150">
                 <ul className="child:py-1.5">
-                  <li>
-                    <Link className="hover:text-orange-400 transition-all duration-300 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                      لپ تاپ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:text-orange-400 transition-all duration-300 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                      لپ تاپ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:text-orange-400 transition-all duration-300 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                      لپ تاپ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:text-orange-400 transition-all duration-300 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                      لپ تاپ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:text-orange-400 transition-all duration-300 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                      لپ تاپ
-                    </Link>
-                  </li>
+                  {categories &&
+                    categories.map((el) => (
+                      <li>
+                        <Link className="hover:text-orange-400 transition-all duration-300 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
+                          {el.title}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               </div>
             </li>

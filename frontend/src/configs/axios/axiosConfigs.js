@@ -112,3 +112,8 @@ getProductsInfos.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Get Categories
+export const getCategories = axios.create({
+  baseURL: `${apiUrl}/v1/category-brand/category`,
+});
