@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";

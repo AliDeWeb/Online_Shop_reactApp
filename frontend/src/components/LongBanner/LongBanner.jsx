@@ -1,19 +1,54 @@
-import React from "react";
-
-// Imgs
-import banner from "../../assets/imgs/long-banner.jpg";
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // React Router
 import { Link } from "react-router-dom";
 
-export default function LongBanner() {
+import { apiUrl } from "../../configs/axios/axiosConfigs";
+
+export default function LongBanner({ banners }) {
   return (
-    <div className="py-2.5 hidden md:block">
+    <div className="py-5">
       <div className="container">
-        <div className="rounded-md overflow-hidden">
-          <Link>
-            <img src={banner} alt="banner" />
-          </Link>
+        <div>
+          <div>
+            <Swiper
+              spaceBetween={20}
+              slidesPerView={1}
+              modules={[Autoplay, Navigation, Pagination, A11y]}
+              pagination={{ clickable: true }}
+              navigation
+              autoplay={{
+                delay: 3000,
+                pauseOnMouseEnter: true,
+              }}
+              breakpoints={{
+                1024: {
+                  slidesPerView: 2,
+                },
+              }}
+              loop={true}
+            >
+              {banners &&
+                banners.map((el) => (
+                  <SwiperSlide key={Math.random()}>
+                    <div className="h-full">
+                      <Link className="h-full">
+                        <img
+                          className="rounded-lg active:cursor-grabbing"
+                          src={`${apiUrl}/${el}`}
+                          alt="banner"
+                        />
+                      </Link>
+                    </div>
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>

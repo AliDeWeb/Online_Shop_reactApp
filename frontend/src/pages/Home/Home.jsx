@@ -128,7 +128,7 @@ export default function Home() {
             ))}
         </Swiper>
       </SectionsWrapper>
-      <LongBanner />
+      <LongBanner banners={!isLoading && data.slider1.slidersOne[1].covers} />
       <SectionsWrapper title={!isLoading && data?.slider3?.title}>
         <Swiper
           spaceBetween={20}
