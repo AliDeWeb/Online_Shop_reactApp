@@ -26,6 +26,7 @@ import { useQuery } from "react-query";
 export default function Home() {
   useEffect(() => {
     document.title = "تیمچه - صفحه اصلی";
+    document.documentElement.scrollTop = 0;
   }, []);
 
   const { data, isLoading } = useQuery(`mainPageData`, async () => {

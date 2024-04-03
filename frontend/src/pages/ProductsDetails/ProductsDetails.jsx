@@ -41,6 +41,10 @@ export default function ProductsDetails() {
   });
 
   useEffect(() => {
+    document.documentElement.scrollTop = 0;
+  }, []);
+
+  useEffect(() => {
     document.title = !isLoading ? data.product.title : "";
     console.log(data);
   });
