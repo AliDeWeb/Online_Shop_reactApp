@@ -10,7 +10,6 @@ export default function TopBrandsSection({ img }) {
         <Link className="size-full">
           <img
             className="size-full"
-            loading="lazy"
             src={`${img}`}
             alt="brandsImg"
           />
