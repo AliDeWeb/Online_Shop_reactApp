@@ -36,7 +36,7 @@ export default function HeadSection({ banners }) {
                     <div className="h-full">
                       <Link className="h-full">
                         <img
-                          className="rounded-lg object-cover"
+                          className="rounded-lg object-cover active:cursor-grabbing"
                           src={`${apiUrl}/${el}`}
                           alt="banner"
                         />
