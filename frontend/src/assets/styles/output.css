@@ -990,6 +990,10 @@ img {
   height: 100%;
 }
 
+.h-\[450px\] {
+  height: 450px;
+}
+
 .min-h-\[100dvh\] {
   min-height: 100dvh;
 }
@@ -1063,12 +1067,12 @@ img {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.cursor-pointer {
-  cursor: pointer;
+.cursor-grab {
+  cursor: grab;
 }
 
-.resize {
-  resize: both;
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .list-disc {
@@ -1382,9 +1386,24 @@ img {
   background-color: rgb(24 24 27 / 0.7);
 }
 
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 
 .p-2 {
@@ -1750,18 +1769,6 @@ img {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.hover\:shadow-sm:hover {
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.hover\:shadow-lg:hover {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .hover\:shadow-xl:hover {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
@@ -1776,6 +1783,10 @@ img {
 .focus\:border-orange-300:focus {
   --tw-border-opacity: 1;
   border-color: rgb(253 186 116 / var(--tw-border-opacity));
+}
+
+.active\:cursor-grabbing:active {
+  cursor: grabbing;
 }
 
 .group:hover .group-hover\:visible {
@@ -1880,6 +1891,10 @@ img {
     height: auto;
   }
 
+  .sm\:h-\[450px\] {
+    height: 450px;
+  }
+
   .sm\:w-\[135px\] {
     width: 135px;
   }
@@ -1902,6 +1917,11 @@ img {
 
   .sm\:gap-0 {
     gap: 0px;
+  }
+
+  .sm\:object-center {
+    -o-object-position: center;
+       object-position: center;
   }
 
   .sm\:px-8 {
@@ -2010,10 +2030,6 @@ img {
 
   .lg\:inline {
     display: inline;
-  }
-
-  .lg\:flex {
-    display: flex;
   }
 
   .lg\:hidden {

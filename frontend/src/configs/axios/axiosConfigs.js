@@ -97,3 +97,18 @@ newLetter.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Product Details
+export const getProductsInfos = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}/v1/product`,
+});
+getProductsInfos.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    return Promise.reject(error);
+  }
+);

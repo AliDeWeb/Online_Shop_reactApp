@@ -17,7 +17,7 @@ export default () => {
           <Route path="home" element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="product/:id" element={<ProductsDetails />} />
+          <Route path="product/:href" element={<ProductsDetails />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

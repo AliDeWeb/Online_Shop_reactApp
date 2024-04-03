@@ -101,6 +101,7 @@ export default function Home() {
                 <ProductBox
                   cover={`${apiUrl}/${el.covers[0]}`}
                   title={el.title}
+                  href={`product/${el.href}`}
                   discounted={
                     el.off
                       ? el.off
@@ -176,6 +177,7 @@ export default function Home() {
                 <ProductBox
                   cover={`${apiUrl}/${el.covers[0]}`}
                   title={el.title}
+                  href={`product/${el.href}`}
                   discounted={
                     el.off
                       ? el.off
@@ -293,6 +295,7 @@ export default function Home() {
                 <ProductBox
                   cover={`${apiUrl}/${el.covers[0]}`}
                   title={el.title}
+                  href={`product/${el.href}`}
                   discounted={
                     el.off
                       ? el.off

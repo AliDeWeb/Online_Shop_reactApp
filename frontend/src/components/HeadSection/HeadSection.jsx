@@ -13,9 +13,6 @@ import { Link } from "react-router-dom";
 import { apiUrl } from "../../configs/axios/axiosConfigs";
 
 export default function HeadSection({ banners }) {
-  useEffect(() => {
-    console.log(banners);
-  });
   return (
     <div className="py-5">
       <div className={`${window.innerWidth < 1024 && "container"}`}>
