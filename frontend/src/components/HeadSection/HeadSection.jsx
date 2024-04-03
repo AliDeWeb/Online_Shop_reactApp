@@ -36,10 +36,10 @@ export default function HeadSection({ banners }) {
               {banners &&
                 banners.map((el) => (
                   <SwiperSlide key={Math.random()}>
-                    <div>
-                      <Link>
+                    <div className="h-full">
+                      <Link className="h-full">
                         <img
-                          className="rounded-lg"
+                          className="rounded-lg object-cover"
                           src={`${apiUrl}/${el}`}
                           alt="banner"
                         />
