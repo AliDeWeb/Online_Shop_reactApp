@@ -112,7 +112,7 @@ export default function ProductsDetails() {
                         data.product.details[0] &&
                         data?.product?.details[0].title}
                       :
-                      <span className="text-zinc-700 mr-1">
+                      <span className="text-zinc-700 mr-1 line-clamp-1">
                         {!isLoading &&
                           data.product.details[0] &&
                           data?.product?.details[0].value}
@@ -123,7 +123,7 @@ export default function ProductsDetails() {
                         data.product.details[1] &&
                         data?.product?.details[1].title}
                       :
-                      <span className="text-zinc-700 mr-1">
+                      <span className="text-zinc-700 mr-1 line-clamp-1">
                         {!isLoading &&
                           data.product.details[1] &&
                           data?.product?.details[1].value}
@@ -134,7 +134,7 @@ export default function ProductsDetails() {
                         data.product.details[2] &&
                         data?.product?.details[2].title}
                       :
-                      <span className="text-zinc-700 mr-1">
+                      <span className="text-zinc-700 mr-1 line-clamp-1">
                         {!isLoading &&
                           data.product.details[2] &&
                           data?.product?.details[2].value}
@@ -145,7 +145,7 @@ export default function ProductsDetails() {
                         data.product.details[3] &&
                         data?.product?.details[3].title}
                       :
-                      <span className="text-zinc-700 mr-1">
+                      <span className="text-zinc-700 mr-1 line-clamp-1">
                         {!isLoading &&
                           data.product.details[3] &&
                           data?.product?.details[3].value}
