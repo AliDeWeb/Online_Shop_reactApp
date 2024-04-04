@@ -129,7 +129,7 @@ postProductsToCart.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    errorSwal(`لطفا وارد حساب کاربری خود شوید`);
     return Promise.reject(error);
   }
 );
@@ -144,7 +144,7 @@ postProductsToCart.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    errorSwal(`لطفا وارد حساب کاربری خود شوید`);
     return Promise.reject(error);
   }
 );
