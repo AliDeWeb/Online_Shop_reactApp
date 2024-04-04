@@ -71,10 +71,10 @@ export default function (props) {
                   key={Math.random()}
                   className="grid grid-cols-4 grid-rows-1 py-4"
                 >
-                  <span className="text-zinc-400 font-dana line-clamp-1 ml-5 col-span-1 text-sm">
+                  <span className="text-zinc-400 font-dana line-clamp-1 ml-5 col-span-2 sm:col-span-1 text-sm">
                     {el.title}:
                   </span>
-                  <span className="text-zinc-700 font-danaBold text-sm line-clamp-1 col-span-3">
+                  <span className="text-zinc-700 font-danaBold text-sm line-clamp-1 col-span-2 sm:col-span-3">
                     {el.value}
                   </span>
                 </div>

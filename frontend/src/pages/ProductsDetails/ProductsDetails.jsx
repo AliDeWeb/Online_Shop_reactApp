@@ -84,7 +84,7 @@ export default function ProductsDetails() {
                   Nike Men's Hooded Sweater
                 </Link>
               </span>
-              <div className="grid gap-y-2 sm:grid-cols-2 font-dana mt-4 text-gray-400">
+              <div className="grid gap-y-2 sm:grid-cols-2 font-dana mt-4 text-gray-400 text-sm sm:text-base">
                 <span className="flex items-center gap-1">
                   <BiSolidCategoryAlt />
                   دسته بندی:
@@ -104,7 +104,7 @@ export default function ProductsDetails() {
                 <span className="bg-orange-400">غیر اصل</span>
                 <span className="bg-blue-700">تحویل فوری</span>
               </div>
-              <ul className="mt-4 text-gray-400 font-dana list-disc pr-5 grid grid-cols-2 gap-y-2">
+              <ul className="mt-4 text-gray-400 font-dana text-sm sm:text-base sm:list-disc pr-5 grid grid-cols-2 gap-y-2">
                 {
                   <>
                     <li>
