@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,12 +24,20 @@ import {
 import { PiWarningCircle } from "react-icons/pi";
 
 // Axios
-import { apiUrl, getProductsInfos } from "../../configs/axios/axiosConfigs";
+import {
+  apiUrl,
+  getProductsInfos,
+  postProductsToCart,
+} from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery } from "react-query";
 
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
 export default function ProductsDetails() {
+  const { userToken } = useUserToken();
   const param = useParams();
   const navigator = useNavigate();
 
@@ -53,14 +61,37 @@ export default function ProductsDetails() {
 
   const [productPrice, setProductPrice] = useState(0);
   const [productOffPrice, setProductOffPrice] = useState(0);
+  const [productId, setProductId] = useState(null);
+  const [productWarranty, setProductWarranty] = useState(null);
+  const [colorId, setColorId] = useState([]);
+  const [sizeId, setSizeId] = useState([]);
+  const [count, setCount] = useState(0);
+
+  const increaseCount = useCallback(() => {
+    setCount((prev) => prev + 1);
+  });
+
+  const decreaseCount = useCallback(() => {
+    setCount((prev) => prev - 1);
+  });
 
   useEffect(() => {
     if (!isLoading) {
+      setProductId(data?.product?._id);
+      setProductWarranty(data?.product?.warranty[0]?._id)
+    }
+
+    if (!isLoading) {
+      console.log(data);
       if (data.product.mainPrice) {
         setProductPrice(data.product.mainPrice);
+        setColorId([]);
+        setSizeId([]);
       } else if (data?.product?.sizes?.length) {
+        setSizeId(data.product.sizes[0]._id);
         setProductPrice(data.product.sizes[0].price);
       } else if (data?.product?.colors?.length) {
+        setColorId(data.product.colors[0]._id);
         setProductPrice(data.product.colors[0].price);
       }
 
@@ -214,6 +245,7 @@ export default function ProductsDetails() {
                           <button
                             key={Math.random()}
                             onClick={(e) => {
+                              setColorId(el._id);
                               document
                                 .querySelectorAll(`.active-size-color`)
                                 .forEach((el) => {
@@ -240,7 +272,9 @@ export default function ProductsDetails() {
                       : data.product.sizes.length
                       ? data.product.sizes.map((el) => (
                           <button
+                            key={Math.random()}
                             onClick={(e) => {
+                              setSizeId(el._id);
                               if (el.discountedPrice) {
                                 setProductPrice(el.price);
                                 setProductOffPrice(el.discountedPrice);
@@ -267,7 +301,12 @@ export default function ProductsDetails() {
                   <div className="w-full font-danaBold text-zinc-700">
                     گارانتی
                   </div>
-                  <select className="font-dana text-zinc-700 mt-1.5 w-full outline-none border-gray-400 border-solid border py-1 px-2 rounded-lg">
+                  <select
+                    onChange={(e) => {
+                      setProductWarranty(e.target.value);
+                    }}
+                    className="font-dana text-zinc-700 mt-1.5 w-full outline-none border-gray-400 border-solid border py-1 px-2 rounded-lg"
+                  >
                     {!isLoading &&
                       data?.product?.warranty?.map((el) => (
                         <option
@@ -342,11 +381,78 @@ export default function ProductsDetails() {
                       )}
                     </span>
                   </div>
-                  <div className="mt-2 sm:mt-4 w-full">
-                    <button className="border border-solid border-teal-600 font-dana text-teal-600 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600">
-                      <FaShoppingCart />
-                      افزودن به سبد خرید
-                    </button>
+                  <div className="mt-2 sm:mt-4 w-full flex items-center justify-center">
+                    {count ? (
+                      <div className="font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
+                        <button
+                          onClick={() => {
+                            increaseCount();
+
+                            let productData = {
+                              productID: productId,
+                              colorID: colorId,
+                              sizeID: sizeId,
+                              count: count,
+                              warranty: productWarranty,
+                            };
+                            postProductsToCart({
+                              data: productData,
+                              headers: {
+                                Authorization: `Bearer ${userToken}`,
+                              },
+                            });
+                          }}
+                        >
+                          +
+                        </button>
+                        <span>{count}</span>
+                        <button
+                          onClick={() => {
+                            decreaseCount();
+
+                            let productData = {
+                              productID: productId,
+                              colorID: colorId,
+                              sizeID: sizeId,
+                              count: count,
+                              warranty: productWarranty,
+                            };
+                            postProductsToCart({
+                              data: productData,
+                              headers: {
+                                Authorization: `Bearer ${userToken}`,
+                              },
+                            });
+                          }}
+                        >
+                          -
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          setCount((prev) => prev + 1);
+
+                          let productData = {
+                            productID: productId,
+                            colorID: colorId,
+                            sizeID: sizeId,
+                            count: count,
+                            warranty: productWarranty,
+                          };
+                          postProductsToCart({
+                            data: productData,
+                            headers: {
+                              Authorization: `Bearer ${userToken}`,
+                            },
+                          });
+                        }}
+                        className="border border-solid border-teal-600 font-dana text-teal-600 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600"
+                      >
+                        <FaShoppingCart />
+                        افزودن به سبد خرید
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
