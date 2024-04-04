@@ -7,7 +7,36 @@ import { FaLessThan } from "react-icons/fa6";
 // React Router
 import { Link } from "react-router-dom";
 
+// React Query
+import { useQuery } from "react-query";
+
+// Axios
+import { getCartProducts } from "../../configs/axios/axiosConfigs";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
 export default function Cart() {
+  const { userToken } = useUserToken();
+  const { data, isLoading } = useQuery(
+    `cartPage`,
+    async () => {
+      const res = await getCartProducts({
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+
+      console.log(res.data);
+      return res.data;
+    },
+    {
+      cacheTime: 30000,
+      staleTime: 30000,
+      refetchOnMount: true,
+    }
+  );
+
   return (
     <div className="py-5">
       <div className="container">
@@ -47,7 +76,7 @@ export default function Cart() {
                 <span>قیمت کالاها:</span>
                 <span>
                   <span className="font-danaBold">
-                    {(800000).toLocaleString()}
+                    {!isLoading && data?.totalPrice.toLocaleString()}
                   </span>{" "}
                   <span>تومان</span>
                 </span>
@@ -56,7 +85,7 @@ export default function Cart() {
                 <span>جمع سبد خرید:</span>
                 <span>
                   <span className="font-danaBold">
-                    {(800000).toLocaleString()}
+                    {!isLoading && data?.totalPriceAfterOff.toLocaleString()}
                   </span>{" "}
                   <span>تومان</span>
                 </span>
@@ -65,7 +94,10 @@ export default function Cart() {
                 <span>سود شما از این خرید:</span>
                 <span>
                   <span className="font-danaBold">
-                    {(800000).toLocaleString()}
+                    {!isLoading &&
+                      (
+                        data?.totalPrice - data?.totalPriceAfterOff
+                      ).toLocaleString()}
                   </span>{" "}
                   <span>تومان</span>
                 </span>

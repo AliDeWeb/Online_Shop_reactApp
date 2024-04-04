@@ -123,18 +123,24 @@ export const postProductsToCart = axios.create({
   method: `POST`,
   baseURL: `${apiUrl}/v1/cart`,
 });
-postProductsToCart.interceptors.request.use(
-  function (config) {
-    console.log(config);
-    return config;
-  },
-  function (error) {
-    return Promise.reject(error);
-  }
-);
 postProductsToCart.interceptors.response.use(
   function (response) {
     successSwal(`محصول با موفقیت به سبد خرید اضافه شد`);
+    return response;
+  },
+  function (error) {
+    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    return Promise.reject(error);
+  }
+);
+
+//? Get Cart Products
+export const getCartProducts = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}/v1/cart`,
+});
+postProductsToCart.interceptors.response.use(
+  function (response) {
     return response;
   },
   function (error) {
