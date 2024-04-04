@@ -81,7 +81,7 @@ export default function Header() {
       <div
         className={`rounded-l-lg fixed bg-white top-0 bottom-0 right-0 h-[100dvh]  ${
           isHamburgerMenuOpen ? "w-[300px]  py-4 px-6" : "w-0"
-        } transition-all overflow-auto z-30`}
+        } transition-all duration-300 overflow-auto z-30`}
       >
         <div className="flex justify-between items-center">
           <div className="w-[100px]">

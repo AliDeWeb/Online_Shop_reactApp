@@ -1661,6 +1661,18 @@ img {
   transition-duration: 300ms;
 }
 
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+.duration-100 {
+  transition-duration: 100ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
