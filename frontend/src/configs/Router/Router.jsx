@@ -6,6 +6,7 @@ import {
   Register,
   Login,
   ProductsDetails,
+  Cart,
   Page404,
 } from "../Layout/Layout";
 
@@ -18,6 +19,7 @@ export default () => {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="product/:href" element={<ProductsDetails />} />
+          <Route path="cart" element={<Cart />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

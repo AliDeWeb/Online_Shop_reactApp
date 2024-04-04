@@ -265,15 +265,18 @@ export default function Header() {
                 </Link>
               )}
             </div>
-            <div>
-              <button className="p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all">
+            <div className="flex items-center">
+              <Link
+                to="/cart"
+                className="inline-block p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all"
+              >
                 <IoIosCart size="1.2rem" color="rgb(251,146,60)" />
-              </button>
+              </Link>
             </div>
-            <div className="lg:hidden">
-              <button className="p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all">
+            <div className="lg:hidden flex items-center">
+              <Link className="inline-block p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all">
                 <IoIosSearch size="1.2rem" color="rgb(251,146,60)" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
