@@ -400,7 +400,7 @@ export default function ProductsDetails() {
                               headers: {
                                 Authorization: `Bearer ${userToken}`,
                               },
-                            });
+                            }).catch(()=> {setCount(0)})
                           }}
                         >
                           +
@@ -422,7 +422,7 @@ export default function ProductsDetails() {
                               headers: {
                                 Authorization: `Bearer ${userToken}`,
                               },
-                            });
+                            }).catch(()=> {setCount(0)})
                           }}
                         >
                           -
@@ -445,7 +445,7 @@ export default function ProductsDetails() {
                             headers: {
                               Authorization: `Bearer ${userToken}`,
                             },
-                          });
+                          }).catch(()=> {setCount(0)})
                         }}
                         className="border border-solid border-teal-600 font-dana text-teal-600 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600"
                       >
