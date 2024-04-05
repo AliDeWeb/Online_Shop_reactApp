@@ -1,12 +1,22 @@
 import React from "react";
 
 // Icons
-import { FaStar, FaRegStar, FaShoppingCart } from "react-icons/fa";
+import { FaRegStar, FaShoppingCart, FaStar } from "react-icons/fa";
 
 // React Router
 import { Link } from "react-router-dom";
 
+// Axios
+import { postProductsToCart } from "../../configs/axios/axiosConfigs";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken.jsx";
+
 export default function ProductBox({
+  id,
+  colorId,
+  sizeId,
+  warranty,
   discounted,
   price,
   num,
@@ -15,6 +25,8 @@ export default function ProductBox({
   href,
   averageScore,
 }) {
+  const { userToken } = useUserToken();
+
   return (
     <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
       {!!num && !!discounted && (
@@ -87,7 +99,24 @@ export default function ProductBox({
               <span className=" font-dana">تومان</span>
             </div>
             <div>
-              <button className="font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-teal-600 transition-all text-white hover:scale-95 hover:shadow-xl">
+              <button
+                onClick={() => {
+                  let productData = {
+                    productID: id,
+                    colorID: colorId,
+                    sizeID: sizeId,
+                    count: 1000,
+                    warranty: warranty,
+                  };
+                  postProductsToCart({
+                    data: productData,
+                    headers: {
+                      Authorization: `Bearer ${userToken}`,
+                    },
+                  });
+                }}
+                className="font-dana py-1.5 px-5 rounded-xl flex items-center gap-1 bg-teal-600 transition-all text-white hover:scale-95 hover:shadow-xl"
+              >
                 <FaShoppingCart className="transition-all" size="1rem" />
                 <span>افزودن به سبد خرید</span>
               </button>

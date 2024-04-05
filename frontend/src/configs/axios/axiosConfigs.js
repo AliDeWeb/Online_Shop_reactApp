@@ -1,9 +1,9 @@
 // Swal
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-const successSwal = (text) => {
+const successSwal = (text, title) => {
   withReactContent(Swal).fire({
-    title: "خوش اومدی!",
+    title: title,
     text: text,
     icon: "success",
     timer: 2500,
@@ -62,7 +62,10 @@ export const usersValidation = axios.create({
 });
 usersValidation.interceptors.response.use(
   function (response) {
-    successSwal("بزن بریم محصولات شگفت انگیز این هفته رو ببینیم!");
+    successSwal(
+      "بزن بریم محصولات شگفت انگیز این هفته رو ببینیم!",
+      "خوش اومدی!"
+    );
     document.cookie =
       "token=" +
       response.data.token +
@@ -89,7 +92,7 @@ export const newLetter = axios.create({
 });
 newLetter.interceptors.response.use(
   function (response) {
-    successSwal("الان دیگه عضوی از مایی ;(");
+    successSwal("الان دیگه عضوی از مایی ;(", "خوش اومدی!");
     return response;
   },
   function (error) {
@@ -125,7 +128,7 @@ export const postProductsToCart = axios.create({
 });
 postProductsToCart.interceptors.response.use(
   function (response) {
-    successSwal(`محصول با موفقیت به سبد خرید اضافه شد`);
+    successSwal(`محصول با موفقیت به سبد خرید اضافه شد`, null);
     return response;
   },
   function (error) {

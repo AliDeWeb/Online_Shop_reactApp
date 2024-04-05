@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 // Components
 import {
-  SectionsWrapper,
-  ProductBox,
-  LongBanner,
   CategoriesSection,
-  WeblogBox,
   HeadSection,
+  LongBanner,
+  ProductBox,
+  SectionsWrapper,
   TopBrandsSection,
+  WeblogBox,
 } from "../../configs/Layout/Layout";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, A11y } from "swiper/modules";
+import { A11y, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
 // Axios
-import { getMainPageData, apiUrl } from "../../configs/axios/axiosConfigs";
+import { apiUrl, getMainPageData } from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery } from "react-query";
@@ -33,7 +33,6 @@ export default function Home() {
     `mainPageData`,
     async () => {
       let mainData = await getMainPageData();
-      console.log(`now`);
 
       return mainData.data.sections;
     },
@@ -42,7 +41,7 @@ export default function Home() {
       onError: () => {
         refetch();
       },
-    }
+    },
   );
 
   useEffect(() => {
@@ -110,6 +109,10 @@ export default function Home() {
             data?.slider2?.discountedProducts?.map((el) => (
               <SwiperSlide key={el.href}>
                 <ProductBox
+                  id={el?._id}
+                  warranty={el?.warranty[0]?._id}
+                  colorId={el?.colors?.length ? el?.colors[0]?._id : []}
+                  sizeId={el?.sizes?.length ? el?.sizes[0]?._id : []}
                   cover={`${apiUrl}/${el.covers[0]}`}
                   title={el.title}
                   href={`product/${el.href}`}
@@ -117,19 +120,19 @@ export default function Home() {
                     el.off
                       ? el.off
                       : el.colors[0]
-                      ? el.colors[0]?.off
-                      : el.sizes[0].off
-                      ? el.sizes[0].off
-                      : 0
+                        ? el.colors[0]?.off
+                        : el.sizes[0].off
+                          ? el.sizes[0].off
+                          : 0
                   }
                   price={
                     el.mainPrice
                       ? el.mainPrice
                       : el.colors[0]
-                      ? el.colors[0]?.price
-                      : el.sizes[0].price
-                      ? el.sizes[0].price
-                      : 0
+                        ? el.colors[0]?.price
+                        : el.sizes[0].price
+                          ? el.sizes[0].price
+                          : 0
                   }
                   num={el.Availability}
                   averageScore={el.averageScore}
@@ -196,19 +199,19 @@ export default function Home() {
                     el.off
                       ? el.off
                       : el.colors[0]
-                      ? el.colors[0]?.off
-                      : el.sizes[0].off
-                      ? el.sizes[0].off
-                      : 0
+                        ? el.colors[0]?.off
+                        : el.sizes[0].off
+                          ? el.sizes[0].off
+                          : 0
                   }
                   price={
                     el.mainPrice
                       ? el.mainPrice
                       : el.colors[0]
-                      ? el.colors[0]?.price
-                      : el.sizes[0].price
-                      ? el.sizes[0].price
-                      : 0
+                        ? el.colors[0]?.price
+                        : el.sizes[0].price
+                          ? el.sizes[0].price
+                          : 0
                   }
                   num={el.Availability}
                   averageScore={el.averageScore}
@@ -315,19 +318,19 @@ export default function Home() {
                     el.off
                       ? el.off
                       : el.colors[0]
-                      ? el.colors[0]?.off
-                      : el.sizes[0].off
-                      ? el.sizes[0].off
-                      : 0
+                        ? el.colors[0]?.off
+                        : el.sizes[0].off
+                          ? el.sizes[0].off
+                          : 0
                   }
                   price={
                     el.mainPrice
                       ? el.mainPrice
                       : el.colors[0]
-                      ? el.colors[0]?.price
-                      : el.sizes[0].price
-                      ? el.sizes[0].price
-                      : 0
+                        ? el.colors[0]?.price
+                        : el.sizes[0].price
+                          ? el.sizes[0].price
+                          : 0
                   }
                   num={el.Availability}
                   averageScore={el.averageScore}
