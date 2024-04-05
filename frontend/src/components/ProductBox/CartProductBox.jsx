@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Icons
 import { LuShieldCheck } from "react-icons/lu";
@@ -13,6 +13,9 @@ import { postProductsToCart } from "../../configs/axios/axiosConfigs";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
+
+// React Spinners
+import BeatLoader from "react-spinners/BeatLoader";
 
 export default function CartProductBox({
   title,
@@ -30,10 +33,11 @@ export default function CartProductBox({
 }) {
   const { userToken } = useUserToken();
   const [count, setCount] = useState(0);
+  const [isProductFetching, setIsProductFetching] = useState(false);
 
-  useEffect(()=> {
-    setCount(productCount)
-  })
+  useEffect(() => {
+    setCount(productCount);
+  });
 
   return (
     <div className="py-4 grid grid-cols-6 gap-2">
@@ -49,51 +53,67 @@ export default function CartProductBox({
             </Link>
           </div>
           <div className="font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
-            <button
-              onClick={() => {
-                setCount((prev) => prev + 1);
-                let productData = {
-                  productID: productId,
-                  colorID: colorId,
-                  sizeID: sizeId,
-                  count: 1000,
-                  warranty: warranty._id,
-                };
-                postProductsToCart({
-                  data: productData,
-                  headers: {
-                    Authorization: `Bearer ${userToken}`,
-                  },
-                }).then(() => {
-                  refetch();
-                });
-              }}
-            >
-              +
-            </button>
-            <span>{count}</span>
-            <button
-              onClick={() => {
-                setCount((prev) => prev - 1);
-                let productData = {
-                  productID: productId,
-                  colorID: colorId,
-                  sizeID: sizeId,
-                  count: 999,
-                  warranty: warranty._id,
-                };
-                postProductsToCart({
-                  data: productData,
-                  headers: {
-                    Authorization: `Bearer ${userToken}`,
-                  },
-                }).then(() => {
-                  refetch();
-                });
-              }}
-            >
-              -
-            </button>
+            {isProductFetching ? (
+              <BeatLoader size="0.5rem" color="#0d9488" />
+            ) : (
+              <>
+                <button
+                  onClick={() => {
+                    setIsProductFetching(true);
+                    setCount((prev) => prev + 1);
+                    let productData = {
+                      productID: productId,
+                      colorID: colorId,
+                      sizeID: sizeId,
+                      count: 1000,
+                      warranty: warranty._id,
+                    };
+                    postProductsToCart({
+                      data: productData,
+                      headers: {
+                        Authorization: `Bearer ${userToken}`,
+                      },
+                    })
+                      .then(() => {
+                        refetch();
+                      })
+                      .finally(() => {
+                        setIsProductFetching(false);
+                      });
+                  }}
+                >
+                  +
+                </button>
+                <span>{count}</span>
+                <button
+                  onClick={() => {
+                    setIsProductFetching(true);
+                    setCount((prev) => prev - 1);
+                    let productData = {
+                      productID: productId,
+                      colorID: colorId,
+                      sizeID: sizeId,
+                      count: 999,
+                      warranty: warranty._id,
+                    };
+                    postProductsToCart({
+                      data: productData,
+                      headers: {
+                        Authorization: `Bearer ${userToken}`,
+                      },
+                    })
+                      .then(() => {
+                        refetch();
+                      })
+                      .finally(() => {
+                        setIsProductFetching(false);
+                      });
+                  }}
+                >
+                  -
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

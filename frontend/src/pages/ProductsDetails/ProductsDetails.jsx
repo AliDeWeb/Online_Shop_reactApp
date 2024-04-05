@@ -36,6 +36,9 @@ import { useQuery } from "react-query";
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
+// React Spinners
+import BeatLoader from "react-spinners/BeatLoader";
+
 export default function ProductsDetails() {
   const { userToken } = useUserToken();
   const param = useParams();
@@ -66,6 +69,8 @@ export default function ProductsDetails() {
   const [colorId, setColorId] = useState([]);
   const [sizeId, setSizeId] = useState([]);
   const [count, setCount] = useState(0);
+
+  const [isProductFetching, setIsProductFetching] = useState(false);
 
   const increaseCount = useCallback(() => {
     setCount((prev) => prev + 1);
@@ -388,11 +393,15 @@ export default function ProductsDetails() {
                     </span>
                   </div>
                   <div className="mt-2 sm:mt-4 w-full flex items-center justify-center">
-                    {count ? (
+                    {isProductFetching ? (
+                      <BeatLoader size="0.5rem" color="#0d9488" />
+                    ) : count ? (
                       <div className="font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
                         <button
                           onClick={() => {
                             increaseCount();
+
+                            setIsProductFetching(true);
 
                             let productData = {
                               productID: productId,
@@ -406,9 +415,13 @@ export default function ProductsDetails() {
                               headers: {
                                 Authorization: `Bearer ${userToken}`,
                               },
-                            }).catch(() => {
-                              setCount(0);
-                            });
+                            })
+                              .catch(() => {
+                                setCount(0);
+                              })
+                              .finally(() => {
+                                setIsProductFetching(false);
+                              });
                           }}
                         >
                           +
@@ -417,6 +430,8 @@ export default function ProductsDetails() {
                         <button
                           onClick={() => {
                             decreaseCount();
+
+                            setIsProductFetching(true);
 
                             let productData = {
                               productID: productId,
@@ -430,9 +445,13 @@ export default function ProductsDetails() {
                               headers: {
                                 Authorization: `Bearer ${userToken}`,
                               },
-                            }).catch(() => {
-                              setCount(0);
-                            });
+                            })
+                              .catch(() => {
+                                setCount(0);
+                              })
+                              .finally(() => {
+                                setIsProductFetching(false);
+                              });
                           }}
                         >
                           -
@@ -442,6 +461,8 @@ export default function ProductsDetails() {
                       <button
                         onClick={() => {
                           setCount((prev) => prev + 1);
+
+                          setIsProductFetching(true);
 
                           let productData = {
                             productID: productId,
@@ -455,9 +476,13 @@ export default function ProductsDetails() {
                             headers: {
                               Authorization: `Bearer ${userToken}`,
                             },
-                          }).catch(() => {
-                            setCount(0);
-                          });
+                          })
+                            .catch(() => {
+                              setCount(0);
+                            })
+                            .finally(() => {
+                              setIsProductFetching(false);
+                            });
                         }}
                         className="border border-solid border-teal-600 font-dana text-teal-600 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600"
                       >
