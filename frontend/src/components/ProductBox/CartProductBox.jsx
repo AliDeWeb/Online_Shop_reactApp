@@ -26,32 +26,14 @@ export default function CartProductBox({
   productId,
   colorId,
   sizeId,
+  refetch,
 }) {
   const { userToken } = useUserToken();
-  const [count, setCount] = useState(productCount);
+  const [count, setCount] = useState(0);
 
-  const increaseCount = useCallback(() => {
-    setCount((prev) => prev + 1);
-  }, [count]);
-  const decreaseCount = useCallback(() => {
-    setCount((prev) => prev - 1);
-  }, [count]);
-
-  useEffect(() => {
-    let productData = {
-      productID: productId,
-      colorID: colorId,
-      sizeID: sizeId,
-      count: count,
-      warranty: warranty._id,
-    };
-    postProductsToCart({
-      data: productData,
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    });
-  }, [count]);
+  useEffect(()=> {
+    setCount(productCount)
+  })
 
   return (
     <div className="py-4 grid grid-cols-6 gap-2">
@@ -69,7 +51,22 @@ export default function CartProductBox({
           <div className="font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
             <button
               onClick={() => {
-                increaseCount();
+                setCount((prev) => prev + 1);
+                let productData = {
+                  productID: productId,
+                  colorID: colorId,
+                  sizeID: sizeId,
+                  count: 1000,
+                  warranty: warranty._id,
+                };
+                postProductsToCart({
+                  data: productData,
+                  headers: {
+                    Authorization: `Bearer ${userToken}`,
+                  },
+                }).then(() => {
+                  refetch();
+                });
               }}
             >
               +
@@ -77,7 +74,22 @@ export default function CartProductBox({
             <span>{count}</span>
             <button
               onClick={() => {
-                decreaseCount();
+                setCount((prev) => prev - 1);
+                let productData = {
+                  productID: productId,
+                  colorID: colorId,
+                  sizeID: sizeId,
+                  count: 999,
+                  warranty: warranty._id,
+                };
+                postProductsToCart({
+                  data: productData,
+                  headers: {
+                    Authorization: `Bearer ${userToken}`,
+                  },
+                }).then(() => {
+                  refetch();
+                });
               }}
             >
               -

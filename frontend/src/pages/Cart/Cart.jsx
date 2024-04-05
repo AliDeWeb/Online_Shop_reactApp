@@ -20,7 +20,7 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function Cart() {
   const { userToken } = useUserToken();
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, refetch } = useQuery(
     `cartPage`,
     async () => {
       const res = await getCartProducts({
@@ -65,7 +65,8 @@ export default function Cart() {
                   data?.items.map((el) => (
                     <React.Fragment key={Math.random()}>
                       <CartProductBox
-                        productId={el._id}
+                        refetch={refetch}
+                        productId={el.product._id}
                         colorId={el?.color?.length ? el.color[0].colorID : []}
                         sizeId={el?.size?.length ? el.size[0].sizeID : []}
                         title={el.product.title}
