@@ -36,7 +36,7 @@ export default function Cart() {
       cacheTime: 30000,
       staleTime: 0,
       refetchOnMount: true,
-      refetchInterval: 5000,
+      refetchInterval: 20000,
     }
   );
 

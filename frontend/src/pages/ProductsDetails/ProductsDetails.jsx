@@ -78,7 +78,7 @@ export default function ProductsDetails() {
   useEffect(() => {
     if (!isLoading) {
       setProductId(data?.product?._id);
-      setProductWarranty(data?.product?.warranty[0]?.warrantyItem)
+      setProductWarranty(data?.product?.warranty[0]?.warrantyItem);
     }
 
     if (!isLoading) {
@@ -236,8 +236,8 @@ export default function ProductsDetails() {
                       (data.product.colors.length
                         ? "رنگ ها"
                         : data.product.sizes.length
-                        ? "سایز"
-                        : "")}
+                          ? "سایز"
+                          : "")}
                   </div>
                   {!isLoading &&
                     (data.product.colors.length
@@ -270,32 +270,32 @@ export default function ProductsDetails() {
                           </button>
                         ))
                       : data.product.sizes.length
-                      ? data.product.sizes.map((el) => (
-                          <button
-                            key={Math.random()}
-                            onClick={(e) => {
-                              setSizeId(el._id);
-                              if (el.discountedPrice) {
-                                setProductPrice(el.price);
-                                setProductOffPrice(el.discountedPrice);
-                              } else {
-                                setProductPrice(el.price);
-                                setProductOffPrice(0);
-                              }
+                        ? data.product.sizes.map((el) => (
+                            <button
+                              key={Math.random()}
+                              onClick={(e) => {
+                                setSizeId(el._id);
+                                if (el.discountedPrice) {
+                                  setProductPrice(el.price);
+                                  setProductOffPrice(el.discountedPrice);
+                                } else {
+                                  setProductPrice(el.price);
+                                  setProductOffPrice(0);
+                                }
 
-                              document
-                                .querySelectorAll(`.active-size-color`)
-                                .forEach((el) => {
-                                  el.classList.remove(`active-size-color`);
-                                });
-                              e.target.classList.add(`active-size-color`);
-                            }}
-                            className="flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300"
-                          >
-                            {el.title}
-                          </button>
-                        ))
-                      : "")}
+                                document
+                                  .querySelectorAll(`.active-size-color`)
+                                  .forEach((el) => {
+                                    el.classList.remove(`active-size-color`);
+                                  });
+                                e.target.classList.add(`active-size-color`);
+                              }}
+                              className="flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300"
+                            >
+                              {el.title}
+                            </button>
+                          ))
+                        : "")}
                 </div>
                 <div className="mt-4">
                   <div className="w-full font-danaBold text-zinc-700">
@@ -319,8 +319,9 @@ export default function ProductsDetails() {
                   </select>
                 </div>
                 <div
-                  className={`hidden mt-4 ${
-                    !isLoading && (data?.product?.Availability ? "" : "block")
+                  className={`mt-4 ${
+                    !isLoading &&
+                    (data?.product?.Availability === 0 ? "block" : "hidden")
                   }`}
                 >
                   <div className="sm:text-base text-sm flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-red-500 text-white">
@@ -329,7 +330,12 @@ export default function ProductsDetails() {
                     <span>ناموجود</span>
                   </div>
                 </div>
-                <div className="mt-4">
+                <div
+                  className={`mt-4 ${
+                    !isLoading &&
+                    (data?.product?.Availability === 0 ? "hidden" : "block")
+                  }`}
+                >
                   <div className="font-dana flex items-center justify-between mt-8 w-full">
                     <span className="font-danaBold text-teal-600 text-center text-xl sm:text-2xl flex items-center justify-center gap-4 w-full">
                       {productOffPrice ? (
@@ -400,7 +406,9 @@ export default function ProductsDetails() {
                               headers: {
                                 Authorization: `Bearer ${userToken}`,
                               },
-                            }).catch(()=> {setCount(0)})
+                            }).catch(() => {
+                              setCount(0);
+                            });
                           }}
                         >
                           +
@@ -422,7 +430,9 @@ export default function ProductsDetails() {
                               headers: {
                                 Authorization: `Bearer ${userToken}`,
                               },
-                            }).catch(()=> {setCount(0)})
+                            }).catch(() => {
+                              setCount(0);
+                            });
                           }}
                         >
                           -
@@ -445,7 +455,9 @@ export default function ProductsDetails() {
                             headers: {
                               Authorization: `Bearer ${userToken}`,
                             },
-                          }).catch(()=> {setCount(0)})
+                          }).catch(() => {
+                            setCount(0);
+                          });
                         }}
                         className="border border-solid border-teal-600 font-dana text-teal-600 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600"
                       >
