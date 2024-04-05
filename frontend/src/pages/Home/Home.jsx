@@ -110,7 +110,7 @@ export default function Home() {
               <SwiperSlide key={el.href}>
                 <ProductBox
                   id={el?._id}
-                  warranty={el?.warranty[0]?._id}
+                  warranty={el?.warranty[0]?.warrantyItem}
                   colorId={el?.colors?.length ? el?.colors[0]?._id : []}
                   sizeId={el?.sizes?.length ? el?.sizes[0]?._id : []}
                   cover={`${apiUrl}/${el.covers[0]}`}
@@ -193,7 +193,7 @@ export default function Home() {
               <SwiperSlide key={el.href}>
                 <ProductBox
                   id={el?._id}
-                  warranty={el?.warranty[0]?._id}
+                  warranty={el?.warranty[0]?.warrantyItem}
                   colorId={el?.colors?.length ? el?.colors[0]?._id : []}
                   sizeId={el?.sizes?.length ? el?.sizes[0]?._id : []}
                   cover={`${apiUrl}/${el.covers[0]}`}
@@ -316,7 +316,7 @@ export default function Home() {
               <SwiperSlide key={el.href}>
                 <ProductBox
                   id={el?._id}
-                  warranty={el?.warranty[0]?._id}
+                  warranty={el?.warranty[0]?.warrantyItem}
                   colorId={el?.colors?.length ? el?.colors[0]?._id : []}
                   sizeId={el?.sizes?.length ? el?.sizes[0]?._id : []}
                   cover={`${apiUrl}/${el.covers[0]}`}

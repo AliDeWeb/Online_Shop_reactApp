@@ -1,3 +1,5 @@
+import React from "react";
+
 import { CartProductBox } from "../../configs/Layout/Layout";
 
 // Icons
@@ -11,7 +13,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 
 // Axios
-import { getCartProducts } from "../../configs/axios/axiosConfigs";
+import { getCartProducts, apiUrl } from "../../configs/axios/axiosConfigs";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -32,8 +34,9 @@ export default function Cart() {
     },
     {
       cacheTime: 30000,
-      staleTime: 30000,
+      staleTime: 0,
       refetchOnMount: true,
+      refetchInterval: 5000,
     }
   );
 
@@ -47,7 +50,9 @@ export default function Cart() {
                 <div className="flex flex-col">
                   <span className="md:text-xl text-zinc-700">سبد خرید</span>
                   <div className="flex items-center gap-1 text-sm md:text-base">
-                    <span>1</span>
+                    <span>
+                      {data?.countOfProducts ? data?.countOfProducts : 0}
+                    </span>
                     کالا
                   </div>
                 </div>
@@ -56,10 +61,48 @@ export default function Cart() {
                 </div>
               </div>
               <div className="divide-y divide-solid divide-gray-400/50">
-                <CartProductBox />
-                <CartProductBox />
-                <CartProductBox />
-                <CartProductBox />
+                {!isLoading &&
+                  data?.items.map((el) => (
+                    <React.Fragment key={Math.random()}>
+                      <CartProductBox
+                        productId={el._id}
+                        colorId={el?.color?.length ? el.color[0].colorID : []}
+                        sizeId={el?.size?.length ? el.size[0].sizeID : []}
+                        title={el.product.title}
+                        cover={`${apiUrl}/${el.product.covers[0]}`}
+                        warranty={el.warranty}
+                        transportTime={el.product.transport.time}
+                        productCount={
+                          el?.count
+                            ? el?.count
+                            : el?.color?.length
+                              ? el?.color[0]?.count
+                              : el?.size?.length
+                                ? el?.size[0]?.count
+                                : 0
+                        }
+                        price={
+                          el?.product?.mainPrice
+                            ? el?.product?.mainPrice
+                            : el?.color?.length
+                              ? el?.color[0]?.price
+                              : el?.size?.length
+                                ? el?.size[0]?.price
+                                : 0
+                        }
+                        discounted={
+                          el?.product?.off
+                            ? el?.product?.discountedPrice
+                            : el?.color?.length
+                              ? el.color[0]?.discountedPrice
+                              : el?.size?.length
+                                ? el.size[0].discountedPrice
+                                : 0
+                        }
+                        href={`/product/${el.product.href}`}
+                      />
+                    </React.Fragment>
+                  ))}
               </div>
 
               <div className="flex justify-end font-dana text-sm text-orange-500">

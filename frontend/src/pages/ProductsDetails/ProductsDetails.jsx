@@ -78,7 +78,7 @@ export default function ProductsDetails() {
   useEffect(() => {
     if (!isLoading) {
       setProductId(data?.product?._id);
-      setProductWarranty(data?.product?.warranty[0]?._id)
+      setProductWarranty(data?.product?.warranty[0]?.warrantyItem)
     }
 
     if (!isLoading) {
@@ -311,7 +311,7 @@ export default function ProductsDetails() {
                       data?.product?.warranty?.map((el) => (
                         <option
                           key={Math.random()}
-                          value={`${el.warrantyItem._id}`}
+                          value={`${el.warrantyItem.warrantyItem}`}
                         >
                           {el.warrantyItem.title}
                         </option>
@@ -392,7 +392,7 @@ export default function ProductsDetails() {
                               productID: productId,
                               colorID: colorId,
                               sizeID: sizeId,
-                              count: count,
+                              count: 1000,
                               warranty: productWarranty,
                             };
                             postProductsToCart({
@@ -414,7 +414,7 @@ export default function ProductsDetails() {
                               productID: productId,
                               colorID: colorId,
                               sizeID: sizeId,
-                              count: count,
+                              count: 999,
                               warranty: productWarranty,
                             };
                             postProductsToCart({
@@ -437,7 +437,7 @@ export default function ProductsDetails() {
                             productID: productId,
                             colorID: colorId,
                             sizeID: sizeId,
-                            count: count,
+                            count: 1000,
                             warranty: productWarranty,
                           };
                           postProductsToCart({
