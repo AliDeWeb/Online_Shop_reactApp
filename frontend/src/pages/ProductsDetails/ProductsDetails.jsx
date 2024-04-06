@@ -82,12 +82,11 @@ export default function ProductsDetails() {
 
   useEffect(() => {
     if (!isLoading) {
+      console.log(data);
+
       setProductId(data?.product?._id);
       setProductWarranty(data?.product?.warranty[0]?.warrantyItem);
-    }
 
-    if (!isLoading) {
-      console.log(data);
       if (data.product.mainPrice) {
         setProductPrice(data.product.mainPrice);
         setColorId([]);
@@ -106,6 +105,16 @@ export default function ProductsDetails() {
         setProductOffPrice(data.product.sizes[0].discountedPrice);
       } else if (data?.product?.colors[0]?.discountedPrice) {
         setProductOffPrice(data.product.colors[0].discountedPrice);
+      }
+
+      if (data?.product?.colors?.length) {
+        setCount(data?.product?.colors[0]?.count);
+      } else if (data?.product?.sizes?.length) {
+        setCount(data?.product?.sizes[0]?.count);
+      } else if (data?.product?.count) {
+        setCount(data?.product?.count);
+      } else {
+        console.log(`Nothing`);
       }
     }
   }, [data]);
@@ -251,6 +260,8 @@ export default function ProductsDetails() {
                             key={Math.random()}
                             onClick={(e) => {
                               setColorId(el._id);
+                              setCount(el.count);
+
                               document
                                 .querySelectorAll(`.active-size-color`)
                                 .forEach((el) => {
@@ -280,6 +291,7 @@ export default function ProductsDetails() {
                               key={Math.random()}
                               onClick={(e) => {
                                 setSizeId(el._id);
+                                setCount(el.count);
                                 if (el.discountedPrice) {
                                   setProductPrice(el.price);
                                   setProductOffPrice(el.discountedPrice);
