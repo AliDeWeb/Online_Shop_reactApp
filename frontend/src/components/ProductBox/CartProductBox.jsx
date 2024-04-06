@@ -27,8 +27,8 @@ export default function CartProductBox({
   href,
   productCount,
   productId,
-  colorId,
-  sizeId,
+  color,
+  size,
   refetch,
 }) {
   const { userToken } = useUserToken();
@@ -63,8 +63,8 @@ export default function CartProductBox({
                     setCount((prev) => prev + 1);
                     let productData = {
                       productID: productId,
-                      colorID: colorId,
-                      sizeID: sizeId,
+                      colorID: color.colorID,
+                      sizeID: size.sizeID,
                       count: 1000,
                       warranty: warranty._id,
                     };
@@ -91,8 +91,8 @@ export default function CartProductBox({
                     setCount((prev) => prev - 1);
                     let productData = {
                       productID: productId,
-                      colorID: colorId,
-                      sizeID: sizeId,
+                      colorID: color.colorID,
+                      sizeID: size.sizeID,
                       count: 999,
                       warranty: warranty._id,
                     };
@@ -122,12 +122,16 @@ export default function CartProductBox({
           <Link to={href}>{title}</Link>
         </h2>
         <div className="mt-4 text-gray-400 flex flex-col gap-2 font-dana text-xs sm:text-sm">
-          <span className="flex items-center gap-1 font-dana rounded-xl text-black">
-            <span
-              className={`size-[15px] rounded-full outline-none bg-black`}
-            ></span>
-            مشکی
-          </span>
+          {(color || size) && (
+            <span className="flex items-center gap-1 font-dana rounded-xl text-black">
+              <span
+                className={`size-[15px] rounded-full outline-none`}
+                style={{ background: `${color ? color.hex : null}` }}
+              ></span>
+              {color ? color.title : size ? size.title : ""}
+            </span>
+          )}
+
           <div className="flex items-center gap-2">
             <LuShieldCheck color="rgb(248,113,113)" />
             <span>{warranty.title}</span>

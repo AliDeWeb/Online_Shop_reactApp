@@ -67,8 +67,8 @@ export default function Cart() {
                       <CartProductBox
                         refetch={refetch}
                         productId={el.product._id}
-                        colorId={el?.color?.length ? el.color[0].colorID : []}
-                        sizeId={el?.size?.length ? el.size[0].sizeID : []}
+                        color={el?.color?.length ? el.color[0] : null}
+                        size={el?.size?.length ? el.size[0] : null}
                         title={el.product.title}
                         cover={`${apiUrl}/${el.product.covers[0]}`}
                         warranty={el.warranty}
