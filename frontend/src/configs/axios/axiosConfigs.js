@@ -1,7 +1,7 @@
 // Swal
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-const successSwal = (text, title) => {
+const successSwal = (text, title = null) => {
   withReactContent(Swal).fire({
     title: title,
     text: text,
@@ -148,6 +148,51 @@ postProductsToCart.interceptors.response.use(
   },
   function (error) {
     errorSwal(`لطفا وارد حساب کاربری خود شوید`);
+    return Promise.reject(error);
+  }
+);
+
+//? Post Email To Get Change Password Code
+export const postUserEmailToChangePassword = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}/v1/users/forgetPassword/sendCode`,
+});
+postUserEmailToChangePassword.interceptors.response.use(
+  function (response) {
+    successSwal(`کد با موفقیت ارسال شد`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error.message);
+    return Promise.reject(error);
+  }
+);
+//? Post Code To Get Change Password
+export const postUserCodeToChangePassword = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}/v1/users/forgetPassword/getCode`,
+});
+postUserCodeToChangePassword.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error.response.data.message);
+    return Promise.reject(error);
+  }
+);
+//? Post New Password Change Password
+export const postNewPasswordChangePassword = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}/v1/users/changePassword`,
+});
+postNewPasswordChangePassword.interceptors.response.use(
+  function (response) {
+    successSwal(`رمز عبور با موفقیت تغییر یافت`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error.response.data.message);
     return Promise.reject(error);
   }
 );

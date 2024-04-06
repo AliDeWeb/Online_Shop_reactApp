@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// Axios
-import { usersValidation } from "../../configs/axios/axiosConfigs";
-
 // React Hook Form
 import { useForm } from "react-hook-form";
 
@@ -10,13 +7,17 @@ import { useForm } from "react-hook-form";
 import siteLogo from "../../assets/imgs/site-logo.svg";
 
 // React Router
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 // React Spinners
 import ClipLoader from "react-spinners/ClipLoader";
 
-export default function Login() {
+// Axios
+import { postUserCodeToChangePassword } from "../../configs/axios/axiosConfigs";
+
+export default function ForgetPasswordCode() {
   const navigator = useNavigate();
+  const param = useParams();
   const [isDataFetching, setIsDataFetching] = useState(false);
 
   const {
@@ -27,20 +28,12 @@ export default function Login() {
 
   const submitForm = (data) => {
     setIsDataFetching(true);
-    let userData = {
-      email: data.emailAddress.trim(),
-      password: data.password.trim(),
-    };
-
-    usersValidation({
-      url: "/login",
-      data: userData,
+    postUserCodeToChangePassword({
+      url: `/${param.email}/${data.conformCode}`,
     })
-      .then(() =>
-        setTimeout(() => {
-          navigator("/home");
-        }, 2000)
-      )
+      .then((res) => {
+        navigator(`/forgot-password-new-email/${res.data.codeToken}`)
+      })
       .finally(() => {
         setIsDataFetching(false);
       });
@@ -72,59 +65,51 @@ export default function Login() {
                   <img src={siteLogo} alt="img" />
                 </Link>
               </div>
-              <Link to="/home" className="text-sm font-dana text-gray-400">
+              <button
+                onClick={() => {
+                  navigator(-1);
+                }}
+                className="text-sm font-dana text-gray-400"
+              >
                 بازگشت
-              </Link>
+              </button>
             </div>
             <h2 className="font-danaBold text-xl mb-2 text-zinc-700">
-              خوش برگشتی ;)
+              وارد کردن کد تایید
             </h2>
             <p className="text-gray-400 text-xs sm:text-sm mb-6">
-              خرید جدیدترین محصولات با کیفیت روز با تیمچه
+              لطفا کد تایید را وارد نمایید
             </p>
-            <label htmlFor="emailAddress" className="mb-1.5">
-              ایمیل
+            <label htmlFor="conformCode" className="mb-1.5">
+              کد تایید
             </label>
             <input
-              {...register(`emailAddress`, {
-                required: "این فیلد نمیتواند خالی باشد",
-                pattern: {
-                  value:
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i,
-                  message: "ایمیل را به درستی وارد نمایید",
-                },
-              })}
-              id="emailAddress"
-              type="text"
-              placeholder="ali@gmail.com"
-              className="font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
-            />
-            {errors.emailAddress && (
-              <span className="text-red-400 mb-4 text-xs sm:text-sm">
-                * {errors.emailAddress.message}
-              </span>
-            )}
-            <label htmlFor="password" className="mb-1.5">
-              رمز عبور
-            </label>
-            <input
-              {...register(`password`, {
+              {...register(`conformCode`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 minLength: {
-                  value: 8,
-                  message: "رمز عبور باید حداقل 8 کارکتر داشته باشد",
+                  value: 5,
+                  message: `کد حداقل 5 رقم است`,
+                },
+                maxLength: {
+                  value: 5,
+                  message: `کد حداکثر 5 رقم است`,
+                },
+                pattern: {
+                  value: /\d+/i,
+                  message: `کد را به درستی وارد نمایید`,
                 },
               })}
-              id="password"
-              type="password"
-              placeholder="رمز عبور"
-              className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
+              id="conformCode"
+              type="text"
+              placeholder="12345"
+              className="font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
-            {errors.password && (
+            {errors.conformCode && (
               <span className="text-red-400 mb-4 text-xs sm:text-sm">
-                * {errors.password.message}
+                * {errors.conformCode.message}
               </span>
             )}
+
             <button
               className="font-danaBold mt-4 cursor-pointer w-full h-[40px] bg-orange-100 hover:bg-orange-200 hover:scale-90 transition-all rounded-lg flex justify-center items-center"
               type="submit"
@@ -132,21 +117,9 @@ export default function Login() {
               {isDataFetching ? (
                 <ClipLoader color="#d97706" size="18" />
               ) : (
-                "برو بریم..."
+                "دریافت کد"
               )}
             </button>
-            <Link
-              to="/register"
-              className="inline-block mt-4 font-dana text-sm text-zinc-700"
-            >
-              حساب کاربری نداری؟ ثبت نام
-            </Link>
-            <Link
-              to="/forgot-password"
-              className="inline-block mt-4 font-dana text-xs text-zinc-700"
-            >
-              فراموشی رمز عبور
-            </Link>
           </form>
         </div>
       </div>

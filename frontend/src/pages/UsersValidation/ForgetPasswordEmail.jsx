@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// Axios
-import { usersValidation } from "../../configs/axios/axiosConfigs";
-
 // React Hook Form
 import { useForm } from "react-hook-form";
 
@@ -10,12 +7,15 @@ import { useForm } from "react-hook-form";
 import siteLogo from "../../assets/imgs/site-logo.svg";
 
 // React Router
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // React Spinners
 import ClipLoader from "react-spinners/ClipLoader";
 
-export default function Login() {
+// Axios
+import { postUserEmailToChangePassword } from "../../configs/axios/axiosConfigs";
+
+export default function ForgetPasswordEmail() {
   const navigator = useNavigate();
   const [isDataFetching, setIsDataFetching] = useState(false);
 
@@ -27,20 +27,12 @@ export default function Login() {
 
   const submitForm = (data) => {
     setIsDataFetching(true);
-    let userData = {
-      email: data.emailAddress.trim(),
-      password: data.password.trim(),
-    };
-
-    usersValidation({
-      url: "/login",
-      data: userData,
+    postUserEmailToChangePassword({
+      url: `/${data.emailAddress}`,
     })
-      .then(() =>
-        setTimeout(() => {
-          navigator("/home");
-        }, 2000)
-      )
+      .then(() => {
+        navigator(`/forgot-password-code/${data.emailAddress}`);
+      })
       .finally(() => {
         setIsDataFetching(false);
       });
@@ -72,15 +64,20 @@ export default function Login() {
                   <img src={siteLogo} alt="img" />
                 </Link>
               </div>
-              <Link to="/home" className="text-sm font-dana text-gray-400">
+              <button
+                onClick={() => {
+                  navigator(-1);
+                }}
+                className="text-sm font-dana text-gray-400"
+              >
                 بازگشت
-              </Link>
+              </button>
             </div>
             <h2 className="font-danaBold text-xl mb-2 text-zinc-700">
-              خوش برگشتی ;)
+              فراموشی رمز عبور
             </h2>
             <p className="text-gray-400 text-xs sm:text-sm mb-6">
-              خرید جدیدترین محصولات با کیفیت روز با تیمچه
+              بازیابی رمز عبور
             </p>
             <label htmlFor="emailAddress" className="mb-1.5">
               ایمیل
@@ -104,27 +101,7 @@ export default function Login() {
                 * {errors.emailAddress.message}
               </span>
             )}
-            <label htmlFor="password" className="mb-1.5">
-              رمز عبور
-            </label>
-            <input
-              {...register(`password`, {
-                required: "این فیلد نمیتواند خالی باشد",
-                minLength: {
-                  value: 8,
-                  message: "رمز عبور باید حداقل 8 کارکتر داشته باشد",
-                },
-              })}
-              id="password"
-              type="password"
-              placeholder="رمز عبور"
-              className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
-            />
-            {errors.password && (
-              <span className="text-red-400 mb-4 text-xs sm:text-sm">
-                * {errors.password.message}
-              </span>
-            )}
+
             <button
               className="font-danaBold mt-4 cursor-pointer w-full h-[40px] bg-orange-100 hover:bg-orange-200 hover:scale-90 transition-all rounded-lg flex justify-center items-center"
               type="submit"
@@ -132,21 +109,9 @@ export default function Login() {
               {isDataFetching ? (
                 <ClipLoader color="#d97706" size="18" />
               ) : (
-                "برو بریم..."
+                "دریافت کد"
               )}
             </button>
-            <Link
-              to="/register"
-              className="inline-block mt-4 font-dana text-sm text-zinc-700"
-            >
-              حساب کاربری نداری؟ ثبت نام
-            </Link>
-            <Link
-              to="/forgot-password"
-              className="inline-block mt-4 font-dana text-xs text-zinc-700"
-            >
-              فراموشی رمز عبور
-            </Link>
           </form>
         </div>
       </div>
