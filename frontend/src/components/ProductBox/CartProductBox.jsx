@@ -152,7 +152,7 @@ export default function CartProductBox({
               </span>
             )}
             <span className="inline-block mt-1.5 text-base sm:text-lg font-danaBold text-zinc-700">
-              {price.toLocaleString()} تومان
+              {price?.toLocaleString()} تومان
             </span>
           </div>
         </div>
