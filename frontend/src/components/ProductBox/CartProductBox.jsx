@@ -63,8 +63,8 @@ export default function CartProductBox({
                     setCount((prev) => prev + 1);
                     let productData = {
                       productID: productId,
-                      colorID: color.colorID,
-                      sizeID: size.sizeID,
+                      colorID: color?.colorID ? color?.colorID : [],
+                      sizeID: size?.sizeID ? size?.sizeID : [],
                       count: 1000,
                       warranty: warranty._id,
                     };
@@ -91,8 +91,8 @@ export default function CartProductBox({
                     setCount((prev) => prev - 1);
                     let productData = {
                       productID: productId,
-                      colorID: color.colorID,
-                      sizeID: size.sizeID,
+                      colorID: color?.colorID ? color?.colorID : [],
+                      sizeID: size?.sizeID ? size?.sizeID : [],
                       count: 999,
                       warranty: warranty._id,
                     };

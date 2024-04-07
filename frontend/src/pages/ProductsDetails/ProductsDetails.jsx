@@ -49,6 +49,9 @@ export default function ProductsDetails() {
     async () => {
       const res = await getProductsInfos({
         url: `/${param.href}`,
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
       }).catch(() => {
         navigator("/404");
       });
@@ -56,9 +59,8 @@ export default function ProductsDetails() {
       return res.data;
     },
     {
-      refetchIntervalInBackground: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
+      staleTime: 0,
+      refetchOnMount: true,
     }
   );
 
@@ -107,12 +109,12 @@ export default function ProductsDetails() {
         setProductOffPrice(data.product.colors[0].discountedPrice);
       }
 
-      if (data?.product?.colors?.length) {
-        setCount(data?.product?.colors[0]?.count);
-      } else if (data?.product?.sizes?.length) {
-        setCount(data?.product?.sizes[0]?.count);
-      } else if (data?.product?.count) {
-        setCount(data?.product?.count);
+      if (data?.cartItem[0]?.color?.length) {
+        setCount(data?.cartItem[0]?.color[0]?.count);
+      } else if (data?.cartItem[0]?.size?.length) {
+        setCount(data?.cartItem[0]?.size[0]?.count);
+      } else if (data?.cartItem[0]?.count) {
+        setCount(data?.cartItem[0]?.count);
       } else {
         console.log(`Nothing`);
       }
@@ -260,7 +262,15 @@ export default function ProductsDetails() {
                             key={Math.random()}
                             onClick={(e) => {
                               setColorId(el._id);
-                              setCount(el.count);
+                              setCount(
+                                data?.cartItem?.length &&
+                                  data?.cartItem[0]?.color?.length
+                                  ? el?._id ===
+                                    data?.cartItem[0]?.color[0]?.colorID
+                                    ? data?.cartItem[0]?.color[0]?.count
+                                    : 0
+                                  : 0
+                              );
 
                               document
                                 .querySelectorAll(`.active-size-color`)
@@ -291,7 +301,15 @@ export default function ProductsDetails() {
                               key={Math.random()}
                               onClick={(e) => {
                                 setSizeId(el._id);
-                                setCount(el.count);
+                                setCount(
+                                  data?.cartItem?.length &&
+                                    data?.cartItem[0]?.size?.length
+                                    ? el?._id ===
+                                      data?.cartItem[0]?.size[0]?.sizeID
+                                      ? data?.cartItem[0]?.size[0]?.count
+                                      : 0
+                                    : 0
+                                );
                                 if (el.discountedPrice) {
                                   setProductPrice(el.price);
                                   setProductOffPrice(el.discountedPrice);
