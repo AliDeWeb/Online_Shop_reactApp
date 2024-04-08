@@ -44,7 +44,7 @@ export default function ProductsDetails() {
   const param = useParams();
   const navigator = useNavigate();
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, refetch } = useQuery(
     `product${param.href}`,
     async () => {
       const res = await getProductsInfos({
@@ -108,21 +108,21 @@ export default function ProductsDetails() {
       } else if (data?.product?.colors[0]?.discountedPrice) {
         setProductOffPrice(data.product.colors[0].discountedPrice);
       }
-
-      if (data?.cartItem[0]?.color?.length) {
-        setCount(data?.cartItem[0]?.color[0]?.count);
-      } else if (data?.cartItem[0]?.size?.length) {
-        setCount(data?.cartItem[0]?.size[0]?.count);
-      } else if (data?.cartItem[0]?.count) {
-        setCount(data?.cartItem[0]?.count);
-      } else {
-        console.log(`Nothing`);
-      }
     }
   }, [data]);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
+
+    if (data?.cartItem[0]?.color?.length) {
+      setCount(data?.cartItem[0]?.color[0]?.count);
+    } else if (data?.cartItem[0]?.size?.length) {
+      setCount(data?.cartItem[0]?.size[0]?.count);
+    } else if (data?.cartItem[0]?.count) {
+      setCount(data?.cartItem[0]?.count);
+    } else {
+      console.log(`Nothing`);
+    }
   }, []);
 
   return (
@@ -262,15 +262,27 @@ export default function ProductsDetails() {
                             key={Math.random()}
                             onClick={(e) => {
                               setColorId(el._id);
-                              setCount(
-                                data?.cartItem?.length &&
-                                  data?.cartItem[0]?.color?.length
-                                  ? el?._id ===
-                                    data?.cartItem[0]?.color[0]?.colorID
-                                    ? data?.cartItem[0]?.color[0]?.count
-                                    : 0
-                                  : 0
-                              );
+
+                              let items = data?.cartItem?.length
+                                ? data?.cartItem
+                                : null;
+
+                              items &&
+                                (function () {
+                                  let item = items.filter((elem) => {
+                                    return elem?.color[0]?.colorID === el?._id;
+                                  });
+
+                                  console.log(item);
+
+                                  let countOfProduct = item?.length
+                                    ? item[0]?.color[0]?.count
+                                    : 0;
+
+                                  console.log(countOfProduct);
+
+                                  setCount(countOfProduct);
+                                })();
 
                               document
                                 .querySelectorAll(`.active-size-color`)
@@ -446,6 +458,9 @@ export default function ProductsDetails() {
                                 Authorization: `Bearer ${userToken}`,
                               },
                             })
+                              .then(() => {
+                                refetch();
+                              })
                               .catch(() => {
                                 setCount(0);
                               })
@@ -476,6 +491,9 @@ export default function ProductsDetails() {
                                 Authorization: `Bearer ${userToken}`,
                               },
                             })
+                              .then(() => {
+                                refetch();
+                              })
                               .catch(() => {
                                 setCount(0);
                               })
@@ -507,6 +525,9 @@ export default function ProductsDetails() {
                               Authorization: `Bearer ${userToken}`,
                             },
                           })
+                            .then(() => {
+                              refetch();
+                            })
                             .catch(() => {
                               setCount(0);
                             })
