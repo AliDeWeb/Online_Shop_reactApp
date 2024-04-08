@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -72,6 +72,8 @@ export default function ProductsDetails() {
   const [sizeId, setSizeId] = useState([]);
   const [count, setCount] = useState(0);
 
+  const isFirstMount = useRef(true);
+
   const [isProductFetching, setIsProductFetching] = useState(false);
 
   const increaseCount = useCallback(() => {
@@ -86,6 +88,18 @@ export default function ProductsDetails() {
     if (!isLoading) {
       setProductId(data?.product?._id);
       setProductWarranty(data?.product?.warranty[0]?.warrantyItem);
+
+      if (isFirstMount.current) {
+        if (data?.cartItem[0]?.color?.length) {
+          setCount(data?.cartItem[0]?.color[0]?.count);
+        } else if (data?.cartItem[0]?.size?.length) {
+          setCount(data?.cartItem[0]?.size[0]?.count);
+        } else if (data?.cartItem[0]?.count) {
+          setCount(data?.cartItem[0]?.count);
+        }
+
+        isFirstMount.current = false;
+      }
 
       if (data.product.mainPrice) {
         setProductPrice(data.product.mainPrice);
@@ -111,14 +125,6 @@ export default function ProductsDetails() {
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-
-    if (data?.cartItem[0]?.color?.length) {
-      setCount(data?.cartItem[0]?.color[0]?.count);
-    } else if (data?.cartItem[0]?.size?.length) {
-      setCount(data?.cartItem[0]?.size[0]?.count);
-    } else if (data?.cartItem[0]?.count) {
-      setCount(data?.cartItem[0]?.count);
-    }
   }, []);
 
   return (
@@ -314,7 +320,7 @@ export default function ProductsDetails() {
                                   ? data?.cartItem
                                   : null;
 
-                                  console.log(items);
+                                console.log(items);
 
                                 items &&
                                   (function () {
