@@ -7,7 +7,7 @@ import {
   Login,
   ForgetPasswordEmail,
   ForgetPasswordCode,
-  ForgetPasswordNewEmail,
+  ForgetPasswordNewPassword,
   ProductsDetails,
   Cart,
   Page404,
@@ -23,7 +23,7 @@ export default () => {
           <Route path="login" element={<Login />} />
           <Route path="forgot-password" element={<ForgetPasswordEmail />} />
           <Route path="forgot-password-code/:email" element={<ForgetPasswordCode />} />
-          <Route path="forgot-password-new-email/:token" element={<ForgetPasswordNewEmail />} />
+          <Route path="forgot-password-new-password/:token" element={<ForgetPasswordNewPassword />} />
           <Route path="product/:href" element={<ProductsDetails />} />
           <Route path="cart" element={<Cart />} />
         </Route>

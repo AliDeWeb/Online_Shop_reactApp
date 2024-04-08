@@ -5,7 +5,7 @@ export { default as Register } from "../../pages/UsersValidation/Register";
 export { default as Login } from "../../pages/UsersValidation/Login";
 export { default as ForgetPasswordEmail } from "../../pages/UsersValidation/ForgetPasswordEmail";
 export { default as ForgetPasswordCode } from "../../pages/UsersValidation/ForgetPasswordCode";
-export { default as ForgetPasswordNewEmail } from "../../pages/UsersValidation/ForgetPasswordNewEmail";
+export { default as ForgetPasswordNewPassword } from "../../pages/UsersValidation/ForgetPasswordNewPassword";
 export { default as ProductsDetails } from "../../pages/ProductsDetails/ProductsDetails";
 export { default as Cart } from "../../pages/Cart/Cart";
 export { default as Page404 } from "../../pages/Page404/Page404";

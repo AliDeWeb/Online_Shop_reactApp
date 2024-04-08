@@ -32,7 +32,7 @@ export default function ForgetPasswordCode() {
       url: `/${param.email}/${data.conformCode}`,
     })
       .then((res) => {
-        navigator(`/forgot-password-new-email/${res.data.codeToken}`)
+        navigator(`/forgot-password-new-password/${res.data.codeToken}`)
       })
       .finally(() => {
         setIsDataFetching(false);
@@ -117,7 +117,7 @@ export default function ForgetPasswordCode() {
               {isDataFetching ? (
                 <ClipLoader color="#d97706" size="18" />
               ) : (
-                "دریافت کد"
+                "ارسال"
               )}
             </button>
           </form>

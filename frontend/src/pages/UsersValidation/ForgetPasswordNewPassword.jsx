@@ -15,7 +15,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 // Axios
 import { postNewPasswordChangePassword } from "../../configs/axios/axiosConfigs";
 
-export default function ForgetPasswordNewEmail() {
+export default function ForgetPasswordNewPassword() {
   const navigator = useNavigate();
   const param = useParams();
   const [isDataFetching, setIsDataFetching] = useState(false);
@@ -113,7 +113,7 @@ export default function ForgetPasswordNewEmail() {
               {isDataFetching ? (
                 <ClipLoader color="#d97706" size="18" />
               ) : (
-                "دریافت کد"
+                "ارسال"
               )}
             </button>
           </form>
