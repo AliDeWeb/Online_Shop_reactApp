@@ -4,7 +4,7 @@
 
 @layer base {
   img {
-    @apply size-full;
+    @apply size-full object-contain;
   }
 }
 @layer components {

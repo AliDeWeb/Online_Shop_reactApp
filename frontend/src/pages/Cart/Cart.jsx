@@ -28,15 +28,12 @@ export default function Cart() {
           Authorization: `Bearer ${userToken}`,
         },
       });
-
-      console.log(res.data);
       return res.data;
     },
     {
       cacheTime: 30000,
       staleTime: 0,
       refetchOnMount: true,
-      refetchInterval: 20000,
     }
   );
 
