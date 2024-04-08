@@ -275,8 +275,6 @@ export default function ProductsDetails() {
                                     return elem?.color[0]?.colorID === el?._id;
                                   });
 
-                                  console.log(item);
-
                                   let countOfProduct = item?.length
                                     ? item[0]?.color[0]?.count
                                     : 0;
@@ -314,13 +312,9 @@ export default function ProductsDetails() {
                               onClick={(e) => {
                                 setSizeId(el._id);
 
-                                console.log(data);
-
                                 let items = data?.cartItem[0].product.length
                                   ? data?.cartItem
                                   : null;
-
-                                console.log(items);
 
                                 items &&
                                   (function () {
