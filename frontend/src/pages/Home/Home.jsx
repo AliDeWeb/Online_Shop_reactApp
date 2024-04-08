@@ -44,10 +44,6 @@ export default function Home() {
     }
   );
 
-  useEffect(() => {
-    console.log(data);
-  });
-
   return (
     <main>
       <HeadSection

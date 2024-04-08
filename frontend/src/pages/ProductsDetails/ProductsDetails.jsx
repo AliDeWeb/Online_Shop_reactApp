@@ -84,8 +84,6 @@ export default function ProductsDetails() {
 
   useEffect(() => {
     if (!isLoading) {
-      console.log(data);
-
       setProductId(data?.product?._id);
       setProductWarranty(data?.product?.warranty[0]?.warrantyItem);
 
@@ -120,8 +118,6 @@ export default function ProductsDetails() {
       setCount(data?.cartItem[0]?.size[0]?.count);
     } else if (data?.cartItem[0]?.count) {
       setCount(data?.cartItem[0]?.count);
-    } else {
-      console.log(`Nothing`);
     }
   }, []);
 
@@ -263,7 +259,7 @@ export default function ProductsDetails() {
                             onClick={(e) => {
                               setColorId(el._id);
 
-                              let items = data?.cartItem?.length
+                              let items = data?.cartItem[0].product.length
                                 ? data?.cartItem
                                 : null;
 
@@ -278,8 +274,6 @@ export default function ProductsDetails() {
                                   let countOfProduct = item?.length
                                     ? item[0]?.color[0]?.count
                                     : 0;
-
-                                  console.log(countOfProduct);
 
                                   setCount(countOfProduct);
                                 })();
@@ -313,15 +307,28 @@ export default function ProductsDetails() {
                               key={Math.random()}
                               onClick={(e) => {
                                 setSizeId(el._id);
-                                setCount(
-                                  data?.cartItem?.length &&
-                                    data?.cartItem[0]?.size?.length
-                                    ? el?._id ===
-                                      data?.cartItem[0]?.size[0]?.sizeID
-                                      ? data?.cartItem[0]?.size[0]?.count
-                                      : 0
-                                    : 0
-                                );
+
+                                console.log(data);
+
+                                let items = data?.cartItem[0].product.length
+                                  ? data?.cartItem
+                                  : null;
+
+                                  console.log(items);
+
+                                items &&
+                                  (function () {
+                                    let item = items.filter((elem) => {
+                                      return elem?.size[0]?.sizeID === el?._id;
+                                    });
+
+                                    let countOfProduct = item?.length
+                                      ? item[0]?.size[0]?.count
+                                      : 0;
+
+                                    setCount(countOfProduct);
+                                  })();
+
                                 if (el.discountedPrice) {
                                   setProductPrice(el.price);
                                   setProductOffPrice(el.discountedPrice);
