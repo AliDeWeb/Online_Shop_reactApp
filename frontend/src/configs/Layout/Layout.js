@@ -8,6 +8,7 @@ export { default as ForgetPasswordCode } from "../../pages/UsersValidation/Forge
 export { default as ForgetPasswordNewPassword } from "../../pages/UsersValidation/ForgetPasswordNewPassword";
 export { default as ProductsDetails } from "../../pages/ProductsDetails/ProductsDetails";
 export { default as Cart } from "../../pages/Cart/Cart";
+export { default as Search } from "../../pages/Search/Search";
 export { default as Page404 } from "../../pages/Page404/Page404";
 
 // Components
@@ -22,4 +23,3 @@ export { default as HeadSection } from "../../components/HeadSection/HeadSection
 export { default as TopBrandsSection } from "../../components/TopBrandsSection/TopBrandsSection";
 export { default as Accordion } from "../../components/Accordion/Accordion";
 export { default as CartProductBox } from "../../components/ProductBox/CartProductBox";
-

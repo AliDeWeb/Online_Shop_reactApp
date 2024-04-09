@@ -20,7 +20,7 @@ import {
 import { CiShoppingBasket } from "react-icons/ci";
 
 // React Router
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 // Axios
 import { getUserData, getCategories } from "../../configs/axios/axiosConfigs";
@@ -33,7 +33,7 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function Header() {
   const [categories, setCategories] = useState(null);
-
+  const param = useParams();
   const { userToken } = useUserToken();
   const { data, refetch } = useQuery(
     `userDate`,
@@ -237,6 +237,7 @@ export default function Header() {
                 className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
                 type="text"
                 placeholder="جستجو در محصولات"
+                defaultValue={location.pathname.includes(`search`) ? param.searchValue : ""}
               />
             </div>
           </div>

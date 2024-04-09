@@ -65,4 +65,8 @@ input::placeholder {
 .MuiButtonBase-root {
   border-radius: 0.6rem;
   margin-bottom: 0.5rem;
+  font-family: "dana";
+}
+.MuiStack-root {
+  direction: ltr;
 }

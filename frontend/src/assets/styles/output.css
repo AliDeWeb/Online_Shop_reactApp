@@ -1101,6 +1101,10 @@ img {
   cursor: pointer;
 }
 
+.list-disc {
+  list-style-type: disc;
+}
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -1249,6 +1253,10 @@ img {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.rounded {
+  border-radius: 0.25rem;
 }
 
 .rounded-full {
@@ -1423,6 +1431,11 @@ img {
   background-color: rgb(24 24 27 / 0.7);
 }
 
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -1568,6 +1581,10 @@ img {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .text-center {
@@ -1865,9 +1882,17 @@ img {
   opacity: 1;
 }
 
+.child\:col-span-4 > * {
+  grid-column: span 4 / span 4;
+}
+
 .child\:mx-auto > * {
   margin-left: auto;
   margin-right: auto;
+}
+
+.child\:mr-6 > * {
+  margin-right: 1.5rem;
 }
 
 .child\:flex > * {
@@ -1890,6 +1915,10 @@ img {
   width: 100%;
 }
 
+.child\:cursor-pointer > * {
+  cursor: pointer;
+}
+
 .child\:items-center > * {
   align-items: center;
 }
@@ -1902,6 +1931,16 @@ img {
   border-radius: 0.5rem;
 }
 
+.child\:bg-white > * {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.child\:bg-gray-100 > * {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .child\:py-1 > * {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1910,6 +1949,56 @@ img {
 .child\:py-1\.5 > * {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
+}
+
+.child\:py-2 > * {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.child\:px-4 > * {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.child\:px-2 > * {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.child\:text-white > * {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.child\:transition-all > * {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.child\:hover\:bg-gray-100:hover > * {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.hover\:child\:bg-gray-100 > *:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.hover\:child\:bg-gray-400 > *:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
+.hover\:child\:bg-gray-400\/50 > *:hover {
+  background-color: rgb(156 163 175 / 0.5);
+}
+
+.hover\:child\:text-white > *:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 :is(.dark .dark\:text-white) {
@@ -2046,8 +2135,22 @@ img {
     line-height: 1.25rem;
   }
 
+  .child\:sm\:col-span-2 > * {
+    grid-column: span 2 / span 2;
+  }
+
   .sm\:child\:w-1\/2 > * {
     width: 50%;
+  }
+
+  .child\:sm\:px-4 > * {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .child\:sm\:py-2 > * {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 
@@ -2166,6 +2269,10 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -2234,6 +2341,10 @@ img {
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .child\:lg\:col-span-1 > * {
+    grid-column: span 1 / span 1;
   }
 
   .lg\:child\:w-1\/2 > * {

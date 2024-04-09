@@ -10,6 +10,7 @@ import {
   ForgetPasswordNewPassword,
   ProductsDetails,
   Cart,
+  Search,
   Page404,
 } from "../Layout/Layout";
 
@@ -26,6 +27,7 @@ export default () => {
           <Route path="forgot-password-new-password/:token" element={<ForgetPasswordNewPassword />} />
           <Route path="product/:href" element={<ProductsDetails />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="search/:searchValue" element={<Search />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>
