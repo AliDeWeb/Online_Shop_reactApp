@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Imgs
 import siteLogo from "../../assets/imgs/site-logo.svg";
@@ -20,7 +20,7 @@ import {
 import { CiShoppingBasket } from "react-icons/ci";
 
 // React Router
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 
 // Axios
 import { getUserData, getCategories } from "../../configs/axios/axiosConfigs";
@@ -35,6 +35,7 @@ export default function Header() {
   const [categories, setCategories] = useState(null);
   const param = useParams();
   const { userToken } = useUserToken();
+  const navigator = useNavigate();
   const { data, refetch } = useQuery(
     `userDate`,
     async () => {
@@ -68,6 +69,10 @@ export default function Header() {
     useState(true);
   const [isHamburgerMenuServiceItemShow, setIsHamburgerMenuServiceItemShow] =
     useState(true);
+  const [isSearchBarShow, setIsSearchBarShow] = useState(false);
+
+  const mobileSearchVal = useRef();
+  const desktopSearchVal = useRef();
 
   useEffect(() => {
     setIsHamburgerMenuOpen(false);
@@ -210,77 +215,119 @@ export default function Header() {
       ></div>
 
       <div className="container">
-        <div className="flex items-center justify-between flex-wrap gap-5 lg:gap-0 lg:flex-nowrap">
-          <div className="lg:hidden">
-            <button onClick={() => setIsHamburgerMenuOpen(true)}>
-              <IoIosMenu
-                className="transition-all"
-                size="2rem"
-                color="#696969"
-              />
+        {isSearchBarShow ? (
+          <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md">
+            <button
+              onClick={() => {
+                navigator(`/search/${mobileSearchVal.current.value}`);
+              }}
+            >
+              <IoIosSearch size="1.5rem" color="#696969" />
+            </button>
+            <input
+              ref={mobileSearchVal}
+              className="bg-transparent h-full w-full border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
+              type="text"
+              placeholder="جستجو در محصولات"
+              defaultValue={
+                location.pathname.includes(`search`) ? param.searchValue : ""
+              }
+            />
+            <button
+              onClick={() => {
+                setIsSearchBarShow(false);
+              }}
+            >
+              <IoIosClose size="1.2rem" color="#696969" />
             </button>
           </div>
-          <div className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]">
-            <Link
-              className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]"
-              to="/home"
-            >
-              <img className="size-full" src={siteLogo} alt="site-logo" />
-            </Link>
-          </div>
-          <div className="w-full lg:w-[500px] lg:block hidden">
-            <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md">
-              <button>
-                <IoIosSearch size="1.5rem" color="#696969" />
+        ) : (
+          <div className="flex items-center justify-between flex-wrap gap-5 lg:gap-0 lg:flex-nowrap">
+            <div className="lg:hidden">
+              <button onClick={() => setIsHamburgerMenuOpen(true)}>
+                <IoIosMenu
+                  className="transition-all"
+                  size="2rem"
+                  color="#696969"
+                />
               </button>
-              <input
-                className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
-                type="text"
-                placeholder="جستجو در محصولات"
-                defaultValue={location.pathname.includes(`search`) ? param.searchValue : ""}
-              />
             </div>
-          </div>
-          <div className="flex items-center gap-3 md:gap-6">
-            <div>
-              {data?.firstName && data?.lastName ? (
-                <Link className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base">
-                  <FaUser
-                    className="transition-all"
-                    size="1rem"
-                    color="rgb(251,146,60)"
-                  />
-                  <span className="lg:inline hidden">{`${data.firstName} ${data.lastName}`}</span>
-                </Link>
-              ) : (
-                <Link
-                  to="/register"
-                  className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base"
-                >
-                  <FaUser
-                    className="transition-all"
-                    size="1rem"
-                    color="rgb(251,146,60)"
-                  />
-                  <span className="lg:inline hidden">ورود / ثبت نام</span>
-                </Link>
-              )}
-            </div>
-            <div className="flex items-center">
+            <div className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]">
               <Link
-                to="/cart"
-                className="inline-block p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all"
+                className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]"
+                to="/home"
               >
-                <IoIosCart size="1.2rem" color="rgb(251,146,60)" />
+                <img className="size-full" src={siteLogo} alt="site-logo" />
               </Link>
             </div>
-            <div className="lg:hidden flex items-center">
-              <Link className="inline-block p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all">
-                <IoIosSearch size="1.2rem" color="rgb(251,146,60)" />
-              </Link>
+            <div className="w-full lg:w-[500px] lg:block hidden">
+              <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md">
+                <button
+                  onClick={() => {
+                    navigator(`/search/${desktopSearchVal.current.value}`);
+                  }}
+                >
+                  <IoIosSearch size="1.5rem" color="#696969" />
+                </button>
+                <input
+                ref={desktopSearchVal}
+                  className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
+                  type="text"
+                  placeholder="جستجو در محصولات"
+                  defaultValue={
+                    location.pathname.includes(`search`)
+                      ? param.searchValue
+                      : ""
+                  }
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-3 md:gap-6">
+              <div>
+                {data?.firstName && data?.lastName ? (
+                  <Link className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base">
+                    <FaUser
+                      className="transition-all"
+                      size="1rem"
+                      color="rgb(251,146,60)"
+                    />
+                    <span className="lg:inline hidden">{`${data.firstName} ${data.lastName}`}</span>
+                  </Link>
+                ) : (
+                  <Link
+                    to="/register"
+                    className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base"
+                  >
+                    <FaUser
+                      className="transition-all"
+                      size="1rem"
+                      color="rgb(251,146,60)"
+                    />
+                    <span className="lg:inline hidden">ورود / ثبت نام</span>
+                  </Link>
+                )}
+              </div>
+              <div className="flex items-center">
+                <Link
+                  to="/cart"
+                  className="inline-block p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all"
+                >
+                  <IoIosCart size="1.2rem" color="rgb(251,146,60)" />
+                </Link>
+              </div>
+              <div className="lg:hidden flex items-center">
+                <button
+                  onClick={() => {
+                    setIsSearchBarShow(true);
+                  }}
+                  className="inline-block p-2 rounded-md size-[35px] bg-orange-200/20 hover:bg-orange-200/40 transition-all"
+                >
+                  <IoIosSearch size="1.2rem" color="rgb(251,146,60)" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       <nav className="hidden lg:block font-dana mt-4 border-t-2 border-solid border-gray-100 pt-3">
         <div className="container">
