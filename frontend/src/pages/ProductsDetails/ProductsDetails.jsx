@@ -158,9 +158,7 @@ export default function ProductsDetails() {
                 {!isLoading && data?.product?.title}
               </h1>
               <span className="mt-2 font-dana text-sm text-gray-400 inline-block">
-                <Link className="line-clamp-1 font-poppins">
-                  Nike Men's Hooded Sweater
-                </Link>
+                <Link className="line-clamp-1 font-poppins">{param.href}</Link>
               </span>
               <div className="grid gap-y-2 sm:grid-cols-2 font-dana mt-4 text-gray-400 text-sm sm:text-base">
                 <span className="flex items-center gap-1">

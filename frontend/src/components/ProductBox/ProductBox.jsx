@@ -78,7 +78,7 @@ export default function ProductBox({
             className="line-clamp-1 font-poppins"
             style={{ direction: "ltr" }}
           >
-            Nike Men's Hooded Sweater
+            {href.replace(`product/`, ``)}
           </Link>
         </div>
       </div>
