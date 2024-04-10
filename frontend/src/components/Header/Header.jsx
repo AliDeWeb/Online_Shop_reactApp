@@ -270,7 +270,7 @@ export default function Header() {
                   <IoIosSearch size="1.5rem" color="#696969" />
                 </button>
                 <input
-                ref={desktopSearchVal}
+                  ref={desktopSearchVal}
                   className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
                   type="text"
                   placeholder="جستجو در محصولات"
