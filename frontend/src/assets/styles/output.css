@@ -1059,10 +1059,6 @@ img {
   width: 90px;
 }
 
-.w-\[calc\(100\%\)\] {
-  width: calc(100%);
-}
-
 .w-\[calc\(100\%-\(32px\)\)\] {
   width: calc(100% - (32px));
 }
@@ -1584,10 +1580,6 @@ img {
 
 .pt-8 {
   padding-top: 2rem;
-}
-
-.text-left {
-  text-align: left;
 }
 
 .text-center {
