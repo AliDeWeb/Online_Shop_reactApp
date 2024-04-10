@@ -196,3 +196,18 @@ postNewPasswordChangePassword.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Get Search Result
+export const getSearchResult = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}/v1/search`,
+});
+getSearchResult.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(`خطا`);
+    return Promise.reject(error);
+  }
+);

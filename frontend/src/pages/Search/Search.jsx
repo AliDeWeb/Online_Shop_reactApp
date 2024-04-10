@@ -10,8 +10,31 @@ import Stack from "@mui/material/Stack";
 // Icons
 import { GoFilter } from "react-icons/go";
 
+// React Router
+import { useParams } from "react-router-dom";
+
+// React Query
+import { useQuery } from "react-query";
+
+// Axios
+import { getSearchResult, apiUrl } from "../../configs/axios/axiosConfigs";
+
 export default function Search() {
   const [currentPage, setCurrentPage] = React.useState(1);
+  const param = useParams();
+
+  const { data, isLoading } = useQuery(
+    `search/${param.searchValue}`,
+    async () => {
+      const result = await getSearchResult({
+        url: `/${param.searchValue}`,
+      });
+
+      console.log(result.data);
+
+      return result.data;
+    }
+  );
 
   return (
     <div className="py-5">
@@ -72,66 +95,42 @@ export default function Search() {
               </ul>
             </nav>
             <div className="grid grid-cols-4 lg:grid-cols-3 gap-4 child:lg:col-span-1 child:col-span-4 child:sm:col-span-2">
-              <div>
-                <ProductBox
-                  id={4}
-                  warranty={`5 ماهه`}
-                  colorId={``}
-                  sizeId={``}
-                  cover={`dsa`}
-                  title={`el.title`}
-                  href={`product`}
-                  discounted={60}
-                  price={8000000}
-                  num={1}
-                  averageScore={4}
-                />
-              </div>
-              <div>
-                <ProductBox
-                  id={4}
-                  warranty={`5 ماهه`}
-                  colorId={``}
-                  sizeId={``}
-                  cover={`dsa`}
-                  title={`el.title`}
-                  href={`product`}
-                  discounted={60}
-                  price={8000000}
-                  num={1}
-                  averageScore={4}
-                />
-              </div>
-              <div>
-                <ProductBox
-                  id={4}
-                  warranty={`5 ماهه`}
-                  colorId={``}
-                  sizeId={``}
-                  cover={`dsa`}
-                  title={`el.title`}
-                  href={`product`}
-                  discounted={60}
-                  price={8000000}
-                  num={1}
-                  averageScore={4}
-                />
-              </div>
-              <div>
-                <ProductBox
-                  id={4}
-                  warranty={`5 ماهه`}
-                  colorId={``}
-                  sizeId={``}
-                  cover={`dsa`}
-                  title={`el.title`}
-                  href={`product`}
-                  discounted={60}
-                  price={8000000}
-                  num={1}
-                  averageScore={4}
-                />
-              </div>
+              {!isLoading &&
+                data.map((el) => {
+                  return (
+                    <div key={Math.random()}>
+                      <ProductBox
+                        id={el?.product?._id}
+                        warranty={el?.product?.warranty[0]?.warrantyItem}
+                        colorId={el?.product?.colors?.length ? el?.product?.colors[0]?._id : []}
+                        sizeId={el?.product?.sizes?.length ? el?.product?.sizes[0]?._id : []}
+                        cover={`${apiUrl}/${el?.product?.covers[0]}`}
+                        title={el?.product?.title}
+                        href={`product/${el?.product?.href}`}
+                        discounted={
+                          el?.product?.off
+                            ? el?.product?.off
+                            : el?.product?.colors[0]
+                              ? el?.product?.colors[0]?.off
+                              : el?.product?.sizes[0].off
+                                ? el?.product?.sizes[0].off
+                                : 0
+                        }
+                        price={
+                          el?.product?.mainPrice
+                            ? el?.product?.mainPrice
+                            : el?.product?.colors[0]
+                              ? el?.product?.colors[0]?.price
+                              : el?.product?.sizes[0].price
+                                ? el?.product?.sizes[0].price
+                                : 0
+                        }
+                        num={el?.product?.Availability}
+                        averageScore={4}
+                      />
+                    </div>
+                  );
+                })}
             </div>
             <div className="items-center justify-center py-4" dir="rtl">
               <Stack
