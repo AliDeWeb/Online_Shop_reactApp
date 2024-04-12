@@ -32,8 +32,6 @@ export default function Search() {
         url: `/${param.searchValue}`,
       });
 
-      console.log(result.data);
-
       return result.data;
     }
   );

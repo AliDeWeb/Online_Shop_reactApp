@@ -94,9 +94,6 @@ export default function (props) {
             {props.comments &&
               props?.comments?.map((el) => (
                 <Typography key={Math.random()}>
-                  {
-                    console.log(el)
-                  }
                   <div className="p-4">
                     <div className="flex items-center gap-1 font-dana  text-sm text-gray-400">
                       <div>
