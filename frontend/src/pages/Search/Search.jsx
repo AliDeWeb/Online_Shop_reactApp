@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 
 // components
 import { ProductBox } from "../../configs/Layout/Layout";
@@ -7,16 +7,23 @@ import { ProductBox } from "../../configs/Layout/Layout";
 import { GoFilter } from "react-icons/go";
 
 // React Router
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 // React Query
 import { useQuery } from "react-query";
 
 // Axios
-import { getSearchResult, apiUrl } from "../../configs/axios/axiosConfigs";
+import {
+  getSearchResult,
+  apiUrl,
+  getCategories,
+  getBrands,
+} from "../../configs/axios/axiosConfigs";
 
 export default function Search() {
   const param = useParams();
+  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
 
   const { data, isLoading } = useQuery(
     `search/${param.searchValue}`,
@@ -31,6 +38,15 @@ export default function Search() {
     }
   );
 
+  useEffect(() => {
+    getCategories().then((res) => {
+      setCategories(res.data);
+    });
+    getBrands().then((res) => {
+      setBrands(res.data);
+    });
+  }, []);
+
   return (
     <div className="py-5">
       <div className="container">
@@ -42,18 +58,20 @@ export default function Search() {
                   دسته بندی محصولات
                 </h3>
                 <ul className="text-sm text-gray-400 flex flex-col gap-1.5 child:cursor-pointer list-disc child:mr-6">
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                    لوازم خانگی
-                  </li>
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                    لوازم خانگی
-                  </li>
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                    لوازم خانگی
-                  </li>
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                    لوازم خانگی
-                  </li>
+                  {!!categories.length &&
+                    categories.map((el) => (
+                      <li
+                        key={Math.random()}
+                        className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto"
+                      >
+                        <Link
+                          className="flex items-center justify-between font-dana"
+                          to={`/search/${el.title}`}
+                        >
+                          {el.title}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               </div>
               <div className="font-dana bg-white rounded-lg py-2 px-4">
@@ -61,18 +79,20 @@ export default function Search() {
                   دسته بندی برند ها
                 </h3>
                 <ul className="text-sm text-gray-400 flex flex-col gap-1.5 child:cursor-pointer list-disc child:mr-6">
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                    لوازم خانگی
-                  </li>
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                    لوازم خانگی
-                  </li>
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                    لوازم خانگی
-                  </li>
-                  <li className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">
-                    لوازم خانگی
-                  </li>
+                  {!!brands.length &&
+                    brands.map((el) => (
+                      <li
+                        key={Math.random()}
+                        className="transition-all hover:text-orange-400 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto"
+                      >
+                        <Link
+                          className="flex items-center justify-between font-dana"
+                          to={`/search/${el.title}`}
+                        >
+                          {el.title}
+                        </Link>
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
