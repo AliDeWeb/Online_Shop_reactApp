@@ -3,10 +3,6 @@ import * as React from "react";
 // components
 import { ProductBox } from "../../configs/Layout/Layout";
 
-// Mui
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-
 // Icons
 import { GoFilter } from "react-icons/go";
 
@@ -20,7 +16,6 @@ import { useQuery } from "react-query";
 import { getSearchResult, apiUrl } from "../../configs/axios/axiosConfigs";
 
 export default function Search() {
-  const [currentPage, setCurrentPage] = React.useState(1);
   const param = useParams();
 
   const { data, isLoading } = useQuery(
@@ -95,69 +90,55 @@ export default function Search() {
               </ul>
             </nav>
             <div className="grid grid-cols-4 lg:grid-cols-3 gap-4 child:lg:col-span-1 child:col-span-4 child:sm:col-span-2">
-              {!isLoading && data.length
-                ? data.map((el) => {
-                    return (
-                      <div key={Math.random()}>
-                        <ProductBox
-                          id={el?.product?._id}
-                          warranty={el?.product?.warranty[0]?.warrantyItem}
-                          colorId={
-                            el?.product?.colors?.length
-                              ? el?.product?.colors[0]?._id
-                              : []
-                          }
-                          sizeId={
-                            el?.product?.sizes?.length
-                              ? el?.product?.sizes[0]?._id
-                              : []
-                          }
-                          cover={`${apiUrl}/${el?.product?.covers[0]}`}
-                          title={el?.product?.title}
-                          href={`product/${el?.product?.href}`}
-                          discounted={
-                            el?.product?.off
-                              ? el?.product?.off
-                              : el?.product?.colors[0]
-                                ? el?.product?.colors[0]?.off
-                                : el?.product?.sizes[0].off
-                                  ? el?.product?.sizes[0].off
-                                  : 0
-                          }
-                          price={
-                            el?.product?.mainPrice
-                              ? el?.product?.mainPrice
-                              : el?.product?.colors[0]
-                                ? el?.product?.colors[0]?.price
-                                : el?.product?.sizes[0].price
-                                  ? el?.product?.sizes[0].price
-                                  : 0
-                          }
-                          num={el?.product?.Availability}
-                          averageScore={4}
-                        />
-                      </div>
-                    );
-                  })
-                : <h2 className="font-dana text-xl text-center">چیزی برای نمایش وجود ندارد</h2>}
-            </div>
-            <div className="items-center justify-center py-4" dir="rtl">
-              <Stack
-                className="flex items-center justify-center font-dana"
-                spacing={2}
-              >
-                <Pagination
-                  onChange={(e) => {
-                    setCurrentPage(e.currentTarget.textContent);
-                  }}
-                  className="font-dana"
-                  count={10}
-                  variant="outlined"
-                  shape="rounded"
-                  hidePrevButton
-                  hideNextButton
-                />
-              </Stack>
+              {!isLoading && data.length ? (
+                data.map((el) => {
+                  return (
+                    <div key={Math.random()}>
+                      <ProductBox
+                        id={el?.product?._id}
+                        warranty={el?.product?.warranty[0]?.warrantyItem}
+                        colorId={
+                          el?.product?.colors?.length
+                            ? el?.product?.colors[0]?._id
+                            : []
+                        }
+                        sizeId={
+                          el?.product?.sizes?.length
+                            ? el?.product?.sizes[0]?._id
+                            : []
+                        }
+                        cover={`${apiUrl}/${el?.product?.covers[0]}`}
+                        title={el?.product?.title}
+                        href={`product/${el?.product?.href}`}
+                        discounted={
+                          el?.product?.off
+                            ? el?.product?.off
+                            : el?.product?.colors[0]
+                              ? el?.product?.colors[0]?.off
+                              : el?.product?.sizes[0].off
+                                ? el?.product?.sizes[0].off
+                                : 0
+                        }
+                        price={
+                          el?.product?.mainPrice
+                            ? el?.product?.mainPrice
+                            : el?.product?.colors[0]
+                              ? el?.product?.colors[0]?.price
+                              : el?.product?.sizes[0].price
+                                ? el?.product?.sizes[0].price
+                                : 0
+                        }
+                        num={el?.product?.Availability}
+                        averageScore={4}
+                      />
+                    </div>
+                  );
+                })
+              ) : (
+                <h2 className="font-dana text-xl text-center">
+                  چیزی برای نمایش وجود ندارد
+                </h2>
+              )}
             </div>
           </div>
         </div>
