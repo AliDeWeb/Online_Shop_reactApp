@@ -149,7 +149,7 @@ export default function Search() {
                                 : 0
                         }
                         num={el?.product?.Availability}
-                        averageScore={4}
+                        averageScore={el?.product?.productAverageScore}
                       />
                     </div>
                   );

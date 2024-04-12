@@ -92,6 +92,8 @@ export default function Header() {
     setIsHamburgerMenuOpen(false);
     if (!location.pathname.includes(`search`)) {
       desktopSearchVal.current.value = ``;
+    } else {
+      desktopSearchVal.current.value = param.searchValue;
     }
   }, [location]);
   useEffect(() => {
