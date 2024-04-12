@@ -93,7 +93,10 @@ export default function Header() {
     if (!location.pathname.includes(`search`)) {
       desktopSearchVal.current.value = ``;
     } else {
-      desktopSearchVal.current.value = param.searchValue;
+      window.addEventListener(`resize`, () => {
+        window.innerWidth >= 1024 &&
+          (desktopSearchVal.current.value = param.searchValue);
+      });
     }
   }, [location]);
   useEffect(() => {
