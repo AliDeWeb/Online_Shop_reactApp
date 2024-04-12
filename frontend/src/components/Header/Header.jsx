@@ -18,12 +18,17 @@ import {
   MdMiscellaneousServices,
 } from "react-icons/md";
 import { CiShoppingBasket } from "react-icons/ci";
+import { GoArrowUpLeft } from "react-icons/go";
 
 // React Router
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 
 // Axios
-import { getUserData, getCategories } from "../../configs/axios/axiosConfigs";
+import {
+  getUserData,
+  getCategories,
+  getBrands,
+} from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery } from "react-query";
@@ -32,10 +37,27 @@ import { useQuery } from "react-query";
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function Header() {
-  const [categories, setCategories] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
   const param = useParams();
   const { userToken } = useUserToken();
   const navigator = useNavigate();
+
+  const location = useLocation();
+  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+  const [isHamburgerMenuShopItemShow, setIsHamburgerMenuShopItemShow] =
+    useState(true);
+  const [isHamburgerMenuServiceItemShow, setIsHamburgerMenuServiceItemShow] =
+    useState(true);
+  const [isSearchBarShow, setIsSearchBarShow] = useState(false);
+
+  const [isResultBarShow, setIsResultBarShow] = useState(false);
+
+  const [searchVal, setSearchVal] = useState("");
+
+  const mobileSearchVal = useRef();
+  const desktopSearchVal = useRef();
+
   const { data, refetch } = useQuery(
     `userDate`,
     async () => {
@@ -61,21 +83,16 @@ export default function Header() {
     getCategories().then((res) => {
       setCategories(res.data);
     });
+    getBrands().then((res) => {
+      setBrands(res.data);
+    });
   }, []);
-
-  const location = useLocation();
-  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
-  const [isHamburgerMenuShopItemShow, setIsHamburgerMenuShopItemShow] =
-    useState(true);
-  const [isHamburgerMenuServiceItemShow, setIsHamburgerMenuServiceItemShow] =
-    useState(true);
-  const [isSearchBarShow, setIsSearchBarShow] = useState(false);
-
-  const mobileSearchVal = useRef();
-  const desktopSearchVal = useRef();
 
   useEffect(() => {
     setIsHamburgerMenuOpen(false);
+    if (!location.pathname.includes(`search`)) {
+      desktopSearchVal.current.value = ``;
+    }
   }, [location]);
   useEffect(() => {
     refetch();
@@ -130,7 +147,7 @@ export default function Header() {
                 isHamburgerMenuShopItemShow || "h-0 mb-0"
               }`}
             >
-              {categories &&
+              {categories.length &&
                 categories.map((el) => (
                   <li
                     key={Math.random()}
@@ -216,7 +233,7 @@ export default function Header() {
 
       <div className="container">
         {isSearchBarShow ? (
-          <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md">
+          <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md reletive">
             <button
               onClick={() => {
                 navigator(`/search/${mobileSearchVal.current.value}`);
@@ -231,6 +248,14 @@ export default function Header() {
               className="bg-transparent h-full w-full border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
               type="text"
               placeholder="جستجو در محصولات"
+              onKeyUp={(e) => {
+                setSearchVal(e.target.value);
+                if (e.target.value) {
+                  setIsResultBarShow(true);
+                } else {
+                  setIsResultBarShow(false);
+                }
+              }}
               defaultValue={
                 location.pathname.includes(`search`) ? param.searchValue : ""
               }
@@ -242,6 +267,65 @@ export default function Header() {
             >
               <IoIosClose size="1.2rem" color="#696969" />
             </button>
+            {isResultBarShow && (
+              <div className="absolute z-20 px-6 py-3 mx-auto left-[1rem] right-[1rem] top-[45px] rounded-lg bg-gray-100/50 backdrop-blur-md">
+                <div>
+                  <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
+                    دسته بندی ها
+                  </h2>
+                  <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
+                    {!!categories.length &&
+                      categories
+                        .filter((el) => {
+                          return el.title.includes(searchVal);
+                        })
+                        .map((el) => (
+                          <li
+                            key={Math.random()}
+                            className="hover:bg-gray-300 hover:scale-95 transition-all"
+                          >
+                            <Link
+                              onClick={() => setIsResultBarShow(false)}
+                              className="flex items-center justify-between font-dana"
+                              to={`/search/${el.title}`}
+                            >
+                              {el.title}
+                              <GoArrowUpLeft size="1rem" />
+                            </Link>
+                          </li>
+                        ))}
+                  </ul>
+                </div>
+                <div>
+                  <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
+                    برند ها
+                  </h2>
+                  <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
+                    {!!brands.length &&
+                      brands
+                        .filter((el) => {
+                          return el.title.includes(searchVal);
+                        })
+                        .map((el) => (
+                          <li
+                            key={Math.random()}
+                            className="hover:bg-gray-300 hover:scale-95 transition-all"
+                          >
+                            <Link
+                              onClick={() => setIsResultBarShow(false)}
+                              className="flex items-center justify-between font-dana"
+                              to={`/search/${el.title}`}
+                            >
+                              {el.title}
+
+                              <GoArrowUpLeft size="1rem" />
+                            </Link>
+                          </li>
+                        ))}
+                  </ul>
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="flex items-center justify-between flex-wrap gap-5 lg:gap-0 lg:flex-nowrap">
@@ -263,7 +347,7 @@ export default function Header() {
               </Link>
             </div>
             <div className="w-full lg:w-[500px] lg:block hidden">
-              <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md">
+              <div className="flex items-center gap-4 bg-gray-100 h-[40px] px-6 w-full rounded-md relative">
                 <button
                   onClick={() => {
                     navigator(`/search/${desktopSearchVal.current.value}`);
@@ -274,6 +358,14 @@ export default function Header() {
                 </button>
                 <input
                   ref={desktopSearchVal}
+                  onKeyUp={(e) => {
+                    setSearchVal(e.target.value);
+                    if (e.target.value) {
+                      setIsResultBarShow(true);
+                    } else {
+                      setIsResultBarShow(false);
+                    }
+                  }}
                   className="bg-transparent h-full w-[calc(100%-(48px+24px))] lg:w-[412px] border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
                   type="text"
                   placeholder="جستجو در محصولات"
@@ -283,6 +375,65 @@ export default function Header() {
                       : ""
                   }
                 />
+                {isResultBarShow && (
+                  <div className="absolute z-20 w-full px-6 py-3 mx-auto left-0 right-0 top-[45px] rounded-lg bg-gray-100/50 backdrop-blur-md">
+                    <div>
+                      <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
+                        دسته بندی ها
+                      </h2>
+                      <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
+                        {!!categories.length &&
+                          categories
+                            .filter((el) => {
+                              return el.title.includes(searchVal);
+                            })
+                            .map((el) => (
+                              <li
+                                key={Math.random()}
+                                className="hover:bg-gray-300 hover:scale-95 transition-all"
+                              >
+                                <Link
+                                  className="flex items-center justify-between font-dana"
+                                  to={`/search/${el.title}`}
+                                  onClick={() => setIsResultBarShow(false)}
+                                >
+                                  {el.title}
+                                  <GoArrowUpLeft size="1rem" />
+                                </Link>
+                              </li>
+                            ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
+                        برند ها
+                      </h2>
+                      <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
+                        {!!brands.length &&
+                          brands
+                            .filter((el) => {
+                              return el.title.includes(searchVal);
+                            })
+                            .map((el) => (
+                              <li
+                                key={Math.random()}
+                                className="hover:bg-gray-300 hover:scale-95 transition-all"
+                              >
+                                <Link
+                                  onClick={() => setIsResultBarShow(false)}
+                                  className="flex items-center justify-between font-dana"
+                                  to={`/search/${el.title}`}
+                                >
+                                  {el.title}
+
+                                  <GoArrowUpLeft size="1rem" />
+                                </Link>
+                              </li>
+                            ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             <div className="flex items-center gap-3 md:gap-6">
@@ -346,7 +497,7 @@ export default function Header() {
               </button>
               <div className="hidden sm:block absolute z-10 bg-white w-[250px] p-5 rounded-lg right-0 top-12 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-hover:top-9 transition-all delay-150">
                 <ul className="child:py-1.5">
-                  {categories &&
+                  {categories.length &&
                     categories.map((el) => (
                       <li key={Math.random()}>
                         <Link className="hover:text-orange-400 transition-all duration-300 relative before:content-[''] before:absolute before:w-0 hover:before:w-3 before:transition-all hover:pr-5 before:h-[0.18rem] before:rounded-lg before:bg-orange-400 before:top-0 before:right-0 before:bottom-0 before:my-auto">

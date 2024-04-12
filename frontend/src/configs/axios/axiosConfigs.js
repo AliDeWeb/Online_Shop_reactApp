@@ -121,6 +121,12 @@ export const getCategories = axios.create({
   baseURL: `${apiUrl}/v1/category-brand/category`,
 });
 
+//? Get Categories
+export const getBrands = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}/v1/category-brand/brand`
+});
+
 //? Post Products To Cart
 export const postProductsToCart = axios.create({
   method: `POST`,
