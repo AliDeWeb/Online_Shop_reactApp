@@ -274,13 +274,16 @@ export default function Header() {
             </button>
             {isResultBarShow && (
               <div className="absolute z-20 px-6 py-3 mx-auto left-[1rem] right-[1rem] top-[45px] rounded-lg bg-gray-100/50 backdrop-blur-md">
-                <div>
-                  <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
-                    دسته بندی ها
-                  </h2>
-                  <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
-                    {!!categories.length &&
-                      categories
+                {!!categories.length &&
+                categories.filter((el) => {
+                  return el.title.includes(searchVal);
+                }).length ? (
+                  <div>
+                    <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
+                      دسته بندی ها
+                    </h2>
+                    <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
+                      {categories
                         .filter((el) => {
                           return el.title.includes(searchVal);
                         })
@@ -299,15 +302,21 @@ export default function Header() {
                             </Link>
                           </li>
                         ))}
-                  </ul>
-                </div>
-                <div>
-                  <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
-                    برند ها
-                  </h2>
-                  <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
-                    {!!brands.length &&
-                      brands
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {!!brands.length &&
+                brands.filter((el) => {
+                  return el.title.includes(searchVal);
+                }).length ? (
+                  <div>
+                    <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
+                      برند ها
+                    </h2>
+                    <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
+                      {brands
                         .filter((el) => {
                           return el.title.includes(searchVal);
                         })
@@ -327,8 +336,11 @@ export default function Header() {
                             </Link>
                           </li>
                         ))}
-                  </ul>
-                </div>
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             )}
           </div>
@@ -382,13 +394,16 @@ export default function Header() {
                 />
                 {isResultBarShow && (
                   <div className="absolute z-20 w-full px-6 py-3 mx-auto left-0 right-0 top-[45px] rounded-lg bg-gray-100/50 backdrop-blur-md">
-                    <div>
-                      <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
-                        دسته بندی ها
-                      </h2>
-                      <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
-                        {!!categories.length &&
-                          categories
+                    {!!categories.length &&
+                    categories.filter((el) => {
+                      return el.title.includes(searchVal);
+                    }).length ? (
+                      <div>
+                        <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
+                          دسته بندی ها
+                        </h2>
+                        <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
+                          {categories
                             .filter((el) => {
                               return el.title.includes(searchVal);
                             })
@@ -407,15 +422,21 @@ export default function Header() {
                                 </Link>
                               </li>
                             ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
-                        برند ها
-                      </h2>
-                      <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
-                        {!!brands.length &&
-                          brands
+                        </ul>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    {!!brands.length &&
+                    brands.filter((el) => {
+                      return el.title.includes(searchVal);
+                    }) ? (
+                      <div>
+                        <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
+                          برند ها
+                        </h2>
+                        <ul className="mt-2 child:px-3 child:py-2 child:rounded-md">
+                          {brands
                             .filter((el) => {
                               return el.title.includes(searchVal);
                             })
@@ -435,8 +456,11 @@ export default function Header() {
                                 </Link>
                               </li>
                             ))}
-                      </ul>
-                    </div>
+                        </ul>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 )}
               </div>
