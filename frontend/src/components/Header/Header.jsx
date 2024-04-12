@@ -220,6 +220,8 @@ export default function Header() {
             <button
               onClick={() => {
                 navigator(`/search/${mobileSearchVal.current.value}`);
+                mobileSearchVal.current.value = ``;
+                setIsSearchBarShow(false);
               }}
             >
               <IoIosSearch size="1.5rem" color="#696969" />
@@ -265,6 +267,7 @@ export default function Header() {
                 <button
                   onClick={() => {
                     navigator(`/search/${desktopSearchVal.current.value}`);
+                    desktopSearchVal.current.value = ``;
                   }}
                 >
                   <IoIosSearch size="1.5rem" color="#696969" />
