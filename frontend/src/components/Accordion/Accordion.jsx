@@ -94,9 +94,14 @@ export default function (props) {
             {props.comments &&
               props?.comments?.map((el) => (
                 <Typography key={Math.random()}>
+                  {
+                    console.log(el)
+                  }
                   <div className="p-4">
                     <div className="flex items-center gap-1 font-dana  text-sm text-gray-400">
-                      <div>کاربر تیمچه</div>
+                      <div>
+                        {`${el.creator.firstName} ${el.creator.lastName}`}
+                      </div>
                       <span className="bg-teal-400/50 py-1 px-2 rounded-lg font-danaBold text-xs text-gray-700 mr-1">
                         خریدار
                       </span>
