@@ -8,6 +8,7 @@ export { default as ForgetPasswordCode } from "../../pages/UsersValidation/Forge
 export { default as ForgetPasswordNewPassword } from "../../pages/UsersValidation/ForgetPasswordNewPassword";
 export { default as ProductsDetails } from "../../pages/ProductsDetails/ProductsDetails";
 export { default as Cart } from "../../pages/Cart/Cart";
+export { default as CheckOut } from "../../pages/Cart/CheckOut";
 export { default as Search } from "../../pages/Search/Search";
 export { default as Page404 } from "../../pages/Page404/Page404";
 

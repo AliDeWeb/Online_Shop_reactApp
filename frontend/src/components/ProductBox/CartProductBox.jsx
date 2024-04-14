@@ -30,6 +30,7 @@ export default function CartProductBox({
   color,
   size,
   refetch,
+  notShowCounter,
 }) {
   const { userToken } = useUserToken();
   const [count, setCount] = useState(0);
@@ -42,7 +43,7 @@ export default function CartProductBox({
   return (
     <div className="py-4 grid grid-cols-6 gap-2">
       <div className="col-span-2 xl:col-span-1">
-        <div className="flex flex-col w-max items-center">
+        <div className={`flex flex-col w-max items-center ${notShowCounter && "justify-center"}`}>
           <div className="w-[90px] sm:w-[130px] h-[120px] sm:h-[150px] transition-all hover:scale-95">
             <Link to={href}>
               <img
@@ -52,69 +53,71 @@ export default function CartProductBox({
               />
             </Link>
           </div>
-          <div className="font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
-            {isProductFetching ? (
-              <BeatLoader size="0.5rem" color="#0d9488" />
-            ) : (
-              <>
-                <button
-                  onClick={() => {
-                    setIsProductFetching(true);
-                    setCount((prev) => prev + 1);
-                    let productData = {
-                      productID: productId,
-                      colorID: color?.colorID ? color?.colorID : [],
-                      sizeID: size?.sizeID ? size?.sizeID : [],
-                      count: 1000,
-                      warranty: warranty._id,
-                    };
-                    postProductsToCart({
-                      data: productData,
-                      headers: {
-                        Authorization: `Bearer ${userToken}`,
-                      },
-                    })
-                      .then(() => {
-                        refetch();
+          {!notShowCounter && (
+            <div className="font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
+              {isProductFetching ? (
+                <BeatLoader size="0.5rem" color="#0d9488" />
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      setIsProductFetching(true);
+                      setCount((prev) => prev + 1);
+                      let productData = {
+                        productID: productId,
+                        colorID: color?.colorID ? color?.colorID : [],
+                        sizeID: size?.sizeID ? size?.sizeID : [],
+                        count: 1000,
+                        warranty: warranty._id,
+                      };
+                      postProductsToCart({
+                        data: productData,
+                        headers: {
+                          Authorization: `Bearer ${userToken}`,
+                        },
                       })
-                      .finally(() => {
-                        setIsProductFetching(false);
-                      });
-                  }}
-                >
-                  +
-                </button>
-                <span>{count}</span>
-                <button
-                  onClick={() => {
-                    setIsProductFetching(true);
-                    setCount((prev) => prev - 1);
-                    let productData = {
-                      productID: productId,
-                      colorID: color?.colorID ? color?.colorID : [],
-                      sizeID: size?.sizeID ? size?.sizeID : [],
-                      count: 999,
-                      warranty: warranty._id,
-                    };
-                    postProductsToCart({
-                      data: productData,
-                      headers: {
-                        Authorization: `Bearer ${userToken}`,
-                      },
-                    })
-                      .then(() => {
-                        refetch();
+                        .then(() => {
+                          refetch();
+                        })
+                        .finally(() => {
+                          setIsProductFetching(false);
+                        });
+                    }}
+                  >
+                    +
+                  </button>
+                  <span>{count}</span>
+                  <button
+                    onClick={() => {
+                      setIsProductFetching(true);
+                      setCount((prev) => prev - 1);
+                      let productData = {
+                        productID: productId,
+                        colorID: color?.colorID ? color?.colorID : [],
+                        sizeID: size?.sizeID ? size?.sizeID : [],
+                        count: 999,
+                        warranty: warranty._id,
+                      };
+                      postProductsToCart({
+                        data: productData,
+                        headers: {
+                          Authorization: `Bearer ${userToken}`,
+                        },
                       })
-                      .finally(() => {
-                        setIsProductFetching(false);
-                      });
-                  }}
-                >
-                  -
-                </button>
-              </>
-            )}
-          </div>
+                        .then(() => {
+                          refetch();
+                        })
+                        .finally(() => {
+                          setIsProductFetching(false);
+                        });
+                    }}
+                  >
+                    -
+                  </button>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
       <div className="col-span-4 xl:col-span-5">

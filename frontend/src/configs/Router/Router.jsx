@@ -10,6 +10,7 @@ import {
   ForgetPasswordNewPassword,
   ProductsDetails,
   Cart,
+  CheckOut,
   Search,
   Page404,
 } from "../Layout/Layout";
@@ -23,10 +24,17 @@ export default () => {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="forgot-password" element={<ForgetPasswordEmail />} />
-          <Route path="forgot-password-code/:email" element={<ForgetPasswordCode />} />
-          <Route path="forgot-password-new-password/:token" element={<ForgetPasswordNewPassword />} />
+          <Route
+            path="forgot-password-code/:email"
+            element={<ForgetPasswordCode />}
+          />
+          <Route
+            path="forgot-password-new-password/:token"
+            element={<ForgetPasswordNewPassword />}
+          />
           <Route path="product/:href" element={<ProductsDetails />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<CheckOut />} />
           <Route path="search/:searchValue" element={<Search />} />
         </Route>
         <Route path="*" element={<Page404 />} />
