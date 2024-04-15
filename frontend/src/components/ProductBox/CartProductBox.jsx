@@ -52,7 +52,6 @@ export default function CartProductBox({
                 src={cover}
                 alt="img"
                 className="object-contain mix-blend-multiply"
-                loading="lazy"
               />
             </Link>
           </div>

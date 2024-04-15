@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 // Icons
 import { FaRegStar, FaShoppingCart, FaStar } from "react-icons/fa";
@@ -50,7 +50,6 @@ export default function ProductBox({
               className="transition-all hover:scale-95"
               src={cover}
               alt="product-img"
-              loading="lazy"
             />
           </Link>
         </div>

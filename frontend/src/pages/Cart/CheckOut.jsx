@@ -85,7 +85,7 @@ export default function CheckOut() {
                       onChange={(e) => {
                         addressId.current = e.target.value;
                       }}
-                      className="bg-transparent outline-none border-none font-dana text-sm sm:text-base sm:w-max w-3/4"
+                      className="bg-transparent outline-none border-none font-dana text-sm sm:text-base w-full"
                     >
                       <option
                         className="font-dana text-zinc-700 text-lg line-clamp-1"
@@ -393,8 +393,8 @@ export default function CheckOut() {
                       headers: {
                         Authorization: `Bearer ${userToken}`,
                       },
-                    }).then((res) => {
-                      console.log(res);
+                    }).then(() => {
+                      refetch();
                     });
                   }}
                 >

@@ -2149,6 +2149,10 @@ img {
     width: max-content;
   }
 
+  .sm\:w-full {
+    width: 100%;
+  }
+
   .sm\:list-disc {
     list-style-type: disc;
   }

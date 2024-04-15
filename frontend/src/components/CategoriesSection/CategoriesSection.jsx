@@ -17,7 +17,7 @@ export default function CategoriesSection({ categories }) {
                 <div className="md:mx-2 font-dana flex flex-col items-center justify-center hover:scale-110 transition-all rounded-md overflow-hidden">
                   <Link className="flex flex-col items-center justify-center">
                     <img
-                      loading="lazy"
+                      
                       src={`${apiUrl}/${el.cover}`}
                       alt="categoriesImg"
                       className="size-[70px] md:size-[100px]"

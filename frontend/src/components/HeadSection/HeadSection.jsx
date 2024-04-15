@@ -35,7 +35,6 @@ export default function HeadSection({ banners }) {
                       <Link className="h-full">
                         <img
                           className="rounded-lg object-cover active:cursor-grabbing"
-                          loading="lazy"
                           src={`${apiUrl}/${el}`}
                           alt="banner"
                         />
