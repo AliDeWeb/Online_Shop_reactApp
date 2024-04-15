@@ -19,6 +19,7 @@ import {
   getCartProducts,
   addNewAddress,
   addNewOrder,
+  DiscountedCode,
   apiUrl,
 } from "../../configs/axios/axiosConfigs";
 
@@ -28,6 +29,7 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 export default function CheckOut() {
   const [isShowEditAddress, setIsShowEditAddress] = React.useState(false);
   const [newAddressVal, setNewAddressVal] = React.useState("");
+  const discountedCode = React.useRef("");
   let addressId = React.useRef("");
   let paymentId = React.useRef("");
   const queryClient = useQueryClient();
@@ -372,6 +374,36 @@ export default function CheckOut() {
             </div>
             <div className="py-2 px-5 rounded-lg border-2 border-gray-400/50 border-solid font-dana text-sm text-zinc-700 flex flex-col gap-4">
               <div className="flex items-center justify-between">
+                <span className="font-dana text-lg">کد تخفیف:</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-100 h-[40px] px-6 rounded-md w-full">
+                <input
+                  onChange={(e) => {
+                    discountedCode.current = e.target.value;
+                  }}
+                  className="bg-transparent h-full flex-grow border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
+                  type="text"
+                  placeholder="کد تخفیف"
+                />
+                <button
+                  className="w-max font-dana bg-gray-300/50 py-0.5 px-1.5 rounded-md transition-all hover:scale-95"
+                  onClick={async () => {
+                    await DiscountedCode({
+                      url: `/${discountedCode.current}`,
+                      headers: {
+                        Authorization: `Bearer ${userToken}`,
+                      },
+                    }).then((res) => {
+                      console.log(res);
+                    });
+                  }}
+                >
+                  اعمال کد
+                </button>
+              </div>
+            </div>
+            <div className="py-2 px-5 rounded-lg border-2 border-gray-400/50 border-solid font-dana text-sm text-zinc-700 flex flex-col gap-4">
+              <div className="flex items-center justify-between">
                 <span>قیمت کل:</span>
                 <span>
                   <span className="font-danaBold">
@@ -443,10 +475,10 @@ export default function CheckOut() {
                         addressID: addressId.current,
                         description: "unset",
                       },
-                    }).then((res)=> {
-                      location.replace(res.data.url)
+                    }).then((res) => {
+                      location.replace(res.data.url);
                       console.log(res);
-                    })
+                    });
                   }}
                   className="w-full font-danaBold sm:text-lg flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95"
                 >

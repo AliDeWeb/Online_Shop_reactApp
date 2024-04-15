@@ -249,3 +249,19 @@ addNewOrder.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Discounted Code
+export const DiscountedCode = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/offs`,
+});
+DiscountedCode.interceptors.response.use(
+  function (response) {
+    successSwal(`کد تخفیف با موفقیت اضافه شد`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
