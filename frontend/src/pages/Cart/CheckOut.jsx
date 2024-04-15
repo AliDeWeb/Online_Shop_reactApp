@@ -27,6 +27,8 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 export default function CheckOut() {
   const [isShowEditAddress, setIsShowEditAddress] = React.useState(false);
   const [newAddressVal, setNewAddressVal] = React.useState("");
+  const [addressId, setAddressId] = React.useState("");
+  const [paymentId, setPaymentId] = React.useState("");
   const queryClient = useQueryClient();
 
   const { userToken } = useUserToken();
@@ -76,7 +78,12 @@ export default function CheckOut() {
                     <div className="text-orange-400">
                       <MdOutlineLocationOn size="1.8rem" />
                     </div>
-                    <select className="bg-transparent outline-none border-none font-dana text-sm sm:text-base sm:w-max w-3/4">
+                    <select
+                      onChange={(e) => {
+                        setAddressId(e.target.value);
+                      }}
+                      className="bg-transparent outline-none border-none font-dana text-sm sm:text-base sm:w-max w-3/4"
+                    >
                       <option
                         className="font-dana text-zinc-700 text-lg line-clamp-1"
                         value=""
@@ -99,6 +106,8 @@ export default function CheckOut() {
                   <button
                     className="font-dana text-sm text-orange-500 mt-4 flex items-center gap-1 transition-all hover:scale-95"
                     onClick={() => {
+                      setAddressId(``);
+                      setPaymentId(``);
                       setIsShowEditAddress(true);
                     }}
                   >
@@ -404,7 +413,12 @@ export default function CheckOut() {
 
               <div className="flex items-center gap-1 sm:gap-2.5">
                 <span className="w-max font-danaBold text-lg">روش پرداخت:</span>
-                <select className="flex-grow bg-transparent border-none outline-none font-dana child:font-dana">
+                <select
+                  onChange={(e) => {
+                    setPaymentId(e.target.value);
+                  }}
+                  className="flex-grow bg-transparent border-none outline-none font-dana child:font-dana"
+                >
                   <option>انتخاب روش پرداخت ...</option>
                   {!isLoading &&
                     data.paymentWays.map((el) => (
