@@ -43,7 +43,9 @@ export default function CartProductBox({
   return (
     <div className="py-4 grid grid-cols-6 gap-2">
       <div className="col-span-2 xl:col-span-1">
-        <div className={`flex flex-col w-max items-center ${notShowCounter && "justify-center"}`}>
+        <div
+          className={`flex flex-col w-max items-center ${notShowCounter && "justify-center"}`}
+        >
           <div className="w-[90px] sm:w-[130px] h-[120px] sm:h-[150px] transition-all hover:scale-95">
             <Link to={href}>
               <img
@@ -144,10 +146,12 @@ export default function CartProductBox({
             <FaStore color="rgb(248,113,113)" />
             <span>تیمچه</span>
           </div>
-          <div className="flex items-center gap-2">
-            <FaSignsPost color="rgb(248,113,113)" />
-            <span>{transportTime}</span>
-          </div>
+          {!!transportTime && (
+            <div className="flex items-center gap-2">
+              <FaSignsPost color="rgb(248,113,113)" />
+              <span>{transportTime}</span>
+            </div>
+          )}
           <div className="mt-4">
             {discounted && (
               <span className="text-red-400 flex items-center gap-1">

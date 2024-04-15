@@ -15,13 +15,18 @@ import { Link } from "react-router-dom";
 import { useQuery, useQueryClient } from "react-query";
 
 // Axios
-import { getCartProducts, apiUrl } from "../../configs/axios/axiosConfigs";
+import {
+  getCartProducts,
+  addNewAddress,
+  apiUrl,
+} from "../../configs/axios/axiosConfigs";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function CheckOut() {
   const [isShowEditAddress, setIsShowEditAddress] = React.useState(false);
+  const [newAddressVal, setNewAddressVal] = React.useState("");
   const queryClient = useQueryClient();
 
   const { userToken } = useUserToken();
@@ -76,26 +81,19 @@ export default function CheckOut() {
                         className="font-dana text-zinc-700 text-lg line-clamp-1"
                         value=""
                       >
-                        قزوین، ولیعصر، خیابان خیام، چهار راه فردوسی
+                        انتخاب آدرس ...
                       </option>
-                      <option
-                        className="font-dana text-zinc-700 text-lg line-clamp-1"
-                        value=""
-                      >
-                        قزوین، ولیعصر، خیابان خیام، چهار راه فردوسی
-                      </option>
-                      <option
-                        className="font-dana text-zinc-700 text-lg line-clamp-1"
-                        value=""
-                      >
-                        قزوین، ولیعصر، خیابان خیام، چهار راه فردوسی
-                      </option>
-                      <option
-                        className="font-dana text-zinc-700 text-lg line-clamp-1"
-                        value=""
-                      >
-                        قزوین، ولیعصر، خیابان خیام، چهار راه فردوسی
-                      </option>
+
+                      {!isLoading &&
+                        data?.addresses.map((el) => (
+                          <option
+                            className="font-dana text-zinc-700 text-lg line-clamp-1"
+                            value={el._id}
+                            key={Math.random()}
+                          >
+                            {el.address}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <button
@@ -109,172 +107,237 @@ export default function CheckOut() {
                   </button>
 
                   {!!isShowEditAddress && (
-                    <div className="flex items-center gap-2 bg-gray-100 h-[40px] px-6 rounded-md w-full">
-                      <input
-                        className="bg-transparent h-full w-full border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
-                        type="text"
-                        placeholder="آدرس جدید"
-                      />
-                      <button
-                        onClick={() => {
-                          setIsShowEditAddress(false);
-                        }}
-                      >
-                        <IoMdCheckmark size="0.9rem" color="#696969" />
-                      </button>
-                      <button
-                        onClick={() => {
-                          setIsShowEditAddress(false);
-                        }}
-                      >
-                        <IoIosClose size="1.2rem" color="#696969" />
-                      </button>
-                    </div>
+                    <>
+                      <div className="flex items-center gap-2 bg-gray-100 h-[40px] px-6 rounded-md w-full">
+                        <input
+                          onChange={(e) => {
+                            setNewAddressVal(e.target.value);
+                          }}
+                          value={newAddressVal}
+                          className="bg-transparent h-full w-full border-none outline-none font-dana text-zinc-700 text-sm md:text-base"
+                          type="text"
+                          placeholder="آدرس جدید"
+                        />
+                        <button
+                          onClick={async () => {
+                            await addNewAddress({
+                              headers: {
+                                Authorization: `Bearer ${userToken}`,
+                              },
+                              data: {
+                                address: newAddressVal.trim(),
+                              },
+                            }).then(() => {
+                              setNewAddressVal(``);
+                              refetch();
+                            });
+                            setIsShowEditAddress(false);
+                          }}
+                        >
+                          <IoMdCheckmark size="0.9rem" color="#696969" />
+                        </button>
+                        <button
+                          onClick={() => {
+                            setNewAddressVal(``);
+                            setIsShowEditAddress(false);
+                          }}
+                        >
+                          <IoIosClose size="1.2rem" color="#696969" />
+                        </button>
+                      </div>
+                      <span className="font-dana text-sm px-6 text-red-400">
+                        ادرس باید بیشتر از 50 کارکتر داشته باشد
+                      </span>
+                    </>
                   )}
                 </div>
-                <div></div>
               </div>
             </div>
-            <div className="py-3 px-6 border-2 border-solid border-gray-400/50 rounded-lg flex flex-col gap-8">
-              <div className="flex justify-between items-start font-dana text-gray-400 gap-1">
-                <div className="flex flex-col">
-                  <span className="md:text-xl text-zinc-700">کالاهای سبک</span>
-                  <div className="flex items-center gap-1 text-sm md:text-base">
-                    <span>
-                      {data?.countOfProducts ? data?.countOfProducts : 0}
-                    </span>
-                    کالا
-                  </div>
-                </div>
-                <div>
-                  <HiOutlineDotsVertical size="1.4rem" color="rgb(63,63,70)" />
-                </div>
-              </div>
-              <div className="divide-y divide-solid divide-gray-400/50">
-                {!isLoading &&
-                  data?.items.map((el) => (
-                    <React.Fragment key={Math.random()}>
-                      <CartProductBox
-                        refetch={refetch}
-                        productId={el.product._id}
-                        color={null}
-                        size={null}
-                        title={el.product.title}
-                        cover={`${apiUrl}/${el.product.covers[0]}`}
-                        warranty={el.warranty}
-                        transportTime={el.product.transport.time}
-                        productCount={
-                          el?.count
-                            ? el?.count
-                            : el?.color?.length
-                              ? el?.color[0]?.count
-                              : el?.size?.length
-                                ? el?.size[0]?.count
-                                : 0
-                        }
-                        price={
-                          el?.product?.mainPrice
-                            ? el?.product?.mainPrice
-                            : el?.color?.length
-                              ? el?.color[0]?.price
-                              : el?.size?.length
-                                ? el?.size[0]?.price
-                                : 0
-                        }
-                        discounted={
-                          el?.product?.off
-                            ? el?.product?.discountedPrice
-                            : el?.color?.length
-                              ? el.color[0]?.discountedPrice
-                              : el?.size?.length
-                                ? el.size[0].discountedPrice
-                                : 0
-                        }
-                        href={`/product/${el.product.href}`}
-                        notShowCounter={true}
-                      />
-                    </React.Fragment>
-                  ))}
-              </div>
 
-              <div className="flex justify-end font-dana text-sm text-orange-500">
-                <Link to="/home" className="flex items-center gap-0.5">
-                  ادامه خرید
-                  <FaLessThan size="0.5rem" />
-                </Link>
-              </div>
-            </div>
-            <div className="py-3 px-6 border-2 border-solid border-gray-400/50 rounded-lg flex flex-col gap-8">
-              <div className="flex justify-between items-start font-dana text-gray-400 gap-1">
-                <div className="flex flex-col">
-                  <span className="md:text-xl text-zinc-700">
-                    کالاهای سنگین
-                  </span>
-                  <div className="flex items-center gap-1 text-sm md:text-base">
-                    <span>
-                      {data?.countOfProducts ? data?.countOfProducts : 0}
-                    </span>
-                    کالا
-                  </div>
-                </div>
-                <div>
-                  <HiOutlineDotsVertical size="1.4rem" color="rgb(63,63,70)" />
-                </div>
-              </div>
-              <div className="divide-y divide-solid divide-gray-400/50">
-                {!isLoading &&
-                  data?.items.map((el) => (
-                    <React.Fragment key={Math.random()}>
-                      <CartProductBox
-                        refetch={refetch}
-                        productId={el.product._id}
-                        color={null}
-                        size={null}
-                        title={el.product.title}
-                        cover={`${apiUrl}/${el.product.covers[0]}`}
-                        warranty={el.warranty}
-                        transportTime={el.product.transport.time}
-                        productCount={
-                          el?.count
-                            ? el?.count
-                            : el?.color?.length
-                              ? el?.color[0]?.count
-                              : el?.size?.length
-                                ? el?.size[0]?.count
-                                : 0
-                        }
-                        price={
-                          el?.product?.mainPrice
-                            ? el?.product?.mainPrice
-                            : el?.color?.length
-                              ? el?.color[0]?.price
-                              : el?.size?.length
-                                ? el?.size[0]?.price
-                                : 0
-                        }
-                        discounted={
-                          el?.product?.off
-                            ? el?.product?.discountedPrice
-                            : el?.color?.length
-                              ? el.color[0]?.discountedPrice
-                              : el?.size?.length
-                                ? el.size[0].discountedPrice
-                                : 0
-                        }
-                        href={`/product/${el.product.href}`}
-                        notShowCounter={true}
-                      />
-                    </React.Fragment>
-                  ))}
-              </div>
+            {!isLoading &&
+              data.groupedProductsByTransport?.transportsDetails1 &&
+              (function () {
+                return (
+                  <div className="py-3 px-6 border-2 border-solid border-gray-400/50 rounded-lg flex flex-col gap-8">
+                    <div className="flex justify-between items-start font-dana text-gray-400 gap-1">
+                      <div className="flex flex-col">
+                        <span className="md:text-xl text-zinc-700">
+                          کالاهای سبک
+                        </span>
+                        <div className="flex items-center gap-1 text-sm md:text-base">
+                          <span>
+                            {
+                              data?.groupedProductsByTransport
+                                ?.transportsDetails1?.transport.title
+                            }
+                            {"، "}
+                            {
+                              <span className="text-sm">
+                                {
+                                  data?.groupedProductsByTransport
+                                    ?.transportsDetails1?.transport.time
+                                }
+                              </span>
+                            }
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <HiOutlineDotsVertical
+                          size="1.4rem"
+                          color="rgb(63,63,70)"
+                        />
+                      </div>
+                    </div>
+                    <div className="divide-y divide-solid divide-gray-400/50">
+                      {!isLoading &&
+                        data?.groupedProductsByTransport?.transportsDetails1?.products?.map(
+                          (el) => (
+                            <React.Fragment key={Math.random()}>
+                              <CartProductBox
+                                refetch={refetch}
+                                productId={el.product._id}
+                                color={null}
+                                size={null}
+                                title={el.product.title}
+                                cover={`${apiUrl}/${el.product.covers[0]}`}
+                                warranty={el.warranty}
+                                productCount={
+                                  el?.count
+                                    ? el?.count
+                                    : el?.color?.length
+                                      ? el?.color[0]?.count
+                                      : el?.size?.length
+                                        ? el?.size[0]?.count
+                                        : 0
+                                }
+                                price={
+                                  el?.product?.mainPrice
+                                    ? el?.product?.mainPrice
+                                    : el?.color?.length
+                                      ? el?.color[0]?.price
+                                      : el?.size?.length
+                                        ? el?.size[0]?.price
+                                        : 0
+                                }
+                                discounted={
+                                  el?.product?.off
+                                    ? el?.product?.discountedPrice
+                                    : el?.color?.length
+                                      ? el.color[0]?.discountedPrice
+                                      : el?.size?.length
+                                        ? el.size[0].discountedPrice
+                                        : 0
+                                }
+                                href={`/product/${el.product.href}`}
+                                notShowCounter={true}
+                              />
+                            </React.Fragment>
+                          )
+                        )}
+                    </div>
 
-              <div className="flex justify-end font-dana text-sm text-orange-500">
-                <Link to="/home" className="flex items-center gap-0.5">
-                  ادامه خرید
-                  <FaLessThan size="0.5rem" />
-                </Link>
-              </div>
-            </div>
+                    <div className="flex justify-end font-dana text-sm text-orange-500">
+                      <Link to="/home" className="flex items-center gap-0.5">
+                        ادامه خرید
+                        <FaLessThan size="0.5rem" />
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })()}
+            {!isLoading &&
+              data.groupedProductsByTransport?.transportsDetails2 &&
+              (function () {
+                return (
+                  <div className="py-3 px-6 border-2 border-solid border-gray-400/50 rounded-lg flex flex-col gap-8">
+                    <div className="flex justify-between items-start font-dana text-gray-400 gap-1">
+                      <div className="flex flex-col">
+                        <span className="md:text-xl text-zinc-700">
+                          کالاهای سنگین
+                        </span>
+                        <div className="flex items-center gap-1 text-sm md:text-base">
+                          <span>
+                            {
+                              data?.groupedProductsByTransport
+                                ?.transportsDetails2?.transport.title
+                            }
+                            {"، "}
+                            {
+                              <span className="text-sm">
+                                {
+                                  data?.groupedProductsByTransport
+                                    ?.transportsDetails2?.transport.time
+                                }
+                              </span>
+                            }
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <HiOutlineDotsVertical
+                          size="1.4rem"
+                          color="rgb(63,63,70)"
+                        />
+                      </div>
+                    </div>
+                    <div className="divide-y divide-solid divide-gray-400/50">
+                      {!isLoading &&
+                        data?.groupedProductsByTransport?.transportsDetails2?.products?.map(
+                          (el) => (
+                            <React.Fragment key={Math.random()}>
+                              <CartProductBox
+                                refetch={refetch}
+                                productId={el.product._id}
+                                color={null}
+                                size={null}
+                                title={el.product.title}
+                                cover={`${apiUrl}/${el.product.covers[0]}`}
+                                warranty={el.warranty}
+                                productCount={
+                                  el?.count
+                                    ? el?.count
+                                    : el?.color?.length
+                                      ? el?.color[0]?.count
+                                      : el?.size?.length
+                                        ? el?.size[0]?.count
+                                        : 0
+                                }
+                                price={
+                                  el?.product?.mainPrice
+                                    ? el?.product?.mainPrice
+                                    : el?.color?.length
+                                      ? el?.color[0]?.price
+                                      : el?.size?.length
+                                        ? el?.size[0]?.price
+                                        : 0
+                                }
+                                discounted={
+                                  el?.product?.off
+                                    ? el?.product?.discountedPrice
+                                    : el?.color?.length
+                                      ? el.color[0]?.discountedPrice
+                                      : el?.size?.length
+                                        ? el.size[0].discountedPrice
+                                        : 0
+                                }
+                                href={`/product/${el.product.href}`}
+                                notShowCounter={true}
+                              />
+                            </React.Fragment>
+                          )
+                        )}
+                    </div>
+
+                    <div className="flex justify-end font-dana text-sm text-orange-500">
+                      <Link to="/home" className="flex items-center gap-0.5">
+                        ادامه خرید
+                        <FaLessThan size="0.5rem" />
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })()}
           </div>
           <div className="col-span-6 lg:col-span-2 flex flex-col gap-4">
             <div className="py-2 px-5 rounded-lg border-2 border-gray-400/50 border-solid font-dana text-sm text-zinc-700 flex flex-col gap-4">
@@ -282,7 +345,7 @@ export default function CheckOut() {
                 <span className="font-dana text-lg">موجودی کیف پول:</span>
                 <span>
                   <span className="font-danaBold text-lg">
-                    {!isLoading && data?.totalPrice.toLocaleString()}
+                    {!isLoading && data?.wallet.toLocaleString()}
                   </span>{" "}
                   <span>تومان</span>
                 </span>
@@ -328,15 +391,27 @@ export default function CheckOut() {
                   <span>تومان</span>
                 </span>
               </div>
+              <div className="flex items-center justify-between">
+                <span>هزینه ارسال:</span>
+                <span>
+                  <span className="font-danaBold">
+                    {!isLoading &&
+                      (data?.totalPriceOfTransports).toLocaleString()}
+                  </span>{" "}
+                  <span>تومان</span>
+                </span>
+              </div>
 
               <div className="flex items-center gap-1 sm:gap-2.5">
                 <span className="w-max font-danaBold text-lg">روش پرداخت:</span>
                 <select className="flex-grow bg-transparent border-none outline-none font-dana child:font-dana">
-                  <option value="">کارت به کارت</option>
-                  <option value="">کارت به کارت</option>
-                  <option value="">کارت به کارت</option>
-                  <option value="">کارت به کارت</option>
-                  <option value="">کارت به کارت</option>
+                  <option>انتخاب روش پرداخت ...</option>
+                  {!isLoading &&
+                    data.paymentWays.map((el) => (
+                      <option key={Math.random()} value={el.paymentWay}>
+                        {el.title}
+                      </option>
+                    ))}
                 </select>
               </div>
 

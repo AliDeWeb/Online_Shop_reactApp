@@ -124,7 +124,7 @@ export const getCategories = axios.create({
 //? Get Categories
 export const getBrands = axios.create({
   method: `GET`,
-  baseURL: `${apiUrl}/v1/category-brand/brand`
+  baseURL: `${apiUrl}/v1/category-brand/brand`,
 });
 
 //? Post Products To Cart
@@ -217,3 +217,29 @@ getSearchResult.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Add A New Address
+export const addNewAddress = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}/v1/users/address`,
+});
+addNewAddress.interceptors.response.use(
+  function (response) {
+    successSwal(`آدرس با موفقیت اضافه شد`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error.response.data.message);
+    return Promise.reject(error);
+  }
+);
+
+//? Add New Order
+export const addNewOrder = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}/v1/order/addToOrders`,
+});
+addNewOrder.interceptors.response.use(function (error) {
+  errorSwal(`خطا`);
+  return Promise.reject(error);
+});
