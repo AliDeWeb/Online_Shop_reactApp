@@ -12,7 +12,7 @@ import { IoIosClose, IoMdCheckmark } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 // React Query
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 
 // Axios
 import { getCartProducts, apiUrl } from "../../configs/axios/axiosConfigs";
@@ -22,6 +22,7 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function CheckOut() {
   const [isShowEditAddress, setIsShowEditAddress] = React.useState(false);
+  const queryClient = useQueryClient();
 
   const { userToken } = useUserToken();
   const { data, isLoading, refetch } = useQuery(
@@ -32,12 +33,18 @@ export default function CheckOut() {
           Authorization: `Bearer ${userToken}`,
         },
       });
+      console.log(res.data);
       return res.data;
     },
     {
       cacheTime: 30000,
       staleTime: 0,
       refetchOnMount: true,
+      initialData: () => {
+        const dataInit = queryClient.getQueryData(`cartPage`);
+
+        return dataInit;
+      },
     }
   );
 
@@ -131,7 +138,7 @@ export default function CheckOut() {
             <div className="py-3 px-6 border-2 border-solid border-gray-400/50 rounded-lg flex flex-col gap-8">
               <div className="flex justify-between items-start font-dana text-gray-400 gap-1">
                 <div className="flex flex-col">
-                  <span className="md:text-xl text-zinc-700">کالا ها</span>
+                  <span className="md:text-xl text-zinc-700">کالاهای سبک</span>
                   <div className="flex items-center gap-1 text-sm md:text-base">
                     <span>
                       {data?.countOfProducts ? data?.countOfProducts : 0}
@@ -150,7 +157,78 @@ export default function CheckOut() {
                       <CartProductBox
                         refetch={refetch}
                         productId={el.product._id}
-                        color={ null}
+                        color={null}
+                        size={null}
+                        title={el.product.title}
+                        cover={`${apiUrl}/${el.product.covers[0]}`}
+                        warranty={el.warranty}
+                        transportTime={el.product.transport.time}
+                        productCount={
+                          el?.count
+                            ? el?.count
+                            : el?.color?.length
+                              ? el?.color[0]?.count
+                              : el?.size?.length
+                                ? el?.size[0]?.count
+                                : 0
+                        }
+                        price={
+                          el?.product?.mainPrice
+                            ? el?.product?.mainPrice
+                            : el?.color?.length
+                              ? el?.color[0]?.price
+                              : el?.size?.length
+                                ? el?.size[0]?.price
+                                : 0
+                        }
+                        discounted={
+                          el?.product?.off
+                            ? el?.product?.discountedPrice
+                            : el?.color?.length
+                              ? el.color[0]?.discountedPrice
+                              : el?.size?.length
+                                ? el.size[0].discountedPrice
+                                : 0
+                        }
+                        href={`/product/${el.product.href}`}
+                        notShowCounter={true}
+                      />
+                    </React.Fragment>
+                  ))}
+              </div>
+
+              <div className="flex justify-end font-dana text-sm text-orange-500">
+                <Link to="/home" className="flex items-center gap-0.5">
+                  ادامه خرید
+                  <FaLessThan size="0.5rem" />
+                </Link>
+              </div>
+            </div>
+            <div className="py-3 px-6 border-2 border-solid border-gray-400/50 rounded-lg flex flex-col gap-8">
+              <div className="flex justify-between items-start font-dana text-gray-400 gap-1">
+                <div className="flex flex-col">
+                  <span className="md:text-xl text-zinc-700">
+                    کالاهای سنگین
+                  </span>
+                  <div className="flex items-center gap-1 text-sm md:text-base">
+                    <span>
+                      {data?.countOfProducts ? data?.countOfProducts : 0}
+                    </span>
+                    کالا
+                  </div>
+                </div>
+                <div>
+                  <HiOutlineDotsVertical size="1.4rem" color="rgb(63,63,70)" />
+                </div>
+              </div>
+              <div className="divide-y divide-solid divide-gray-400/50">
+                {!isLoading &&
+                  data?.items.map((el) => (
+                    <React.Fragment key={Math.random()}>
+                      <CartProductBox
+                        refetch={refetch}
+                        productId={el.product._id}
+                        color={null}
                         size={null}
                         title={el.product.title}
                         cover={`${apiUrl}/${el.product.covers[0]}`}
@@ -198,7 +276,27 @@ export default function CheckOut() {
               </div>
             </div>
           </div>
-          <div className="col-span-6 lg:col-span-2">
+          <div className="col-span-6 lg:col-span-2 flex flex-col gap-4">
+            <div className="py-2 px-5 rounded-lg border-2 border-gray-400/50 border-solid font-dana text-sm text-zinc-700 flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <span className="font-dana text-lg">موجودی کیف پول:</span>
+                <span>
+                  <span className="font-danaBold text-lg">
+                    {!isLoading && data?.totalPrice.toLocaleString()}
+                  </span>{" "}
+                  <span>تومان</span>
+                </span>
+              </div>
+
+              <div className="flex items-center justify-center gap-2.5 font-danaBold child:py-2 child:px-4">
+                <Link className="flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95">
+                  افزایش موجودی
+                </Link>
+                <Link className="flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95">
+                  هدیه به دیگران
+                </Link>
+              </div>
+            </div>
             <div className="py-2 px-5 rounded-lg border-2 border-gray-400/50 border-solid font-dana text-sm text-zinc-700 flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <span>قیمت کل:</span>
@@ -229,6 +327,17 @@ export default function CheckOut() {
                   </span>{" "}
                   <span>تومان</span>
                 </span>
+              </div>
+
+              <div className="flex items-center gap-1 sm:gap-2.5">
+                <span className="w-max font-danaBold text-lg">روش پرداخت:</span>
+                <select className="flex-grow bg-transparent border-none outline-none font-dana child:font-dana">
+                  <option value="">کارت به کارت</option>
+                  <option value="">کارت به کارت</option>
+                  <option value="">کارت به کارت</option>
+                  <option value="">کارت به کارت</option>
+                  <option value="">کارت به کارت</option>
+                </select>
               </div>
 
               <div>

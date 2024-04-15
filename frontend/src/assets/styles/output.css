@@ -987,6 +987,10 @@ img {
   height: 2.5rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .h-\[100dvh\] {
   height: 100dvh;
 }
@@ -1041,6 +1045,10 @@ img {
 
 .w-3\/4 {
   width: 75%;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .w-\[100px\] {
@@ -1098,6 +1106,26 @@ img {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.w-72 {
+  width: 18rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-80 {
+  width: 20rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .rotate-180 {
@@ -2012,6 +2040,15 @@ img {
   padding-bottom: 0.5rem;
 }
 
+.child\:px-4 > * {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.child\:font-dana > * {
+  font-family: dana;
+}
+
 .child\:transition-all > * {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2117,6 +2154,14 @@ img {
 
   .sm\:gap-0 {
     gap: 0px;
+  }
+
+  .sm\:gap-2 {
+    gap: 0.5rem;
+  }
+
+  .sm\:gap-2\.5 {
+    gap: 0.625rem;
   }
 
   .sm\:px-8 {
