@@ -13,6 +13,7 @@ import {
   CheckOut,
   Search,
   Page404,
+  PaymentStatus,
 } from "../Layout/Layout";
 
 export default () => {
@@ -35,6 +36,7 @@ export default () => {
           <Route path="product/:href" element={<ProductsDetails />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<CheckOut />} />
+          <Route path="v1/order/verify/:a/:b" element={<PaymentStatus />} />
           <Route path="search/:searchValue" element={<Search />} />
         </Route>
         <Route path="*" element={<Page404 />} />
