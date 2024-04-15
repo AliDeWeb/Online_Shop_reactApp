@@ -39,11 +39,12 @@ const errorSwal = (text) => {
 // Axios
 import axios from "axios";
 export const apiUrl = "https://ma-api.liara.run";
+const version = `/v1`
 
 //? Main Page Data
 export const getMainPageData = axios.create({
   method: `GET`,
-  baseURL: `${apiUrl}/v1/product/mainPage`,
+  baseURL: `${apiUrl}${version}/product/mainPage`,
 });
 getMainPageData.interceptors.response.use(
   function (response) {
@@ -57,7 +58,7 @@ getMainPageData.interceptors.response.use(
 
 //? User Validation
 export const usersValidation = axios.create({
-  baseURL: `${apiUrl}/v1/auth`,
+  baseURL: `${apiUrl}${version}/auth`,
   method: "POST",
 });
 usersValidation.interceptors.response.use(
@@ -83,12 +84,12 @@ usersValidation.interceptors.response.use(
 //? GetUserData
 export const getUserData = axios.create({
   method: `GET`,
-  baseURL: `${apiUrl}/v1/users/getMe`,
+  baseURL: `${apiUrl}${version}/users/getMe`,
 });
 
 //? NewLetter
 export const newLetter = axios.create({
-  baseURL: `${apiUrl}/v1/newsletters`,
+  baseURL: `${apiUrl}${version}/newsletters`,
 });
 newLetter.interceptors.response.use(
   function (response) {
@@ -104,7 +105,7 @@ newLetter.interceptors.response.use(
 //? Product Details
 export const getProductsInfos = axios.create({
   method: `GET`,
-  baseURL: `${apiUrl}/v1/product`,
+  baseURL: `${apiUrl}${version}/product`,
 });
 getProductsInfos.interceptors.response.use(
   function (response) {
@@ -118,19 +119,19 @@ getProductsInfos.interceptors.response.use(
 
 //? Get Categories
 export const getCategories = axios.create({
-  baseURL: `${apiUrl}/v1/category-brand/category`,
+  baseURL: `${apiUrl}${version}/category-brand/category`,
 });
 
 //? Get Categories
 export const getBrands = axios.create({
   method: `GET`,
-  baseURL: `${apiUrl}/v1/category-brand/brand`,
+  baseURL: `${apiUrl}${version}/category-brand/brand`,
 });
 
 //? Post Products To Cart
 export const postProductsToCart = axios.create({
   method: `POST`,
-  baseURL: `${apiUrl}/v1/cart`,
+  baseURL: `${apiUrl}${version}/cart`,
 });
 postProductsToCart.interceptors.response.use(
   function (response) {
@@ -146,7 +147,7 @@ postProductsToCart.interceptors.response.use(
 //? Get Cart Products
 export const getCartProducts = axios.create({
   method: `GET`,
-  baseURL: `${apiUrl}/v1/cart`,
+  baseURL: `${apiUrl}${version}/cart`,
 });
 postProductsToCart.interceptors.response.use(
   function (response) {
@@ -161,7 +162,7 @@ postProductsToCart.interceptors.response.use(
 //? Post Email To Get Change Password Code
 export const postUserEmailToChangePassword = axios.create({
   method: `POST`,
-  baseURL: `${apiUrl}/v1/users/forgetPassword/sendCode`,
+  baseURL: `${apiUrl}${version}/users/forgetPassword/sendCode`,
 });
 postUserEmailToChangePassword.interceptors.response.use(
   function (response) {
@@ -176,7 +177,7 @@ postUserEmailToChangePassword.interceptors.response.use(
 //? Post Code To Get Change Password
 export const postUserCodeToChangePassword = axios.create({
   method: `POST`,
-  baseURL: `${apiUrl}/v1/users/forgetPassword/getCode`,
+  baseURL: `${apiUrl}${version}/users/forgetPassword/getCode`,
 });
 postUserCodeToChangePassword.interceptors.response.use(
   function (response) {
@@ -190,7 +191,7 @@ postUserCodeToChangePassword.interceptors.response.use(
 //? Post New Password Change Password
 export const postNewPasswordChangePassword = axios.create({
   method: `POST`,
-  baseURL: `${apiUrl}/v1/users/changePassword`,
+  baseURL: `${apiUrl}${version}/users/changePassword`,
 });
 postNewPasswordChangePassword.interceptors.response.use(
   function (response) {
@@ -206,7 +207,7 @@ postNewPasswordChangePassword.interceptors.response.use(
 //? Get Search Result
 export const getSearchResult = axios.create({
   method: `GET`,
-  baseURL: `${apiUrl}/v1/search`,
+  baseURL: `${apiUrl}${version}/search`,
 });
 getSearchResult.interceptors.response.use(
   function (response) {
@@ -221,7 +222,7 @@ getSearchResult.interceptors.response.use(
 //? Add A New Address
 export const addNewAddress = axios.create({
   method: `POST`,
-  baseURL: `${apiUrl}/v1/users/address`,
+  baseURL: `${apiUrl}${version}/users/address`,
 });
 addNewAddress.interceptors.response.use(
   function (response) {
@@ -237,7 +238,7 @@ addNewAddress.interceptors.response.use(
 //? Add New Order
 export const addNewOrder = axios.create({
   method: `POST`,
-  baseURL: `${apiUrl}/v1/order/addToOrders`,
+  baseURL: `${apiUrl}${version}/order/addToOrders`,
 });
 addNewOrder.interceptors.response.use(
   function (response) {
