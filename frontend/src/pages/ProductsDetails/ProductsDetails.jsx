@@ -147,6 +147,7 @@ export default function ProductsDetails() {
                           className="cursor-grab active:cursor-grabbing object-center"
                           src={`${apiUrl}/${el}`}
                           alt="img"
+                          loading="lazy"
                         />
                       </div>
                     </SwiperSlide>

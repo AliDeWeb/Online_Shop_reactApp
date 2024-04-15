@@ -64,7 +64,7 @@ export default function Footer() {
             <div className="flex items-center justify-evenly flex-wrap lg:flex-nowrap child:w-1/4 gap-6 lg:gap-0 lg:child:w-auto text-zinc-700">
               <div className="flex flex-col justify-center items-center gap-3 font-dana">
                 <div className="w-[44px]">
-                  <img src={shoppingBasket} alt="icon" />
+                  <img loading="lazy" src={shoppingBasket} alt="icon" />
                 </div>
                 <span className="xl:text-base text-sm sm:inline hidden">
                   ارسال به تمامی شهرها
@@ -75,7 +75,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col justify-center items-center gap-3 font-dana">
                 <div className="w-[44px]">
-                  <img src={tracking} alt="icon" />
+                  <img loading="lazy" src={tracking} alt="icon" />
                 </div>
                 <span className="xl:text-base text-sm sm:inline hidden">
                   امکان تحویل اکسپرس
@@ -84,7 +84,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col justify-center items-center gap-3 font-dana">
                 <div className="w-[44px]">
-                  <img src={terminal} alt="icon" />
+                  <img loading="lazy" src={terminal} alt="icon" />
                 </div>
                 <span className="xl:text-base text-sm sm:inline hidden">
                   امکان پرداخت در محل
@@ -95,7 +95,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col justify-center items-center gap-3 font-dana">
                 <div className="w-[44px]">
-                  <img src={service} alt="icon" />
+                  <img loading="lazy" src={service} alt="icon" />
                 </div>
                 <span className="xl:text-base text-sm sm:inline hidden">
                   ۷ روز هفته، ۲۴ ساعته
@@ -104,7 +104,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col justify-center items-center gap-3 font-dana">
                 <div className="w-[44px]">
-                  <img src={returnSvg} alt="icon" />
+                  <img loading="lazy" src={returnSvg} alt="icon" />
                 </div>
                 <span className="xl:text-base text-sm sm:inline hidden">
                   ۷ روز ضمانت بازگشت کالا
@@ -115,7 +115,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col justify-center items-center gap-3 font-dana">
                 <div className="w-[44px]">
-                  <img src={discount} alt="icon" />
+                  <img loading="lazy" src={discount} alt="icon" />
                 </div>
                 <span className="xl:text-base text-sm sm:inline hidden">
                   ضمانت اصل بودن کالا

@@ -39,6 +39,7 @@ export default function LongBanner({ banners }) {
                     <div className="h-full">
                       <Link className="h-full">
                         <img
+                          loading="lazy"
                           className="rounded-lg active:cursor-grabbing"
                           src={`${apiUrl}/${el}`}
                           alt="banner"

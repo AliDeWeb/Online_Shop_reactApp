@@ -15,6 +15,7 @@ export default function WeblogBox() {
             className="rounded-lg overflow-hidden transition-all hover:scale-105 sm:h-auto h-[230px]"
             src={weblog}
             alt="img"
+            loading="lazy"
           />
         </Link>
       </div>
