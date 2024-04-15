@@ -239,7 +239,12 @@ export const addNewOrder = axios.create({
   method: `POST`,
   baseURL: `${apiUrl}/v1/order/addToOrders`,
 });
-addNewOrder.interceptors.response.use(function (error) {
-  errorSwal(`خطا`);
-  return Promise.reject(error);
-});
+addNewOrder.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);

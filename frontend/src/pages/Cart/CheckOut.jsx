@@ -18,6 +18,7 @@ import { useQuery, useQueryClient } from "react-query";
 import {
   getCartProducts,
   addNewAddress,
+  addNewOrder,
   apiUrl,
 } from "../../configs/axios/axiosConfigs";
 
@@ -27,13 +28,13 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 export default function CheckOut() {
   const [isShowEditAddress, setIsShowEditAddress] = React.useState(false);
   const [newAddressVal, setNewAddressVal] = React.useState("");
-  const [addressId, setAddressId] = React.useState("");
-  const [paymentId, setPaymentId] = React.useState("");
+  let addressId = React.useRef("");
+  let paymentId = React.useRef("");
   const queryClient = useQueryClient();
 
   const { userToken } = useUserToken();
   const { data, isLoading, refetch } = useQuery(
-    `cartPage`,
+    `checkoutPage`,
     async () => {
       const res = await getCartProducts({
         headers: {
@@ -47,6 +48,7 @@ export default function CheckOut() {
       cacheTime: 30000,
       staleTime: 0,
       refetchOnMount: true,
+      refetchIntervalInBackground: false,
       initialData: () => {
         const dataInit = queryClient.getQueryData(`cartPage`);
 
@@ -80,7 +82,7 @@ export default function CheckOut() {
                     </div>
                     <select
                       onChange={(e) => {
-                        setAddressId(e.target.value);
+                        addressId.current = e.target.value;
                       }}
                       className="bg-transparent outline-none border-none font-dana text-sm sm:text-base sm:w-max w-3/4"
                     >
@@ -106,8 +108,8 @@ export default function CheckOut() {
                   <button
                     className="font-dana text-sm text-orange-500 mt-4 flex items-center gap-1 transition-all hover:scale-95"
                     onClick={() => {
-                      setAddressId(``);
-                      setPaymentId(``);
+                      addressId.current = ``;
+                      paymentId.current = ``;
                       setIsShowEditAddress(true);
                     }}
                   >
@@ -415,7 +417,7 @@ export default function CheckOut() {
                 <span className="w-max font-danaBold text-lg">روش پرداخت:</span>
                 <select
                   onChange={(e) => {
-                    setPaymentId(e.target.value);
+                    paymentId.current = e.target.value;
                   }}
                   className="flex-grow bg-transparent border-none outline-none font-dana child:font-dana"
                 >
@@ -430,9 +432,24 @@ export default function CheckOut() {
               </div>
 
               <div>
-                <Link className="w-full font-danaBold sm:text-lg flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95">
+                <button
+                  onClick={() => {
+                    console.log(paymentId.current, addressId.current);
+                    addNewOrder({
+                      headers: {
+                        Authorization: `Bearer ${userToken}`,
+                      },
+                      data: {
+                        paymentWay: paymentId.current,
+                        addressID: addressId.current,
+                        description: "unset",
+                      },
+                    });
+                  }}
+                  className="w-full font-danaBold sm:text-lg flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95"
+                >
                   تسویه حساب
-                </Link>
+                </button>
               </div>
             </div>
           </div>
