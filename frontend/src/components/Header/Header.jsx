@@ -90,14 +90,11 @@ export default function Header() {
 
   useEffect(() => {
     setIsHamburgerMenuOpen(false);
-    if (!location.pathname.includes(`search`)) {
-      desktopSearchVal.current.value = ``;
-    } else {
-      window.addEventListener(`resize`, () => {
-        window.innerWidth >= 1024 &&
-          (desktopSearchVal.current.value = param.searchValue);
-      });
-    }
+
+    window.addEventListener(`resize`, () => {
+      window.innerWidth >= 1024 &&
+        (desktopSearchVal.current.value = param.searchValue);
+    });
   }, [location]);
   useEffect(() => {
     refetch();
