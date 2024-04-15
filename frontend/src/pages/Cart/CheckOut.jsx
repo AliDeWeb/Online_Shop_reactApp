@@ -41,7 +41,6 @@ export default function CheckOut() {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log(res.data);
       return res.data;
     },
     {
@@ -444,7 +443,10 @@ export default function CheckOut() {
                         addressID: addressId.current,
                         description: "unset",
                       },
-                    });
+                    }).then((res)=> {
+                      location.replace(res.data.url)
+                      console.log(res);
+                    })
                   }}
                   className="w-full font-danaBold sm:text-lg flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95"
                 >
