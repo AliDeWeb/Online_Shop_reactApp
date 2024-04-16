@@ -15,7 +15,7 @@ export default function CategoriesSection({ categories }) {
             categories?.map((el) => (
               <div key={el._id}>
                 <div className="md:mx-2 font-dana flex flex-col items-center justify-center hover:scale-110 transition-all rounded-md overflow-hidden">
-                  <Link className="flex flex-col items-center justify-center">
+                  <Link className="flex flex-col items-center justify-center" to={`/search/${el.title}`}>
                     <img
                       
                       src={`${apiUrl}/${el.cover}`}

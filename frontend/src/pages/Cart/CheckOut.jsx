@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { CartProductBox } from "../../configs/Layout/Layout";
 
@@ -57,6 +57,10 @@ export default function CheckOut() {
       },
     }
   );
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   return (
     <div className="py-5">
