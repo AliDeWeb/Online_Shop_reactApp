@@ -37,7 +37,7 @@ export default function Home() {
       return mainData.data.sections;
     },
     {
-      refetchInterval: 10000,
+      refetchInterval: 60000,
       onError: () => {
         refetch();
       },

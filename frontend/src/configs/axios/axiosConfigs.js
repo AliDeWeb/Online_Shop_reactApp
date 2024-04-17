@@ -39,7 +39,7 @@ const errorSwal = (text) => {
 // Axios
 import axios from "axios";
 export const apiUrl = "https://ma-api.liara.run";
-const version = `/v1`
+const version = `/v1`;
 
 //? Main Page Data
 export const getMainPageData = axios.create({
@@ -265,3 +265,8 @@ DiscountedCode.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+//? Get Payment Status
+export const getPaymentStatus = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/order/verify`,
+});

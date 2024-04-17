@@ -90,11 +90,6 @@ export default function Header() {
 
   useEffect(() => {
     setIsHamburgerMenuOpen(false);
-
-    window.addEventListener(`resize`, () => {
-      window.innerWidth >= 1024 &&
-        (desktopSearchVal.current.value = param.searchValue);
-    });
   }, [location]);
   useEffect(() => {
     refetch();

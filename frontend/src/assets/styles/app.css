@@ -70,3 +70,15 @@ input::placeholder {
 .MuiStack-root {
   direction: ltr;
 }
+
+@media print {
+  header,
+  footer,
+  .status-btns-wrapper {
+    display: none;
+  }
+  @page {
+    size: auto;
+    margin: 0; 
+  }
+}
