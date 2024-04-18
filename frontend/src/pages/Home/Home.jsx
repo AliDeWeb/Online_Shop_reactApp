@@ -258,7 +258,7 @@ export default function Home() {
           {!isLoading &&
             data?.brands?.brands?.map((el) => (
               <SwiperSlide key={el._id}>
-                <TopBrandsSection img={`${apiUrl}/${el.cover}`} />
+                <TopBrandsSection href={`/search/${el.href}`} img={`${apiUrl}/${el.cover}`} />
               </SwiperSlide>
             ))}
         </Swiper>
