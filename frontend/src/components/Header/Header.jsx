@@ -28,6 +28,7 @@ import {
   getUserData,
   getCategories,
   getBrands,
+  getMenus,
 } from "../../configs/axios/axiosConfigs";
 
 // React Query
@@ -76,6 +77,15 @@ export default function Header() {
       onError: () => {
         refetch();
       },
+    }
+  );
+
+  const { data: menus, isLoading: isMenusLoading } = useQuery(
+    `menus`,
+    async () => {
+      let res = await getMenus();
+
+      return res.data;
     }
   );
 
@@ -529,15 +539,12 @@ export default function Header() {
                 </ul>
               </div>
             </li>
-            <li className="hidden sm:block">
-              <Link>تخفیفات شگفت انگیز</Link>
-            </li>
-            <li className="hidden sm:block">
-              <Link>ما کی هستیم؟</Link>
-            </li>
-            <li className="hidden sm:block">
-              <Link>تماس با ما</Link>
-            </li>
+            {!isMenusLoading &&
+              menus?.map((el) => (
+                <li key={Math.random()} className="hidden sm:block">
+                  <Link to={el.href}>{el.title}</Link>
+                </li>
+              ))}
           </ul>
         </div>
       </nav>

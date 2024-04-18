@@ -265,8 +265,15 @@ DiscountedCode.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 //? Get Payment Status
 export const getPaymentStatus = axios.create({
   method: `GET`,
   baseURL: `${apiUrl}${version}/order/verify`,
+});
+
+//? Get Menus
+export const getMenus = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/menu`,
 });
