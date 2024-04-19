@@ -480,7 +480,9 @@ export default function CheckOut() {
                         description: "unset",
                       },
                     }).then((res) => {
-                      location.replace(res.data.url);
+                      if (res.data.url) {
+                        location.replace(res.data.url);
+                      }
                       console.log(res);
                     });
                   }}
