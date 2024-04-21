@@ -1,5 +1,5 @@
 // React Router
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 // icons
 import { CiEdit } from "react-icons/ci";
@@ -45,45 +45,65 @@ export default function UserPanelSideBar() {
         </div>
       </div>
       <div className="divide-y divide-solid divide-gray-400/20">
-        <div className="text-zinc-700 active-panel-menu">
-          <Link className="flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md">
+        <div className="text-zinc-700">
+          <NavLink
+            className={(a) => {
+              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+            }}
+          >
             <span>
               <IoHomeOutline />
             </span>
             <span className="text-sm">نمای کلی</span>
-          </Link>
+          </NavLink>
         </div>
         <div className="text-zinc-700">
-          <Link className="flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md">
+          <NavLink
+            className={(a) => {
+              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+            }}
+          >
             <span>
               <MdOutlineShoppingBag />
             </span>
             <span className="text-sm">سفارش ها</span>
-          </Link>
+          </NavLink>
         </div>
         <div className="text-zinc-700">
-          <Link className="flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md">
+          <NavLink
+            className={(a) => {
+              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+            }}
+          >
             <span>
               <FaRegHeart />
             </span>
             <span className="text-sm">مورد علاقه</span>
-          </Link>
+          </NavLink>
         </div>
         <div className="text-zinc-700">
-          <Link className="flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md">
+          <NavLink
+            className={(a) => {
+              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+            }}
+          >
             <span>
               <FaRegComment />
             </span>
             <span className="text-sm">دیدگاه ها</span>
-          </Link>
+          </NavLink>
         </div>
         <div className="text-zinc-700">
-          <Link className="flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md">
+          <NavLink
+            className={(a) => {
+              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+            }}
+          >
             <span>
               <HiOutlineLocationMarker />
             </span>
             <span className="text-sm">آدرس ها</span>
-          </Link>
+          </NavLink>
         </div>
         <div className="text-red-600">
           <button
