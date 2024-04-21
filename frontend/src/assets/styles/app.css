@@ -87,6 +87,10 @@ input::placeholder {
   }
 }
 
+.box-shadow {
+  box-shadow: 0 0 5px #999999;
+}
+
 @media print {
   header,
   footer,

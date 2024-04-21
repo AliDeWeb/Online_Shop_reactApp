@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function WeblogBox() {
   return (
-    <div className="bg-white h-[340px] sm:h-[315px] md:h-[335px] py-2.5 px-2 rounded-xl flex flex-col justify-between">
+    <div className="bg-white h-[340px] sm:h-[315px] md:h-[335px] py-2.5 px-2 rounded-xl flex flex-col justify-between box-shadow my-7">
       <div>
         <Link>
           <img

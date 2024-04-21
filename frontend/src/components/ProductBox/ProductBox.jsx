@@ -32,7 +32,7 @@ export default function ProductBox({
   const [isProductFetching, setIsProductFetching] = useState(false);
 
   return (
-    <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between">
+    <div className="relative h-[350px] lg:h-[380px] bg-white py-4 px-3 rounded-lg flex flex-col justify-between box-shadow my-4">
       {!!num && !!discounted && (
         <div
           className={`absolute top-2.5 left-2.5 ${

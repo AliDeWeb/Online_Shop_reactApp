@@ -97,7 +97,7 @@ export default function Home() {
               slidesPerView: 4.3,
             },
             1536: {
-              slidesPerView: 5,
+              slidesPerView: 5.2,
             },
           }}
         >
@@ -180,7 +180,7 @@ export default function Home() {
               slidesPerView: 4.3,
             },
             1536: {
-              slidesPerView: 5,
+              slidesPerView: 5.2,
             },
           }}
         >
@@ -303,7 +303,7 @@ export default function Home() {
               slidesPerView: 4.3,
             },
             1536: {
-              slidesPerView: 5,
+              slidesPerView: 5.2,
             },
           }}
         >
@@ -380,7 +380,7 @@ export default function Home() {
               slidesPerView: 4.3,
             },
             1536: {
-              slidesPerView: 5,
+              slidesPerView: 5.2,
             },
           }}
         >
