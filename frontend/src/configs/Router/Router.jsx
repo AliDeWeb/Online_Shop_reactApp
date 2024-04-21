@@ -14,7 +14,7 @@ import {
   Search,
   Page404,
   PaymentStatus,
-  UserPanel
+  UserPanel,
 } from "../Layout/Layout";
 
 export default () => {
@@ -39,7 +39,9 @@ export default () => {
           <Route path="checkout" element={<CheckOut />} />
           <Route path="payment-status/verify" element={<PaymentStatus />} />
           <Route path="search/:searchValue" element={<Search />} />
-          <Route path="user-panel" element={<UserPanel />} />
+          <Route path="user-panel" element={<UserPanel />}>
+            <Route path="home" element={<Search />} />
+          </Route>
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

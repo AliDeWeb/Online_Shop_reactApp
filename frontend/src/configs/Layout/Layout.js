@@ -26,3 +26,4 @@ export { default as HeadSection } from "../../components/HeadSection/HeadSection
 export { default as TopBrandsSection } from "../../components/TopBrandsSection/TopBrandsSection";
 export { default as Accordion } from "../../components/Accordion/Accordion";
 export { default as CartProductBox } from "../../components/ProductBox/CartProductBox";
+export { default as UserPanelSideBar } from "../../components/PanelsSideBar/UserPanelSideBar";
