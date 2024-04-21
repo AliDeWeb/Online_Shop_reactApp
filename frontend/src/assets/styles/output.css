@@ -1039,6 +1039,10 @@ img {
   height: 100%;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .min-h-\[100dvh\] {
   min-height: 100dvh;
 }
@@ -1114,6 +1118,10 @@ img {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[90\%\] {
+  width: 90%;
 }
 
 .flex-grow {
@@ -1473,6 +1481,11 @@ img {
 
 .bg-zinc-900\/70 {
   background-color: rgb(24 24 27 / 0.7);
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .object-contain {
@@ -2172,6 +2185,10 @@ img {
 
   .sm\:w-\[420px\] {
     width: 420px;
+  }
+
+  .sm\:w-\[90\%\] {
+    width: 90%;
   }
 
   .sm\:list-disc {
