@@ -442,9 +442,21 @@ export default function CheckOut() {
                 <span>
                   <span className="font-danaBold">
                     {!isLoading &&
-                      (data?.totalPriceOfTransports).toLocaleString()}
-                  </span>{" "}
-                  <span>تومان</span>
+                      (() => {
+                        if (data?.totalPriceOfTransports === 0) {
+                          return `رایگان`;
+                        } else {
+                          return (
+                            <>
+                              <span>
+                                {data.totalPriceOfTransports.toLocaleString()}
+                              </span>{" "}
+                              <span>تومان</span>
+                            </>
+                          );
+                        }
+                      })()}
+                  </span>
                 </span>
               </div>
 
