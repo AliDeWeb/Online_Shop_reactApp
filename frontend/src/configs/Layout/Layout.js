@@ -12,6 +12,7 @@ export { default as CheckOut } from "../../pages/Cart/CheckOut";
 export { default as Search } from "../../pages/Search/Search";
 export { default as Page404 } from "../../pages/Page404/Page404";
 export { default as PaymentStatus } from "../../pages/PaymentStatus/PaymentStatus";
+export { default as UserPanel } from "../../pages/Panel/UserPanel";
 
 // Components
 export { default as Header } from "../../components/Header/Header";

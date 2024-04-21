@@ -751,6 +751,14 @@ img {
   z-index: 30;
 }
 
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
@@ -765,6 +773,10 @@ img {
 
 .col-span-6 {
   grid-column: span 6 / span 6;
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
 }
 
 .mx-3 {
@@ -892,6 +904,10 @@ img {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mb-2\.5 {
+  margin-bottom: 0.625rem;
 }
 
 .line-clamp-1 {
@@ -1271,6 +1287,15 @@ img {
   border-color: rgb(156 163 175 / 0.5);
 }
 
+.divide-gray-400 > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-divide-opacity));
+}
+
+.divide-gray-400\/20 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(156 163 175 / 0.2);
+}
+
 .overflow-auto {
   overflow: auto;
 }
@@ -1581,6 +1606,11 @@ img {
   padding-bottom: 2rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -1623,6 +1653,10 @@ img {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .text-center {
@@ -1734,6 +1768,16 @@ img {
 .text-zinc-700 {
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .opacity-0 {
@@ -1912,6 +1956,43 @@ img {
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gray-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-400\/50:hover {
+  background-color: rgb(156 163 175 / 0.5);
+}
+
+.hover\:bg-gray-400\/80:hover {
+  background-color: rgb(156 163 175 / 0.8);
+}
+
+.hover\:bg-gray-400\/0:hover {
+  background-color: rgb(156 163 175 / 0);
+}
+
+.hover\:bg-gray-400\/40:hover {
+  background-color: rgb(156 163 175 / 0.4);
+}
+
+.hover\:bg-gray-400\/30:hover {
+  background-color: rgb(156 163 175 / 0.3);
+}
+
+.hover\:bg-gray-400\/20:hover {
+  background-color: rgb(156 163 175 / 0.2);
+}
+
+.hover\:bg-red-400\/20:hover {
+  background-color: rgb(248 113 113 / 0.2);
+}
+
+.hover\:bg-red-400\/40:hover {
+  background-color: rgb(248 113 113 / 0.4);
+}
+
 .hover\:pr-5:hover {
   padding-right: 1.25rem;
 }
@@ -1924,6 +2005,11 @@ img {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-teal-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(13 148 136 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-xl:hover {
@@ -2265,6 +2351,14 @@ img {
 }
 
 @media (min-width: 1024px) {
+  .lg\:order-1 {
+    order: 1;
+  }
+
+  .lg\:order-2 {
+    order: 2;
+  }
+
   .lg\:col-span-1 {
     grid-column: span 1 / span 1;
   }

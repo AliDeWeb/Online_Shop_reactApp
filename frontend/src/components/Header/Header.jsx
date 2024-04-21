@@ -207,7 +207,7 @@ export default function Header() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-3 font-dana text-orange-400">
             {data?.firstName && data?.lastName ? (
-              <Link className="flex items-center gap-1.5">
+              <Link className="flex items-center gap-1.5" to="/user-panel">
                 <FaUser size="0.8rem" />
                 {`${data.firstName} ${data.lastName}`}
               </Link>
@@ -470,7 +470,7 @@ export default function Header() {
             <div className="flex items-center gap-3 md:gap-6">
               <div>
                 {data?.firstName && data?.lastName ? (
-                  <Link className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base">
+                  <Link to="/user-panel" className="h-[35px] bg-orange-200/20 hover:bg-orange-200/40 p-2 lg:py-2 lg:px-5 rounded-md font-dana text-orange-400 flex items-center gap-2 transition-all text-sm md:text-base">
                     <FaUser
                       className="transition-all"
                       size="1rem"
