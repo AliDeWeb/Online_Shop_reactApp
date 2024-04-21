@@ -92,11 +92,7 @@ export default function ProductsDetails() {
       setProductWarranty(data?.product?.warranty[0]?.warrantyItem);
 
       if (isFirstMount.current) {
-        if (data?.cartItem[0]?.color?.length) {
-          setCount(data?.cartItem[0]?.color[0]?.count);
-        } else if (data?.cartItem[0]?.size?.length) {
-          setCount(data?.cartItem[0]?.size[0]?.count);
-        } else if (data?.cartItem[0]?.count) {
+        if (data?.cartItem[0]?.count) {
           setCount(data?.cartItem[0]?.count);
         }
 
