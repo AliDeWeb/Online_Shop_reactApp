@@ -13,6 +13,12 @@ export { default as Search } from "../../pages/Search/Search";
 export { default as Page404 } from "../../pages/Page404/Page404";
 export { default as PaymentStatus } from "../../pages/PaymentStatus/PaymentStatus";
 export { default as UserPanel } from "../../pages/Panel/UserPanel";
+export { default as UserPanelHome } from "../../pages/UserPanelPages/UserPanelHome";
+export { default as UserPanelFavorites } from "../../pages/UserPanelPages/UserPanelFavorites";
+export { default as UserPanelOrders } from "../../pages/UserPanelPages/UserPanelOrders";
+export { default as UserPanelAddresses } from "../../pages/UserPanelPages/UserPanelAddresses";
+export { default as UserPanelComments } from "../../pages/UserPanelPages/UserPanelComments";
+
 
 // Components
 export { default as Header } from "../../components/Header/Header";
