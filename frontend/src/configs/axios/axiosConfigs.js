@@ -6,7 +6,7 @@ const successSwal = (text, title = null) => {
     title: title,
     text: text,
     icon: "success",
-    timer: 2500,
+    timer: 1000,
     toast: true,
     didOpen: (toast) => {
       toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -139,7 +139,9 @@ postProductsToCart.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(`لطفا وارد حساب کاربری خود شوید`);
+    errorSwal(
+      `لطفا وارد حساب کاربری خود شوید و یا یک محصول را جهت اضافه کردن به سبد خرید انتخاب نمایید`
+    );
     return Promise.reject(error);
   }
 );
@@ -149,7 +151,7 @@ export const getCartProducts = axios.create({
   method: `GET`,
   baseURL: `${apiUrl}${version}/cart`,
 });
-postProductsToCart.interceptors.response.use(
+getCartProducts.interceptors.response.use(
   function (response) {
     return response;
   },

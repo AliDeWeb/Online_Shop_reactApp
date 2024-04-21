@@ -64,13 +64,15 @@ export default function ProductsDetails() {
     }
   );
 
-  const [productPrice, setProductPrice] = useState(0);
-  const [productOffPrice, setProductOffPrice] = useState(0);
+  const [productPrice, setProductPrice] = useState("-");
+  const [productOffPrice, setProductOffPrice] = useState("-");
   const [productId, setProductId] = useState(null);
   const [productWarranty, setProductWarranty] = useState(null);
   const [colorId, setColorId] = useState([]);
   const [sizeId, setSizeId] = useState([]);
   const [count, setCount] = useState(0);
+
+  const [activeBtn, setActiveBtn] = useState(null);
 
   const isFirstMount = useRef(true);
 
@@ -105,20 +107,10 @@ export default function ProductsDetails() {
         setProductPrice(data.product.mainPrice);
         setColorId([]);
         setSizeId([]);
-      } else if (data?.product?.sizes?.length) {
-        setSizeId(data.product.sizes[0]._id);
-        setProductPrice(data.product.sizes[0].price);
-      } else if (data?.product?.colors?.length) {
-        setColorId(data.product.colors[0]._id);
-        setProductPrice(data.product.colors[0].price);
       }
 
       if (data.product.discountedPrice) {
         setProductOffPrice(data.product.discountedPrice);
-      } else if (data?.product?.sizes[0]?.off) {
-        setProductOffPrice(data.product.sizes[0].discountedPrice);
-      } else if (data?.product?.colors[0]?.discountedPrice) {
-        setProductOffPrice(data.product.colors[0].discountedPrice);
       }
     }
   }, [data]);
@@ -261,7 +253,8 @@ export default function ProductsDetails() {
                       ? data.product.colors.map((el) => (
                           <button
                             key={Math.random()}
-                            onClick={(e) => {
+                            data-id={el._id}
+                            onClick={() => {
                               setColorId(el._id);
 
                               let items = data?.cartItem[0].product.length
@@ -281,12 +274,8 @@ export default function ProductsDetails() {
                                   setCount(countOfProduct);
                                 })();
 
-                              document
-                                .querySelectorAll(`.active-size-color`)
-                                .forEach((el) => {
-                                  el.classList.remove(`active-size-color`);
-                                });
-                              e.target.classList.add(`active-size-color`);
+                              setActiveBtn(el._id);
+
                               if (el.discountedPrice) {
                                 setProductPrice(el.price);
                                 setProductOffPrice(el.discountedPrice);
@@ -295,7 +284,7 @@ export default function ProductsDetails() {
                                 setProductOffPrice(0);
                               }
                             }}
-                            className="flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300"
+                            className={`${el._id === activeBtn ? "active-size-color" : ""} flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300`}
                           >
                             <span
                               className={`size-[20px] rounded-full outline-none`}
@@ -308,7 +297,8 @@ export default function ProductsDetails() {
                         ? data.product.sizes.map((el) => (
                             <button
                               key={Math.random()}
-                              onClick={(e) => {
+                              data-id={el._id}
+                              onClick={() => {
                                 setSizeId(el._id);
 
                                 let items = data?.cartItem[0].product.length
@@ -336,14 +326,9 @@ export default function ProductsDetails() {
                                   setProductOffPrice(0);
                                 }
 
-                                document
-                                  .querySelectorAll(`.active-size-color`)
-                                  .forEach((el) => {
-                                    el.classList.remove(`active-size-color`);
-                                  });
-                                e.target.classList.add(`active-size-color`);
+                                setActiveBtn(el._id);
                               }}
-                              className="flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300"
+                              className={`${el._id === activeBtn ? "active-size-color" : ""} flex items-center gap-1 font-dana py-1.5 px-2 rounded-xl bg bg-gray-200 transition-all hover:bg-gray-300`}
                             >
                               {el.title}
                             </button>
