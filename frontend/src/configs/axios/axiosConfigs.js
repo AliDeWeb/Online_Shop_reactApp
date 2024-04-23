@@ -236,6 +236,21 @@ addNewAddress.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+//? Remove A Address
+export const removeAddress = axios.create({
+  method: `DELETE`,
+  baseURL: `${apiUrl}${version}/users/address`,
+});
+removeAddress.interceptors.response.use(
+  function (response) {
+    successSwal(`آدرس با موفقیت حذف شد`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error.response.data.message);
+    return Promise.reject(error);
+  }
+);
 
 //? Add New Order
 export const addNewOrder = axios.create({

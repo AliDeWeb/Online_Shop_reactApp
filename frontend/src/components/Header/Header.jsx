@@ -60,7 +60,7 @@ export default function Header() {
   const desktopSearchVal = useRef();
 
   const { data, refetch } = useQuery(
-    `userDate`,
+    `userData`,
     async () => {
       if (userToken) {
         const res = await getUserData({

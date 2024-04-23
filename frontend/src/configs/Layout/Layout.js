@@ -33,3 +33,4 @@ export { default as TopBrandsSection } from "../../components/TopBrandsSection/T
 export { default as Accordion } from "../../components/Accordion/Accordion";
 export { default as CartProductBox } from "../../components/ProductBox/CartProductBox";
 export { default as UserPanelSideBar } from "../../components/PanelsSideBar/UserPanelSideBar";
+export { default as AddressBox } from "../../components/AddressBox/AddressBox";
