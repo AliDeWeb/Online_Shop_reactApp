@@ -91,6 +91,10 @@ input::placeholder {
   box-shadow: 0 0 5px #999999;
 }
 
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeSmall.MuiButton-textSizeSmall.MuiButton-colorPrimary {
+  font-family: dana;
+}
+
 @media print {
   header,
   footer,
