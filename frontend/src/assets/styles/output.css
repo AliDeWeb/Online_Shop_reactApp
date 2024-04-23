@@ -711,6 +711,10 @@ img {
   left: 1.25rem;
 }
 
+.left-\[10px\] {
+  left: 10px;
+}
+
 .left-\[1rem\] {
   left: 1rem;
 }
@@ -739,32 +743,12 @@ img {
   top: 0.625rem;
 }
 
-.top-\[45px\] {
-  top: 45px;
-}
-
-.top-5 {
-  top: 1.25rem;
-}
-
-.top-\[\] {
-  top: ;
-}
-
-.top-\[22px\] {
-  top: 22px;
-}
-
-.left-\[\] {
-  left: ;
-}
-
-.left-\[10px\] {
-  left: 10px;
-}
-
 .top-\[25px\] {
   top: 25px;
+}
+
+.top-\[45px\] {
+  top: 45px;
 }
 
 .z-10 {
@@ -1421,6 +1405,21 @@ img {
   border-color: rgb(13 148 136 / var(--tw-border-opacity));
 }
 
+.border-red-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(220 38 38 / var(--tw-border-opacity));
+}
+
+.border-red-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(248 113 113 / var(--tw-border-opacity));
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
 .border-b-orange-300 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(253 186 116 / var(--tw-border-opacity));
@@ -1513,10 +1512,6 @@ img {
   background-color: rgb(24 24 27 / 0.7);
 }
 
-.bg-black\/10 {
-  background-color: rgb(0 0 0 / 0.1);
-}
-
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -1532,6 +1527,10 @@ img {
      object-position: center;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -1542,10 +1541,6 @@ img {
 
 .p-5 {
   padding: 1.25rem;
-}
-
-.p-1 {
-  padding: 0.25rem;
 }
 
 .px-1 {
@@ -1965,6 +1960,10 @@ img {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.hover\:bg-black\/5:hover {
+  background-color: rgb(0 0 0 / 0.05);
+}
+
 .hover\:bg-gray-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
@@ -1997,12 +1996,19 @@ img {
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-black\/10:hover {
-  background-color: rgb(0 0 0 / 0.1);
+.hover\:bg-red-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-black\/5:hover {
-  background-color: rgb(0 0 0 / 0.05);
+.hover\:bg-red-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .hover\:pr-5:hover {
@@ -2174,6 +2180,10 @@ img {
 
   .sm\:col-span-3 {
     grid-column: span 3 / span 3;
+  }
+
+  .sm\:col-span-2 {
+    grid-column: span 2 / span 2;
   }
 
   .sm\:mt-4 {

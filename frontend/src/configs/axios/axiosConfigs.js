@@ -294,3 +294,19 @@ export const getMenus = axios.create({
   method: `GET`,
   baseURL: `${apiUrl}${version}/menu`,
 });
+
+//? Post Favorites Product
+export const postFavoriteProduct = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}${version}/favorite`,
+});
+postFavoriteProduct.interceptors.response.use(
+  function (response) {
+    successSwal(`انجام شد :)`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);

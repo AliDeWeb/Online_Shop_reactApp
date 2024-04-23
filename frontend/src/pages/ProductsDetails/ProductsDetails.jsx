@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,12 +22,14 @@ import {
   FaStar,
 } from "react-icons/fa";
 import { PiWarningCircle } from "react-icons/pi";
+import { FaHeart } from "react-icons/fa";
 
 // Axios
 import {
   apiUrl,
   getProductsInfos,
   postProductsToCart,
+  postFavoriteProduct,
 } from "../../configs/axios/axiosConfigs";
 
 // React Query
@@ -56,6 +58,7 @@ export default function ProductsDetails() {
         navigator("/404");
       });
 
+      console.log(res.data);
       return res.data;
     },
     {
@@ -421,11 +424,11 @@ export default function ProductsDetails() {
                       )}
                     </span>
                   </div>
-                  <div className="mt-2 sm:mt-4 w-full flex items-center justify-center">
+                  <div className="mt-2 sm:mt-4 w-full grid items-center gap-2 grid-cols-4">
                     {isProductFetching ? (
                       <BeatLoader size="0.5rem" color="#0d9488" />
                     ) : count ? (
-                      <div className="font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
+                      <div className="col-span-4 sm:col-span-2 font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
                         <button
                           onClick={() => {
                             increaseCount();
@@ -522,12 +525,47 @@ export default function ProductsDetails() {
                               setIsProductFetching(false);
                             });
                         }}
-                        className="border border-solid border-teal-600 font-dana text-teal-600 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600"
+                        className="col-span-4 sm:col-span-2 border border-solid border-teal-600 font-dana text-teal-600 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-teal-600"
                       >
                         <FaShoppingCart />
                         افزودن به سبد خرید
                       </button>
                     )}
+                    {!isLoading &&
+                      (data?.isFavorite ? (
+                        <button
+                          onClick={() => {
+                            postFavoriteProduct({
+                              headers: {
+                                Authorization: `Bearer ${userToken}`,
+                              },
+                              url: `/${data?.product?._id}`,
+                            }).then(() => {
+                              refetch();
+                            });
+                          }}
+                          className="col-span-4 sm:col-span-2 border border-solid border-red-500 font-dana text-red-500 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-red-500"
+                        >
+                          حذف مورد علاقه
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            postFavoriteProduct({
+                              headers: {
+                                Authorization: `Bearer ${userToken}`,
+                              },
+                              url: `/${data?.product?._id}`,
+                            }).then(() => {
+                              refetch();
+                            });
+                          }}
+                          className="col-span-4 sm:col-span-2 border border-solid border-red-500 font-dana text-red-500 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-red-500"
+                        >
+                          <FaHeart />
+                          مورد علاقه
+                        </button>
+                      ))}
                   </div>
                 </div>
               </div>
