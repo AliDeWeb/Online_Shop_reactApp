@@ -30,6 +30,7 @@ import {
   getProductsInfos,
   postProductsToCart,
   postFavoriteProduct,
+  addComment,
 } from "../../configs/axios/axiosConfigs";
 
 // React Query
@@ -41,7 +42,16 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 // React Spinners
 import BeatLoader from "react-spinners/BeatLoader";
 
+// SweetAlert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 export default function ProductsDetails() {
+  const showSwal = withReactContent(Swal);
+
+  const commentVal = useRef(``);
+  const scoreVal = useRef(``);
+
   const { userToken } = useUserToken();
   const param = useParams();
   const navigator = useNavigate();
@@ -58,7 +68,6 @@ export default function ProductsDetails() {
         navigator("/404");
       });
 
-      console.log(res.data);
       return res.data;
     },
     {
@@ -610,7 +619,61 @@ export default function ProductsDetails() {
               </div>
 
               <div className="mt-4 ">
-                <button className="font-danaBold w-full border-2 border-solid border-orange-300 py-1.5 px-3 rounded-lg transition-all text-zinc-700 hover:bg-orange-100">
+                <button
+                  onClick={() => {
+                    showSwal
+                      .fire({
+                        title: <i>نظر خود را بنویسید</i>,
+                        input: "text",
+                        preConfirm: () => {
+                          commentVal.current = Swal.getInput()?.value || "";
+                        },
+                        showCloseButton: true,
+                        showCancelButton: true,
+                        focusConfirm: false,
+                        confirmButtonText: "مرحله بعد",
+                        cancelButtonText: "انصراف",
+                      })
+                      .then((res) => {
+                        if (res.isConfirmed) {
+                          showSwal
+                            .fire({
+                              title: <i>به محصول امتیاز دهید</i>,
+                              input: "range",
+                              inputAttributes: {
+                                min: "1",
+                                max: "5",
+                                step: "1",
+                              },
+                              inputValue: 3,
+                              preConfirm: () => {
+                                scoreVal.current = Swal.getInput()?.value || "";
+                              },
+                              showCloseButton: true,
+                              showCancelButton: true,
+                              focusConfirm: false,
+                              confirmButtonText: "تایید",
+                              cancelButtonText: "انصراف",
+                            })
+                            .then(() => {
+                              addComment({
+                                headers: {
+                                  Authorization: `Bearer ${userToken}`,
+                                },
+                                data: {
+                                  productHref: param.href,
+                                  body: commentVal.current,
+                                  score: scoreVal.current,
+                                },
+                              }).then(() => {
+                                refetch();
+                              });
+                            });
+                        }
+                      });
+                  }}
+                  className="font-danaBold w-full border-2 border-solid border-orange-300 py-1.5 px-3 rounded-lg transition-all text-zinc-700 hover:bg-orange-100"
+                >
                   ثبت دیدگاه
                 </button>
               </div>

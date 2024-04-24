@@ -1,7 +1,10 @@
 import { useRef } from "react";
 
 // Axios
-import { getUserPanelData, addNewAddress } from "../../configs/axios/axiosConfigs";
+import {
+  getUserPanelData,
+  addNewAddress,
+} from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery, useQueryClient } from "react-query";
@@ -22,7 +25,8 @@ import withReactContent from "sweetalert2-react-content";
 export default function UserPanelAddresses() {
   const showSwal = withReactContent(Swal);
   const { userToken } = useUserToken();
-  const addressVal = useRef("");  const queryClient = useQueryClient();
+  const addressVal = useRef("");
+  const queryClient = useQueryClient();
 
   const {
     data: userData,
@@ -43,7 +47,8 @@ export default function UserPanelAddresses() {
     {
       refetchOnMount: true,
       refetchOnWindowFocus: true,
-      staleTime: 0,initialData: () => {
+      staleTime: 0,
+      initialData: () => {
         const data = queryClient.getQueryData(`userPanelInfos`);
 
         return data;
@@ -69,6 +74,11 @@ export default function UserPanelAddresses() {
                   preConfirm: () => {
                     addressVal.current = Swal.getInput()?.value || "";
                   },
+                  showCloseButton: true,
+                  showCancelButton: true,
+                  focusConfirm: false,
+                  confirmButtonText: "تایید",
+                  cancelButtonText: "انصراف",
                 })
                 .then(async (res) => {
                   if (res.isConfirmed) {

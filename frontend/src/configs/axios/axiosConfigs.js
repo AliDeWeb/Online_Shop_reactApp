@@ -325,3 +325,19 @@ getUserPanelData.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Add Comment
+export const addComment = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}${version}/comments`,
+});
+addComment.interceptors.response.use(
+  function (response) {
+    successSwal(`کامنت با موفقیت اضافه شد :)`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
