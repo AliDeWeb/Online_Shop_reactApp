@@ -61,6 +61,7 @@ export default function UserPanelComments() {
                 commentAnswers={el?.commentAnswers}
                 body={el.body}
                 id={el._id}
+                refetch={refetch}
               />
             </div>
           ))}

@@ -341,3 +341,35 @@ addComment.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Delete Comment
+export const deleteComment = axios.create({
+  method: `DELETE`,
+  baseURL: `${apiUrl}${version}/comments`,
+});
+deleteComment.interceptors.response.use(
+  function (response) {
+    successSwal(`کامنت با موفقیت حذف شد :)`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
+
+//? Edit Comment
+export const editComment = axios.create({
+  method: `DELETE`,
+  baseURL: `${apiUrl}${version}/comments`,
+});
+editComment.interceptors.response.use(
+  function (response) {
+    successSwal(`کامنت با موفقیت ویرایش شد :)`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);

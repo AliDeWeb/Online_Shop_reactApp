@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 // Icons
 import { FaReply } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
@@ -6,7 +8,21 @@ import { MdModeEditOutline, MdDelete } from "react-icons/md";
 // React Router
 import { Link } from "react-router-dom";
 
+// Axios
+import { deleteComment, editComment } from "../../configs/axios/axiosConfigs";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
+// SweetAlert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 export default function CommentBox(props) {
+  const commentVal = useRef(``);
+  const scoreVal = useRef(``);
+  const showSwal = withReactContent(Swal);
+  const { userToken } = useUserToken();
   return (
     <div className="p-4 grid grid-cols-12 gap-2 items-center">
       <div className="col-span-4 sm:col-span-3 md:col-span-2">
@@ -61,11 +77,75 @@ export default function CommentBox(props) {
             </div>
           ))}
         <div className="absolute -top-6 sm:top-0 left-0 text-xs font-dana flex items-center gap-1">
-          <button className="flex items-center gap-1 text-orange-400 border border-solid border-orange-300 py-0.5 px-1 rounded-lg">
+          <button
+            onClick={() => {
+              showSwal
+                .fire({
+                  title: <i>ویرایش نظر</i>,
+                  input: "text",
+                  preConfirm: () => {
+                    commentVal.current = Swal.getInput()?.value || "";
+                  },
+                  showCloseButton: true,
+                  showCancelButton: true,
+                  focusConfirm: false,
+                  confirmButtonText: "تایید",
+                  cancelButtonText: "انصراف",
+                })
+                .then((res) => {
+                  if (res.isConfirmed) {
+                    showSwal
+                      .fire({
+                        title: <i>به محصول امتیاز دهید</i>,
+                        input: "range",
+                        inputAttributes: {
+                          min: "1",
+                          max: "5",
+                          step: "1",
+                        },
+                        inputValue: 3,
+                        preConfirm: () => {
+                          scoreVal.current = Swal.getInput()?.value || "";
+                        },
+                        showCloseButton: true,
+                        showCancelButton: true,
+                        focusConfirm: false,
+                        confirmButtonText: "تایید",
+                        cancelButtonText: "انصراف",
+                      })
+                      .then((res) => {
+                        if (res.isConfirmed) {
+                          editComment({
+                            headers: {
+                              Authorization: `Bearer ${userToken}`,
+                            },
+                            data: {},
+                          }).then(() => {
+                            props.refetch();
+                          });
+                        }
+                      });
+                  }
+                });
+            }}
+            className="flex items-center gap-1 text-orange-400 border border-solid border-orange-300 py-0.5 px-1 rounded-lg"
+          >
             <MdModeEditOutline size="1rem" />
             <span className="sm:inline hidden">ویرایش</span>
           </button>
-          <button className="flex items-center gap-1 text-orange-400 border border-solid border-orange-300 py-0.5 px-1 rounded-lg">
+          <button
+            onClick={() => {
+              deleteComment({
+                headers: {
+                  Authorization: `Bearer ${userToken}`,
+                },
+                url: `/${props.id}`,
+              }).then(() => {
+                props.refetch();
+              });
+            }}
+            className="flex items-center gap-1 text-orange-400 border border-solid border-orange-300 py-0.5 px-1 rounded-lg"
+          >
             <MdDelete size="1rem" />
             <span className="sm:inline hidden">حذف</span>
           </button>
