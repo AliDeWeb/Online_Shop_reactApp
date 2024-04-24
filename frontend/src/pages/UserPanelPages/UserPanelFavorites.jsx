@@ -27,7 +27,6 @@ export default function UserPanelFavorites() {
           },
         });
 
-        console.log(res.data);
         return res.data;
       }
     },
@@ -36,7 +35,7 @@ export default function UserPanelFavorites() {
       refetchOnWindowFocus: true,
       staleTime: 0,
       initialData: () => {
-        const data = queryClient.getQueryData();
+        const data = queryClient.getQueryData(`userPanelInfos`);
 
         return data;
       },

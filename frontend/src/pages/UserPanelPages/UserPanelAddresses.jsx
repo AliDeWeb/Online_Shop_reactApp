@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 // Axios
-import { getUserData, addNewAddress } from "../../configs/axios/axiosConfigs";
+import { getUserPanelData, addNewAddress } from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery, useQueryClient } from "react-query";
@@ -29,10 +29,10 @@ export default function UserPanelAddresses() {
     isLoading: isUserDataLoading,
     refetch,
   } = useQuery(
-    `userPanelData`,
+    `userPanelInfos`,
     async () => {
       if (userToken) {
-        const res = await getUserData({
+        const res = await getUserPanelData({
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
@@ -44,7 +44,7 @@ export default function UserPanelAddresses() {
       refetchOnMount: true,
       refetchOnWindowFocus: true,
       staleTime: 0,initialData: () => {
-        const data = queryClient.getQueryData();
+        const data = queryClient.getQueryData(`userPanelInfos`);
 
         return data;
       },
@@ -95,10 +95,10 @@ export default function UserPanelAddresses() {
       </div>
       <div className="divide-y divide-solid divide-gray-400/20">
         {!isUserDataLoading &&
-          userData?.addresses?.map((el) => (
+          userData?.user?.addresses?.map((el) => (
             <div key={Math.random()}>
               <AddressBox
-                username={`${userData.firstName} ${userData.lastName}`}
+                username={`${userData.user.firstName} ${userData.user.lastName}`}
                 address={el.address}
                 addressId={el._id}
                 refetch={refetch}
