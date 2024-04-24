@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 // Axios
-import { getUserData } from "../../configs/axios/axiosConfigs";
+import { getUserPanelData } from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery, useQueryClient } from "react-query";
@@ -31,19 +31,17 @@ export default function UserPanelSideBar() {
 
   const navigator = useNavigate();
 
-  const {
-    data: userData,
-    isLoading: isUserDataLoading,
-    refetch,
-  } = useQuery(
-    `userPanelData`,
+  const { data, isLoading } = useQuery(
+    `userPanelInfos`,
     async () => {
       if (userToken) {
-        const res = await getUserData({
+        const res = await getUserPanelData({
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
         });
+
+        console.log(res.data);
 
         return res.data;
       }
@@ -52,9 +50,8 @@ export default function UserPanelSideBar() {
       refetchOnMount: true,
       refetchOnWindowFocus: true,
       staleTime: 0,
-
       initialData: () => {
-        const data = queryClient.getQueryData();
+        const data = queryClient.getQueryData(`userPanelInfos`);
 
         return data;
       },
@@ -66,8 +63,10 @@ export default function UserPanelSideBar() {
       <div className="pb-4">
         <div className="flex justify-between items-center mb-2.5">
           <div className="font-dana text-gray-400 flex flex-col gap-1">
-            <span className="text-zinc-700 font-danaBold">علی مرادی</span>
-            <span className="text-sm">09124567898</span>
+            <span className="text-zinc-700 font-danaBold">
+              {!isLoading && `${data?.user?.firstName} ${data?.user?.lastName}`}
+            </span>
+            <span className="text-sm">{!isLoading && data?.user?.phone}</span>
           </div>
           <button className="text-gray-400">
             <CiEdit size="1.2rem" />
@@ -83,7 +82,7 @@ export default function UserPanelSideBar() {
               </span>
             </button>
           </div>
-          <span className="text-teal-600 font-danaBold text-sm">256 تومان</span>
+          <span className="text-teal-600 font-danaBold text-sm">{!isLoading && data?.user?.wallet} تومان</span>
         </div>
       </div>
       <div className="divide-y divide-solid divide-gray-400/20">
