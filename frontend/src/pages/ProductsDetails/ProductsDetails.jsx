@@ -655,19 +655,21 @@ export default function ProductsDetails() {
                               confirmButtonText: "تایید",
                               cancelButtonText: "انصراف",
                             })
-                            .then(() => {
-                              addComment({
-                                headers: {
-                                  Authorization: `Bearer ${userToken}`,
-                                },
-                                data: {
-                                  productHref: param.href,
-                                  body: commentVal.current,
-                                  score: scoreVal.current,
-                                },
-                              }).then(() => {
-                                refetch();
-                              });
+                            .then((res) => {
+                              if (res.isConfirmed) {
+                                addComment({
+                                  headers: {
+                                    Authorization: `Bearer ${userToken}`,
+                                  },
+                                  data: {
+                                    productHref: param.href,
+                                    body: commentVal.current,
+                                    score: scoreVal.current,
+                                  },
+                                }).then(() => {
+                                  refetch();
+                                });
+                              }
                             });
                         }
                       });
