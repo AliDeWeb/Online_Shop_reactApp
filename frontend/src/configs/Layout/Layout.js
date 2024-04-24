@@ -35,3 +35,4 @@ export { default as CartProductBox } from "../../components/ProductBox/CartProdu
 export { default as UserPanelSideBar } from "../../components/PanelsSideBar/UserPanelSideBar";
 export { default as AddressBox } from "../../components/AddressBox/AddressBox";
 export { default as FavsProductBox } from "../../components/FavsProductBox/FavsProductBox";
+export { default as CommentBox } from "../../components/CommentBox/CommentBox";

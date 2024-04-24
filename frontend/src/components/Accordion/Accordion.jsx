@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 
 // Icons
 import { FaReply } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -38,9 +39,6 @@ const AccordionSummary = styled((props) => (
     marginLeft: theme.spacing(1),
   },
 }));
-
-// Icons
-import { FaStar } from "react-icons/fa";
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
@@ -96,11 +94,11 @@ export default function (props) {
               props?.comments?.map((el) => (
                 <Typography key={Math.random()}>
                   <div className="p-4">
-                    <div className="flex items-center gap-1 font-dana  text-sm text-gray-400">
+                    <div className="flex items-center gap-1 font-dana text-gray-400">
                       <div>
                         {`${el.creator.firstName} ${el.creator.lastName}`}
                       </div>
-                      <span className="bg-teal-400/50 py-1 px-2 rounded-lg font-danaBold text-xs text-gray-700 mr-1">
+                      <span className="bg-teal-400/50 py-1 px-2 rounded-lg font-dana text-xs text-gray-700 mr-1">
                         خریدار
                       </span>
                       <span className="mx-3">|</span>
@@ -126,11 +124,11 @@ export default function (props) {
                           key={Math.random()}
                           className="w-full sm:w-[90%] mx-auto py-3 px-5 rounded-lg bg-gray-100 mt-4 text-zinc-700"
                         >
-                          <div className="flex items-center gap-1 font-dana  text-sm text-gray-400 mb-2.5">
+                          <div className="flex items-center gap-1 font-dana text-gray-400 mb-2.5">
                             <div>
                               {`${el.creatorAdmin.firstName} ${el.creatorAdmin.lastName}`}
                             </div>
-                            <span className="bg-teal-400/50 py-1 px-2 rounded-lg font-danaBold text-xs text-gray-700 mr-1">
+                            <span className="bg-teal-400/50 py-1 px-2 rounded-lg font-dana text-xs text-gray-700 mr-1">
                               ادمین
                             </span>
                           </div>
