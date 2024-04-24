@@ -310,3 +310,18 @@ postFavoriteProduct.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Get User Panel Data
+export const getUserPanelData = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/infos/userPanel`,
+});
+getUserPanelData.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);

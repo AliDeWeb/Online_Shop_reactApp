@@ -15,9 +15,51 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
+// Axios
+import { getUserData } from "../../configs/axios/axiosConfigs";
+
+// React Query
+import { useQuery, useQueryClient } from "react-query";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
 export default function UserPanelSideBar() {
   const showSwal = withReactContent(Swal);
+  const { userToken } = useUserToken();
+  const queryClient = useQueryClient();
+
   const navigator = useNavigate();
+
+  const {
+    data: userData,
+    isLoading: isUserDataLoading,
+    refetch,
+  } = useQuery(
+    `userPanelData`,
+    async () => {
+      if (userToken) {
+        const res = await getUserData({
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        });
+
+        return res.data;
+      }
+    },
+    {
+      refetchOnMount: true,
+      refetchOnWindowFocus: true,
+      staleTime: 0,
+
+      initialData: () => {
+        const data = queryClient.getQueryData();
+
+        return data;
+      },
+    }
+  );
 
   return (
     <>

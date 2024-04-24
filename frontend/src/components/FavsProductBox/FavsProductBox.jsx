@@ -9,32 +9,68 @@ import Typography from "@mui/material/Typography";
 // React Router
 import { Link } from "react-router-dom";
 
-export default function FavsProductBox() {
+// Axios
+import { postFavoriteProduct } from "../../configs/axios/axiosConfigs";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
+export default function FavsProductBox(props) {
+  const { userToken } = useUserToken();
+
   return (
     <Card sx={{ maxWidth: 345 }} className="bg-transparent font-dana">
-      <Link className="h-[200px] flex items-center object-contain transition-all hover:scale-95">
+      <Link
+        to={`/product/${props.href}`}
+        className="h-[200px] flex items-center object-contain transition-all hover:scale-95"
+      >
         <CardMedia
           component="img"
           alt="green iguana"
           height="140"
-          image="https://ma-api.liara.run/uploads/products/covers/1710436879338.846.webp"
+          image={`${props.cover}`}
           className="h-[200px] flex items-center object-contain"
         />
       </Link>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          <Link className="transition-all hover:scale-95 font-danaBold text-zinc-700">Lizard</Link>
+        <Typography gutterBottom variant="h10" component="div">
+          <Link
+            to={`/product/${props.href}`}
+            className="transition-all hover:scale-95 font-danaBold text-zinc-700 line-clamp-1"
+          >
+            {props.title}
+          </Link>
         </Typography>
-        <Typography variant="body2" color="text.secondary" className="text-gray-400 font-dana">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          className="text-gray-400 font-dana line-clamp-4"
+        >
+          {props.decs}
         </Typography>
       </CardContent>
       <CardActions>
-        <Link size="small" className="text-zinc-700 text-sm font-danaBold mb-[13px] inline-block ml-2 mr-4">
+        <Link
+          to={`/product/${props.href}`}
+          size="small"
+          className="text-zinc-700 text-sm font-danaBold mb-[13px] inline-block ml-2 mr-4"
+        >
           مشاهده
         </Link>
-        <Button size="small" className="text-red-400">
+        <Button
+          onClick={() => {
+            postFavoriteProduct({
+              headers: {
+                Authorization: `Bearer ${userToken}`,
+              },
+              url: `/${props.id}`,
+            }).then(() => {
+              props.refetch();
+            });
+          }}
+          size="small"
+          className="text-red-400"
+        >
           حذف
         </Button>
       </CardActions>

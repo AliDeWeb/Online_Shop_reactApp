@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { getUserData, addNewAddress } from "../../configs/axios/axiosConfigs";
 
 // React Query
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -22,7 +22,7 @@ import withReactContent from "sweetalert2-react-content";
 export default function UserPanelAddresses() {
   const showSwal = withReactContent(Swal);
   const { userToken } = useUserToken();
-  const addressVal = useRef("");
+  const addressVal = useRef("");  const queryClient = useQueryClient();
 
   const {
     data: userData,
@@ -43,7 +43,11 @@ export default function UserPanelAddresses() {
     {
       refetchOnMount: true,
       refetchOnWindowFocus: true,
-      staleTime: 0,
+      staleTime: 0,initialData: () => {
+        const data = queryClient.getQueryData();
+
+        return data;
+      },
     }
   );
 
