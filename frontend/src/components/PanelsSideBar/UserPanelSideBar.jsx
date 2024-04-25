@@ -116,7 +116,7 @@ export default function UserPanelSideBar() {
             </button>
           </div>
           <span className="text-teal-600 font-danaBold text-sm">
-            {!isLoading && data?.user?.wallet} تومان
+            {!isLoading && (data?.user?.wallet).toLocaleString()} تومان
           </span>
         </div>
       </div>

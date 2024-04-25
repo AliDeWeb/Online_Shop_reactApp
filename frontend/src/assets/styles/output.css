@@ -795,10 +795,6 @@ img {
   grid-column: span 8 / span 8;
 }
 
-.col-span-3 {
-  grid-column: span 3 / span 3;
-}
-
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -1105,10 +1101,6 @@ img {
 
 .w-\[100px\] {
   width: 100px;
-}
-
-.w-\[150px\] {
-  width: 150px;
 }
 
 .w-\[250px\] {
