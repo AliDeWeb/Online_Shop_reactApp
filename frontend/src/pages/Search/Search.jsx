@@ -222,7 +222,7 @@ export default function Search() {
                 </li>
               </ul>
             </nav>
-            <div className="grid grid-cols-4 lg:grid-cols-3 gap-4 child:lg:col-span-1 child:col-span-4 child:sm:col-span-2">
+            <div className="grid grid-cols-4 lg:grid-cols-3 gap-x-4 child:lg:col-span-1 child:col-span-4 child:sm:col-span-2">
               {!isLoading && data.length ? (
                 data.map((el) => {
                   return (

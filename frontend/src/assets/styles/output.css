@@ -2308,16 +2308,16 @@ img {
     padding-bottom: 1.25rem;
   }
 
+  .sm\:pb-4 {
+    padding-bottom: 1rem;
+  }
+
   .sm\:pl-5 {
     padding-left: 1.25rem;
   }
 
   .sm\:pr-5 {
     padding-right: 1.25rem;
-  }
-
-  .sm\:pb-4 {
-    padding-bottom: 1rem;
   }
 
   .sm\:font-danaBold {
