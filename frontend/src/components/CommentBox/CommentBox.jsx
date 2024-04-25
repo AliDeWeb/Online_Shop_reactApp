@@ -91,6 +91,7 @@ export default function CommentBox(props) {
                   focusConfirm: false,
                   confirmButtonText: "تایید",
                   cancelButtonText: "انصراف",
+                  inputValue: props.body,
                 })
                 .then((res) => {
                   if (res.isConfirmed) {
@@ -103,7 +104,7 @@ export default function CommentBox(props) {
                           max: "5",
                           step: "1",
                         },
-                        inputValue: 3,
+                        inputValue: props.score,
                         preConfirm: () => {
                           scoreVal.current = Swal.getInput()?.value || "";
                         },
@@ -115,11 +116,16 @@ export default function CommentBox(props) {
                       })
                       .then((res) => {
                         if (res.isConfirmed) {
+                          console.log(typeof Number(scoreVal.current));
                           editComment({
                             headers: {
                               Authorization: `Bearer ${userToken}`,
                             },
-                            data: {},
+                            data: {
+                              id: props.id,
+                              body: commentVal.current,
+                              score: Number(scoreVal.current),
+                            },
                           }).then(() => {
                             props.refetch();
                           });

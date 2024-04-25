@@ -360,8 +360,8 @@ deleteComment.interceptors.response.use(
 
 //? Edit Comment
 export const editComment = axios.create({
-  method: `DELETE`,
-  baseURL: `${apiUrl}${version}/comments`,
+  method: `PUT`,
+  baseURL: `${apiUrl}${version}/comments/edit`,
 });
 editComment.interceptors.response.use(
   function (response) {
