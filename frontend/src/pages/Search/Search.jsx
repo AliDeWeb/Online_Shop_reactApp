@@ -35,8 +35,6 @@ export default function Search() {
         url: `&keyword=${param.searchValue}&sort=${searchUrlSort}`,
       });
 
-      console.log(result.data);
-
       return result.data;
     },
     {
@@ -53,7 +51,6 @@ export default function Search() {
     });
 
     setSearchUrlSort(`popular`);
-    console.log(param);
   }, []);
 
   useEffect(() => {

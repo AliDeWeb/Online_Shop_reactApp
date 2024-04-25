@@ -246,6 +246,7 @@ export default function Header() {
                 navigator(`/search/${mobileSearchVal.current.value}`);
                 mobileSearchVal.current.value = ``;
                 setIsSearchBarShow(false);
+                setIsResultBarShow(false);
               }}
             >
               <IoIosSearch size="1.5rem" color="#696969" />
@@ -371,6 +372,7 @@ export default function Header() {
                   onClick={() => {
                     navigator(`/search/${desktopSearchVal.current.value}`);
                     desktopSearchVal.current.value = ``;
+                    setIsResultBarShow(false)
                   }}
                 >
                   <IoIosSearch size="1.5rem" color="#696969" />
@@ -432,7 +434,7 @@ export default function Header() {
                     {!!brands.length &&
                     brands.filter((el) => {
                       return el.title.includes(searchVal);
-                    }) ? (
+                    }).length ? (
                       <div>
                         <h2 className="inline-block pb-1 relative font-danaBold text-zinc-700 before:content-[''] before:bg-orange-300 before:h-0.5 before:w-full before:absolute before:bottom-0 before:right-0 before:left-0">
                           برند ها
