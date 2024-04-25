@@ -16,7 +16,10 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 // Axios
-import { getUserPanelData } from "../../configs/axios/axiosConfigs";
+import {
+  getUserPanelData,
+  updateWallet,
+} from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery, useQueryClient } from "react-query";
@@ -31,7 +34,7 @@ export default function UserPanelSideBar() {
 
   const navigator = useNavigate();
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, refetch } = useQuery(
     `userPanelInfos`,
     async () => {
       if (userToken) {
@@ -40,8 +43,6 @@ export default function UserPanelSideBar() {
             Authorization: `Bearer ${userToken}`,
           },
         });
-
-        console.log(res.data);
 
         return res.data;
       }
@@ -75,14 +76,48 @@ export default function UserPanelSideBar() {
         <div className="flex justify-between items-center">
           <div className="font-dana text-gray-400 flex flex-col gap-1">
             <span className="text-zinc-700">کیف پول</span>
-            <button className="text-sm flex items-center text-teal-600 transition-all hover:scale-95">
+            <button
+              onClick={() => {
+                showSwal
+                  .fire({
+                    title: "افزایش موجودی",
+                    input: "range",
+                    inputAttributes: {
+                      min: "2000000",
+                      max: "200000000",
+                      step: "200000",
+                    },
+                    inputValue: 50000000,
+                    confirmButtonText: "تایید",
+                    cancelButtonText: "انصراف",
+                    showCancelButton: true,
+                    showCloseButton: true,
+                  })
+                  .then((res) => {
+                    if (res.isConfirmed) {
+                      updateWallet({
+                        url: `/${res.value}`,
+                        headers: {
+                          Authorization: `Bearer ${userToken}`,
+                        },
+                      }).then((res) => {
+                        window.location.replace(res.data.url);
+                        refetch();
+                      });
+                    }
+                  });
+              }}
+              className="text-sm flex items-center text-teal-600 transition-all hover:scale-95"
+            >
               <span>افزایش موجودی</span>
               <span>
                 <MdOutlineKeyboardArrowLeft />
               </span>
             </button>
           </div>
-          <span className="text-teal-600 font-danaBold text-sm">{!isLoading && data?.user?.wallet} تومان</span>
+          <span className="text-teal-600 font-danaBold text-sm">
+            {!isLoading && data?.user?.wallet} تومان
+          </span>
         </div>
       </div>
       <div className="divide-y divide-solid divide-gray-400/20">

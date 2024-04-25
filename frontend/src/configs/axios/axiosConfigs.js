@@ -373,3 +373,18 @@ editComment.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Update Wallet
+export const updateWallet = axios.create({
+  method: `PUT`,
+  baseURL: `${apiUrl}${version}/wallet`,
+});
+updateWallet.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
