@@ -11,7 +11,12 @@ import { removeAddress } from "../../configs/axios/axiosConfigs";
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
+// SweetAlert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 export default function AddressBox(props) {
+  const showSwal = withReactContent(Swal);
   const [isShowDeleteBox, setIsShowDeleteBox] = useState(false);
   const { userToken } = useUserToken();
 
@@ -30,16 +35,31 @@ export default function AddressBox(props) {
           <div className="absolute left-[10px] top-[25px] bg-gray-100 z-10">
             <button
               onClick={() => {
-                removeAddress({
-                  headers: {
-                    Authorization: `Bearer ${userToken}`,
-                  },
-                  data: {
-                    addressID: props.addressId,
-                  },
-                }).then(()=> {
-                  props.refetch()
-                })
+                showSwal
+                  .fire({
+                    title: "آیا از حذف آدرس اطمینان دارید؟",
+                    icon: "question",
+                    iconHtml: "؟",
+                    confirmButtonText: "بله",
+                    cancelButtonText: "خیر",
+                    showCancelButton: true,
+                    showCloseButton: true,
+                  })
+                  .then((res) => {
+                    if (res.isConfirmed) {
+                      removeAddress({
+                        headers: {
+                          Authorization: `Bearer ${userToken}`,
+                        },
+                        data: {
+                          addressID: props.addressId,
+                        },
+                      }).then(() => {
+                        props.refetch();
+                      });
+                    }
+                  });
+                setIsShowDeleteBox(false);
               }}
               className="border border-solid border-gray-400 rounded-md py-1 px-2 text-sm flex items-center gap-1 font-dana text-red-400"
             >

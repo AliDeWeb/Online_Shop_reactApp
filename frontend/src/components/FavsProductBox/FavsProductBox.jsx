@@ -15,7 +15,12 @@ import { postFavoriteProduct } from "../../configs/axios/axiosConfigs";
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
+// SweetAlert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 export default function FavsProductBox(props) {
+  const showSwal = withReactContent(Swal);
   const { userToken } = useUserToken();
 
   return (
@@ -59,14 +64,28 @@ export default function FavsProductBox(props) {
         </Link>
         <Button
           onClick={() => {
-            postFavoriteProduct({
-              headers: {
-                Authorization: `Bearer ${userToken}`,
-              },
-              url: `/${props.id}`,
-            }).then(() => {
-              props.refetch();
-            });
+            showSwal
+              .fire({
+                title: "آیا از حذف محصول اطمینان دارید؟",
+                icon: "question",
+                iconHtml: "؟",
+                confirmButtonText: "بله",
+                cancelButtonText: "خیر",
+                showCancelButton: true,
+                showCloseButton: true,
+              })
+              .then((res) => {
+                if (res.isConfirmed) {
+                  postFavoriteProduct({
+                    headers: {
+                      Authorization: `Bearer ${userToken}`,
+                    },
+                    url: `/${props.id}`,
+                  }).then(() => {
+                    props.refetch();
+                  });
+                }
+              });
           }}
           size="small"
           className="text-red-400"

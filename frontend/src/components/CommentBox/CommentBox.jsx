@@ -141,14 +141,28 @@ export default function CommentBox(props) {
           </button>
           <button
             onClick={() => {
-              deleteComment({
-                headers: {
-                  Authorization: `Bearer ${userToken}`,
-                },
-                url: `/${props.id}`,
-              }).then(() => {
-                props.refetch();
-              });
+              showSwal
+                .fire({
+                  title: "آیا از حذف نظر اطمینان دارید؟",
+                  icon: "question",
+                  iconHtml: "؟",
+                  confirmButtonText: "بله",
+                  cancelButtonText: "خیر",
+                  showCancelButton: true,
+                  showCloseButton: true,
+                })
+                .then((res) => {
+                  if (res.isConfirmed) {
+                    deleteComment({
+                      headers: {
+                        Authorization: `Bearer ${userToken}`,
+                      },
+                      url: `/${props.id}`,
+                    }).then(() => {
+                      props.refetch();
+                    });
+                  }
+                });
             }}
             className="flex items-center gap-1 text-orange-400 border border-solid border-orange-300 py-0.5 px-1 rounded-lg"
           >
