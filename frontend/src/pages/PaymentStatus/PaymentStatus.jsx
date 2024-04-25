@@ -61,57 +61,59 @@ export default function PaymentStatus() {
                   </div>
                   {!!data && (
                     <div className="divide-y divide-solid divide-gray-400/50 w-full flex flex-col items-center">
-                      <div className="flex items-center justify-evenly py-2 flex-grow w-full">
-                        <span className="text-zinc-700 line-clamp-1">نام:</span>
-                        <span className="text-gray-400 line-clamp-1 w-[150px]">
+                      <div className="grid grid-cols-6 gap-2 justify-center py-2 flex-grow w-full">
+                        <span className="col-span-2 text-zinc-700 line-clamp-1">
+                          نام:
+                        </span>
+                        <span className="col-span-4 text-gray-400 line-clamp-1">
                           {`${data?.user?.firstName} ${data?.user?.lastName}`}
                         </span>
                       </div>
-                      <div className="flex items-center justify-evenly py-2 flex-grow w-full">
-                        <span className="text-zinc-700 line-clamp-1">
+                      <div className="grid grid-cols-6 gap-2 justify-center py-2 flex-grow w-full">
+                        <span className="col-span-2 text-zinc-700 line-clamp-1">
                           شماره تلفن:
                         </span>
-                        <span className="text-gray-400 line-clamp-1 w-[150px]">
+                        <span className="col-span-4 text-gray-400 line-clamp-1">
                           {`${data?.user?.phone}`}
                         </span>
                       </div>
-                      <div className="flex items-center justify-evenly py-2 flex-grow w-full">
-                        <span className="text-zinc-700 line-clamp-1">
+                      <div className="grid grid-cols-6 gap-2 justify-center py-2 flex-grow w-full">
+                        <span className="col-span-2 text-zinc-700 line-clamp-1">
                           مبلغ پرداختی:
                         </span>
-                        <span className="text-gray-400 line-clamp-1 w-[150px]">
+                        <span className="col-span-4 text-gray-400 line-clamp-1">
                           {`${Number(data?.paymentTotal).toLocaleString()}`}
                         </span>
                       </div>
-                      <div className="flex items-center justify-evenly py-2 flex-grow w-full">
-                        <span className="text-zinc-700 line-clamp-1">
+                      <div className="grid grid-cols-6 gap-2 justify-center py-2 flex-grow w-full">
+                        <span className="col-span-2 text-zinc-700 line-clamp-1">
                           آدرس:
                         </span>
-                        <span className="text-gray-400 line-clamp-1 w-[150px]">
+                        <span className="col-span-4 text-gray-400 line-clamp-1">
                           {`${data?.user?.address?.address}`}
                         </span>
                       </div>
-                      <div className="flex items-center justify-evenly py-2 flex-grow w-full">
-                        <span className="text-zinc-700 line-clamp-1">
+                      <div className="grid grid-cols-6 gap-2 justify-center py-2 flex-grow w-full">
+                        <span className="col-span-2 text-zinc-700 line-clamp-1">
                           شناسه پرداخت:
                         </span>
-                        <span className="text-gray-400 line-clamp-1 w-[150px]">
+                        <span className="col-span-4 text-gray-400 line-clamp-1">
                           {`${data?.paymentTrackingCode}`}
                         </span>
                       </div>
-                      <div className="flex items-center justify-evenly py-2 flex-grow w-full">
-                        <span className="text-zinc-700 line-clamp-1">
+                      <div className="grid grid-cols-6 gap-2 justify-center py-2 flex-grow w-full">
+                        <span className="col-span-2 text-zinc-700 line-clamp-1">
                           تاریخ پرداخت:
                         </span>
-                        <span className="text-gray-400 line-clamp-1 w-[150px]">
+                        <span className="col-span-4 text-gray-400 line-clamp-1">
                           {`${data?.timeOrder.slice(0, data?.timeOrder.indexOf(`T`))}`}
                         </span>
                       </div>
-                      <div className="flex items-center justify-evenly py-2 flex-grow w-full">
-                        <span className="text-zinc-700 line-clamp-1">
+                      <div className="grid grid-cols-6 gap-2 justify-center py-2 flex-grow w-full">
+                        <span className="col-span-2 text-zinc-700 line-clamp-1">
                           زمان پرداخت:
                         </span>
-                        <span className="text-gray-400 line-clamp-1 w-[150px]">
+                        <span className="col-span-4 text-gray-400 line-clamp-1">
                           {`${data?.timeOrder.slice(data?.timeOrder.indexOf(`T`) + 1, data?.timeOrder.length)}`}
                         </span>
                       </div>

@@ -795,6 +795,10 @@ img {
   grid-column: span 8 / span 8;
 }
 
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
