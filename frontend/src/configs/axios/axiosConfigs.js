@@ -345,7 +345,7 @@ addComment.interceptors.response.use(
 //? Delete Comment
 export const deleteComment = axios.create({
   method: `DELETE`,
-  baseURL: `${apiUrl}${version}/comments`,
+  baseURL: `${apiUrl}${version}/comments/user`,
 });
 deleteComment.interceptors.response.use(
   function (response) {
