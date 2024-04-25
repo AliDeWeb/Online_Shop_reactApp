@@ -691,6 +691,10 @@ img {
   position: relative;
 }
 
+.-top-6 {
+  top: -1.5rem;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -749,18 +753,6 @@ img {
 
 .top-\[45px\] {
   top: 45px;
-}
-
-.-top-0 {
-  top: -0px;
-}
-
-.-top-4 {
-  top: -1rem;
-}
-
-.-top-6 {
-  top: -1.5rem;
 }
 
 .z-10 {
@@ -1845,11 +1837,6 @@ img {
   color: rgb(63 63 70 / var(--tw-text-opacity));
 }
 
-.text-orange-300 {
-  --tw-text-opacity: 1;
-  color: rgb(253 186 116 / var(--tw-text-opacity));
-}
-
 .opacity-0 {
   opacity: 0;
 }
@@ -2301,10 +2288,6 @@ img {
     width: 90%;
   }
 
-  .sm\:w-\[98\%\] {
-    width: 98%;
-  }
-
   .sm\:list-disc {
     list-style-type: disc;
   }
@@ -2629,16 +2612,6 @@ img {
   .xl\:size-\[110px\] {
     width: 110px;
     height: 110px;
-  }
-
-  .xl\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  .xl\:py-3 {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
   }
 
   .xl\:text-base {

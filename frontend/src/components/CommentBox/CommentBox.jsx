@@ -27,10 +27,10 @@ export default function CommentBox(props) {
     <div className="p-4 grid grid-cols-12 gap-2 items-center">
       <div className="col-span-4 sm:col-span-3 md:col-span-2">
         <div className="2xl:size-[120px] xl:size-[110px] sm:size-[100px] w-[90px] mx-auto">
-          <Link className="size-full">
+          <Link to={`/product/${props.href}`} className="size-full">
             <img
               className="transition-all hover:scale-95 mix-blend-multiply"
-              src="https://dkstatics-public.digikala.com/digikala-products/f3816c0bbc00734989b5325ebbff13b5c7c3f581_1705838100.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/format,webp/quality,q_80"
+              src={props.cover}
               alt="img"
             />
           </Link>

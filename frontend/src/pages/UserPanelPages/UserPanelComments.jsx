@@ -1,5 +1,5 @@
 // Axios
-import { getUserPanelData } from "../../configs/axios/axiosConfigs";
+import { getUserPanelData,apiUrl } from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery, useQueryClient } from "react-query";
@@ -62,6 +62,8 @@ export default function UserPanelComments() {
                 body={el.body}
                 id={el._id}
                 refetch={refetch}
+                cover={`${apiUrl}/${el?.product?.covers[0]}`}
+                href={el?.product?.href}
               />
             </div>
           ))}
