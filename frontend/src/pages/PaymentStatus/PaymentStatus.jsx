@@ -37,6 +37,7 @@ export default function PaymentStatus() {
           Authorization: `Bearer ${userToken}`,
         },
       }).then((res) => {
+        console.log(res.data);
         setData(res.data);
       });
     } else {
@@ -72,6 +73,14 @@ export default function PaymentStatus() {
                         </span>
                         <span className="text-gray-400 line-clamp-1 w-[150px]">
                           {`${data?.user?.phone}`}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-evenly py-2 flex-grow w-full">
+                        <span className="text-zinc-700 line-clamp-1">
+                          مبلغ پرداختی:
+                        </span>
+                        <span className="text-gray-400 line-clamp-1 w-[150px]">
+                          {`${Number(data?.paymentTotal).toLocaleString()}`}
                         </span>
                       </div>
                       <div className="flex items-center justify-evenly py-2 flex-grow w-full">
