@@ -7,10 +7,10 @@ import { ProductBox } from "../../configs/Layout/Layout";
 import { GoFilter } from "react-icons/go";
 
 // React Router
-import { useParams, Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 
 // React Query
-import { useQuery } from "react-query";
+import { useQuery  } from "react-query";
 
 // Axios
 import {
@@ -21,18 +21,26 @@ import {
 } from "../../configs/axios/axiosConfigs";
 
 export default function Search() {
-  const param = useParams();
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
 
-  const { data, isLoading } = useQuery(
-    `search/${param.searchValue}`,
+  const param = useParams()
+
+  const [searchUrlSort, setSearchUrlSort] = useState(`popular`);
+
+  const { data, isLoading, refetch } = useQuery(
+    `search/${param.searchValue}${searchUrlSort}`,
     async () => {
       const result = await getSearchResult({
-        url: `/${param.searchValue}`,
+        url: `&keyword=${param.searchValue}&sort=${searchUrlSort}`,
       });
 
+      console.log(result.data);
+
       return result.data;
+    },
+    {
+      staleTime: 30000,
     }
   );
 
@@ -43,7 +51,14 @@ export default function Search() {
     getBrands().then((res) => {
       setBrands(res.data);
     });
+
+    setSearchUrlSort(`popular`);
+    console.log(param);
   }, []);
+
+  useEffect(() => {
+    refetch();
+  }, [searchUrlSort]);
 
   return (
     <div className="py-5">
@@ -100,11 +115,43 @@ export default function Search() {
               <div className="text-gray-400">
                 <GoFilter size="1.6rem" />
               </div>
-              <ul className="flex flex-wrap items-center gap-2 child:sm:py-2 child:sm:px-4 child:py-1 child:px-2 child:rounded-lg child:bg-white font-dana text-xs  sm:text-sm text-gray-400 child:transition-all hover:child:bg-gray-400/50 hover:child:text-white child:cursor-pointer">
-                <li>پیشفرض</li>
-                <li>محبوب ترین</li>
-                <li>ارزان ترین</li>
-                <li>گران ترین</li>
+              <ul className="flex flex-wrap items-center gap-2 child:sm:py-2 child:sm:px-4 child:py-1 child:px-2 child:rounded-lg child:bg-white font-dana text-xs  sm:text-sm text-gray-400">
+                <li>
+                  <button
+                    onClick={() => {
+                      setSearchUrlSort(`popular`);
+                    }}
+                  >
+                    پیشفرض
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setSearchUrlSort(`off`);
+                    }}
+                  >
+                    بیشترین تخفیف
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setSearchUrlSort(`expensive`);
+                    }}
+                  >
+                    گران ترین
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      setSearchUrlSort(`mostBuy`);
+                    }}
+                  >
+                    بیشترین خریدار
+                  </button>
+                </li>
               </ul>
             </nav>
             <div className="grid grid-cols-4 lg:grid-cols-3 gap-4 child:lg:col-span-1 child:col-span-4 child:sm:col-span-2">
@@ -113,41 +160,33 @@ export default function Search() {
                   return (
                     <div key={Math.random()}>
                       <ProductBox
-                        id={el?.product?._id}
-                        warranty={el?.product?.warranty[0]?.warrantyItem}
-                        colorId={
-                          el?.product?.colors?.length
-                            ? el?.product?.colors[0]?._id
-                            : []
-                        }
-                        sizeId={
-                          el?.product?.sizes?.length
-                            ? el?.product?.sizes[0]?._id
-                            : []
-                        }
-                        cover={`${apiUrl}/${el?.product?.covers[0]}`}
-                        title={el?.product?.title}
-                        href={`product/${el?.product?.href}`}
+                        id={el?._id}
+                        warranty={el?.warranty[0]?.warrantyItem}
+                        colorId={el?.colors?.length ? el?.colors[0]?._id : []}
+                        sizeId={el?.sizes?.length ? el?.sizes[0]?._id : []}
+                        cover={`${apiUrl}/${el?.covers[0]}`}
+                        title={el?.title}
+                        href={`product/${el?.href}`}
                         discounted={
-                          el?.product?.off
-                            ? el?.product?.off
-                            : el?.product?.colors[0]
-                              ? el?.product?.colors[0]?.off
-                              : el?.product?.sizes[0].off
-                                ? el?.product?.sizes[0].off
+                          el?.off
+                            ? el?.off
+                            : el?.colors[0]
+                              ? el?.colors[0]?.off
+                              : el?.sizes[0].off
+                                ? el?.sizes[0].off
                                 : 0
                         }
                         price={
-                          el?.product?.mainPrice
-                            ? el?.product?.mainPrice
-                            : el?.product?.colors[0]
-                              ? el?.product?.colors[0]?.price
-                              : el?.product?.sizes[0].price
-                                ? el?.product?.sizes[0].price
+                          el?.mainPrice
+                            ? el?.mainPrice
+                            : el?.colors[0]
+                              ? el?.colors[0]?.price
+                              : el?.sizes[0].price
+                                ? el?.sizes[0].price
                                 : 0
                         }
-                        num={el?.product?.Availability}
-                        averageScore={el?.product?.productAverageScore}
+                        num={el?.Availability}
+                        averageScore={el?.productAverageScore}
                       />
                     </div>
                   );
