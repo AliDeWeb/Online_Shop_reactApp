@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, A11y } from "swiper/modules";
+import { Navigation, A11y, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -10,7 +10,11 @@ import "swiper/css/navigation";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 // Components
-import { Accordion } from "../../configs/Layout/Layout";
+import {
+  Accordion,
+  SectionsWrapper,
+  ProductBox,
+} from "../../configs/Layout/Layout";
 
 // Icon
 import { BiSolidCategoryAlt } from "react-icons/bi";
@@ -67,6 +71,8 @@ export default function ProductsDetails() {
       }).catch(() => {
         navigator("/404");
       });
+
+      console.log(res.data);
 
       return res.data;
     },
@@ -681,6 +687,89 @@ export default function ProductsDetails() {
               </div>
             </div>
           </div>
+
+          {!isLoading && !!data?.relatedproducts.length && (
+            <SectionsWrapper title={"محصولات مرتبط"} href="/home">
+              <Swiper
+                spaceBetween={20}
+                slidesPerView={1}
+                modules={[Navigation, Autoplay, A11y]}
+                navigation
+                autoplay={{
+                  delay: 5000,
+                  pauseOnMouseEnter: true,
+                }}
+                loop={true}
+                breakpoints={{
+                  300: {
+                    slidesPerView: 1.2,
+                  },
+                  370: {
+                    slidesPerView: 1.4,
+                  },
+                  435: {
+                    slidesPerView: 1.7,
+                  },
+                  515: {
+                    slidesPerView: 2,
+                  },
+                  590: {
+                    slidesPerView: 2.3,
+                  },
+                  640: {
+                    slidesPerView: 2.3,
+                  },
+                  768: {
+                    slidesPerView: 2.4,
+                  },
+                  1024: {
+                    slidesPerView: 3.2,
+                  },
+                  1280: {
+                    slidesPerView: 4.3,
+                  },
+                  1536: {
+                    slidesPerView: 5.2,
+                  },
+                }}
+              >
+                {!isLoading &&
+                  data?.relatedproducts?.map((el) => (
+                    <SwiperSlide key={el.href} className="px-1">
+                      <ProductBox
+                        id={el?._id}
+                        warranty={el?.warranty[0]?.warrantyItem}
+                        colorId={el?.colors?.length ? el?.colors[0]?._id : []}
+                        sizeId={el?.sizes?.length ? el?.sizes[0]?._id : []}
+                        cover={`${apiUrl}/${el.covers[0]}`}
+                        title={el.title}
+                        href={`product/${el.href}`}
+                        discounted={
+                          el.off
+                            ? el.off
+                            : el.colors[0]
+                              ? el.colors[0]?.off
+                              : el.sizes[0].off
+                                ? el.sizes[0].off
+                                : 0
+                        }
+                        price={
+                          el.mainPrice
+                            ? el.mainPrice
+                            : el.colors[0]
+                              ? el.colors[0]?.price
+                              : el.sizes[0].price
+                                ? el.sizes[0].price
+                                : 0
+                        }
+                        num={el.Availability}
+                        averageScore={el?.averageScore || 3}
+                      />
+                    </SwiperSlide>
+                  ))}
+              </Swiper>
+            </SectionsWrapper>
+          )}
         </div>
       </div>
     </div>

@@ -103,7 +103,7 @@ export default function Home() {
         >
           {!isLoading &&
             data?.slider2?.discountedProducts?.map((el) => (
-              <SwiperSlide key={el.href}>
+              <SwiperSlide key={el.href} className="px-1">
                 <ProductBox
                   id={el?._id}
                   warranty={el?.warranty[0]?.warrantyItem}
@@ -186,7 +186,7 @@ export default function Home() {
         >
           {!isLoading &&
             data?.slider3?.popularProductsForMainPage?.map((el) => (
-              <SwiperSlide key={el.href}>
+              <SwiperSlide key={el.href} className="px-1">
                 <ProductBox
                   id={el?._id}
                   warranty={el?.warranty[0]?.warrantyItem}
@@ -258,7 +258,10 @@ export default function Home() {
           {!isLoading &&
             data?.brands?.brands?.map((el) => (
               <SwiperSlide key={el._id}>
-                <TopBrandsSection href={`/search/${el.href}`} img={`${apiUrl}/${el.cover}`} />
+                <TopBrandsSection
+                  href={`/search/${el.href}`}
+                  img={`${apiUrl}/${el.cover}`}
+                />
               </SwiperSlide>
             ))}
         </Swiper>
@@ -309,7 +312,7 @@ export default function Home() {
         >
           {!isLoading &&
             data?.slider4?.resultSellProducts?.map((el) => (
-              <SwiperSlide key={el.href}>
+              <SwiperSlide key={el.href} className="px-1">
                 <ProductBox
                   id={el?._id}
                   warranty={el?.warranty[0]?.warrantyItem}
@@ -384,40 +387,7 @@ export default function Home() {
             },
           }}
         >
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
-            <WeblogBox />
-          </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide className="px-1">
             <WeblogBox />
           </SwiperSlide>
         </Swiper>

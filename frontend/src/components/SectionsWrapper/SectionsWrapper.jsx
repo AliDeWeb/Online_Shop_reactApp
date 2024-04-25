@@ -18,7 +18,7 @@ export default function ProductsSections(props) {
               </h2>
             </div>
             <div>
-              <Link className="flex items-center gap-0.5 font-dana lg:py-2 py-1 lg:px-4 px-3 rounded-md group text-zinc-700">
+              <Link to={props.href} className="flex items-center gap-0.5 font-dana lg:py-2 py-1 lg:px-4 px-3 rounded-md group text-zinc-700">
                 <span className="group-hover:pl-3 transition-all text-sm">
                   مشاهده همه
                 </span>
