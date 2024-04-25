@@ -359,15 +359,14 @@ export default function ProductsDetails() {
                     }}
                     className="font-dana text-zinc-700 mt-1.5 w-full outline-none border-gray-400 border-solid border py-1 px-2 rounded-lg"
                   >
-                    {!isLoading &&
-                      data?.product?.warranty?.map((el) => (
-                        <option
-                          key={Math.random()}
-                          value={`${el.warrantyItem.warrantyItem}`}
-                        >
-                          {el.warrantyItem.title}
-                        </option>
-                      ))}
+                    {!isLoading && (
+                      <option
+                        key={Math.random()}
+                        value={`${data?.product?.warranty[0]?.warrantyItem.warrantyItem}`}
+                      >
+                        {data?.product?.warranty[0]?.warrantyItem.title}
+                      </option>
+                    )}
                   </select>
                 </div>
                 <div
