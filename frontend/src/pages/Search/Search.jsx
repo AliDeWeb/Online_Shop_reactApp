@@ -7,10 +7,10 @@ import { ProductBox } from "../../configs/Layout/Layout";
 import { GoFilter } from "react-icons/go";
 
 // React Router
-import { Link,useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 // React Query
-import { useQuery  } from "react-query";
+import { useQuery } from "react-query";
 
 // Axios
 import {
@@ -20,11 +20,26 @@ import {
   getBrands,
 } from "../../configs/axios/axiosConfigs";
 
+// Mui
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
 export default function Search() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
 
-  const param = useParams()
+  const param = useParams();
 
   const [searchUrlSort, setSearchUrlSort] = useState(`popular`);
 
@@ -108,11 +123,67 @@ export default function Search() {
             </div>
           </div>
           <div className="col-span-4 lg:col-span-3">
-            <nav className="flex items-center gap-5 pb-4">
-              <div className="text-gray-400">
+            <nav className="flex items-center gap-5 sm:pb-4">
+              <div className="text-zinc-700 hidden sm:block">
                 <GoFilter size="1.6rem" />
               </div>
-              <ul className="flex flex-wrap items-center gap-2 child:sm:py-2 child:sm:px-4 child:py-1 child:px-2 child:rounded-lg child:bg-white font-dana text-xs  sm:text-sm text-gray-400">
+              <div className="sm:hidden">
+                <Button
+                  id="basic-button"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <div className="text-zinc-700 font-danaBold flex items-center gap-1">
+                    <GoFilter size="1.6rem" />
+                    دسته بندی ها
+                  </div>
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      setSearchUrlSort(`popular`);
+                      handleClose();
+                    }}
+                  >
+                    پیشفرض
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSearchUrlSort(`off`);
+                      handleClose();
+                    }}
+                  >
+                    بیشترین تخفیف
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSearchUrlSort(`expensive`);
+                      handleClose();
+                    }}
+                  >
+                    گران ترین
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSearchUrlSort(`mostBuy`);
+                      handleClose();
+                    }}
+                  >
+                    بیشترین خریدار
+                  </MenuItem>
+                </Menu>
+              </div>
+              <ul className="hidden sm:flex flex-wrap items-center gap-2 child:sm:py-2 child:sm:px-4 child:py-1 child:px-2 child:rounded-lg child:bg-white font-dana text-xs  sm:text-sm text-zinc-700">
                 <li>
                   <button
                     onClick={() => {

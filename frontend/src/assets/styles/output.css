@@ -2173,21 +2173,6 @@ img {
   font-family: dana;
 }
 
-.child\:transition-all > * {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.hover\:child\:bg-gray-400\/50 > *:hover {
-  background-color: rgb(156 163 175 / 0.5);
-}
-
-.hover\:child\:text-white > *:hover {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 :is(.dark .dark\:text-white) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -2329,6 +2314,10 @@ img {
 
   .sm\:pr-5 {
     padding-right: 1.25rem;
+  }
+
+  .sm\:pb-4 {
+    padding-bottom: 1rem;
   }
 
   .sm\:font-danaBold {
