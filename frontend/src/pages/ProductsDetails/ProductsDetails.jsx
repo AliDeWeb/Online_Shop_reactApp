@@ -381,6 +381,41 @@ export default function ProductsDetails() {
                     <span>ناموجود</span>
                   </div>
                 </div>
+                {!isLoading &&
+                      (data?.isFavorite ? (
+                        <button
+                          onClick={() => {
+                            postFavoriteProduct({
+                              headers: {
+                                Authorization: `Bearer ${userToken}`,
+                              },
+                              url: `/${data?.product?._id}`,
+                            }).then(() => {
+                              refetch();
+                            });
+                          }}
+                          className="mt-4 col-span-4 sm:col-span-2 border border-solid border-red-500 font-dana text-red-500 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-red-500"
+                        >
+                          حذف مورد علاقه
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            postFavoriteProduct({
+                              headers: {
+                                Authorization: `Bearer ${userToken}`,
+                              },
+                              url: `/${data?.product?._id}`,
+                            }).then(() => {
+                              refetch();
+                            });
+                          }}
+                          className="mt-4 col-span-4 sm:col-span-2 border border-solid border-red-500 font-dana text-red-500 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-red-500"
+                        >
+                          <FaHeart />
+                          مورد علاقه
+                        </button>
+                      ))} 
                 <div
                   className={`mt-4 ${
                     !isLoading &&
