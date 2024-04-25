@@ -1,5 +1,5 @@
 // Axios
-import { getUserPanelData,apiUrl } from "../../configs/axios/axiosConfigs";
+import { getUserPanelData, apiUrl } from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery, useQueryClient } from "react-query";
@@ -51,22 +51,24 @@ export default function UserPanelComments() {
 
       <div className="divide-y divide-solid divide-gray-400/20">
         {!isLoading &&
-          userData?.comments?.map((el) => (
-            <div key={Math.random()}>
-              <CommentBox
-                name={`${el.creator.firstName} ${el.creator.lastName}`}
-                createdAt={el.createdAt}
-                score={el.score}
-                isAnswer={el.isAnswer}
-                commentAnswers={el?.commentAnswers}
-                body={el.body}
-                id={el._id}
-                refetch={refetch}
-                cover={`${apiUrl}/${el?.product?.covers[0]}`}
-                href={el?.product?.href}
-              />
-            </div>
-          ))}
+          (userData?.comments.length
+            ? userData?.comments?.map((el) => (
+                <div key={Math.random()}>
+                  <CommentBox
+                    name={`${el.creator.firstName} ${el.creator.lastName}`}
+                    createdAt={el.createdAt}
+                    score={el.score}
+                    isAnswer={el.isAnswer}
+                    commentAnswers={el?.commentAnswers}
+                    body={el.body}
+                    id={el._id}
+                    refetch={refetch}
+                    cover={`${apiUrl}/${el?.product?.covers[0]}`}
+                    href={el?.product?.href}
+                  />
+                </div>
+              ))
+            :  <span className="text-lg block text-center font-danaBold text-red-400 col-span-4">نظری وجود ندارد</span>)}
       </div>
     </div>
   );

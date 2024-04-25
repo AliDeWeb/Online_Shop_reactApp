@@ -53,6 +53,8 @@ export default function UserPanelFavorites() {
       </div>
       <div className="grid grid-cols-4 gap-x-2 gap-y-4 justify-items-center justify-center">
         {!isLoading &&
+        (
+          infosData?.favoriteProducts[0]?.items.length ? 
           infosData?.favoriteProducts[0]?.items?.map((el) => {
             return (
               <div
@@ -69,7 +71,9 @@ export default function UserPanelFavorites() {
                 />
               </div>
             );
-          })}
+          }) : <span className="text-lg block text-center font-danaBold text-red-400 col-span-4">محصولی وجود ندارد</span>
+          )
+        }
       </div>
     </div>
   );

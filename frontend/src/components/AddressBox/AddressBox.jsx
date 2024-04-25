@@ -54,13 +54,13 @@ export default function AddressBox(props) {
           <CiLocationOn size="1.5rem" />
         </div>
       </div>
-      <div>
+      <div className="overflow-hidden">
         <div className="font-dana">
           <div>
             <span>{props.username}</span> - <span>ایران</span>
           </div>
           <div className="mt-2 text-gray-400 text-sm">
-            <p>{props.address}</p>
+            <p className="line-clamp-1">{props.address}</p>
           </div>
         </div>
       </div>

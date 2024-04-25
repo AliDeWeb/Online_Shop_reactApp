@@ -53,7 +53,7 @@ export default function CommentBox(props) {
               <FaStar key={Math.random()} size="1rem" />
             ))}
         </div>
-        <p className="font-dana xl:mt-4 mt-2 text-zinc-700 sm:text-base text-sm">
+        <p className="font-dana xl:mt-4 mt-2 text-zinc-700 sm:text-base text-sm line-clamp-1">
           {props.body}
         </p>
         {!!props.isAnswer &&

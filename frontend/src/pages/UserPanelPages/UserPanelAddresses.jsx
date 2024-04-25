@@ -41,7 +41,7 @@ export default function UserPanelAddresses() {
             Authorization: `Bearer ${userToken}`,
           },
         });
-        console.log(res.data)
+        console.log(res.data);
         return res.data;
       }
     },
@@ -106,15 +106,21 @@ export default function UserPanelAddresses() {
       </div>
       <div className="divide-y divide-solid divide-gray-400/20">
         {!isUserDataLoading &&
-          userData?.user?.addresses?.map((el) => (
-            <div key={Math.random()}>
-              <AddressBox
-                username={`${userData.user.firstName} ${userData.user.lastName}`}
-                address={el.address}
-                addressId={el._id}
-                refetch={refetch}
-              />
-            </div>
+          (userData?.user?.addresses.length ? (
+            userData?.user?.addresses?.map((el) => (
+              <div key={Math.random()}>
+                <AddressBox
+                  username={`${userData.user.firstName} ${userData.user.lastName}`}
+                  address={el.address}
+                  addressId={el._id}
+                  refetch={refetch}
+                />
+              </div>
+            ))
+          ) : (
+            <span className="text-lg block text-center font-danaBold text-red-400 col-span-4">
+              آدرسی وجود ندارد
+            </span>
           ))}
       </div>
     </div>

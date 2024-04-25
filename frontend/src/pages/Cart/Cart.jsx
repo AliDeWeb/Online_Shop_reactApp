@@ -59,48 +59,50 @@ export default function Cart() {
               </div>
               <div className="divide-y divide-solid divide-gray-400/50">
                 {!isLoading &&
-                  data?.items.map((el) => (
-                    <React.Fragment key={Math.random()}>
-                      <CartProductBox
-                        refetch={refetch}
-                        productId={el.product._id}
-                        color={el?.color?.length ? el.color[0] : null}
-                        size={el?.size?.length ? el.size[0] : null}
-                        title={el.product.title}
-                        cover={`${apiUrl}/${el.product.covers[0]}`}
-                        warranty={el.warranty}
-                        transportTime={el.product.transport.time}
-                        productCount={
-                          el?.count
-                            ? el?.count
-                            : el?.color?.length
-                              ? el?.color[0]?.count
-                              : el?.size?.length
-                                ? el?.size[0]?.count
-                                : 0
-                        }
-                        price={
-                          el?.product?.mainPrice
-                            ? el?.product?.mainPrice
-                            : el?.color?.length
-                              ? el?.color[0]?.price
-                              : el?.size?.length
-                                ? el?.size[0]?.price
-                                : 0
-                        }
-                        discounted={
-                          el?.product?.off
-                            ? el?.product?.discountedPrice
-                            : el?.color?.length
-                              ? el.color[0]?.discountedPrice
-                              : el?.size?.length
-                                ? el.size[0].discountedPrice
-                                : 0
-                        }
-                        href={`/product/${el.product.href}`}
-                      />
-                    </React.Fragment>
-                  ))}
+                  (
+                    data.items.length ? data?.items.map((el) => (
+                      <React.Fragment key={Math.random()}>
+                        <CartProductBox
+                          refetch={refetch}
+                          productId={el.product._id}
+                          color={el?.color?.length ? el.color[0] : null}
+                          size={el?.size?.length ? el.size[0] : null}
+                          title={el.product.title}
+                          cover={`${apiUrl}/${el.product.covers[0]}`}
+                          warranty={el.warranty}
+                          transportTime={el.product.transport.time}
+                          productCount={
+                            el?.count
+                              ? el?.count
+                              : el?.color?.length
+                                ? el?.color[0]?.count
+                                : el?.size?.length
+                                  ? el?.size[0]?.count
+                                  : 0
+                          }
+                          price={
+                            el?.product?.mainPrice
+                              ? el?.product?.mainPrice
+                              : el?.color?.length
+                                ? el?.color[0]?.price
+                                : el?.size?.length
+                                  ? el?.size[0]?.price
+                                  : 0
+                          }
+                          discounted={
+                            el?.product?.off
+                              ? el?.product?.discountedPrice
+                              : el?.color?.length
+                                ? el.color[0]?.discountedPrice
+                                : el?.size?.length
+                                  ? el.size[0].discountedPrice
+                                  : 0
+                          }
+                          href={`/product/${el.product.href}`}
+                        />
+                      </React.Fragment>
+                    )) : <span className="text-lg block w-max text-center font-danaBold text-zinc-700">سبد خرید خالی می باشد</span>
+                  )}
               </div>
 
               <div className="flex justify-end font-dana text-sm text-orange-500">
