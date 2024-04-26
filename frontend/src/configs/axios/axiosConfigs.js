@@ -388,3 +388,18 @@ updateWallet.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// User Update
+export const updateUser = axios.create({
+  method: `PUT`,
+  baseURL: `${apiUrl}${version}/users`,
+});
+updateWallet.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);

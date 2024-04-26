@@ -41,7 +41,6 @@ export default function UserPanelAddresses() {
             Authorization: `Bearer ${userToken}`,
           },
         });
-        console.log(res.data);
         return res.data;
       }
     },

@@ -939,6 +939,18 @@ img {
   margin-top: 2rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mr-0 {
+  margin-right: 0px;
+}
+
+.mr-0\.5 {
+  margin-right: 0.125rem;
+}
+
 .line-clamp-1 {
   overflow: hidden;
   display: -webkit-box;
@@ -1031,6 +1043,36 @@ img {
   height: 100%;
 }
 
+.size-0 {
+  width: 0px;
+  height: 0px;
+}
+
+.size-\[\] {
+  width: ;
+  height: ;
+}
+
+.size-\[64px\] {
+  width: 64px;
+  height: 64px;
+}
+
+.size-\[30px\] {
+  width: 30px;
+  height: 30px;
+}
+
+.size-\[36px\] {
+  width: 36px;
+  height: 36px;
+}
+
+.size-\[33px\] {
+  width: 33px;
+  height: 33px;
+}
+
 .h-0 {
   height: 0px;
 }
@@ -1079,12 +1121,12 @@ img {
   height: 40px;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .h-\[42px\] {
   height: 42px;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .min-h-\[100dvh\] {
@@ -1317,6 +1359,15 @@ img {
 
 .gap-y-4 {
   row-gap: 1rem;
+}
+
+.gap-x-6 {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+}
+
+.gap-y-3 {
+  row-gap: 0.75rem;
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -1737,6 +1788,10 @@ img {
   font-family: poppins;
 }
 
+.font-danaThin {
+  font-family: danaThin;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1765,6 +1820,10 @@ img {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[10px\] {
+  font-size: 10px;
 }
 
 .text-\[\#facc15\] {
@@ -1835,6 +1894,10 @@ img {
 .text-zinc-700 {
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+.text-\[\] {
+  color: ;
 }
 
 .opacity-0 {
@@ -2203,12 +2266,16 @@ img {
     grid-column: span 9 / span 9;
   }
 
+  .sm\:mt-0 {
+    margin-top: 0px;
+  }
+
   .sm\:mt-4 {
     margin-top: 1rem;
   }
 
-  .sm\:mt-0 {
-    margin-top: 0px;
+  .sm\:mr-2 {
+    margin-right: 0.5rem;
   }
 
   .sm\:block {
@@ -2235,6 +2302,11 @@ img {
   .sm\:size-\[450px\] {
     width: 450px;
     height: 450px;
+  }
+
+  .sm\:size-\[64px\] {
+    width: 64px;
+    height: 64px;
   }
 
   .sm\:h-\[150px\] {
@@ -2350,6 +2422,11 @@ img {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 
   .child\:sm\:col-span-2 > * {
