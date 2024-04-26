@@ -691,16 +691,16 @@ img {
   position: relative;
 }
 
-.-top-8 {
-  top: -2rem;
+.-bottom-6 {
+  bottom: -1.5rem;
+}
+
+.-top-7 {
+  top: -1.75rem;
 }
 
 .bottom-0 {
   bottom: 0px;
-}
-
-.bottom-2 {
-  bottom: 0.5rem;
 }
 
 .left-0 {
@@ -757,30 +757,6 @@ img {
 
 .top-\[45px\] {
   top: 45px;
-}
-
-.-bottom-5 {
-  bottom: -1.25rem;
-}
-
-.-top-5 {
-  top: -1.25rem;
-}
-
-.-top-6 {
-  top: -1.5rem;
-}
-
-.-top-7 {
-  top: -1.75rem;
-}
-
-.-top-\[6\.5\] {
-  top: -6.5;
-}
-
-.-bottom-6 {
-  bottom: -1.5rem;
 }
 
 .z-10 {
@@ -1895,11 +1871,6 @@ img {
   color: rgb(63 63 70 / var(--tw-text-opacity));
 }
 
-.text-orange-600 {
-  --tw-text-opacity: 1;
-  color: rgb(234 88 12 / var(--tw-text-opacity));
-}
-
 .opacity-0 {
   opacity: 0;
 }
@@ -2246,12 +2217,12 @@ img {
 }
 
 @media (min-width: 640px) {
-  .sm\:top-0 {
-    top: 0px;
-  }
-
   .sm\:bottom-0 {
     bottom: 0px;
+  }
+
+  .sm\:top-0 {
+    top: 0px;
   }
 
   .sm\:col-span-1 {
@@ -2390,6 +2361,11 @@ img {
   .sm\:py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
+  }
+
+  .sm\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .sm\:pb-4 {

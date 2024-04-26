@@ -151,10 +151,10 @@ export default function UserPanelHome() {
         {!isLoading && (
           <form
             onSubmit={handleSubmit(submitForm)}
-            className="py-8 px-6 rounded-lg text-zinc-700"
+            className="rounded-lg text-zinc-700 px-4"
           >
             <div className="grid grid-cols-4 gap-x-6 gap-y-3">
-              <div className="col-span-2 flex flex-col">
+              <div className="col-span-4 sm:col-span-2 flex flex-col">
                 <label htmlFor="userName" className="mb-1.5 font-dana">
                   نام
                 </label>
@@ -174,7 +174,7 @@ export default function UserPanelHome() {
                   </span>
                 )}
               </div>
-              <div className="col-span-2 flex flex-col">
+              <div className="col-span-4 sm:col-span-2 flex flex-col">
                 <label htmlFor="userLastName" className="mb-1.5 font-dana">
                   نام خانوادگی
                 </label>
@@ -194,7 +194,7 @@ export default function UserPanelHome() {
                   </span>
                 )}
               </div>
-              <div className="col-span-2 flex flex-col">
+              <div className="col-span-4 sm:col-span-2 flex flex-col">
                 <label htmlFor="emailAddress" className="mb-1.5 font-dana">
                   ایمیل
                 </label>
@@ -219,7 +219,7 @@ export default function UserPanelHome() {
                   </span>
                 )}
               </div>
-              <div className="col-span-2 flex flex-col">
+              <div className="col-span-4 sm:col-span-2 flex flex-col">
                 <label htmlFor="userPhone" className="mb-1.5 font-dana">
                   شماره تلفن
                 </label>
@@ -246,7 +246,7 @@ export default function UserPanelHome() {
             </div>
 
             <button
-              className="font-danaBold mt-4 cursor-pointer px-4 h-[40px] bg-orange-100 hover:bg-orange-200 hover:scale-90 transition-all rounded-lg flex justify-center items-center"
+              className="font-danaBold sm:text-base text-sm mt-2 sm:mt-4 cursor-pointer px-4 h-[40px] bg-orange-100 hover:bg-orange-200 hover:scale-90 transition-all rounded-lg flex justify-center items-center"
               type="submit"
             >
               {isDataFetching ? (
