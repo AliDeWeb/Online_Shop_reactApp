@@ -1,5 +1,5 @@
 // React Router
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, Link } from "react-router-dom";
 
 // icons
 import { CiEdit } from "react-icons/ci";
@@ -69,9 +69,9 @@ export default function UserPanelSideBar() {
             </span>
             <span className="text-sm">{!isLoading && data?.user?.phone}</span>
           </div>
-          <button className="text-gray-400">
+          <Link to="/user-panel/home" className="text-gray-400">
             <CiEdit size="1.2rem" />
-          </button>
+          </Link>
         </div>
         <div className="flex justify-between items-center">
           <div className="font-dana text-gray-400 flex flex-col gap-1">

@@ -63,7 +63,7 @@ export default function UserPanelHome() {
   const submitForm = (data) => {
     setIsDataFetching(true);
     let userData = {
-      firstname: data.userName,
+      firstName: data.userName,
       lastName: data.userLastName,
       email: data.emailAddress,
       phone: data.userPhone,
@@ -100,7 +100,7 @@ export default function UserPanelHome() {
             />
             <div className="flex flex-col justify-center gap-0.5 font-dana mr-0.5 sm:mr-2">
               <span className="text-zinc-700 line-clamp-1 font-danaBold text-xs sm:text-sm">
-                {infosData?.orders?.pendingOrders?.length} سفارش
+                {infosData?.orders?.processingOrders?.length} سفارش
               </span>
               <span className="text-[10px] sm:text-xs text-gray-400 line-clamp-1">
                 در حال ارسال
@@ -115,7 +115,7 @@ export default function UserPanelHome() {
             />
             <div className="flex flex-col justify-center gap-0.5 font-dana mr-0.5 sm:mr-2">
               <span className="text-zinc-700 line-clamp-1 font-danaBold text-xs sm:text-sm">
-              {infosData?.orders?.successfullOrders?.length} سفارش
+                {infosData?.orders?.successfullOrders?.length} سفارش
               </span>
               <span className="text-[10px] sm:text-xs text-gray-400 line-clamp-1">
                 تحویل داده شده
@@ -130,7 +130,7 @@ export default function UserPanelHome() {
             />
             <div className="flex flex-col justify-center gap-0.5 font-dana mr-0.5 sm:mr-2">
               <span className="text-zinc-700 line-clamp-1 font-danaBold text-xs sm:text-sm">
-              {infosData?.orders?.pendingPaymentOrders?.length} سفارش
+                {infosData?.orders?.pendingPaymentOrders?.length} سفارش
               </span>
               <span className="text-[10px] sm:text-xs text-gray-400 line-clamp-1">
                 در انتظار پرداخت
