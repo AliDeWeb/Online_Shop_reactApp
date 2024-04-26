@@ -72,8 +72,6 @@ export default function ProductsDetails() {
         navigator("/404");
       });
 
-      console.log(res.data);
-
       return res.data;
     },
     {
@@ -89,6 +87,8 @@ export default function ProductsDetails() {
   const [colorId, setColorId] = useState([]);
   const [sizeId, setSizeId] = useState([]);
   const [count, setCount] = useState(0);
+
+  const [isFavFetching, setIsFavFetching] = useState(false);
 
   const [activeBtn, setActiveBtn] = useState(null);
 
@@ -481,7 +481,9 @@ export default function ProductsDetails() {
                   </div>
                   <div className="mt-2 sm:mt-4 w-full grid items-center gap-2 grid-cols-4">
                     {isProductFetching ? (
-                      <BeatLoader size="0.5rem" color="#0d9488" />
+                      <div className="col-span-4 sm:col-span-2 flex justify-center items-center">
+                        <BeatLoader size="0.5rem" color="#0d9488" />
+                      </div>
                     ) : count ? (
                       <div className="col-span-4 sm:col-span-2 font-danaBold grid grid-cols-3 border border-solid border-gray-400  py-2 px-4 rounded-xl xl:text-lg text-red-400 mt-2.5 sm:mt-0 h-[42px]">
                         <button
@@ -517,7 +519,9 @@ export default function ProductsDetails() {
                         >
                           +
                         </button>
-                        <span className="grid-cols-1 flex items-center justify-center w-full">{count}</span>
+                        <span className="grid-cols-1 flex items-center justify-center w-full">
+                          {count}
+                        </span>
                         <button
                           className="grid-cols-1"
                           onClick={() => {
@@ -590,32 +594,52 @@ export default function ProductsDetails() {
                     )}
                     {!isLoading &&
                       (data?.isFavorite ? (
-                        <button
-                          onClick={() => {
-                            postFavoriteProduct({
-                              headers: {
-                                Authorization: `Bearer ${userToken}`,
-                              },
-                              url: `/${data?.product?._id}`,
-                            }).then(() => {
-                              refetch();
-                            });
-                          }}
-                          className="col-span-4 sm:col-span-2 border border-solid border-red-500 font-dana text-red-500 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-red-500"
-                        >
-                          حذف مورد علاقه
-                        </button>
+                        isFavFetching ? (
+                          <div className="col-span-4 sm:col-span-2 flex justify-center items-center">
+                            <BeatLoader size="0.5rem" color="rgb(239,68,68)" />
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => {
+                              setIsFavFetching(true);
+                              postFavoriteProduct({
+                                headers: {
+                                  Authorization: `Bearer ${userToken}`,
+                                },
+                                url: `/${data?.product?._id}`,
+                              })
+                                .then(() => {
+                                  refetch();
+                                })
+                                .finally(() => {
+                                  setIsFavFetching(false);
+                                });
+                            }}
+                            className="col-span-4 sm:col-span-2 border border-solid border-red-500 font-dana text-red-500 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-red-500"
+                          >
+                            حذف مورد علاقه
+                          </button>
+                        )
+                      ) : isFavFetching ? (
+                        <div className="col-span-4 sm:col-span-2 flex justify-center items-center">
+                          <BeatLoader size="0.5rem" color="rgb(239,68,68)" />
+                        </div>
                       ) : (
                         <button
                           onClick={() => {
+                            setIsFavFetching(true);
                             postFavoriteProduct({
                               headers: {
                                 Authorization: `Bearer ${userToken}`,
                               },
                               url: `/${data?.product?._id}`,
-                            }).then(() => {
-                              refetch();
-                            });
+                            })
+                              .then(() => {
+                                refetch();
+                              })
+                              .finally(() => {
+                                setIsFavFetching(false);
+                              });
                           }}
                           className="col-span-4 sm:col-span-2 border border-solid border-red-500 font-dana text-red-500 bg-gray-100 flex items-center gap-1 justify-center w-full py-2 rounded-xl transition-all hover:text-white hover:bg-red-500"
                         >
