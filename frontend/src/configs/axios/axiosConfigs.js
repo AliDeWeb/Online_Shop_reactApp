@@ -392,10 +392,11 @@ updateWallet.interceptors.response.use(
 // User Update
 export const updateUser = axios.create({
   method: `PUT`,
-  baseURL: `${apiUrl}${version}/users`,
+  baseURL: `${apiUrl}${version}/users/`,
 });
-updateWallet.interceptors.response.use(
+updateUser.interceptors.response.use(
   function (response) {
+    successSwal(`اطلاعات با موفقیت ویرایش شدند :)`);
     return response;
   },
   function (error) {
