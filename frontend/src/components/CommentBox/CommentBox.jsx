@@ -29,6 +29,7 @@ export default function CommentBox(props) {
         <div className="2xl:size-[120px] xl:size-[110px] sm:size-[100px] w-[90px] mx-auto">
           <Link to={`/product/${props.href}`} className="size-full">
             <img
+              loading="lazy"
               className="transition-all hover:scale-95 mix-blend-multiply"
               src={props.cover}
               alt="img"
