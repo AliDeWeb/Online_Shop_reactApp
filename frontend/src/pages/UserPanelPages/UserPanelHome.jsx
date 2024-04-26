@@ -61,7 +61,6 @@ export default function UserPanelHome() {
   } = useForm();
 
   const submitForm = (data) => {
-    console.log(data);
     setIsDataFetching(true);
     let userData = {
       firstname: data.userName,
