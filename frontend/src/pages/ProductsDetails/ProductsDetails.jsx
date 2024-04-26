@@ -483,8 +483,9 @@ export default function ProductsDetails() {
                     {isProductFetching ? (
                       <BeatLoader size="0.5rem" color="#0d9488" />
                     ) : count ? (
-                      <div className="col-span-4 sm:col-span-2 font-danaBold flex gap-3 items-center border border-solid border-gray-400  py-2 px-4 rounded-lg w-max sm:text-base text-xs xl:text-lg text-red-400 mt-2.5">
+                      <div className="col-span-4 sm:col-span-2 font-danaBold grid grid-cols-3 border border-solid border-gray-400  py-2 px-4 rounded-xl xl:text-lg text-red-400 mt-2.5 sm:mt-0 h-[42px]">
                         <button
+                          className="grid-cols-1"
                           onClick={() => {
                             increaseCount();
 
@@ -516,8 +517,9 @@ export default function ProductsDetails() {
                         >
                           +
                         </button>
-                        <span>{count}</span>
+                        <span className="grid-cols-1 flex items-center justify-center w-full">{count}</span>
                         <button
+                          className="grid-cols-1"
                           onClick={() => {
                             decreaseCount();
 

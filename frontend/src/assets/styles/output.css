@@ -1083,6 +1083,10 @@ img {
   height: 100%;
 }
 
+.h-\[42px\] {
+  height: 42px;
+}
+
 .min-h-\[100dvh\] {
   min-height: 100dvh;
 }
@@ -2201,6 +2205,10 @@ img {
 
   .sm\:mt-4 {
     margin-top: 1rem;
+  }
+
+  .sm\:mt-0 {
+    margin-top: 0px;
   }
 
   .sm\:block {
