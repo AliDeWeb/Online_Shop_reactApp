@@ -1,9 +1,9 @@
 import { useRef } from "react";
 
 // Icons
-import { FaReply } from "react-icons/fa6";
+import { FaReply, FaCheck } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
-import { MdModeEditOutline, MdDelete } from "react-icons/md";
+import { MdModeEditOutline, MdDelete, MdAccessTime } from "react-icons/md";
 
 // React Router
 import { Link } from "react-router-dom";
@@ -77,7 +77,7 @@ export default function CommentBox(props) {
               </span>
             </div>
           ))}
-        <div className="absolute -top-6 sm:top-0 left-0 text-xs font-dana flex items-center gap-1">
+        <div className="absolute -top-7 sm:top-0 left-0 text-xs font-dana flex items-center gap-1">
           <button
             onClick={() => {
               showSwal
@@ -170,6 +170,19 @@ export default function CommentBox(props) {
             <MdDelete size="1rem" />
             <span className="sm:inline hidden">حذف</span>
           </button>
+        </div>
+        <div className="absolute -bottom-6 sm:bottom-0 left-0 text-sm font-dana flex items-center gap-1">
+          {props.isAccept ? (
+            <span className="font-dana text-teal-600 flex items-center gap-1">
+              <FaCheck />
+              تایید شده
+            </span>
+          ) : (
+            <span className="font-dana text-orange-400 flex items-center gap-1">
+              <MdAccessTime />
+              در انتظار تایید
+            </span>
+          )}
         </div>
       </div>
     </div>
