@@ -87,6 +87,31 @@ input::placeholder {
   }
 }
 
+.active-orders-page {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: #dc26269f;
+    margin: auto;
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+  }
+}
+.active-orders-page-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
 .box-shadow {
   box-shadow: 0 0 5px #999999;
 }

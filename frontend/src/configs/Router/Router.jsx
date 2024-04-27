@@ -47,7 +47,7 @@ export default () => {
           <Route path="user-panel" element={<UserPanel />}>
             <Route path="home" element={<UserPanelHome />} />
             <Route path="favorites" element={<UserPanelFavorites />} />
-            <Route path="orders" element={<UserPanelOrders />} />
+            <Route path="orders/:status" element={<UserPanelOrders />} />
             <Route path="addresses" element={<UserPanelAddresses />} />
             <Route path="comments" element={<UserPanelComments />} />
           </Route>

@@ -136,7 +136,7 @@ export default function UserPanelSideBar() {
         </div>
         <div className="text-zinc-700">
           <NavLink
-            to="orders"
+            to="orders/processingOrders"
             className={(a) => {
               return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
             }}
