@@ -51,25 +51,25 @@ export default function OrdersBox({
           </div>
         </div>
         <div>
-          <div className="px-8 flex items-center font-dana mt-4 overflow-auto active-orders-page-wrapper">
-            <div className="font-danaBold text-sm text-zinc-700 w-max">
+          <div className="px-4 lg:px-8 flex items-center font-dana mt-4 overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0">
+            <div className="font-danaBold text-sm text-zinc-700 w_71">
               {`${date?.slice(0, date?.indexOf(`T`))}`}
             </div>
-            <span className="size-2 rounded-full bg-gray-400/50 mx-4"></span>
+            <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4"></span>
             <div className="w-max flex flex-nowrap gap-1">
               <span className="text-sm text-gray-400 w-max">کد سفارش: </span>
               <span className="font-danaBold text-sm text-zinc-700 w-max">
                 {orderCode}
               </span>
             </div>
-            <span className="size-2 rounded-full bg-gray-400/50 mx-4"></span>
+            <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4"></span>
             <div className="w-max flex flex-nowrap gap-1">
               <span className="text-sm text-gray-400 w-max">قیمت: </span>
               <span className="font-danaBold text-sm text-zinc-700 w-max">
                 {price.toLocaleString()} تومان
               </span>
             </div>
-            <span className="size-2 rounded-full bg-gray-400/50 mx-4"></span>
+            <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4"></span>
             <div className="w-max flex flex-nowrap gap-1">
               <span className="text-sm text-gray-400 w-max">تخفیف: </span>
               <span className="font-danaBold text-sm text-zinc-700 w-max">

@@ -61,11 +61,11 @@ export default function UserPanelOrders() {
                 <NavLink
                   to="/user-panel/orders/processingOrders"
                   className={(a) => {
-                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-1 py-2 px-1 text-sm sm:text-base w-max font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-1 py-2 px-1 text-sm sm:text-base w-max font-dana transition-all hover:bg-gray-400/20 rounded-md`;
                   }}
                 >
                   جاری
-                  <span className="size-6 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
+                  <span className="size-4 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
                     {!isLoading && userData?.orders[`processingOrders`]?.length}
                   </span>
                 </NavLink>
@@ -74,11 +74,11 @@ export default function UserPanelOrders() {
                 <NavLink
                   to="/user-panel/orders/successfullOrders"
                   className={(a) => {
-                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-2 py-2 px-1 text-sm sm:text-base w-max font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-2 py-2 px-1 text-sm sm:text-base w-max font-dana transition-all hover:bg-gray-400/20 rounded-md`;
                   }}
                 >
                   تحویل شده
-                  <span className="size-6 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
+                  <span className="size-4 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
                     {!isLoading &&
                       userData?.orders[`successfullOrders`]?.length}
                   </span>
@@ -88,11 +88,11 @@ export default function UserPanelOrders() {
                 <NavLink
                   to="/user-panel/orders/pendingPaymentOrders"
                   className={(a) => {
-                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-2 py-2 px-1 text-sm sm:text-base w-max font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-2 py-2 px-1 text-sm sm:text-base w-max font-dana transition-all hover:bg-gray-400/20 rounded-md`;
                   }}
                 >
                   در انتظار پرداخت
-                  <span className="size-6 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
+                  <span className="size-4 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
                     {!isLoading &&
                       userData?.orders[`pendingPaymentOrders`]?.length}
                   </span>
@@ -102,11 +102,11 @@ export default function UserPanelOrders() {
                 <NavLink
                   to="/user-panel/orders/canceledOrders"
                   className={(a) => {
-                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-2 py-2 px-1 text-sm sm:text-base w-max font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-2 py-2 px-1 text-sm sm:text-base w-max font-dana transition-all hover:bg-gray-400/20 rounded-md`;
                   }}
                 >
                   لغو شده
-                  <span className="size-6 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
+                  <span className="size-4 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
                     {!isLoading && userData?.orders[`canceledOrders`]?.length}
                   </span>
                 </NavLink>
@@ -120,7 +120,7 @@ export default function UserPanelOrders() {
               userData?.orders[param.status]?.map((el) => (
                 <div key={Math.random()}>
                   <OrdersBox
-                    price={el.totalPrice}
+                    price={el.totalPriceAfterOff}
                     discountedPrice={el.totalPrice - el.totalPriceAfterOff}
                     orderCode={el.trackingCode}
                     date={el.createdAt}

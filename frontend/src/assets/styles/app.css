@@ -125,6 +125,10 @@ input::placeholder {
   height: 64px !important;
 }
 
+.w_71 {
+  width: 71px !important;
+}
+
 @media print {
   header,
   footer,
