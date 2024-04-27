@@ -37,7 +37,6 @@ export default function UserPanelHome() {
           },
         });
 
-        console.log(res.data);
         return res.data;
       }
     },
