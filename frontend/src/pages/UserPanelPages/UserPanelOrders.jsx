@@ -1,6 +1,9 @@
 // React Router
 import { NavLink } from "react-router-dom";
 
+// Components
+import { OrdersBox } from "../../configs/Layout/Layout";
+
 export default function UserPanelOrders() {
   return (
     <div>
@@ -67,6 +70,9 @@ export default function UserPanelOrders() {
               </li>
             </ul>
           </nav>
+        </div>
+        <div className="mt-6">
+          <OrdersBox />
         </div>
       </div>
     </div>

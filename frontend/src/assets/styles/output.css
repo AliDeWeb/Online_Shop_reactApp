@@ -839,6 +839,11 @@ img {
   margin-bottom: 1.75rem;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -1007,6 +1012,11 @@ img {
   display: none;
 }
 
+.size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .size-\[15px\] {
   width: 15px;
   height: 15px;
@@ -1062,14 +1072,9 @@ img {
   height: 2rem;
 }
 
-.size-6 {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.size-7 {
-  width: 1.75rem;
-  height: 1.75rem;
+.size-16 {
+  width: 4rem;
+  height: 4rem;
 }
 
 .h-0 {
@@ -1210,6 +1215,11 @@ img {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.rotate-90 {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -1258,16 +1268,16 @@ img {
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
-.flex-row {
-  flex-direction: row;
-}
-
 .flex-col {
   flex-direction: column;
 }
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
 }
 
 .items-start {
@@ -1426,10 +1436,6 @@ img {
   border-radius: 0.75rem;
 }
 
-.rounded {
-  border-radius: 0.25rem;
-}
-
 .rounded-b-lg {
   border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
@@ -1463,6 +1469,10 @@ img {
 
 .border-t-2 {
   border-top-width: 2px;
+}
+
+.border-t {
+  border-top-width: 1px;
 }
 
 .border-solid {
@@ -1519,6 +1529,11 @@ img {
 
 .bg-\[\#00000008\] {
   background-color: #00000008;
+}
+
+.bg-\[\#a1a3a8\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(161 163 168 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#e3e3eb\] {
@@ -1604,13 +1619,8 @@ img {
   background-color: rgb(24 24 27 / 0.7);
 }
 
-.bg-\[\] {
-  background-color: ;
-}
-
-.bg-\[\#a1a3a8\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(161 163 168 / var(--tw-bg-opacity));
+.bg-gray-400\/50 {
+  background-color: rgb(156 163 175 / 0.5);
 }
 
 .object-contain {
@@ -1642,14 +1652,6 @@ img {
 
 .p-5 {
   padding: 1.25rem;
-}
-
-.p-0 {
-  padding: 0px;
-}
-
-.p-0\.5 {
-  padding: 0.125rem;
 }
 
 .px-1 {
@@ -1801,14 +1803,6 @@ img {
   padding-top: 2rem;
 }
 
-.pb-8 {
-  padding-bottom: 2rem;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
 .text-center {
   text-align: center;
 }
@@ -1929,23 +1923,12 @@ img {
   color: rgb(63 63 70 / var(--tw-text-opacity));
 }
 
-.text-blue-500 {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
 .opacity-0 {
   opacity: 0;
 }
 
 .mix-blend-multiply {
   mix-blend-mode: multiply;
-}
-
-.shadow-md {
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .outline-none {
@@ -2152,11 +2135,6 @@ img {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.hover\:text-blue-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(30 64 175 / var(--tw-text-opacity));
-}
-
 .hover\:shadow-xl:hover {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
@@ -2210,6 +2188,21 @@ img {
   display: flex;
 }
 
+.child\:size-1\/6 > * {
+  width: 16.666667%;
+  height: 16.666667%;
+}
+
+.child\:size-1 > * {
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+.child\:size-16 > * {
+  width: 4rem;
+  height: 4rem;
+}
+
 .child\:h-\[30px\] > * {
   height: 30px;
 }
@@ -2224,6 +2217,15 @@ img {
 
 .child\:w-full > * {
   width: 100%;
+}
+
+.child\:w-max > * {
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.child\:flex-shrink-0 > * {
+  flex-shrink: 0;
 }
 
 .child\:cursor-pointer > * {

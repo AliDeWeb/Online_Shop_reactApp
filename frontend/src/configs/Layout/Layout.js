@@ -36,3 +36,4 @@ export { default as UserPanelSideBar } from "../../components/PanelsSideBar/User
 export { default as AddressBox } from "../../components/AddressBox/AddressBox";
 export { default as FavsProductBox } from "../../components/FavsProductBox/FavsProductBox";
 export { default as CommentBox } from "../../components/CommentBox/CommentBox";
+export { default as OrdersBox } from "../../components/OrdersBox/OrdersBox";

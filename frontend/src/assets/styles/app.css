@@ -120,6 +120,11 @@ input::placeholder {
   font-family: dana;
 }
 
+.size_16 {
+  width: 64px !important;
+  height: 64px !important;
+}
+
 @media print {
   header,
   footer,
