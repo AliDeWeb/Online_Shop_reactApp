@@ -24,7 +24,7 @@ export default function CommentBox(props) {
   const showSwal = withReactContent(Swal);
   const { userToken } = useUserToken();
   return (
-    <div className="p-4 grid grid-cols-12 gap-2 items-center">
+    <div className="py-10 px-2 grid grid-cols-12 gap-2 items-center">
       <div className="col-span-4 sm:col-span-3 md:col-span-2">
         <div className="2xl:size-[120px] xl:size-[110px] sm:size-[100px] w-[90px] mx-auto">
           <Link to={`/product/${props.href}`} className="size-full">
@@ -64,7 +64,7 @@ export default function CommentBox(props) {
               className="w-full sm:w-[90%] mx-auto py-3 px-5 rounded-lg bg-gray-100 mt-4 text-zinc-700"
             >
               <div className="flex items-center gap-1 font-dana text-gray-400 mb-2.5">
-                <div>
+                <div className="line-clamp-1">
                   {`${el.creatorAdmin.firstName} ${el.creatorAdmin.lastName}`}
                 </div>
                 <span className="bg-teal-400/50 py-1 px-2 rounded-lg font-dana text-xs text-gray-700 mr-1">
