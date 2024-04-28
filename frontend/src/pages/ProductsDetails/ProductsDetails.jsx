@@ -755,7 +755,11 @@ export default function ProductsDetails() {
           </div>
 
           {!isLoading && !!data?.relatedproducts.length && (
-            <SectionsWrapper title={"محصولات مرتبط"} href="/home">
+            <SectionsWrapper
+              noContainer
+              title={"محصولات مرتبط"}
+              href="/home"
+            >
               <Swiper
                 spaceBetween={20}
                 slidesPerView={1}
