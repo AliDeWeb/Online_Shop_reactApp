@@ -10,6 +10,7 @@ import {
 import { IoHomeOutline, IoExitOutline } from "react-icons/io5";
 import { FaRegHeart, FaRegComment } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 // SweetAlert
 import Swal from "sweetalert2";
@@ -184,6 +185,19 @@ export default function UserPanelSideBar() {
               <HiOutlineLocationMarker />
             </span>
             <span className="text-sm">آدرس ها</span>
+          </NavLink>
+        </div>
+        <div className="text-zinc-700">
+          <NavLink
+            to="notifications"
+            className={(a) => {
+              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
+            }}
+          >
+            <span>
+              <IoMdNotificationsOutline />
+            </span>
+            <span className="text-sm">پیغام ها</span>
           </NavLink>
         </div>
         <div className="text-red-600">

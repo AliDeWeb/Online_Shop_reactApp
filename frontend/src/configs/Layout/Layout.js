@@ -18,7 +18,7 @@ export { default as UserPanelFavorites } from "../../pages/UserPanelPages/UserPa
 export { default as UserPanelOrders } from "../../pages/UserPanelPages/UserPanelOrders";
 export { default as UserPanelAddresses } from "../../pages/UserPanelPages/UserPanelAddresses";
 export { default as UserPanelComments } from "../../pages/UserPanelPages/UserPanelComments";
-
+export { default as UserPanelNotifications } from "../../pages/UserPanelPages/UserPanelNotifications";
 
 // Components
 export { default as Header } from "../../components/Header/Header";
@@ -37,3 +37,4 @@ export { default as AddressBox } from "../../components/AddressBox/AddressBox";
 export { default as FavsProductBox } from "../../components/FavsProductBox/FavsProductBox";
 export { default as CommentBox } from "../../components/CommentBox/CommentBox";
 export { default as OrdersBox } from "../../components/OrdersBox/OrdersBox";
+export { default as NotificationsBox } from "../../components/NotificationsBox/NotificationsBox";

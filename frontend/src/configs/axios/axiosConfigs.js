@@ -404,3 +404,35 @@ updateUser.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// Update Notification Seen Status
+export const updateNotificationSeenStatus = axios.create({
+  method: `PUT`,
+  baseURL: `${apiUrl}${version}/notification/user`,
+});
+updateNotificationSeenStatus.interceptors.response.use(
+  function (response) {
+    successSwal(`اطلاعات با موفقیت ویرایش شدند :)`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
+
+// Delete Notification Seen Status
+export const deleteNotificationSeenStatus = axios.create({
+  method: `DELETE`,
+  baseURL: `${apiUrl}${version}/notification/user`,
+});
+deleteNotificationSeenStatus.interceptors.response.use(
+  function (response) {
+    successSwal(`پیغام با موفقیت حذف شد :)`);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
