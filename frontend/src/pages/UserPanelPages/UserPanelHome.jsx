@@ -20,6 +20,12 @@ import { useQuery, useQueryClient } from "react-query";
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
+// React Router
+import { Link } from "react-router-dom";
+
+// Icons
+import { IoIosArrowBack } from "react-icons/io";
+
 export default function UserPanelHome() {
   const queryClient = useQueryClient();
   const { userToken } = useUserToken();
@@ -242,6 +248,15 @@ export default function UserPanelHome() {
                   </span>
                 )}
               </div>
+            </div>
+            <div>
+              <Link
+                to="/forgot-password"
+                className="flex items-center gap-1 font-dana text-red-500 transition-all hover:text-red-600 pb-4"
+              >
+                تغییر رمز عبور
+                <IoIosArrowBack />
+              </Link>
             </div>
 
             <button
