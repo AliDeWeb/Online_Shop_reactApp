@@ -126,6 +126,7 @@ export default function UserPanelOrders() {
                     date={el.createdAt}
                     covers={[...el.items.map((el) => el.covers[0])]}
                     status={param.status}
+                    href={el.trackingCode}
                   />
                 </div>
               ))

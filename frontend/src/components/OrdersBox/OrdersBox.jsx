@@ -16,6 +16,7 @@ export default function OrdersBox({
   price,
   discountedPrice,
   status,
+  href,
 }) {
   return (
     <div className="w-full my-4 py-2 px-4 rounded-lg border border-solid border-gray-400/50">
@@ -45,7 +46,10 @@ export default function OrdersBox({
             )}
           </div>
           <div>
-            <Link className="text-zinc-700">
+            <Link
+              className="text-zinc-700"
+              to={`/user-panel/order-status/${href}`}
+            >
               <IoIosArrowBack size="0.8rem" />
             </Link>
           </div>

@@ -42,7 +42,6 @@ export default function UserPanelHome() {
             Authorization: `Bearer ${userToken}`,
           },
         });
-
         return res.data;
       }
     },
