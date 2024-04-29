@@ -19,6 +19,7 @@ export { default as UserPanelOrders } from "../../pages/UserPanelPages/UserPanel
 export { default as UserPanelAddresses } from "../../pages/UserPanelPages/UserPanelAddresses";
 export { default as UserPanelComments } from "../../pages/UserPanelPages/UserPanelComments";
 export { default as UserPanelNotifications } from "../../pages/UserPanelPages/UserPanelNotifications";
+export { default as OrdersStatus } from "../../pages/OrdersStatus/OrdersStatus";
 
 // Components
 export { default as Header } from "../../components/Header/Header";

@@ -20,7 +20,8 @@ import {
   UserPanelOrders,
   UserPanelAddresses,
   UserPanelComments,
-  UserPanelNotifications
+  UserPanelNotifications,
+  OrdersStatus,
 } from "../Layout/Layout";
 
 export default () => {
@@ -52,6 +53,7 @@ export default () => {
             <Route path="addresses" element={<UserPanelAddresses />} />
             <Route path="comments" element={<UserPanelComments />} />
             <Route path="notifications" element={<UserPanelNotifications />} />
+            <Route path="order-status/:orderId" element={<OrdersStatus />} />
           </Route>
         </Route>
         <Route path="*" element={<Page404 />} />
