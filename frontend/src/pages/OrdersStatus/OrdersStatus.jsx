@@ -3,12 +3,46 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { FaTruck } from "react-icons/fa6";
 
 // React Router
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 // components
 import { CartProductBox } from "../../configs/Layout/Layout";
 
+// React Query
+import { useQuery } from "react-query";
+
+// Axios
+import { getOrdersStatus } from "../../configs/axios/axiosConfigs";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
 export default function OrdersStatus() {
+  const param = useParams();
+
+  const { userToken } = useUserToken();
+
+  const { data, isLoading, refetch } = useQuery(
+    `order-status-${param.orderId}`,
+    async () => {
+      if (userToken) {
+        const res = await getOrdersStatus({
+          url: `/${param.orderId}`,
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        });
+        console.log(res.data);
+        return res.data;
+      }
+    },
+    {
+      refetchOnMount: true,
+      refetchOnWindowFocus: true,
+      staleTime: 0,
+    }
+  );
+
   return (
     <div>
       <div>
@@ -26,8 +60,7 @@ export default function OrdersStatus() {
               <div className="flex flex-nowrap gap-1 lg:justify-start justify-between w-full lg:w-max ">
                 <span className="text-sm text-gray-400 w-max">کد سفارش:</span>
                 <span className="font-danaDemi text-sm text-zinc-700 w-max">
-                  {/* {orderCode} */}
-                  754489789489489
+                  {!isLoading && data?.trackingCode}
                 </span>
               </div>
               <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4 hidden lg:inline"></span>
@@ -36,8 +69,7 @@ export default function OrdersStatus() {
                   تاریخ سفارش:
                 </span>
                 <span className="font-danaDemi text-sm text-zinc-700 w-max">
-                  {/* {`${date?.slice(0, date?.indexOf(`T`))}`} */}
-                  4/8/2021
+                  {!isLoading && data?.createdAt}
                 </span>
               </div>
             </div>
@@ -49,7 +81,8 @@ export default function OrdersStatus() {
                   تحویل گیرنده:{" "}
                 </span>
                 <span className="font-danaDemi text-sm text-zinc-700 w-max">
-                  علی مرادی
+                  {!isLoading &&
+                    `${data?.user?.firstName} ${data?.user?.lastName}`}
                 </span>
               </div>
               <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4 lg:inline hidden"></span>
@@ -58,7 +91,7 @@ export default function OrdersStatus() {
                   شماره موبایل:{" "}
                 </span>
                 <span className="font-danaDemi text-sm text-zinc-700 w-max">
-                  09658969856
+                  {!isLoading && data?.user?.phone}
                 </span>
               </div>
             </div>
@@ -67,11 +100,7 @@ export default function OrdersStatus() {
                 آدرس:{" "}
               </span>
               <span className="font-danaDemi text-sm text-zinc-700 line-clamp-2 lg:line-clamp-1">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله
-                در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-                نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-                کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
+                {!isLoading && data?.user?.address?.address}
               </span>
             </div>
           </div>
@@ -80,7 +109,7 @@ export default function OrdersStatus() {
               <div className="justify-between lg:justify-start w-full lg:w-max flex flex-nowrap gap-1">
                 <span className="text-sm text-gray-400 w-max">مبلغ: </span>
                 <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
-                  {(897885898).toLocaleString()}
+                  {!isLoading && data?.totalPriceAfterOff?.toLocaleString()}
                   <span className="px-2">تومان</span>
                 </span>
               </div>
@@ -90,7 +119,10 @@ export default function OrdersStatus() {
                   سود شما از خرید:{" "}
                 </span>
                 <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
-                  {(48885980990).toLocaleString()}
+                  {!isLoading &&
+                    (
+                      data?.totalPrice - data?.totalPriceAfterOff
+                    )?.toLocaleString()}
                   <span className="px-2">تومان</span>
                 </span>
               </div>
@@ -106,7 +138,7 @@ export default function OrdersStatus() {
               </div>
               <div className="w-max flex flex-nowrap gap-1 font-dana">
                 <span className="text-sm text-gray-400 w-max">
-                  پرداخت اینترنتی
+                  {!isLoading && data?.paymentWay}
                 </span>
               </div>
             </div>
@@ -115,8 +147,12 @@ export default function OrdersStatus() {
                 هزینه ارسال:{" "}
               </span>
               <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max flex items-center">
-                {(984959595).toLocaleString()}
-                <span className="px-2">تومان</span>
+                {!isLoading && !!data?.totalPriceOfTransports
+                  ? data?.totalPriceOfTransports.toLocaleString()
+                  : "رایگان"}
+                {!isLoading && !!data?.totalPriceOfTransports && (
+                  <span className="px-2">تومان</span>
+                )}
               </span>
             </div>
           </div>

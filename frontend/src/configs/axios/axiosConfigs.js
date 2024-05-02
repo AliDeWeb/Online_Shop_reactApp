@@ -436,3 +436,18 @@ deleteNotificationSeenStatus.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// Get Orders Status
+export const getOrdersStatus = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/order/getOneOrder/user`,
+});
+getOrdersStatus.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
