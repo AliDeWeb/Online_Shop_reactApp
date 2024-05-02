@@ -107,15 +107,15 @@ export default function UserPanelSideBar() {
                     }
                   });
               }}
-              className="text-sm flex items-center text-teal-600 transition-all hover:scale-95"
+              className="text-sm flex items-center text-teal-600 transition-all hover:scale-95 line-clamp-1"
             >
-              <span>افزایش موجودی</span>
+              <span className="line-clamp-1">افزایش موجودی</span>
               <span>
                 <MdOutlineKeyboardArrowLeft />
               </span>
             </button>
           </div>
-          <span className="text-teal-600 font-danaBold text-sm">
+          <span className="text-teal-600 font-danaBold text-sm line-clamp-1">
             {!isLoading && (data?.user?.wallet).toLocaleString()} تومان
           </span>
         </div>
