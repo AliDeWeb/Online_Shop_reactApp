@@ -16,7 +16,7 @@ export default {
       fontFamily: {
         dana: "dana",
         danaBold: "danaBold",
-        danaThin: "danaThin",
+        danaDemi: "danaDemi",
         poppins: "poppins",
       },
     },
