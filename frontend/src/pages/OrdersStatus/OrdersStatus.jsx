@@ -12,7 +12,7 @@ import { CartProductBox } from "../../configs/Layout/Layout";
 import { useQuery } from "react-query";
 
 // Axios
-import { getOrdersStatus } from "../../configs/axios/axiosConfigs";
+import { getOrdersStatus, apiUrl } from "../../configs/axios/axiosConfigs";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -156,121 +156,265 @@ export default function OrdersStatus() {
               </span>
             </div>
           </div>
-          <div className="py-4">
-            <div className="flex items-center justify-between w-full">
-              <div className="w-full">
-                <div className="w-full px-4 lg:px-8 flex items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0">
-                  <div className="w-max flex flex-nowrap items-center gap-1 font-dana">
-                    <span className="text-sm text-gray-400 w-max">
-                      4 عدد مرسوله
-                    </span>
+
+          {!isLoading &&
+            !!data?.groupedProductsByTransport?.transportsDetails1?.products
+              ?.length && (
+              <div className="py-4 border-b border-solid border-gray-400/20">
+                <div className="flex items-center justify-between w-full">
+                  <div className="w-full">
+                    <div className="w-full px-4 lg:px-8 flex items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0">
+                      <div className="w-max flex flex-nowrap items-center gap-1 font-dana">
+                        <span className="text-sm text-gray-400 w-max">
+                          {
+                            data?.groupedProductsByTransport?.transportsDetails1
+                              ?.products?.length
+                          }{" "}
+                          عدد مرسوله
+                        </span>
+                      </div>
+                      <span className="size-1 rounded-full bg-gray-400/50 mx-2"></span>
+                      <div className="w-max flex flex-nowrap items-center gap-1 font-dana">
+                        <span className="text-orange-400">
+                          <FaTruck />
+                        </span>
+                        <span className="text-sm text-gray-400 w-max">
+                          ارسال از طریق تیپاکس
+                        </span>
+                      </div>
+                    </div>
+                    <div className="w-full px-4 lg:px-8 flex items-center font-dana overflow-auto active-orders-page-wrapper lg:child:flex-shrink-0 lg:child:flex-grow-0 mt-4">
+                      <div className="w-full lg:w-max lg:justify-start justify-between flex flex-nowrap gap-1">
+                        <span className="text-sm text-gray-400 w-max">
+                          زمان تحویل:{" "}
+                        </span>
+                        <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
+                          5/8/2020
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <span className="size-1 rounded-full bg-gray-400/50 mx-2"></span>
-                  <div className="w-max flex flex-nowrap items-center gap-1 font-dana">
-                    <span className="text-orange-400">
-                      <FaTruck />
+                  <div className="sm:w-1/2 flex-col gap-2 font-dana mx-4 lg:mx-8 rounded-lg p-2 hidden lg:flex">
+                    <span className="font-dana text-sm sm:text-base text-teal-600">
+                      تحویل مرسوله به مشتری
                     </span>
-                    <span className="text-sm text-gray-400 w-max">
-                      ارسال از طریق تیپاکس
-                    </span>
-                  </div>
-                </div>
-                <div className="w-full px-4 lg:px-8 flex items-center font-dana overflow-auto active-orders-page-wrapper lg:child:flex-shrink-0 lg:child:flex-grow-0 mt-4">
-                  <div className="w-full lg:w-max lg:justify-start justify-between flex flex-nowrap gap-1">
-                    <span className="text-sm text-gray-400 w-max">
-                      زمان تحویل:{" "}
-                    </span>
-                    <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
-                      5/8/2020
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="sm:w-1/2 flex-col gap-2 font-dana mx-4 lg:mx-8 rounded-lg p-2 hidden lg:flex">
-                <span className="font-dana text-sm sm:text-base text-teal-600">
-                  تحویل مرسوله به مشتری
-                </span>
-                <div className="w-full h-1 bg-gray-400/30 rounded-lg">
-                  <div
-                    className="size-full bg-teal-600 rounded-lg"
-                    style={{ width: `50%` }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-            <div className="py-4">
-              <div className="px-4 lg:px-8 flex gap-2 lg:gap-0 lg:flex-row flex-col lg:items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0 justify-between">
-                <div className="gap-2 lg:gap-0 lg:flex-row flex-col lg:items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0 hidden lg:flex">
-                  <div className="w-full lg:w-max flex lg:justify-start justify-between flex-nowrap gap-1">
-                    <span className="text-sm text-gray-400 w-max">
-                      تحویل گیرنده:{" "}
-                    </span>
-                    <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
-                      علی مرادی
-                    </span>
-                  </div>
-                  <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4 lg:inline hidden"></span>
-                  <div className="lg:w-max w-full lg:justify-start justify-between flex flex-nowrap gap-1 font-dana">
-                    <span className="text-sm text-gray-400 w-max">
-                      شماره موبایل:{" "}
-                    </span>
-                    <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
-                      09658969856
-                    </span>
+                    <div className="w-full h-1 bg-gray-400/30 rounded-lg">
+                      <div
+                        className="size-full bg-teal-600 rounded-lg"
+                        style={{ width: `50%` }}
+                      ></div>
+                    </div>
                   </div>
                 </div>
-                <div className="lg:w-max w-full lg:justify-start justify-between flex flex-nowrap gap-1 font-dana">
-                  <span className="text-sm text-gray-400 w-max">
-                    کد مرسوله:{" "}
+                <div className="py-4">
+                  <div className="px-4 lg:px-8 flex gap-2 lg:gap-0 lg:flex-row flex-col lg:items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0 justify-between">
+                    <div className="gap-2 lg:gap-0 lg:flex-row flex-col lg:items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0 hidden lg:flex">
+                      <div className="w-full lg:w-max flex lg:justify-start justify-between flex-nowrap gap-1">
+                        <span className="text-sm text-gray-400 w-max">
+                          تحویل گیرنده:{" "}
+                        </span>
+                        <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
+                          علی مرادی
+                        </span>
+                      </div>
+                      <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4 lg:inline hidden"></span>
+                      <div className="lg:w-max w-full lg:justify-start justify-between flex flex-nowrap gap-1 font-dana">
+                        <span className="text-sm text-gray-400 w-max">
+                          شماره موبایل:{" "}
+                        </span>
+                        <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
+                          09658969856
+                        </span>
+                      </div>
+                    </div>
+                    <div className="lg:w-max w-full lg:justify-start justify-between flex flex-nowrap gap-1 font-dana">
+                      <span className="text-sm text-gray-400 w-max">
+                        کد مرسوله:{" "}
+                      </span>
+                      <span className="font-danaDemi text-sm text-zinc-700 w-max">
+                        09658969856
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full flex-col gap-2 font-dana lg:mx-8 rounded-lg p-2 flex lg:hidden">
+                  <span className="font-dana text-sm sm:text-base text-teal-600">
+                    تحویل مرسوله به مشتری
                   </span>
-                  <span className="font-danaDemi text-sm text-zinc-700 w-max">
-                    09658969856
-                  </span>
+                  <div className="w-full h-1 bg-gray-400/30 rounded-lg">
+                    <div
+                      className="size-full bg-teal-600 rounded-lg"
+                      style={{ width: `50%` }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="border border-solid border-gray-400/50 py-2 px-4 rounded-lg mt-4 child:py-4 divide-y divide-solid divide-gray-400/50">
+                  {data?.groupedProductsByTransport?.transportsDetails1?.products?.map(
+                    (el) => (
+                      <div key={Math.random()}>
+                        <CartProductBox
+                          refetch={refetch}
+                          productId={el.product._id}
+                          color={null}
+                          size={null}
+                          title={el.product.title}
+                          cover={`${apiUrl}/${el.product.covers[0]}`}
+                          warranty={el.warranty}
+                          productCount={
+                            el?.count
+                              ? el?.count
+                              : el?.color?.length
+                                ? el?.color[0]?.count
+                                : el?.size?.length
+                                  ? el?.size[0]?.count
+                                  : 0
+                          }
+                          price={
+                            el?.product?.mainPrice
+                              ? el?.product?.mainPrice
+                              : el?.color?.length
+                                ? el?.color[0]?.price
+                                : el?.size?.length
+                                  ? el?.size[0]?.price
+                                  : 0
+                          }
+                          discounted={
+                            el?.product?.off
+                              ? el?.product?.discountedPrice
+                              : el?.color?.length
+                                ? el.color[0]?.discountedPrice
+                                : el?.size?.length
+                                  ? el.size[0].discountedPrice
+                                  : 0
+                          }
+                          href={`/product/${el.product.href}`}
+                          notShowCounter={true}
+                        />
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
-            </div>
-            <div className="w-full flex-col gap-2 font-dana lg:mx-8 rounded-lg p-2 flex lg:hidden">
-              <span className="font-dana text-sm sm:text-base text-teal-600">
-                تحویل مرسوله به مشتری
-              </span>
-              <div className="w-full h-1 bg-gray-400/30 rounded-lg">
-                <div
-                  className="size-full bg-teal-600 rounded-lg"
-                  style={{ width: `50%` }}
-                ></div>
+            )}
+          {!isLoading &&
+            !!data?.groupedProductsByTransport?.transportsDetails2?.products
+              ?.length && (
+              <div className="py-4">
+                <div className="flex items-center justify-between w-full">
+                  <div className="w-full">
+                    <div className="w-full px-4 lg:px-8 flex items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0">
+                      <div className="w-max flex flex-nowrap items-center gap-1 font-dana">
+                        <span className="text-sm text-gray-400 w-max">
+                          4 عدد مرسوله
+                        </span>
+                      </div>
+                      <span className="size-1 rounded-full bg-gray-400/50 mx-2"></span>
+                      <div className="w-max flex flex-nowrap items-center gap-1 font-dana">
+                        <span className="text-orange-400">
+                          <FaTruck />
+                        </span>
+                        <span className="text-sm text-gray-400 w-max">
+                          ارسال از طریق تیپاکس
+                        </span>
+                      </div>
+                    </div>
+                    <div className="w-full px-4 lg:px-8 flex items-center font-dana overflow-auto active-orders-page-wrapper lg:child:flex-shrink-0 lg:child:flex-grow-0 mt-4">
+                      <div className="w-full lg:w-max lg:justify-start justify-between flex flex-nowrap gap-1">
+                        <span className="text-sm text-gray-400 w-max">
+                          زمان تحویل:{" "}
+                        </span>
+                        <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
+                          5/8/2020
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="sm:w-1/2 flex-col gap-2 font-dana mx-4 lg:mx-8 rounded-lg p-2 hidden lg:flex">
+                    <span className="font-dana text-sm sm:text-base text-teal-600">
+                      تحویل مرسوله به مشتری
+                    </span>
+                    <div className="w-full h-1 bg-gray-400/30 rounded-lg">
+                      <div
+                        className="size-full bg-teal-600 rounded-lg"
+                        style={{ width: `50%` }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="py-4">
+                  <div className="px-4 lg:px-8 flex gap-2 lg:gap-0 lg:flex-row flex-col lg:items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0 justify-between">
+                    <div className="gap-2 lg:gap-0 lg:flex-row flex-col lg:items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0 hidden lg:flex">
+                      <div className="w-full lg:w-max flex lg:justify-start justify-between flex-nowrap gap-1">
+                        <span className="text-sm text-gray-400 w-max">
+                          تحویل گیرنده:{" "}
+                        </span>
+                        <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
+                          علی مرادی
+                        </span>
+                      </div>
+                      <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4 lg:inline hidden"></span>
+                      <div className="lg:w-max w-full lg:justify-start justify-between flex flex-nowrap gap-1 font-dana">
+                        <span className="text-sm text-gray-400 w-max">
+                          شماره موبایل:{" "}
+                        </span>
+                        <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
+                          09658969856
+                        </span>
+                      </div>
+                    </div>
+                    <div className="lg:w-max w-full lg:justify-start justify-between flex flex-nowrap gap-1 font-dana">
+                      <span className="text-sm text-gray-400 w-max">
+                        کد مرسوله:{" "}
+                      </span>
+                      <span className="font-danaDemi text-sm text-zinc-700 w-max">
+                        09658969856
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full flex-col gap-2 font-dana lg:mx-8 rounded-lg p-2 flex lg:hidden">
+                  <span className="font-dana text-sm sm:text-base text-teal-600">
+                    تحویل مرسوله به مشتری
+                  </span>
+                  <div className="w-full h-1 bg-gray-400/30 rounded-lg">
+                    <div
+                      className="size-full bg-teal-600 rounded-lg"
+                      style={{ width: `50%` }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="border border-solid border-gray-400/50 py-2 px-4 rounded-lg mt-4 child:py-4 divide-y divide-solid divide-gray-400/50">
+                  <CartProductBox
+                    refetch={"refetch"}
+                    productId={"el.product._id"}
+                    color={null}
+                    size={null}
+                    title={"el.product.title"}
+                    cover={"`${apiUrl}/${el.product.covers[0]}`"}
+                    warranty={"el.warranty"}
+                    productCount={8000000}
+                    price={8000000}
+                    discounted={8000000}
+                    href={`/product/`}
+                    notShowCounter={true}
+                  />
+                  <CartProductBox
+                    refetch={"refetch"}
+                    productId={"el.product._id"}
+                    color={null}
+                    size={null}
+                    title={"el.product.title"}
+                    cover={"`${apiUrl}/${el.product.covers[0]}`"}
+                    warranty={"el.warranty"}
+                    productCount={8000000}
+                    price={8000000}
+                    discounted={8000000}
+                    href={`/product/`}
+                    notShowCounter={true}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="border border-solid border-gray-400/50 py-2 px-4 rounded-lg mt-4 child:py-4 divide-y divide-solid divide-gray-400/50">
-              <CartProductBox
-                refetch={"refetch"}
-                productId={"el.product._id"}
-                color={null}
-                size={null}
-                title={"el.product.title"}
-                cover={"`${apiUrl}/${el.product.covers[0]}`"}
-                warranty={"el.warranty"}
-                productCount={8000000}
-                price={8000000}
-                discounted={8000000}
-                href={`/product/`}
-                notShowCounter={true}
-              />
-              <CartProductBox
-                refetch={"refetch"}
-                productId={"el.product._id"}
-                color={null}
-                size={null}
-                title={"el.product.title"}
-                cover={"`${apiUrl}/${el.product.covers[0]}`"}
-                warranty={"el.warranty"}
-                productCount={8000000}
-                price={8000000}
-                discounted={8000000}
-                href={`/product/`}
-                notShowCounter={true}
-              />
-            </div>
-          </div>
+            )}
         </div>
       </div>
     </div>
