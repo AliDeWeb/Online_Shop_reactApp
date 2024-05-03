@@ -59,8 +59,8 @@ export default function Cart() {
               </div>
               <div className="divide-y divide-solid divide-gray-400/50">
                 {!isLoading &&
-                  (
-                    data.items.length ? data?.items.map((el) => (
+                  (data.items.length ? (
+                    data?.items.map((el) => (
                       <React.Fragment key={Math.random()}>
                         <CartProductBox
                           refetch={refetch}
@@ -70,7 +70,7 @@ export default function Cart() {
                           title={el.product.title}
                           cover={`${apiUrl}/${el.product.covers[0]}`}
                           warranty={el.warranty}
-                          transportTime={el.product.transport.time}
+                          transportTime={el.product.transport.title}
                           productCount={
                             el?.count
                               ? el?.count
@@ -101,8 +101,12 @@ export default function Cart() {
                           href={`/product/${el.product.href}`}
                         />
                       </React.Fragment>
-                    )) : <span className="text-lg block w-max text-center font-danaBold text-zinc-700">سبد خرید خالی می باشد</span>
-                  )}
+                    ))
+                  ) : (
+                    <span className="text-lg block w-max text-center font-danaBold text-zinc-700">
+                      سبد خرید خالی می باشد
+                    </span>
+                  ))}
               </div>
 
               <div className="flex justify-end font-dana text-sm text-orange-500">
@@ -147,8 +151,11 @@ export default function Cart() {
               </div>
 
               <div>
-                <Link to="/checkout" className="w-full font-danaBold sm:text-lg flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95">
-                   ادامه
+                <Link
+                  to="/checkout"
+                  className="w-full font-danaBold sm:text-lg flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95"
+                >
+                  ادامه
                 </Link>
               </div>
             </div>

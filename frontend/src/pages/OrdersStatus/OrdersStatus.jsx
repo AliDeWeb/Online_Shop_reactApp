@@ -129,8 +129,12 @@ export default function OrdersStatus() {
                   هزینه ارسال:{" "}
                 </span>
                 <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
-                  {(984959595).toLocaleString()}
-                  <span className="px-2">تومان</span>
+                  {!isLoading && !!data?.totalPriceOfTransports
+                    ? data?.totalPriceOfTransports.toLocaleString()
+                    : "رایگان"}
+                  {!isLoading && !!data?.totalPriceOfTransports && (
+                    <span className="px-2">تومان</span>
+                  )}
                 </span>
               </div>
               <div className="w-max flex flex-nowrap gap-1 font-dana">

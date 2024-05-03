@@ -239,7 +239,7 @@ export default function ProductsDetails() {
               </ul>
               <div className="flex items-center gap-1 font-dana mt-4 py-1.5 sm:py-3 px-5 rounded-xl bg-teal-600 text-white w-full lg:w-3/4 text-sm sm:text-base">
                 <FaCalendarCheck size="0.95rem" />
-                {!isLoading && data?.product?.transport?.time}
+                {!isLoading && data?.product?.transport?.title}
               </div>
               <div className="mt-4 text-sm font-dana flex items-center gap-2 text-zinc-700">
                 <PiWarningCircle size="4rem" />
@@ -755,11 +755,7 @@ export default function ProductsDetails() {
           </div>
 
           {!isLoading && !!data?.relatedproducts.length && (
-            <SectionsWrapper
-              noContainer
-              title={"محصولات مرتبط"}
-              href="/home"
-            >
+            <SectionsWrapper noContainer title={"محصولات مرتبط"} href="/home">
               <Swiper
                 spaceBetween={20}
                 slidesPerView={1}
