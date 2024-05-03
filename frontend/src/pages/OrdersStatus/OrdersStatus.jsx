@@ -34,11 +34,6 @@ export default function OrdersStatus() {
         });
         return res.data;
       }
-    },
-    {
-      refetchOnMount: true,
-      refetchOnWindowFocus: true,
-      staleTime: 0,
     }
   );
 
@@ -67,7 +62,10 @@ export default function OrdersStatus() {
                 <span className="text-sm text-gray-400 w-max">
                   تاریخ سفارش:
                 </span>
-                <span className="font-danaDemi text-sm text-zinc-700 w-max">
+                <span
+                  className="font-danaDemi text-sm text-zinc-700 w-max"
+                  dir="ltr"
+                >
                   {!isLoading && data?.createdAt}
                 </span>
               </div>
@@ -190,7 +188,10 @@ export default function OrdersStatus() {
                         <span className="text-sm text-gray-400 w-max">
                           زمان تحویل:{" "}
                         </span>
-                        <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
+                        <span
+                          className="font-danaDemi text-sm text-zinc-700 w-max flex items-center"
+                          dir="ltr"
+                        >
                           {
                             data?.groupedProductsByTransport?.transportsDetails1
                               ?.transport?.time
@@ -349,7 +350,10 @@ export default function OrdersStatus() {
                         <span className="text-sm text-gray-400 w-max">
                           زمان تحویل:{" "}
                         </span>
-                        <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
+                        <span
+                          className="font-danaDemi text-sm text-zinc-700 w-max flex items-center"
+                          dir="ltr"
+                        >
                           {
                             data?.groupedProductsByTransport?.transportsDetails2
                               ?.transport?.time

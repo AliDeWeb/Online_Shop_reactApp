@@ -856,11 +856,6 @@ img {
   margin-bottom: 1.25rem;
 }
 
-.my-7 {
-  margin-top: 1.75rem;
-  margin-bottom: 1.75rem;
-}
-
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -1120,20 +1115,12 @@ img {
   height: 200px;
 }
 
-.h-\[230px\] {
-  height: 230px;
-}
-
 .h-\[25px\] {
   height: 25px;
 }
 
 .h-\[26px\] {
   height: 26px;
-}
-
-.h-\[340px\] {
-  height: 340px;
 }
 
 .h-\[350px\] {
@@ -1300,10 +1287,6 @@ img {
 
 .items-start {
   align-items: flex-start;
-}
-
-.items-end {
-  align-items: flex-end;
 }
 
 .items-center {
@@ -1806,14 +1789,6 @@ img {
   padding-bottom: 1.5rem;
 }
 
-.pl-2 {
-  padding-left: 0.5rem;
-}
-
-.pl-2\.5 {
-  padding-left: 0.625rem;
-}
-
 .pr-4 {
   padding-right: 1rem;
 }
@@ -2094,12 +2069,6 @@ img {
 .before\:content-\[\'\'\]::before {
   --tw-content: '';
   content: var(--tw-content);
-}
-
-.hover\:scale-105:hover {
-  --tw-scale-x: 1.05;
-  --tw-scale-y: 1.05;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .hover\:scale-110:hover {
@@ -2402,20 +2371,12 @@ img {
     height: 150px;
   }
 
-  .sm\:h-\[315px\] {
-    height: 315px;
-  }
-
   .sm\:h-\[40px\] {
     height: 40px;
   }
 
   .sm\:h-\[450px\] {
     height: 450px;
-  }
-
-  .sm\:h-auto {
-    height: auto;
   }
 
   .sm\:w-1\/2 {
@@ -2562,10 +2523,6 @@ img {
   .md\:size-\[100px\] {
     width: 100px;
     height: 100px;
-  }
-
-  .md\:h-\[335px\] {
-    height: 335px;
   }
 
   .md\:w-\[550px\] {
