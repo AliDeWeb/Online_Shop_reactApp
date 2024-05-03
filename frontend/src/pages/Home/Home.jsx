@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 // Components
 import {
@@ -8,7 +8,7 @@ import {
   ProductBox,
   SectionsWrapper,
   TopBrandsSection,
-  WeblogBox,
+
 } from "../../configs/Layout/Layout";
 
 // Swiper
@@ -344,52 +344,6 @@ export default function Home() {
                 />
               </SwiperSlide>
             ))}
-        </Swiper>
-      </SectionsWrapper>
-      <SectionsWrapper className="hidden lg:block" title={"مقالات"}>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={1}
-          modules={[Navigation, Autoplay, A11y]}
-          navigation
-          autoplay={{
-            delay: 5000,
-            pauseOnMouseEnter: true,
-          }}
-          loop={true}
-          breakpoints={{
-            350: {
-              slidesPerView: 1.3,
-            },
-            435: {
-              slidesPerView: 1.7,
-            },
-            515: {
-              slidesPerView: 2,
-            },
-            590: {
-              slidesPerView: 2.3,
-            },
-            640: {
-              slidesPerView: 2.3,
-            },
-            768: {
-              slidesPerView: 2.4,
-            },
-            1024: {
-              slidesPerView: 3.2,
-            },
-            1280: {
-              slidesPerView: 4.3,
-            },
-            1536: {
-              slidesPerView: 5.2,
-            },
-          }}
-        >
-          <SwiperSlide className="px-1">
-            <WeblogBox />
-          </SwiperSlide>
         </Swiper>
       </SectionsWrapper>
     </main>
