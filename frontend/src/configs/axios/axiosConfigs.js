@@ -44,7 +44,7 @@ const version = `/v1`;
 //? Main Page Data
 export const getMainPageData = axios.create({
   method: `GET`,
-  baseURL: `${apiUrl}${version}/product/mainPage`,
+  baseURL: `${apiUrl}${version}/infos/mainPage`,
 });
 getMainPageData.interceptors.response.use(
   function (response) {
