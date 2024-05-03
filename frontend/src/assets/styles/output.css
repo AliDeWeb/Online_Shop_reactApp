@@ -1846,12 +1846,12 @@ img {
   font-family: danaBold;
 }
 
-.font-poppins {
-  font-family: poppins;
-}
-
 .font-danaDemi {
   font-family: danaDemi;
+}
+
+.font-poppins {
+  font-family: poppins;
 }
 
 .text-2xl {
@@ -2775,10 +2775,6 @@ img {
 
   .lg\:font-danaBold {
     font-family: danaBold;
-  }
-
-  .lg\:font-danaDemi {
-    font-family: danaDemi;
   }
 
   .lg\:text-base {

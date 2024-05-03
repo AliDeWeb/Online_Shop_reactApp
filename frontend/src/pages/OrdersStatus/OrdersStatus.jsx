@@ -32,7 +32,6 @@ export default function OrdersStatus() {
             Authorization: `Bearer ${userToken}`,
           },
         });
-        console.log(res.data);
         return res.data;
       }
     },
@@ -179,7 +178,10 @@ export default function OrdersStatus() {
                           <FaTruck />
                         </span>
                         <span className="text-sm text-gray-400 w-max">
-                          ارسال از طریق تیپاکس
+                          {
+                            data?.groupedProductsByTransport?.transportsDetails1
+                              ?.transport?.title
+                          }
                         </span>
                       </div>
                     </div>
@@ -189,19 +191,27 @@ export default function OrdersStatus() {
                           زمان تحویل:{" "}
                         </span>
                         <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
-                          5/8/2020
+                          {
+                            data?.groupedProductsByTransport?.transportsDetails1
+                              ?.transport?.time
+                          }
                         </span>
                       </div>
                     </div>
                   </div>
                   <div className="sm:w-1/2 flex-col gap-2 font-dana mx-4 lg:mx-8 rounded-lg p-2 hidden lg:flex">
                     <span className="font-dana text-sm sm:text-base text-teal-600">
-                      تحویل مرسوله به مشتری
+                      {
+                        data?.groupedProductsByTransport?.transportsDetails1
+                          ?.transport?.status
+                      }
                     </span>
                     <div className="w-full h-1 bg-gray-400/30 rounded-lg">
                       <div
                         className="size-full bg-teal-600 rounded-lg"
-                        style={{ width: `50%` }}
+                        style={{
+                          width: `${data?.groupedProductsByTransport?.transportsDetails1?.transport?.statusBar}%`,
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -214,7 +224,8 @@ export default function OrdersStatus() {
                           تحویل گیرنده:{" "}
                         </span>
                         <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
-                          علی مرادی
+                          {!isLoading &&
+                            `${data?.user?.firstName} ${data?.user?.lastName}`}
                         </span>
                       </div>
                       <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4 lg:inline hidden"></span>
@@ -223,7 +234,7 @@ export default function OrdersStatus() {
                           شماره موبایل:{" "}
                         </span>
                         <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
-                          09658969856
+                          {!isLoading && data?.user?.phone}
                         </span>
                       </div>
                     </div>
@@ -232,19 +243,27 @@ export default function OrdersStatus() {
                         کد مرسوله:{" "}
                       </span>
                       <span className="font-danaDemi text-sm text-zinc-700 w-max">
-                        09658969856
+                        {
+                          data?.groupedProductsByTransport?.transportsDetails1
+                            ?.transport?.trackingCodePost
+                        }
                       </span>
                     </div>
                   </div>
                 </div>
                 <div className="w-full flex-col gap-2 font-dana lg:mx-8 rounded-lg p-2 flex lg:hidden">
                   <span className="font-dana text-sm sm:text-base text-teal-600">
-                    تحویل مرسوله به مشتری
+                    {
+                      data?.groupedProductsByTransport?.transportsDetails1
+                        ?.transport?.status
+                    }
                   </span>
                   <div className="w-full h-1 bg-gray-400/30 rounded-lg">
                     <div
                       className="size-full bg-teal-600 rounded-lg"
-                      style={{ width: `50%` }}
+                      style={{
+                        width: `${data?.groupedProductsByTransport?.transportsDetails1?.transport?.statusBar}%`,
+                      }}
                     ></div>
                   </div>
                 </div>
@@ -305,7 +324,11 @@ export default function OrdersStatus() {
                     <div className="w-full px-4 lg:px-8 flex items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0">
                       <div className="w-max flex flex-nowrap items-center gap-1 font-dana">
                         <span className="text-sm text-gray-400 w-max">
-                          4 عدد مرسوله
+                          {
+                            data?.groupedProductsByTransport?.transportsDetails2
+                              ?.products?.length
+                          }{" "}
+                          عدد مرسوله
                         </span>
                       </div>
                       <span className="size-1 rounded-full bg-gray-400/50 mx-2"></span>
@@ -314,7 +337,10 @@ export default function OrdersStatus() {
                           <FaTruck />
                         </span>
                         <span className="text-sm text-gray-400 w-max">
-                          ارسال از طریق تیپاکس
+                          {
+                            data?.groupedProductsByTransport?.transportsDetails2
+                              ?.transport?.title
+                          }
                         </span>
                       </div>
                     </div>
@@ -324,19 +350,27 @@ export default function OrdersStatus() {
                           زمان تحویل:{" "}
                         </span>
                         <span className="font-danaDemi text-sm text-zinc-700 w-max flex items-center">
-                          5/8/2020
+                          {
+                            data?.groupedProductsByTransport?.transportsDetails2
+                              ?.transport?.time
+                          }
                         </span>
                       </div>
                     </div>
                   </div>
                   <div className="sm:w-1/2 flex-col gap-2 font-dana mx-4 lg:mx-8 rounded-lg p-2 hidden lg:flex">
                     <span className="font-dana text-sm sm:text-base text-teal-600">
-                      تحویل مرسوله به مشتری
+                      {
+                        data?.groupedProductsByTransport?.transportsDetails2
+                          ?.transport?.status
+                      }
                     </span>
                     <div className="w-full h-1 bg-gray-400/30 rounded-lg">
                       <div
                         className="size-full bg-teal-600 rounded-lg"
-                        style={{ width: `50%` }}
+                        style={{
+                          width: `${data?.groupedProductsByTransport?.transportsDetails2?.transport?.statusBar}%`,
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -349,7 +383,8 @@ export default function OrdersStatus() {
                           تحویل گیرنده:{" "}
                         </span>
                         <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
-                          علی مرادی
+                          {!isLoading &&
+                            `${data?.user?.firstName} ${data?.user?.lastName}`}
                         </span>
                       </div>
                       <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4 lg:inline hidden"></span>
@@ -358,7 +393,7 @@ export default function OrdersStatus() {
                           شماره موبایل:{" "}
                         </span>
                         <span className="font-dana lg:font-danaBold text-sm text-zinc-700 w-max">
-                          09658969856
+                          {!isLoading && data?.user?.phone}
                         </span>
                       </div>
                     </div>
@@ -367,51 +402,75 @@ export default function OrdersStatus() {
                         کد مرسوله:{" "}
                       </span>
                       <span className="font-danaDemi text-sm text-zinc-700 w-max">
-                        09658969856
+                        {
+                          data?.groupedProductsByTransport?.transportsDetails2
+                            ?.transport?.trackingCodePost
+                        }
                       </span>
                     </div>
                   </div>
                 </div>
                 <div className="w-full flex-col gap-2 font-dana lg:mx-8 rounded-lg p-2 flex lg:hidden">
                   <span className="font-dana text-sm sm:text-base text-teal-600">
-                    تحویل مرسوله به مشتری
+                    {
+                      data?.groupedProductsByTransport?.transportsDetails2
+                        ?.transport?.status
+                    }
                   </span>
                   <div className="w-full h-1 bg-gray-400/30 rounded-lg">
                     <div
                       className="size-full bg-teal-600 rounded-lg"
-                      style={{ width: `50%` }}
+                      style={{
+                        width: `${data?.groupedProductsByTransport?.transportsDetails2?.transport?.statusBar}%`,
+                      }}
                     ></div>
                   </div>
                 </div>
                 <div className="border border-solid border-gray-400/50 py-2 px-4 rounded-lg mt-4 child:py-4 divide-y divide-solid divide-gray-400/50">
-                  <CartProductBox
-                    refetch={"refetch"}
-                    productId={"el.product._id"}
-                    color={null}
-                    size={null}
-                    title={"el.product.title"}
-                    cover={"`${apiUrl}/${el.product.covers[0]}`"}
-                    warranty={"el.warranty"}
-                    productCount={8000000}
-                    price={8000000}
-                    discounted={8000000}
-                    href={`/product/`}
-                    notShowCounter={true}
-                  />
-                  <CartProductBox
-                    refetch={"refetch"}
-                    productId={"el.product._id"}
-                    color={null}
-                    size={null}
-                    title={"el.product.title"}
-                    cover={"`${apiUrl}/${el.product.covers[0]}`"}
-                    warranty={"el.warranty"}
-                    productCount={8000000}
-                    price={8000000}
-                    discounted={8000000}
-                    href={`/product/`}
-                    notShowCounter={true}
-                  />
+                  {data?.groupedProductsByTransport?.transportsDetails2?.products?.map(
+                    (el) => (
+                      <div key={Math.random()}>
+                        <CartProductBox
+                          refetch={refetch}
+                          productId={el.product._id}
+                          color={null}
+                          size={null}
+                          title={el.product.title}
+                          cover={`${apiUrl}/${el.product.covers[0]}`}
+                          warranty={el.warranty}
+                          productCount={
+                            el?.count
+                              ? el?.count
+                              : el?.color?.length
+                                ? el?.color[0]?.count
+                                : el?.size?.length
+                                  ? el?.size[0]?.count
+                                  : 0
+                          }
+                          price={
+                            el?.product?.mainPrice
+                              ? el?.product?.mainPrice
+                              : el?.color?.length
+                                ? el?.color[0]?.price
+                                : el?.size?.length
+                                  ? el?.size[0]?.price
+                                  : 0
+                          }
+                          discounted={
+                            el?.product?.off
+                              ? el?.product?.discountedPrice
+                              : el?.color?.length
+                                ? el.color[0]?.discountedPrice
+                                : el?.size?.length
+                                  ? el.size[0].discountedPrice
+                                  : 0
+                          }
+                          href={`/product/${el.product.href}`}
+                          notShowCounter={true}
+                        />
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
             )}
