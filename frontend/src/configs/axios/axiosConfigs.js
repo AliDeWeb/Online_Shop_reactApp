@@ -81,6 +81,27 @@ usersValidation.interceptors.response.use(
   }
 );
 
+//? Admin Email Validation
+export const adminEmailValidation = axios.create({
+  baseURL: `${apiUrl}${version}/auth/loginAdmin`,
+  method: "POST",
+});
+usersValidation.interceptors.response.use(
+  function (response) {
+    document.cookie =
+      "token=" +
+      response.data.token +
+      ";path=/;expires=" +
+      new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
+
+    return response;
+  },
+  function (error) {
+    errorSwal(error.response.data.message);
+    return Promise.reject(error);
+  }
+);
+
 //? GetUserData
 export const getUserData = axios.create({
   method: `GET`,

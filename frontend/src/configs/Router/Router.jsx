@@ -32,6 +32,7 @@ import {
   AdminPanelToDos,
   AdminPanelEarnings,
   AdminLogin,
+  AdminLoginEmailValidation,
 } from "../Layout/Layout";
 
 export default () => {
@@ -43,6 +44,10 @@ export default () => {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="admin-login" element={<AdminLogin />} />
+          <Route
+            path="admin-login-verify/:email"
+            element={<AdminLoginEmailValidation />}
+          />
           <Route path="forgot-password" element={<ForgetPasswordEmail />} />
           <Route
             path="forgot-password-code/:email"
