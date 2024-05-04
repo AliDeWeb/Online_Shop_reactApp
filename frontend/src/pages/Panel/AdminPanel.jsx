@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 import {
   AdminPanelSideBar,
   AdminPanelHeader,
+  Footer,
 } from "../../configs/Layout/Layout";
 
 export default function AdminPanel() {
@@ -37,6 +38,7 @@ export default function AdminPanel() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
