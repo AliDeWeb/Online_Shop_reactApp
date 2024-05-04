@@ -79,24 +79,24 @@ export default function AdminPanelHeader() {
                     "aria-labelledby": "basic-button",
                   }}
                 >
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/admin-panel/home">نمای کلی</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/admin-panel/products">محصولات</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/admin-panel/users">کاربران</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/admin-panel/comments">نظرات</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/admin-panel/orders">سفارشات</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/admin-panel/notifications">پیغام ها</Link>
-                  </MenuItem>
+                  <Link to="/admin-panel/home">
+                    <MenuItem onClick={handleClose}>نمای کلی</MenuItem>
+                  </Link>
+                  <Link to="/admin-panel/products">
+                    <MenuItem onClick={handleClose}>محصولات</MenuItem>
+                  </Link>
+                  <Link to="/admin-panel/users">
+                    <MenuItem onClick={handleClose}>کاربران</MenuItem>
+                  </Link>
+                  <Link to="/admin-panel/comments">
+                    <MenuItem onClick={handleClose}>نظرات</MenuItem>
+                  </Link>
+                  <Link to="/admin-panel/orders">
+                    <MenuItem onClick={handleClose}>سفارشات</MenuItem>
+                  </Link>
+                  <Link to="/admin-panel/notifications">
+                    <MenuItem onClick={handleClose}>پیغام ها</MenuItem>
+                  </Link>
                   <MenuItem onClick={handleClose}>
                     <button
                       className="text-red-600"
