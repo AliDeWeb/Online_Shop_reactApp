@@ -21,6 +21,14 @@ export { default as UserPanelComments } from "../../pages/UserPanelPages/UserPan
 export { default as UserPanelNotifications } from "../../pages/UserPanelPages/UserPanelNotifications";
 export { default as OrdersStatus } from "../../pages/OrdersStatus/OrdersStatus";
 export { default as AdminPanel } from "../../pages/Panel/AdminPanel";
+export { default as AdminPanelHome } from "../../pages/AdminPanelPages/AdminPanelHome";
+export { default as AdminPanelOrders } from "../../pages/AdminPanelPages/AdminPanelOrders";
+export { default as AdminPanelUsers } from "../../pages/AdminPanelPages/AdminPanelUsers";
+export { default as AdminPanelProducts } from "../../pages/AdminPanelPages/AdminPanelProducts";
+export { default as AdminPanelComments } from "../../pages/AdminPanelPages/AdminPanelComments";
+export { default as AdminPanelNotifications } from "../../pages/AdminPanelPages/AdminPanelNotifications";
+export { default as AdminPanelToDos } from "../../pages/AdminPanelPages/AdminPanelToDos";
+export { default as AdminPanelEarnings } from "../../pages/AdminPanelPages/AdminPanelEarnings";
 
 // Components
 export { default as Header } from "../../components/Header/Header";

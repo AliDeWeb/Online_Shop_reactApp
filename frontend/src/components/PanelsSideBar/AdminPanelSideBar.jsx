@@ -36,7 +36,7 @@ export default function AdminPanelSideBar() {
         </div>
         <div className="text-zinc-700">
           <NavLink
-            to="orders/processingOrders"
+            to="orders"
             className={(a) => {
               return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
             }}
@@ -49,7 +49,7 @@ export default function AdminPanelSideBar() {
         </div>
         <div className="text-zinc-700">
           <NavLink
-            to="orders/processingOrders"
+            to="users"
             className={(a) => {
               return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
             }}
@@ -62,7 +62,7 @@ export default function AdminPanelSideBar() {
         </div>
         <div className="text-zinc-700">
           <NavLink
-            to="favorites"
+            to="products"
             className={(a) => {
               return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
             }}
@@ -88,7 +88,7 @@ export default function AdminPanelSideBar() {
         </div>
         <div className="text-zinc-700">
           <NavLink
-            to="addresses"
+            to="earnings"
             className={(a) => {
               return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
             }}
@@ -114,7 +114,7 @@ export default function AdminPanelSideBar() {
         </div>
         <div className="text-zinc-700">
           <NavLink
-            to="notifications"
+            to="todos"
             className={(a) => {
               return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
             }}

@@ -23,6 +23,14 @@ import {
   UserPanelNotifications,
   OrdersStatus,
   AdminPanel,
+  AdminPanelHome,
+  AdminPanelOrders,
+  AdminPanelUsers,
+  AdminPanelProducts,
+  AdminPanelComments,
+  AdminPanelNotifications,
+  AdminPanelToDos,
+  AdminPanelEarnings,
 } from "../Layout/Layout";
 
 export default () => {
@@ -57,7 +65,16 @@ export default () => {
             <Route path="order-status/:orderId" element={<OrdersStatus />} />
           </Route>
         </Route>
-        <Route path="admin-panel" element={<AdminPanel />}></Route>
+        <Route path="admin-panel" element={<AdminPanel />}>
+          <Route path="home" element={<AdminPanelHome />} />
+          <Route path="orders" element={<AdminPanelOrders />} />
+          <Route path="users" element={<AdminPanelUsers />} />
+          <Route path="products" element={<AdminPanelProducts />} />
+          <Route path="comments" element={<AdminPanelComments />} />
+          <Route path="notifications" element={<AdminPanelNotifications />} />
+          <Route path="todos" element={<AdminPanelToDos />} />
+          <Route path="earnings" element={<AdminPanelEarnings />} />
+        </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
