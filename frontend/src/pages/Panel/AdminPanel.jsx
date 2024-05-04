@@ -20,16 +20,16 @@ export default function AdminPanel() {
   return (
     <>
       <AdminPanelHeader />
-      <div className="py-12">
+      <div>
         <div className="container">
           <div>
-            <div className="grid grid-cols-4 gap-4">
-              <div className="col-span-4 order-2 lg:order-1 lg:col-span-1">
+            <div className="grid grid-cols-8 gap-4">
+              <div className="col-span-8 order-2 lg:order-1 lg:col-span-2">
                 <div className="p-4">
                   <AdminPanelSideBar />
                 </div>
               </div>
-              <div className="col-span-4 order-1 lg:order-2 lg:col-span-3">
+              <div className="col-span-8 order-1 lg:order-2 lg:col-span-6">
                 <div className="p-4g">
                   <Outlet />
                 </div>
