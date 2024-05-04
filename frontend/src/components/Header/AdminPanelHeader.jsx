@@ -6,16 +6,21 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 // Icons
-import { IoMenu } from "react-icons/io5";
 import { IoNotifications, IoSearch } from "react-icons/io5";
 
 // React Router
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+// SweetAlert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 // Imgs
 import siteLogo from "../../assets/imgs/site-logo.svg";
 
 export default function AdminPanelHeader() {
+  const navigator = useNavigate();
+  const showSwal = withReactContent(Swal);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -74,13 +79,52 @@ export default function AdminPanelHeader() {
                     "aria-labelledby": "basic-button",
                   }}
                 >
-                  <MenuItem onClick={handleClose}>کاربران</MenuItem>
-                  <MenuItem onClick={handleClose}>محصولات</MenuItem>
-                  <MenuItem onClick={handleClose}>نظرات</MenuItem>
-                  <MenuItem onClick={handleClose}>سفارشات</MenuItem>
-                  <MenuItem onClick={handleClose}>پیغام ها</MenuItem>
                   <MenuItem onClick={handleClose}>
-                    برای خروج از حساب کاربری کلیک کنید
+                    <Link to="/admin-panel/home">نمای کلی</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/admin-panel/products">محصولات</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/admin-panel/users">کاربران</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/admin-panel/comments">نظرات</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/admin-panel/orders">سفارشات</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/admin-panel/notifications">پیغام ها</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <button
+                      className="text-red-600"
+                      onClick={() => {
+                        showSwal
+                          .fire({
+                            title: "آیا از خروج اطمینان دارید؟",
+                            icon: "question",
+                            iconHtml: "؟",
+                            confirmButtonText: "بله",
+                            cancelButtonText: "خیر",
+                            showCancelButton: true,
+                            showCloseButton: true,
+                          })
+                          .then((res) => {
+                            if (res.isConfirmed) {
+                              (() => {
+                                document.cookie =
+                                  "token" +
+                                  "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                              })();
+                            }
+                            navigator("/home");
+                          });
+                      }}
+                    >
+                      برای خروج از حساب کاربری کلیک کنید
+                    </button>
                   </MenuItem>
                 </Menu>
               </div>

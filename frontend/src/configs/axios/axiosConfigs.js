@@ -64,7 +64,6 @@ export const usersValidation = axios.create({
 usersValidation.interceptors.response.use(
   function (response) {
     successSwal(
-      "بزن بریم محصولات شگفت انگیز این هفته رو ببینیم!",
       "خوش اومدی!"
     );
     document.cookie =

@@ -2,7 +2,6 @@
 import { NavLink } from "react-router-dom";
 
 // icons
-// icons
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { IoHomeOutline, IoExitOutline } from "react-icons/io5";
 import { FaRegComment } from "react-icons/fa";
