@@ -2874,12 +2874,28 @@ img {
 }
 
 @media (min-width: 1280px) {
+  .xl\:order-1 {
+    order: 1;
+  }
+
+  .xl\:order-2 {
+    order: 2;
+  }
+
   .xl\:col-span-1 {
     grid-column: span 1 / span 1;
   }
 
   .xl\:col-span-5 {
     grid-column: span 5 / span 5;
+  }
+
+  .xl\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .xl\:col-span-6 {
+    grid-column: span 6 / span 6;
   }
 
   .xl\:mt-4 {

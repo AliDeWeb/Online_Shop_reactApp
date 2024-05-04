@@ -24,12 +24,12 @@ export default function AdminPanel() {
         <div className="container">
           <div>
             <div className="grid grid-cols-8 gap-4">
-              <div className="col-span-8 order-2 lg:order-1 lg:col-span-2">
+              <div className="col-span-8 order-2 xl:order-1 xl:col-span-2">
                 <div className="p-4">
                   <AdminPanelSideBar />
                 </div>
               </div>
-              <div className="col-span-8 order-1 lg:order-2 lg:col-span-6">
+              <div className="col-span-8 order-1 xl:order-2 xl:col-span-6">
                 <div className="p-4">
                   <Outlet />
                 </div>
