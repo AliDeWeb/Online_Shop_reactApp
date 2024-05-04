@@ -30,7 +30,7 @@ export default function AdminPanel() {
                 </div>
               </div>
               <div className="col-span-8 order-1 lg:order-2 lg:col-span-6">
-                <div className="p-4g">
+                <div className="p-4">
                   <Outlet />
                 </div>
               </div>
