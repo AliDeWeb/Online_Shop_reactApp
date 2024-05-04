@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Imgs
 import siteLogo from "../../assets/imgs/site-logo.svg";
@@ -32,7 +32,7 @@ import {
 } from "../../configs/axios/axiosConfigs";
 
 // React Query
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -43,6 +43,7 @@ export default function Header() {
   const param = useParams();
   const { userToken } = useUserToken();
   const navigator = useNavigate();
+  const queryClient = useQueryClient();
 
   const location = useLocation();
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
@@ -76,6 +77,11 @@ export default function Header() {
       staleTime: 50000000,
       onError: () => {
         refetch();
+      },
+      initialData: () => {
+        const data = queryClient.getQueryData(`userData`);
+
+        return data;
       },
     }
   );
@@ -372,7 +378,7 @@ export default function Header() {
                   onClick={() => {
                     navigator(`/search/${desktopSearchVal.current.value}`);
                     desktopSearchVal.current.value = ``;
-                    setIsResultBarShow(false)
+                    setIsResultBarShow(false);
                   }}
                 >
                   <IoIosSearch size="1.5rem" color="#696969" />

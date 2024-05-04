@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 // React Router
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 // components
 import {
@@ -10,12 +10,60 @@ import {
   Footer,
 } from "../../configs/Layout/Layout";
 
+// React Query
+import { useQuery, useQueryClient } from "react-query";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
+// Axios
+import { getUserData } from "../../configs/axios/axiosConfigs";
+
 export default function AdminPanel() {
+  const { userToken } = useUserToken();
+  const queryClient = useQueryClient();
+  const navigator = useNavigate();
+
   useEffect(() => {
     if (location.pathname.includes(`admin-panel`)) {
       document.body.classList.add("bg-white");
     }
+    if (!userToken) {
+      navigator("/404");
+    }
+    if (location.pathname === "/admin-panel") {
+      navigator("/admin-panel/home");
+    }
   }, []);
+
+  const { data, refetch } = useQuery(
+    `userData`,
+    async () => {
+      if (userToken) {
+        const res = await getUserData({
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        });
+        console.log(res.data);
+
+        return res.data;
+      }
+    },
+
+    {
+      staleTime: 50000000,
+      onError: () => {
+        refetch();
+      },
+
+      initialData: () => {
+        const data = queryClient.getQueryData(`userData`);
+
+        return data;
+      },
+    }
+  );
 
   return (
     <>
