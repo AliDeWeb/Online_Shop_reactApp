@@ -38,7 +38,6 @@
   user-select: none;
 }
 body {
-  background: #f3f4f6;
   overflow-x: hidden;
 }
 input::placeholder {
@@ -127,6 +126,10 @@ input::placeholder {
 
 .w_71 {
   width: 71px !important;
+}
+
+.fontDanaDemi {
+  font-family: danaDemi !important;
 }
 
 @media print {

@@ -22,6 +22,7 @@ import {
   UserPanelComments,
   UserPanelNotifications,
   OrdersStatus,
+  AdminPanel,
 } from "../Layout/Layout";
 
 export default () => {
@@ -56,6 +57,7 @@ export default () => {
             <Route path="order-status/:orderId" element={<OrdersStatus />} />
           </Route>
         </Route>
+        <Route path="admin-panel" element={<AdminPanel />}></Route>
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>

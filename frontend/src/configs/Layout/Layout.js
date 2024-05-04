@@ -20,9 +20,11 @@ export { default as UserPanelAddresses } from "../../pages/UserPanelPages/UserPa
 export { default as UserPanelComments } from "../../pages/UserPanelPages/UserPanelComments";
 export { default as UserPanelNotifications } from "../../pages/UserPanelPages/UserPanelNotifications";
 export { default as OrdersStatus } from "../../pages/OrdersStatus/OrdersStatus";
+export { default as AdminPanel } from "../../pages/Panel/AdminPanel";
 
 // Components
 export { default as Header } from "../../components/Header/Header";
+export { default as AdminPanelHeader } from "../../components/Header/AdminPanelHeader";
 export { default as Footer } from "../../components/Footer/Footer";
 export { default as SectionsWrapper } from "../../components/SectionsWrapper/SectionsWrapper";
 export { default as ProductBox } from "../../components/ProductBox/ProductBox";
@@ -38,3 +40,5 @@ export { default as FavsProductBox } from "../../components/FavsProductBox/FavsP
 export { default as CommentBox } from "../../components/CommentBox/CommentBox";
 export { default as OrdersBox } from "../../components/OrdersBox/OrdersBox";
 export { default as NotificationsBox } from "../../components/NotificationsBox/NotificationsBox";
+export { default as AdminPanelSideBar } from "../../components/PanelsSideBar/AdminPanelSideBar";
+
