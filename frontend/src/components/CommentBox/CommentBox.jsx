@@ -61,7 +61,7 @@ export default function CommentBox(props) {
           props.commentAnswers.map((el) => (
             <div
               key={Math.random()}
-              className="w-full sm:w-[90%] mx-auto py-3 px-5 rounded-lg bg-gray-100 mt-4 text-zinc-700"
+              className="w-full sm:w-[70%] sm:mr-4 py-3 px-5 rounded-lg bg-gray-100 mt-4 text-zinc-700"
             >
               <div className="flex items-center gap-1 font-dana text-gray-400 mb-2.5">
                 <div className="line-clamp-1">
