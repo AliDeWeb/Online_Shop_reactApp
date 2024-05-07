@@ -701,8 +701,8 @@ img {
   position: relative;
 }
 
-.-bottom-10 {
-  bottom: -2.5rem;
+.-bottom-6 {
+  bottom: -1.5rem;
 }
 
 .-left-2 {
@@ -779,10 +779,6 @@ img {
 
 .top-\[45px\] {
   top: 45px;
-}
-
-.-bottom-6 {
-  bottom: -1.5rem;
 }
 
 .z-10 {
@@ -984,14 +980,6 @@ img {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.ml-8 {
-  margin-left: 2rem;
-}
-
-.mr-8 {
-  margin-right: 2rem;
 }
 
 .line-clamp-1 {
@@ -2389,16 +2377,16 @@ img {
     margin-right: 0.5rem;
   }
 
+  .sm\:mr-4 {
+    margin-right: 1rem;
+  }
+
   .sm\:mt-0 {
     margin-top: 0px;
   }
 
   .sm\:mt-4 {
     margin-top: 1rem;
-  }
-
-  .sm\:mr-4 {
-    margin-right: 1rem;
   }
 
   .sm\:block {
@@ -2469,12 +2457,12 @@ img {
     width: 420px;
   }
 
-  .sm\:w-\[90\%\] {
-    width: 90%;
-  }
-
   .sm\:w-\[70\%\] {
     width: 70%;
+  }
+
+  .sm\:w-\[90\%\] {
+    width: 90%;
   }
 
   .sm\:list-disc {

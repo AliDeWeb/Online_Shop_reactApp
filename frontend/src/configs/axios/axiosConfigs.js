@@ -63,15 +63,12 @@ export const usersValidation = axios.create({
 });
 usersValidation.interceptors.response.use(
   function (response) {
-    successSwal(
-      "خوش اومدی!"
-    );
+    successSwal("خوش اومدی!");
     document.cookie =
       "token=" +
       response.data.token +
       ";path=/;expires=" +
       new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
-
     return response;
   },
   function (error) {
@@ -87,11 +84,6 @@ export const adminEmailValidation = axios.create({
 });
 usersValidation.interceptors.response.use(
   function (response) {
-    document.cookie =
-      "token=" +
-      response.data.token +
-      ";path=/;expires=" +
-      new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
 
     return response;
   },
