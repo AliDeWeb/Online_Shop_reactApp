@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 // React Router
 import { Outlet, useNavigate } from "react-router-dom";
@@ -23,6 +23,7 @@ export default function AdminPanel() {
   const { userToken } = useUserToken();
   const queryClient = useQueryClient();
   const navigator = useNavigate();
+  const [role, setRole] = useState();
 
   useEffect(() => {
     if (location.pathname.includes(`admin-panel`)) {
@@ -36,7 +37,7 @@ export default function AdminPanel() {
     }
   }, []);
 
-  const { data, refetch } = useQuery(
+  const { data, refetch, isLoading } = useQuery(
     `userData`,
     async () => {
       if (userToken) {
@@ -46,6 +47,7 @@ export default function AdminPanel() {
           },
         });
         console.log(res.data);
+        setRole(res.data.role);
 
         return res.data;
       }
@@ -64,6 +66,17 @@ export default function AdminPanel() {
       },
     }
   );
+
+  useEffect(() => {
+    typeof role === `string` &&
+      (() => {
+        console.log(role);
+        if (!(role == `ADMIN`)) {
+          console.log(role);
+          navigator(`/404`);
+        }
+      })();
+  }, [role]);
 
   return (
     <>
