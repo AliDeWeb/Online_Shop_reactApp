@@ -31,6 +31,7 @@ export { default as AdminPanelToDos } from "../../pages/AdminPanelPages/AdminPan
 export { default as AdminPanelEarnings } from "../../pages/AdminPanelPages/AdminPanelEarnings";
 export { default as AdminLogin } from "../../pages/AdminValidation/AdminLogin";
 export { default as AdminLoginEmailValidation } from "../../pages/AdminValidation/AdminLoginEmailValidation";
+export { default as AdminRegister } from "../../pages/AdminValidation/AdminRegister";
 
 // Components
 export { default as Header } from "../../components/Header/Header";

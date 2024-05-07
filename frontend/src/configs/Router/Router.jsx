@@ -32,7 +32,7 @@ import {
   AdminPanelToDos,
   AdminPanelEarnings,
   AdminLogin,
-  AdminLoginEmailValidation,
+  AdminLoginEmailValidation,AdminRegister
 } from "../Layout/Layout";
 
 export default () => {
@@ -44,6 +44,7 @@ export default () => {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="admin-login" element={<AdminLogin />} />
+          <Route path="admin-register" element={<AdminRegister />} />
           <Route
             path="admin-login-verify/:email"
             element={<AdminLoginEmailValidation />}
