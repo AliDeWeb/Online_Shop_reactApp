@@ -23,7 +23,6 @@ export default function AdminPanel() {
   const { userToken } = useUserToken();
   const queryClient = useQueryClient();
   const navigator = useNavigate();
-  const [role, setRole] = useState();
 
   useEffect(() => {
     if (location.pathname.includes(`admin-panel`)) {
@@ -46,8 +45,6 @@ export default function AdminPanel() {
             Authorization: `Bearer ${userToken}`,
           },
         });
-        console.log(res.data);
-        setRole(res.data.role);
 
         return res.data;
       }
@@ -68,38 +65,40 @@ export default function AdminPanel() {
   );
 
   useEffect(() => {
-    typeof role === `string` &&
+    !isLoading &&
       (() => {
-        console.log(role);
-        if (!(role == `ADMIN`)) {
-          console.log(role);
+        if (!(data.role == `ADMIN`)) {
           navigator(`/404`);
         }
       })();
-  }, [role]);
+  }, [data]);
 
   return (
     <>
-      <AdminPanelHeader />
-      <div>
-        <div className="container">
+      {!isLoading && (
+        <>
+          <AdminPanelHeader name={`${data.firstName} ${data.lastName}`} />
           <div>
-            <div className="grid grid-cols-8 gap-4">
-              <div className="col-span-8 order-2 xl:order-1 xl:col-span-2">
-                <div className="p-4">
-                  <AdminPanelSideBar />
-                </div>
-              </div>
-              <div className="col-span-8 order-1 xl:order-2 xl:col-span-6">
-                <div className="p-4">
-                  <Outlet />
+            <div className="container">
+              <div>
+                <div className="grid grid-cols-8 gap-4">
+                  <div className="col-span-8 order-2 xl:order-1 xl:col-span-2">
+                    <div className="p-4">
+                      <AdminPanelSideBar />
+                    </div>
+                  </div>
+                  <div className="col-span-8 order-1 xl:order-2 xl:col-span-6">
+                    <div className="p-4">
+                      <Outlet />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <Footer />
+          <Footer />
+        </>
+      )}
     </>
   );
 }

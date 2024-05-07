@@ -18,7 +18,7 @@ import withReactContent from "sweetalert2-react-content";
 // Imgs
 import siteLogo from "../../assets/imgs/site-logo.svg";
 
-export default function AdminPanelHeader() {
+export default function AdminPanelHeader(props) {
   const navigator = useNavigate();
   const showSwal = withReactContent(Swal);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -144,7 +144,7 @@ export default function AdminPanelHeader() {
                   className="flex flex-col gap-0.5 font-dana"
                 >
                   <span className="text-[#202224]/90 text-sm font-danaDemi">
-                    علی مرادی
+                    {props.name}
                   </span>
                   <span className="text-[#202224]/90 text-xs">ادمین</span>
                 </Link>
