@@ -132,6 +132,24 @@ input::placeholder {
   font-family: danaDemi !important;
 }
 
+.MuiDataGrid-root.MuiDataGrid-root--densityStandard.MuiDataGrid-withBorderColor.css-n3fyjk-MuiDataGrid-root {
+  font-family: dana !important;
+}
+.MuiDataGrid-columnHeaderTitleContainerContent {
+  font-family: danaDemi !important;
+}
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.MuiTablePagination-toolbar.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
+  font-family: dana !important;
+}
+.MuiTablePagination-actions,
+.MuiTablePagination-displayedRows.css-levciy-MuiTablePagination-displayedRows {
+  direction: ltr !important;
+}
+.MuiDataGrid-cell {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
 @media print {
   header,
   footer,

@@ -84,7 +84,6 @@ export const adminEmailValidation = axios.create({
 });
 usersValidation.interceptors.response.use(
   function (response) {
-
     return response;
   },
   function (error) {
@@ -453,6 +452,21 @@ deleteNotificationSeenStatus.interceptors.response.use(
 export const getOrdersStatus = axios.create({
   method: `GET`,
   baseURL: `${apiUrl}${version}/order/getOneOrder/user`,
+});
+getOrdersStatus.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
+
+//? Get Admin Panel Users
+export const getAdminPanelUsers = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/infos/usersPage`,
 });
 getOrdersStatus.interceptors.response.use(
   function (response) {
