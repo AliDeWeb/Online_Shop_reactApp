@@ -131,7 +131,7 @@ export default function AdminPanelHeader(props) {
             </div>
             <div className="flex items-center gap-4">
               <div className="overflow-hidden rounded-full object-contain size-[35px] sm:size-[50px]">
-                <Link to="/user-panel/home">
+                <Link to="/admin-panel">
                   <img
                     src="https://imgs.search.brave.com/KJTHaxbvUUlEFfpmj6srHCgvOwLddNWr6K-52O5VqK0/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMtZ2xvYmFsLndl/YnNpdGUtZmlsZXMu/Y29tLzVlYzdkYWQy/ZTZmNjI5NWE5ZTJh/MjNkZC81ZWRmYTdj/NjcwN2FmYzdlMTI5/YmJiMDNfcHJvZmls/ZS1waG90b19iYWQt/c2V0dGluZy5qcGVn"
                     alt="profile"
@@ -140,7 +140,7 @@ export default function AdminPanelHeader(props) {
               </div>
               <div className="hidden lg:block">
                 <Link
-                  to="/user-panel/home"
+                  to="/admin-panel"
                   className="flex flex-col gap-0.5 font-dana"
                 >
                   <span className="text-[#202224]/90 text-sm font-danaDemi">
