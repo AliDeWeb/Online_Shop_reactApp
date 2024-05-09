@@ -88,6 +88,7 @@ export default function ForgetPasswordEmail() {
               ایمیل
             </label>
             <input
+              dir="ltr"
               {...register(`emailAddress`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 pattern: {

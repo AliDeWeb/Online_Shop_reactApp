@@ -91,6 +91,7 @@ export default function ForgetPasswordNewPassword() {
               رمز عبور
             </label>
             <input
+              dir="ltr"
               {...register(`newPassword`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 minLength: {

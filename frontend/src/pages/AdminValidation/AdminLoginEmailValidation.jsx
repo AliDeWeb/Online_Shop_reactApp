@@ -91,6 +91,7 @@ export default function AdminLoginEmailValidation() {
               کد تایید
             </label>
             <input
+              dir="ltr"
               {...register(`conformCode`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 minLength: {

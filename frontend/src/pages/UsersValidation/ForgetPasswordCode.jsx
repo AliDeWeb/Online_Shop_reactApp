@@ -32,7 +32,7 @@ export default function ForgetPasswordCode() {
       url: `/${param.email}/${data.conformCode}`,
     })
       .then((res) => {
-        navigator(`/forgot-password-new-password/${res.data.codeToken}`)
+        navigator(`/forgot-password-new-password/${res.data.codeToken}`);
       })
       .finally(() => {
         setIsDataFetching(false);
@@ -89,6 +89,7 @@ export default function ForgetPasswordCode() {
               کد تایید
             </label>
             <input
+              dir="ltr"
               {...register(`conformCode`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 minLength: {

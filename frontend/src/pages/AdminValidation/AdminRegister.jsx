@@ -126,6 +126,7 @@ export default function AdminRegister() {
               شماره تماس
             </label>
             <input
+              dir="ltr"
               {...register(`phoneNumber`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 pattern: {
@@ -147,6 +148,7 @@ export default function AdminRegister() {
               ایمیل
             </label>
             <input
+              dir="ltr"
               {...register(`emailAddress`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 pattern: {
@@ -169,12 +171,13 @@ export default function AdminRegister() {
               دامنه
             </label>
             <input
+              dir="ltr"
               {...register(`domain`, {
                 required: "این فیلد نمیتواند خالی باشد",
               })}
               id="domain"
               type="text"
-              placeholder="دامنه را وارد نمایید"
+              placeholder="domain"
               className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.domain && (
@@ -186,6 +189,7 @@ export default function AdminRegister() {
               رمز عبور
             </label>
             <input
+              dir="ltr"
               {...register(`password`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 minLength: {
@@ -195,7 +199,7 @@ export default function AdminRegister() {
               })}
               id="password"
               type="password"
-              placeholder="رمز عبوری قوی انتخاب نمایید"
+              placeholder="password"
               className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.password && (

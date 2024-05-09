@@ -128,6 +128,7 @@ export default function Register() {
               شماره تماس
             </label>
             <input
+              dir="ltr"
               {...register(`phoneNumber`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 pattern: {
@@ -149,6 +150,7 @@ export default function Register() {
               ایمیل
             </label>
             <input
+              dir="ltr"
               {...register(`emailAddress`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 pattern: {
@@ -171,6 +173,7 @@ export default function Register() {
               رمز عبور
             </label>
             <input
+              dir="ltr"
               {...register(`password`, {
                 required: "این فیلد نمیتواند خالی باشد",
                 minLength: {
@@ -180,7 +183,7 @@ export default function Register() {
               })}
               id="password"
               type="password"
-              placeholder="رمز عبوری قوی انتخاب نمایید"
+              placeholder="password"
               className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.password && (
