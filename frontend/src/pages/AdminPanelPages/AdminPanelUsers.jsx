@@ -70,7 +70,7 @@ export default function AdminPanelUsers() {
     },
     {
       cacheTime: 800000,
-      staleTime: 30000,
+      staleTime: 15000,
       refetchOnMount: true,
       refetchOnWindowFocus: true,
     }
@@ -92,31 +92,39 @@ export default function AdminPanelUsers() {
           </div>
         </div>
         {!isLoading ? (
-          <div style={{ height: 600, width: "100%" }}>
-            <DataGrid
-              rows={users}
-              columns={tableHead}
-              initialState={{
-                pagination: {
-                  paginationModel: { page: 0, pageSize: 12 },
-                },
-              }}
-              pageSizeOptions={[12, 20, 25]}
-              checkboxSelection
-              onRowSelectionModelChange={(cell) => {
-                setSelectedCells([]);
-                cell.forEach((el) => {
-                  setSelectedCells((priv) => {
-                    return [
-                      ...priv,
-                      users.filter((user) => {
-                        return el === user.id;
-                      }),
-                    ];
+          <div
+            className="table-container"
+            style={{ width: "100%", overflowX: `auto` }}
+          >
+            <div
+              className="users-table-wrapper"
+              style={{ width: "max-content" }}
+            >
+              <DataGrid
+                rows={users}
+                columns={tableHead}
+                initialState={{
+                  pagination: {
+                    paginationModel: { page: 0, pageSize: 12 },
+                  },
+                }}
+                pageSizeOptions={[5, 12, 25, 50, 100]}
+                checkboxSelection
+                onRowSelectionModelChange={(cell) => {
+                  setSelectedCells([]);
+                  cell.forEach((el) => {
+                    setSelectedCells((priv) => {
+                      return [
+                        ...priv,
+                        users.filter((user) => {
+                          return el === user.id;
+                        }),
+                      ];
+                    });
                   });
-                });
-              }}
-            />
+                }}
+              />
+            </div>
           </div>
         ) : (
           <div className="flex items-center justify-center w-full h-[200px] text-teal-600">

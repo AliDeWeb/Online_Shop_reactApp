@@ -107,7 +107,8 @@ input::placeholder {
     -o-border-radius: 1rem;
   }
 }
-.active-orders-page-wrapper::-webkit-scrollbar {
+.active-orders-page-wrapper::-webkit-scrollbar,
+.table-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -151,6 +152,21 @@ input::placeholder {
 }
 .MuiDataGrid-scrollbar.MuiDataGrid-scrollbar--vertical {
   display: none !important;
+}
+.MuiDataGrid-root.MuiDataGrid-root--densityStandard.MuiDataGrid-withBorderColor.css-n3fyjk-MuiDataGrid-root {
+  border: none;
+}
+
+.users-table-wrapper {
+  max-height: 600px;
+  height: max-content;
+
+  @media screen and (max-width: 640px) {
+    & {
+      max-height: 400px;
+      height: max-content;
+    }
+  }
 }
 
 @media print {
