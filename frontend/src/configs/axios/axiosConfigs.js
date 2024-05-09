@@ -51,7 +51,7 @@ getMainPageData.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -63,7 +63,7 @@ export const usersValidation = axios.create({
 });
 usersValidation.interceptors.response.use(
   function (response) {
-    successSwal("خوش اومدی!");
+    successSwal(response?.data?.message);
     document.cookie =
       "token=" +
       response.data.token +
@@ -72,7 +72,7 @@ usersValidation.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(error.response.data.message);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -84,7 +84,7 @@ export const adminEmailValidation = axios.create({
 });
 adminEmailValidation.interceptors.response.use(
   function (response) {
-    successSwal("با موفقیت وارد شدید");
+    successSwal(response?.data?.message);
     document.cookie =
       "token=" +
       response.data.token +
@@ -93,7 +93,7 @@ adminEmailValidation.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(error.response.data.message);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -110,11 +110,11 @@ export const newLetter = axios.create({
 });
 newLetter.interceptors.response.use(
   function (response) {
-    successSwal("الان دیگه عضوی از مایی ;(", "خوش اومدی!");
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
-    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -129,7 +129,7 @@ getProductsInfos.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(`متاسفیم، خطایی رخ داد!!!`);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -152,13 +152,11 @@ export const postProductsToCart = axios.create({
 });
 postProductsToCart.interceptors.response.use(
   function (response) {
-    successSwal(`محصول با موفقیت به سبد خرید اضافه شد`, null);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
-    errorSwal(
-      `لطفا وارد حساب کاربری خود شوید و یا یک محصول را جهت اضافه کردن به سبد خرید انتخاب نمایید`
-    );
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -173,7 +171,7 @@ getCartProducts.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(`لطفا وارد حساب کاربری خود شوید`);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -185,11 +183,11 @@ export const postUserEmailToChangePassword = axios.create({
 });
 postUserEmailToChangePassword.interceptors.response.use(
   function (response) {
-    successSwal(`کد با موفقیت ارسال شد`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
-    errorSwal(error.message);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -203,7 +201,7 @@ postUserCodeToChangePassword.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(error.response.data.message);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -214,11 +212,11 @@ export const postNewPasswordChangePassword = axios.create({
 });
 postNewPasswordChangePassword.interceptors.response.use(
   function (response) {
-    successSwal(`رمز عبور با موفقیت تغییر یافت`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
-    errorSwal(error.response.data.message);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -233,7 +231,7 @@ getSearchResult.interceptors.response.use(
     return response;
   },
   function (error) {
-    errorSwal(`خطا`);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -245,11 +243,11 @@ export const addNewAddress = axios.create({
 });
 addNewAddress.interceptors.response.use(
   function (response) {
-    successSwal(`آدرس با موفقیت اضافه شد`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
-    errorSwal(error.response.data.message);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -260,11 +258,11 @@ export const removeAddress = axios.create({
 });
 removeAddress.interceptors.response.use(
   function (response) {
-    successSwal(`آدرس با موفقیت حذف شد`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
-    errorSwal(error.response.data.message);
+    errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
   }
 );
@@ -291,7 +289,7 @@ export const DiscountedCode = axios.create({
 });
 DiscountedCode.interceptors.response.use(
   function (response) {
-    successSwal(`کد تخفیف با موفقیت اضافه شد`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
@@ -319,7 +317,7 @@ export const postFavoriteProduct = axios.create({
 });
 postFavoriteProduct.interceptors.response.use(
   function (response) {
-    successSwal(`انجام شد :)`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
@@ -350,7 +348,7 @@ export const addComment = axios.create({
 });
 addComment.interceptors.response.use(
   function (response) {
-    successSwal(`کامنت با موفقیت اضافه شد :)`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
@@ -366,7 +364,7 @@ export const deleteComment = axios.create({
 });
 deleteComment.interceptors.response.use(
   function (response) {
-    successSwal(`کامنت با موفقیت حذف شد :)`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
@@ -382,7 +380,7 @@ export const editComment = axios.create({
 });
 editComment.interceptors.response.use(
   function (response) {
-    successSwal(`کامنت با موفقیت ویرایش شد :)`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
@@ -413,7 +411,7 @@ export const updateUser = axios.create({
 });
 updateUser.interceptors.response.use(
   function (response) {
-    successSwal(`اطلاعات با موفقیت ویرایش شدند :)`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
@@ -429,7 +427,7 @@ export const updateNotificationSeenStatus = axios.create({
 });
 updateNotificationSeenStatus.interceptors.response.use(
   function (response) {
-    successSwal(`اطلاعات با موفقیت ویرایش شدند :)`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
@@ -445,7 +443,7 @@ export const deleteNotificationSeenStatus = axios.create({
 });
 deleteNotificationSeenStatus.interceptors.response.use(
   function (response) {
-    successSwal(`پیغام با موفقیت حذف شد :)`);
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
