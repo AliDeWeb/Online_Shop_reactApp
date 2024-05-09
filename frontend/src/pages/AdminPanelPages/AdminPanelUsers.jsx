@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 // Mui
 import { DataGrid } from "@mui/x-data-grid";
 const tableHead = [
-  { field: "id", headerName: "شناسه", width: 120 },
+  { field: "id", headerName: "شناسه", width: 70 },
   {
     field: "fullName",
     headerName: "نام",
     description: "این ستون قابل مرتب سازی نیست.",
     sortable: false,
-    width: 130,
+    width: 100,
     valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
   },
   {
@@ -27,9 +27,19 @@ const tableHead = [
     sortable: false,
   },
   {
+    field: "orderCount",
+    headerName: "تعداد سفارشات",
+    width: 80,
+  },
+  {
+    field: "totalPayments",
+    headerName: "مبلغ خرید",
+    width: 130,
+  },
+  {
     field: "totalProfit",
-    headerName: "مبالغ خرید",
-    width: 150,
+    headerName: "مبلغ سود",
+    width: 130,
   },
 ];
 
@@ -64,9 +74,12 @@ export default function AdminPanelUsers() {
           ...el,
           id: index + 1,
           totalProfit: el.totalProfit ? el.totalProfit.toLocaleString() : `-`,
+          orderCount: el.orderCount ? el.orderCount.toLocaleString() : `-`,
+          totalPayments: el.totalPayments
+            ? el.totalPayments.toLocaleString()
+            : `-`,
         }))
       );
-      console.log(res.data);
       return res.data;
     },
     {
