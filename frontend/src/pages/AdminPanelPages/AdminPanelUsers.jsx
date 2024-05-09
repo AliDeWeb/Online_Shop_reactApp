@@ -66,6 +66,7 @@ export default function AdminPanelUsers() {
           totalProfit: el.totalProfit ? el.totalProfit.toLocaleString() : `-`,
         }))
       );
+      console.log(res.data);
       return res.data;
     },
     {

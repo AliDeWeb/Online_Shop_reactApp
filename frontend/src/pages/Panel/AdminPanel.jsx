@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 // React Router
 import { Outlet, useNavigate } from "react-router-dom";
@@ -36,7 +36,7 @@ export default function AdminPanel() {
     }
   }, []);
 
-  const { data, refetch, isLoading, onError } = useQuery(
+  const { data, isLoading } = useQuery(
     `userData`,
     async () => {
       if (userToken) {
@@ -45,16 +45,13 @@ export default function AdminPanel() {
             Authorization: `Bearer ${userToken}`,
           },
         });
-        console.log(res.data);
         return res.data;
       }
     },
 
     {
       staleTime: 50000000,
-      onError: () => {
-        refetch();
-      },
+      
 
       initialData: () => {
         const data = queryClient.getQueryData(`userData`);
