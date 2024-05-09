@@ -31,13 +31,10 @@ export default function AdminLoginEmailValidation() {
     adminEmailValidation({
       url: `/${param.email}/${data.conformCode}`,
     })
-      .then((response) => {
-        document.cookie =
-          "token=" +
-          response.data.token +
-          ";path=/;expires=" +
-          new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
-        navigator(`/admin-panel`);
+      .then(() => {
+        setTimeout(() => {
+          navigator(`/admin-panel/home`);
+        }, 1500);
       })
       .finally(() => {
         setIsDataFetching(false);

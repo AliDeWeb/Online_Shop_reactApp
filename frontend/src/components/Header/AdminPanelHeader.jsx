@@ -132,7 +132,7 @@ export default function AdminPanelHeader(props) {
             <div className="flex items-center gap-4">
               <div className="overflow-hidden rounded-full object-contain size-[35px] sm:size-[50px]">
                 <Link to="/admin-panel">
-                  <img src={props.profile} alt="profile" />
+                  <img src={props.profile} alt="profile" loading="lazy" />
                 </Link>
               </div>
               <div className="hidden lg:block">

@@ -36,7 +36,7 @@ export default function AdminPanel() {
     }
   }, []);
 
-  const { data, refetch, isLoading } = useQuery(
+  const { data, refetch, isLoading, onError } = useQuery(
     `userData`,
     async () => {
       if (userToken) {

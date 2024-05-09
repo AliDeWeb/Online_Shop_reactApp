@@ -70,7 +70,7 @@ export default function AdminPanelUsers() {
     },
     {
       cacheTime: 800000,
-      staleTime: 15000,
+      staleTime: 0,
       refetchOnMount: true,
       refetchOnWindowFocus: true,
     }

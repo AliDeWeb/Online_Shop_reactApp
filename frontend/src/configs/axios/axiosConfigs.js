@@ -82,8 +82,14 @@ export const adminEmailValidation = axios.create({
   baseURL: `${apiUrl}${version}/auth/loginAdmin`,
   method: "POST",
 });
-usersValidation.interceptors.response.use(
+adminEmailValidation.interceptors.response.use(
   function (response) {
+    successSwal("با موفقیت وارد شدید");
+    document.cookie =
+      "token=" +
+      response.data.token +
+      ";path=/;expires=" +
+      new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
     return response;
   },
   function (error) {
