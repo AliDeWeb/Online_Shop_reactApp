@@ -67,7 +67,7 @@ export default function AdminPanel() {
   useEffect(() => {
     !isLoading &&
       (() => {
-        if (!(data.role == `ADMIN`)) {
+        if (!(data.role == `ADMIN`) && !(data.role == `ADMINASSISTANT`)) {
           navigator(`/404`);
         }
       })();
