@@ -40,7 +40,6 @@ export default function Home() {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log(mainData.data.sections);
       return mainData.data.sections;
     },
     {

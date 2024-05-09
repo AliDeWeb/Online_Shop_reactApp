@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // React Hook Form
 import { useForm } from "react-hook-form";
@@ -45,6 +45,11 @@ export default function ForgetPasswordEmail() {
       block: "start",
       inline: "nearest",
     });
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.title = "تیمچه - فراموشی رمز عبور";
   }, []);
 
   return (

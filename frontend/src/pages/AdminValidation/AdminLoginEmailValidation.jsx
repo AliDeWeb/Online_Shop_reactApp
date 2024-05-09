@@ -53,6 +53,11 @@ export default function AdminLoginEmailValidation() {
     });
   }, []);
 
+  useEffect(() => {
+    document.title = "تیمچه - راستی آزمایی";
+    document.documentElement.scrollTop = 0;
+  }, []);
+
   return (
     <div>
       <div className="container">

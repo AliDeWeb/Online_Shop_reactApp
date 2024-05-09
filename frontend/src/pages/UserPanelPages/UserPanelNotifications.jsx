@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 // Components
 import { NotificationsBox } from "../../configs/Layout/Layout";
 
@@ -36,6 +38,12 @@ export default function UserPanelNotifications() {
       },
     }
   );
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.title = "تیمچه - پیغام ها";
+  }, []);
+
   return (
     <div>
       <div className="mb-8">

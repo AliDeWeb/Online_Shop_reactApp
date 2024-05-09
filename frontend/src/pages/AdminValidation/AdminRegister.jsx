@@ -42,7 +42,7 @@ export default function AdminRegister() {
     })
       .then(() =>
         setTimeout(() => {
-        //   navigator("/home");
+          navigator("/home");
         }, 2000)
       )
       .finally(() => {
@@ -57,6 +57,11 @@ export default function AdminRegister() {
       block: "start",
       inline: "nearest",
     });
+  }, []);
+
+  useEffect(() => {
+    document.title = "تیمچه - ثبت نام ادمین";
+    document.documentElement.scrollTop = 0;
   }, []);
 
   return (

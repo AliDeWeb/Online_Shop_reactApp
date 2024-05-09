@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 // Axios
 import { getUserPanelData, apiUrl } from "../../configs/axios/axiosConfigs";
 
@@ -40,6 +42,10 @@ export default function UserPanelComments() {
       },
     }
   );
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.title = "تیمچه - نظرات";
+  }, []);
 
   return (
     <div>

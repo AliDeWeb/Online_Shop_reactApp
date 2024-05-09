@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Imgs
 import statusProcessing from "../../assets/imgs/icons/status-processing.svg";
@@ -86,6 +86,11 @@ export default function UserPanelHome() {
         setIsDataFetching(false);
       });
   };
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.title = "تیمچه - پنل";
+  }, []);
 
   return (
     <div>

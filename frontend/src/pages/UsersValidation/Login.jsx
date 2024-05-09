@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Axios
 import { usersValidation } from "../../configs/axios/axiosConfigs";
@@ -53,6 +53,11 @@ export default function Login() {
       block: "start",
       inline: "nearest",
     });
+
+
+      document.documentElement.scrollTop = 0;
+      document.title = "تیمچه - ورود";
+
   }, []);
 
   return (

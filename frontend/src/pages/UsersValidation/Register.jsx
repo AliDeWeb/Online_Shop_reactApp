@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // Axios
 import { usersValidation } from "../../configs/axios/axiosConfigs";
@@ -58,6 +58,9 @@ export default function Register() {
       block: "start",
       inline: "nearest",
     });
+
+    document.documentElement.scrollTop = 0;
+    document.title = "تیمچه - ثبت نام";
   }, []);
 
   return (

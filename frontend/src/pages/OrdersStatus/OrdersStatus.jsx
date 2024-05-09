@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 // Icons
 import { MdArrowForwardIos } from "react-icons/md";
 import { FaTruck } from "react-icons/fa6";
@@ -36,6 +38,11 @@ export default function OrdersStatus() {
       }
     }
   );
+
+  useEffect(() => {
+    document.title = "تیمچه - وضعیت سفارش";
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   return (
     <div>

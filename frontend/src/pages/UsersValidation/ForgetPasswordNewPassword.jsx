@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // React Hook Form
 import { useForm } from "react-hook-form";
@@ -35,7 +35,7 @@ export default function ForgetPasswordNewPassword() {
     postNewPasswordChangePassword({
       data: passwordData,
     })
-      .then((res) => {
+      .then(() => {
         navigator("/login");
       })
       .finally(() => {
@@ -50,6 +50,9 @@ export default function ForgetPasswordNewPassword() {
       block: "start",
       inline: "nearest",
     });
+
+    document.documentElement.scrollTop = 0;
+    document.title = "تیمچه - رمز عبور جدید";
   }, []);
 
   return (

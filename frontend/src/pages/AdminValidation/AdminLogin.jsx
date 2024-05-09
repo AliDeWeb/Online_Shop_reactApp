@@ -55,6 +55,11 @@ export default function AdminLogin() {
     });
   }, []);
 
+  useEffect(() => {
+    document.title = "تیمچه - ورود ادمین";
+    document.documentElement.scrollTop = 0;
+  }, []);
+
   return (
     <div>
       <div className="container">

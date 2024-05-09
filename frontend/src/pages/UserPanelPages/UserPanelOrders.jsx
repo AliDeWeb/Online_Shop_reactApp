@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 // React Router
 import { NavLink, useParams } from "react-router-dom";
 
@@ -17,11 +19,7 @@ export default function UserPanelOrders() {
   const { userToken } = useUserToken();
   const queryClient = useQueryClient();
   const param = useParams();
-  const {
-    data: userData,
-    isLoading,
-    refetch,
-  } = useQuery(
+  const { data: userData, isLoading } = useQuery(
     `userPanelInfos`,
     async () => {
       if (userToken) {
@@ -45,6 +43,11 @@ export default function UserPanelOrders() {
       },
     }
   );
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.title = "تیمچه - سفارشات";
+  }, []);
 
   return (
     <div>

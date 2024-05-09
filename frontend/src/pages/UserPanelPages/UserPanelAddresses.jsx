@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 // Axios
 import {
@@ -55,6 +55,11 @@ export default function UserPanelAddresses() {
       },
     }
   );
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.title = "تیمچه - آدرسها";
+  }, []);
 
   return (
     <div>

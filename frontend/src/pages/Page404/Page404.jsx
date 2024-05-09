@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 // React Router
 import { useNavigate, Link } from "react-router-dom";
@@ -18,6 +18,9 @@ export default function Page404() {
     setTimeout(() => {
       navigator(`/home`);
     }, 6000);
+
+    document.title = "تیمچه - چیزی یافت نشد";
+    document.documentElement.scrollTop = 0;
   }, []);
 
   return (

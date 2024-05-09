@@ -69,12 +69,17 @@ export default function AdminPanelUsers() {
       return res.data;
     },
     {
-      cacheTime: 30000,
-      staleTime: 0,
+      cacheTime: 800000,
+      staleTime: 30000,
       refetchOnMount: true,
       refetchOnWindowFocus: true,
     }
   );
+
+  useEffect(() => {
+    document.title = "تیمچه - کاربران";
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   return (
     <div>

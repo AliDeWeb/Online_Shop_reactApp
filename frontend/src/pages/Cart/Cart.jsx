@@ -37,6 +37,11 @@ export default function Cart() {
     }
   );
 
+  React.useEffect(() => {
+    document.title = "تیمچه - سبد خرید";
+    document.documentElement.scrollTop = 0;
+  }, []);
+
   return (
     <div className="py-5">
       <div className="container">
