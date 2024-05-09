@@ -149,6 +149,9 @@ input::placeholder {
   direction: rtl !important;
   text-align: right !important;
 }
+.MuiDataGrid-scrollbar.MuiDataGrid-scrollbar--vertical {
+  display: none !important;
+}
 
 @media print {
   header,
