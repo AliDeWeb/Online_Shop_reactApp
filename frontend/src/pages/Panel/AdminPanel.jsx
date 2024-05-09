@@ -17,7 +17,7 @@ import { useQuery, useQueryClient } from "react-query";
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 // Axios
-import { getUserData } from "../../configs/axios/axiosConfigs";
+import { getUserData, apiUrl } from "../../configs/axios/axiosConfigs";
 
 export default function AdminPanel() {
   const { userToken } = useUserToken();
@@ -45,7 +45,7 @@ export default function AdminPanel() {
             Authorization: `Bearer ${userToken}`,
           },
         });
-
+        console.log(res.data);
         return res.data;
       }
     },
@@ -77,7 +77,10 @@ export default function AdminPanel() {
     <>
       {!isLoading && (
         <>
-          <AdminPanelHeader name={`${data.firstName} ${data.lastName}`} />
+          <AdminPanelHeader
+            profile={`${apiUrl}/${data?.profile}`}
+            name={`${data?.firstName} ${data?.lastName}`}
+          />
           <div>
             <div className="container">
               <div>
