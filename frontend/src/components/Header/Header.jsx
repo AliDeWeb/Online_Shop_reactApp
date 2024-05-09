@@ -488,7 +488,7 @@ export default function Header() {
                   <Link
                     to={
                       !isLoading &&
-                      (data.role === `ADMIN`
+                      (data.role === `ADMIN` || data.role === `ADMINASSISTANT` 
                         ? "/admin-panel/home"
                         : "/user-panel/home")
                     }
