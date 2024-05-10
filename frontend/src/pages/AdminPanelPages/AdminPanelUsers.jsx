@@ -105,6 +105,28 @@ export default function AdminPanelUsers() {
             </h2>
           </div>
         </div>
+        <div>
+          <nav>
+            <ul className="active-orders-page-wrapper flex items-center gap-2 font-dana overflow-auto">
+              <li>
+                <button
+                  to="/user-panel/orders/processingOrders"
+                  className="text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
+                >
+                  ارسال ایمیل به کاربران انتخاب شده
+                </button>
+              </li>
+              <li>
+                <button
+                  to="/user-panel/orders/processingOrders"
+                  className="text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
+                >
+                  بن کردن کاربران انتخاب شده
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
         {!isLoading ? (
           <div
             className="table-container"

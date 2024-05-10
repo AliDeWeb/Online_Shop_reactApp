@@ -866,6 +866,11 @@ img {
   margin-bottom: 1.25rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -2076,6 +2081,11 @@ img {
   height: 0.18rem;
 }
 
+.before\:h-1::before {
+  content: var(--tw-content);
+  height: 0.25rem;
+}
+
 .before\:w-0::before {
   content: var(--tw-content);
   width: 0px;
@@ -2112,6 +2122,11 @@ img {
 
 .before\:content-\[\'\'\]::before {
   --tw-content: '';
+  content: var(--tw-content);
+}
+
+.before\:content-\[\'hi\'\]::before {
+  --tw-content: 'hi';
   content: var(--tw-content);
 }
 
@@ -2202,6 +2217,11 @@ img {
 .hover\:before\:w-3:hover::before {
   content: var(--tw-content);
   width: 0.75rem;
+}
+
+.before\:hover\:w-full:hover::before {
+  content: var(--tw-content);
+  width: 100%;
 }
 
 .focus\:border-orange-300:focus {
