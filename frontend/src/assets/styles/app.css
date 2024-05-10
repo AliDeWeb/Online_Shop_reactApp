@@ -154,9 +154,6 @@ input::placeholder {
   -ms-border-radius: 0.5rem;
   -o-border-radius: 0.5rem;
 }
-.MuiDataGrid-columnHeaderTitleContainerContent {
-  font-family: danaDemi !important;
-}
 .MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.MuiTablePagination-toolbar.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
   font-family: dana !important;
 }
@@ -179,11 +176,16 @@ div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="orderCount"] {
   direction: ltr !important;
 }
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft,
-.MuiDataGrid-columnHeaderTitleContainerContent,
 .MuiDataGrid-columnHeaderTitle.css-t89xny-MuiDataGrid-columnHeaderTitle {
   width: 100%;
   text-align: center !important;
   font-family: dana !important;
+}
+.MuiDataGrid-columnHeaderTitleContainerContent,
+.MuiDataGrid-columnHeaderTitle.css-t89xny-MuiDataGrid-columnHeaderTitle {
+  font-family: danaDemi !important;
+  width: 100%;
+  text-align: center !important;
 }
 
 .direction-ltr {
