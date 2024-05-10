@@ -64,11 +64,13 @@ export const usersValidation = axios.create({
 usersValidation.interceptors.response.use(
   function (response) {
     successSwal(response?.data?.message);
-    document.cookie =
-      "token=" +
-      response.data.token +
-      ";path=/;expires=" +
-      new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
+    if (response.data.token) {
+      document.cookie =
+        "token=" +
+        response.data.token +
+        ";path=/;expires=" +
+        new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
+    }
     return response;
   },
   function (error) {
@@ -85,11 +87,13 @@ export const adminEmailValidation = axios.create({
 adminEmailValidation.interceptors.response.use(
   function (response) {
     successSwal(response?.data?.message);
-    document.cookie =
-      "token=" +
-      response.data.token +
-      ";path=/;expires=" +
-      new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
+    if (response.data.token) {
+      document.cookie =
+        "token=" +
+        response.data.token +
+        ";path=/;expires=" +
+        new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toUTCString();
+    }
     return response;
   },
   function (error) {
