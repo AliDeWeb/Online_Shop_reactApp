@@ -15,7 +15,7 @@ const tableHead = [
   {
     field: "email",
     headerName: "ایمیل",
-    width: 220,
+    width: 250,
     description: "این ستون قابل مرتب سازی نیست.",
     sortable: false,
   },
@@ -39,7 +39,7 @@ const tableHead = [
   {
     field: "orderCount",
     headerName: "سفارشات",
-    width: 120,
+    width: 80,
   },
 ];
 
