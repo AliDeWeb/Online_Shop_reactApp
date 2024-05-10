@@ -408,7 +408,7 @@ updateWallet.interceptors.response.use(
   }
 );
 
-// User Update
+//? User Update
 export const updateUser = axios.create({
   method: `PUT`,
   baseURL: `${apiUrl}${version}/users/`,
@@ -424,7 +424,7 @@ updateUser.interceptors.response.use(
   }
 );
 
-// Update Notification Seen Status
+//? Update Notification Seen Status
 export const updateNotificationSeenStatus = axios.create({
   method: `PUT`,
   baseURL: `${apiUrl}${version}/notification/user`,
@@ -440,7 +440,7 @@ updateNotificationSeenStatus.interceptors.response.use(
   }
 );
 
-// Delete Notification Seen Status
+//? Delete Notification Seen Status
 export const deleteNotificationSeenStatus = axios.create({
   method: `DELETE`,
   baseURL: `${apiUrl}${version}/notification/user`,
@@ -456,7 +456,7 @@ deleteNotificationSeenStatus.interceptors.response.use(
   }
 );
 
-// Get Orders Status
+//? Get Orders Status
 export const getOrdersStatus = axios.create({
   method: `GET`,
   baseURL: `${apiUrl}${version}/order/getOneOrder/user`,
@@ -478,6 +478,22 @@ export const getAdminPanelUsers = axios.create({
 });
 getOrdersStatus.interceptors.response.use(
   function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
+
+//? Send Group Emails To Users
+export const sendGroupEmailsToUsers = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}${version}/users/sendEmailToGroup`,
+});
+sendGroupEmailsToUsers.interceptors.response.use(
+  function (response) {
+    successSwal(response?.data?.message);
     return response;
   },
   function (error) {
