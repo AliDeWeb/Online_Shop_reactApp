@@ -45,7 +45,9 @@ export default function Home() {
     {
       refetchInterval: 60000,
       onError: () => {
-        refetch();
+        setTimeout(() => {
+          refetch();
+        }, 20000);
       },
     }
   );
