@@ -2056,14 +2056,6 @@ img {
   transition-delay: 150ms;
 }
 
-.delay-500 {
-  transition-delay: 500ms;
-}
-
-.delay-300 {
-  transition-delay: 300ms;
-}
-
 .duration-300 {
   transition-duration: 300ms;
 }

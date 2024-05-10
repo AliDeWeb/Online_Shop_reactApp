@@ -12,6 +12,8 @@ import withReactContent from "sweetalert2-react-content";
 
 // Icons
 import { IoCloseCircleOutline } from "react-icons/io5";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { LuBan } from "react-icons/lu";
 
 // Mui
 import { DataGrid } from "@mui/x-data-grid";
@@ -190,9 +192,12 @@ export default function AdminPanelUsers() {
                     setIsEmailModalOpen(true);
                   }}
                   to="/user-panel/orders/processingOrders"
-                  className="text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
+                  className="flex items-center gap-1 text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
                 >
-                  ارسال ایمیل به کاربران انتخاب شده
+                  <span>
+                    <MdOutlineMailOutline />
+                  </span>
+                  ارسال ایمیل
                 </button>
                 <Modal isOpen={isEmailModalOpen} title={"ارسال ایمیل"}>
                   <div className="flex items-center gap-2">
@@ -203,8 +208,8 @@ export default function AdminPanelUsers() {
                     >
                       <IoCloseCircleOutline size="1.5rem" />
                     </button>
-                    <h2 className="font-danaDemi md:font-danaBold md:text-lg">
-                      ارسال ایمیل
+                    <h2 className="font-danaDemi md:font-danaBold md:text-lg line-clamp-1">
+                      ارسال ایمیل به کاربران انتخاب شده
                     </h2>
                   </div>
                   <form
@@ -268,7 +273,7 @@ export default function AdminPanelUsers() {
                       {isDataFetching ? (
                         <ClipLoader color="#d97706" size="18" />
                       ) : (
-                        "برو بریم..."
+                        "بزن بریم..."
                       )}
                     </button>
                   </form>
@@ -277,9 +282,12 @@ export default function AdminPanelUsers() {
               <li>
                 <button
                   to="/user-panel/orders/processingOrders"
-                  className="text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
+                  className="flex items-center gap-1 text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
                 >
-                  بن کردن کاربران انتخاب شده
+                  <span>
+                    <LuBan />
+                  </span>
+                  بن کردن کاربر / کاربران
                 </button>
               </li>
             </ul>
