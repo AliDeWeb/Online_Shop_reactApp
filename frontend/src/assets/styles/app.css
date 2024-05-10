@@ -39,6 +39,7 @@
 }
 body {
   overflow-x: hidden;
+  background-color: #f3f4f6;
 }
 input::placeholder {
   font-family: dana;

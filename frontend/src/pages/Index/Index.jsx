@@ -12,12 +12,6 @@ export default function Index() {
   const navigator = useNavigate();
 
   useEffect(() => {
-    if (!location.pathname.includes(`admin-panel`)) {
-      document.body.classList.add("bg-[#f3f4f6]");
-    }
-  }, []);
-
-  useEffect(() => {
     if (location.pathname === "/") {
       navigator("/home");
     }

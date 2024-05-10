@@ -25,9 +25,6 @@ export default function AdminPanel() {
   const navigator = useNavigate();
 
   useEffect(() => {
-    if (location.pathname.includes(`admin-panel`)) {
-      document.body.classList.add("bg-white");
-    }
     if (!userToken) {
       navigator("/404");
     }
