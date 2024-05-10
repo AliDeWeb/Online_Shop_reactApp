@@ -157,6 +157,17 @@ input::placeholder {
 .MuiDataGrid-root.MuiDataGrid-root--densityStandard.MuiDataGrid-withBorderColor.css-n3fyjk-MuiDataGrid-root {
   border: none;
 }
+.css-yrdy0g-MuiDataGrid-columnHeaderRow {
+  background-color: transparent !important;
+}
+div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="email"],
+div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="phone"],
+div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="totalPayments"],
+div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="totalProfit"],
+div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="orderCount"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
 
 .users-table-wrapper {
   max-height: 600px;

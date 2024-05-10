@@ -3,43 +3,43 @@ import { useEffect, useState } from "react";
 // Mui
 import { DataGrid } from "@mui/x-data-grid";
 const tableHead = [
-  { field: "id", headerName: "شناسه", width: 70 },
+  { field: "id", headerName: "شناسه", width: 110 },
   {
     field: "fullName",
     headerName: "نام",
     description: "این ستون قابل مرتب سازی نیست.",
     sortable: false,
-    width: 100,
+    width: 140,
     valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
   },
   {
     field: "email",
     headerName: "ایمیل",
-    width: 180,
+    width: 220,
     description: "این ستون قابل مرتب سازی نیست.",
     sortable: false,
   },
   {
     field: "phone",
     headerName: "شماره تلفن",
-    width: 150,
+    width: 160,
     description: "این ستون قابل مرتب سازی نیست.",
     sortable: false,
   },
   {
-    field: "orderCount",
-    headerName: "تعداد سفارشات",
-    width: 80,
-  },
-  {
     field: "totalPayments",
     headerName: "مبلغ خرید",
-    width: 130,
+    width: 140,
   },
   {
     field: "totalProfit",
     headerName: "مبلغ سود",
-    width: 130,
+    width: 140,
+  },
+  {
+    field: "orderCount",
+    headerName: "سفارشات",
+    width: 120,
   },
 ];
 

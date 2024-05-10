@@ -34,7 +34,7 @@ export default function AdminLoginEmailValidation() {
       .then(() => {
         setTimeout(() => {
           navigator(`/admin-panel/home`);
-        }, 10000);
+        }, 3000);
       })
       .finally(() => {
         setIsDataFetching(false);
