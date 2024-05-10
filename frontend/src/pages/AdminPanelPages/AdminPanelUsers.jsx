@@ -200,7 +200,7 @@ export default function AdminPanelUsers() {
                   ارسال ایمیل
                 </button>
                 <Modal isOpen={isEmailModalOpen} title={"ارسال ایمیل"}>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
                     <button
                       onClick={() => {
                         setIsEmailModalOpen(false);
@@ -226,7 +226,7 @@ export default function AdminPanelUsers() {
                       id="emailTitle"
                       type="text"
                       placeholder="جشنواره تخفیف ..."
-                      className="font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm"
+                      className="font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
                     />
                     {errors.emailTitle && (
                       <span className="text-red-400 mb-4 text-xs sm:text-sm">
@@ -243,7 +243,7 @@ export default function AdminPanelUsers() {
                       id="emailText"
                       type="text"
                       placeholder="متن را وارد نمایید ..."
-                      className="h-[80px] font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm"
+                      className="h-[80px] font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
                     />
                     {errors.emailText && (
                       <span className="text-red-400 mb-4 text-xs sm:text-sm">
@@ -259,7 +259,7 @@ export default function AdminPanelUsers() {
                       id="emailLink"
                       type="text"
                       placeholder="www.example.com"
-                      className="direction-ltr font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm"
+                      className="direction-ltr font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
                     />
                     {errors.emailLink && (
                       <span className="text-red-400 mb-4 text-xs sm:text-sm">
