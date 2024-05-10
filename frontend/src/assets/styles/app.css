@@ -175,11 +175,13 @@ div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="totalProfit"],
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="orderCount"] {
   direction: ltr !important;
 }
-div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft,
-.MuiDataGrid-columnHeaderTitle.css-t89xny-MuiDataGrid-columnHeaderTitle {
+div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft {
   width: 100%;
   text-align: center !important;
   font-family: dana !important;
+}
+.MuiDataGrid-columnHeaderTitleContainerContent{
+  justify-content: center;
 }
 .MuiDataGrid-columnHeaderTitleContainerContent,
 .MuiDataGrid-columnHeaderTitle.css-t89xny-MuiDataGrid-columnHeaderTitle {

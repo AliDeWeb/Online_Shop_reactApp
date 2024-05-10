@@ -29,12 +29,12 @@ const tableHead = [
   {
     field: "totalPayments",
     headerName: "مبلغ خرید",
-    width: 140,
+    width: 110,
   },
   {
     field: "totalProfit",
     headerName: "مبلغ سود",
-    width: 140,
+    width: 110,
   },
   {
     field: "orderCount",
