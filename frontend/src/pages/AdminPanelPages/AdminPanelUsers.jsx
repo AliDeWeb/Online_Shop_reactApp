@@ -98,7 +98,7 @@ export default function AdminPanelUsers() {
   return (
     <div>
       <div>
-        <div className="flex items-center justify-between px-2.5 font-dana mb-8">
+        <div className="flex items-center justify-between px-2.5 font-dana mb-4">
           <div>
             <h2 className="font-danaBold text-lg relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:w-full before:rounded-lg">
               کاربران

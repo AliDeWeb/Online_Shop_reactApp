@@ -70,7 +70,7 @@ export default function AdminPanel() {
           <div>
             <div className="container">
               <div>
-                <div className="grid grid-cols-8 gap-4">
+                <div className="grid grid-cols-8">
                   <div className="col-span-8 order-2 xl:order-1 xl:col-span-2">
                     <div className="p-4">
                       <AdminPanelSideBar />

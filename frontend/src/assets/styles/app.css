@@ -39,7 +39,7 @@
 }
 body {
   overflow-x: hidden;
-  background-color: #f3f0f3;
+  background-color: #fcfcfc;
 }
 input::placeholder {
   font-family: dana;
@@ -136,6 +136,23 @@ input::placeholder {
 
 .MuiDataGrid-root.MuiDataGrid-root--densityStandard.MuiDataGrid-withBorderColor.css-n3fyjk-MuiDataGrid-root {
   font-family: dana !important;
+  border: none;
+  background-color: white;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+
+  box-shadow: 0 0 4px #999999;
+  margin: 1rem 0.2rem;
+}
+.css-yrdy0g-MuiDataGrid-columnHeaderRow {
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
 }
 .MuiDataGrid-columnHeaderTitleContainerContent {
   font-family: danaDemi !important;
@@ -154,21 +171,18 @@ input::placeholder {
 .MuiDataGrid-scrollbar.MuiDataGrid-scrollbar--vertical {
   display: none !important;
 }
-.MuiDataGrid-root.MuiDataGrid-root--densityStandard.MuiDataGrid-withBorderColor.css-n3fyjk-MuiDataGrid-root {
-  border: none;
-}
-.css-yrdy0g-MuiDataGrid-columnHeaderRow {
-  background-color: transparent !important;
-}
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="email"],
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="phone"],
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="totalPayments"],
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="totalProfit"],
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="orderCount"] {
   direction: ltr !important;
-  text-align: left !important;
 }
-.MuiDataGrid-cell.MuiDataGrid-cell--textLeft {
+div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft,
+.MuiDataGrid-columnHeaderTitleContainerContent,
+.MuiDataGrid-columnHeaderTitle.css-t89xny-MuiDataGrid-columnHeaderTitle {
+  width: 100%;
+  text-align: center !important;
   font-family: dana !important;
 }
 
