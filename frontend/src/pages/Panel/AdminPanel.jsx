@@ -34,7 +34,7 @@ export default function AdminPanel() {
   }, []);
 
   const { data, isLoading } = useQuery(
-    `userData`,
+    `adminData`,
     async () => {
       if (userToken) {
         const res = await getUserData({
@@ -45,16 +45,8 @@ export default function AdminPanel() {
         return res.data;
       }
     },
-
     {
-      staleTime: 50000000,
-      
-
-      initialData: () => {
-        const data = queryClient.getQueryData(`userData`);
-
-        return data;
-      },
+      staleTime: 20000,
     }
   );
 
