@@ -137,7 +137,7 @@ export default function AdminRegister() {
               id="phoneNumber"
               type="text"
               placeholder="09123456789"
-              className="mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
+              className="direction-ltr mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.phoneNumber && (
               <span className="text-red-400 mb-4 text-xs sm:text-sm">
@@ -160,7 +160,7 @@ export default function AdminRegister() {
               id="emailAddress"
               type="text"
               placeholder="ali@gmail.com"
-              className="font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
+              className="direction-ltr font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.emailAddress && (
               <span className="text-red-400 mb-4 text-xs sm:text-sm">
@@ -178,7 +178,7 @@ export default function AdminRegister() {
               id="domain"
               type="text"
               placeholder="domain"
-              className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
+              className="direction-ltr font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.domain && (
               <span className="text-red-400 mb-4 text-xs sm:text-sm">
@@ -200,7 +200,7 @@ export default function AdminRegister() {
               id="password"
               type="password"
               placeholder="password"
-              className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
+              className="direction-ltr font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.password && (
               <span className="text-red-400 mb-4 text-xs sm:text-sm">

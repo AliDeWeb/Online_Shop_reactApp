@@ -27,7 +27,6 @@
     "react-spinners": "^0.13.8",
     "styled-components": "^6.1.8",
     "stylis": "^4.3.2",
-    "stylis-plugin-rtl": "^2.1.1",
     "sweetalert2": "^11.10.7",
     "sweetalert2-react-content": "^5.0.7",
     "swiper": "^11.0.7"

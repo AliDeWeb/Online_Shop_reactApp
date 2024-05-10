@@ -102,7 +102,7 @@ export default function ForgetPasswordNewPassword() {
               id="newPassword"
               type="text"
               placeholder="12345678"
-              className="font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
+              className="direction-ltr font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.newPassword && (
               <span className="text-red-400 mb-4 text-xs sm:text-sm">

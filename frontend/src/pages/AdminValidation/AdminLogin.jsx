@@ -100,7 +100,7 @@ export default function AdminLogin() {
               id="emailAddress"
               type="text"
               placeholder="ali@gmail.com"
-              className="font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
+              className="direction-ltr font-poppins mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.emailAddress && (
               <span className="text-red-400 mb-4 text-xs sm:text-sm">
@@ -122,7 +122,7 @@ export default function AdminLogin() {
               id="password"
               type="password"
               placeholder="password"
-              className="font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
+              className="direction-ltr font-poppins mb-4  mt-1 outline-none  bg-transparent border-b border-solid border-gray-200 focus:border-orange-300 pb-2 text-sm sm:text-base"
             />
             {errors.password && (
               <span className="text-red-400 mb-4 text-xs sm:text-sm">

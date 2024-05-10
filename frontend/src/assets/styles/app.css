@@ -168,6 +168,14 @@ div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="orderCount"] {
   direction: ltr !important;
   text-align: left !important;
 }
+.MuiDataGrid-cell.MuiDataGrid-cell--textLeft {
+  font-family: dana !important;
+}
+
+.direction-ltr {
+  direction: ltr !important;
+  text-align: left !important;
+}
 
 .users-table-wrapper {
   max-height: 600px;
