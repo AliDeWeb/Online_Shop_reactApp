@@ -1,7 +1,7 @@
 export default function Modal({ isOpen, children }) {
   return (
     <div
-      className={`${!isOpen ? "-top-[100dvh]" : "top-0"} fixed bottom-0 right-0 left-0 w-full h-[100dvh] bg-black/40 backdrop-blur-sm z-30 flex items-center justify-center transition-all delay-1000`}
+      className={`${!isOpen ? "opacity-0 invisible" : "opacity-100 visible"} fixed bottom-0 top-0 right-0 left-0 w-full h-[100dvh] bg-black/40 backdrop-blur-sm z-30 flex items-center justify-center transition-all`}
     >
       <div
         style={{ boxShadow: `0 0 20px rgb(48,45,45)` }}
