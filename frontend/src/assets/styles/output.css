@@ -717,10 +717,6 @@ img {
   top: -1.75rem;
 }
 
-.-top-\[100dvh\] {
-  top: -100dvh;
-}
-
 .bottom-0 {
   bottom: 0px;
 }
@@ -2061,16 +2057,8 @@ img {
   transition-duration: 150ms;
 }
 
-.delay-1000 {
-  transition-delay: 1000ms;
-}
-
 .delay-150 {
   transition-delay: 150ms;
-}
-
-.delay-200 {
-  transition-delay: 200ms;
 }
 
 .duration-300 {

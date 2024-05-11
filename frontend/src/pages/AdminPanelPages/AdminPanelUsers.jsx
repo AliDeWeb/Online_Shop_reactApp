@@ -166,10 +166,14 @@ export default function AdminPanelUsers() {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
-        body: emailData,
-      }).finally(() => {
-        setIsDataFetching(false);
-      });
+        data: emailData,
+      })
+        .then(() => {
+          setIsEmailModalOpen(false);
+        })
+        .finally(() => {
+          setIsDataFetching(false);
+        });
     }
   };
 
