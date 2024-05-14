@@ -104,7 +104,7 @@ export default function AdminPanelUsers() {
   const [isBanModalOpen, setIsBanModalOpen] = useState(false);
   const [isDataFetching, setIsDataFetching] = useState(false);
 
-  const { isLoading } = useQuery(
+  const { isLoading, refetch } = useQuery(
     `adminPanelUsers`,
     async () => {
       const res = await getAdminPanelUsers({
@@ -182,8 +182,6 @@ export default function AdminPanelUsers() {
     e.preventDefault();
     setIsDataFetching(true);
 
-    console.log(`hi`);
-
     let phoneData = {
       phoneNumbers: (() => {
         const phoneNumbers = [];
@@ -203,6 +201,7 @@ export default function AdminPanelUsers() {
     })
       .then(() => {
         setIsBanModalOpen(false);
+        refetch();
       })
       .finally(() => {
         setIsDataFetching(false);
