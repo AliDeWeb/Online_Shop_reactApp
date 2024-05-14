@@ -10,7 +10,7 @@ import { addNewTodo, getTodos } from "../../configs/axios/axiosConfigs";
 import { useForm } from "react-hook-form";
 
 // Icons
-import { BiLocationPlus } from "react-icons/bi";
+import { IoMdAddCircleOutline } from "react-icons/io";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 // Components
@@ -83,7 +83,7 @@ export default function AdminPanelToDos() {
             }}
             className="border border-solid border-orange-400 px-3 py-1.5 rounded-lg text-orange-400 text-sm flex items-center gap-1"
           >
-            <BiLocationPlus size="1.2rem" />
+            <IoMdAddCircleOutline size="1.2rem" />
             <span className="hidden sm:inline">ثبت کار جدید</span>
           </button>
           <Modal isOpen={isTodoModalOpen} title={"افزودن کار"}>
@@ -144,17 +144,41 @@ export default function AdminPanelToDos() {
       <div className="flex flex-col gap-2">
         {!isLoading &&
           (data.length ? (
-            data.map((el) => (
-              <div key={Math.random()}>
-                <TodoBox
-                  title={el?.title}
-                  desc={el?.description}
-                  id={el?._id}
-                  isTodoDone={el?.isDone}
-                  refetch={refetch}
-                />
-              </div>
-            ))
+            data
+              .filter((el) => el.isDone === 0)
+              .map((el) => (
+                <div key={Math.random()}>
+                  <TodoBox
+                    title={el?.title}
+                    desc={el?.description}
+                    id={el?._id}
+                    isTodoDone={el?.isDone}
+                    refetch={refetch}
+                  />
+                </div>
+              ))
+          ) : (
+            <div className="h-[200px] flex justify-center items-center font-dana">
+              <span className="text-gray-400 text-sm">
+                هیچ پیغامی برای شما وجود ندارد
+              </span>
+            </div>
+          ))}
+        {!isLoading &&
+          (data.length ? (
+            data
+              .filter((el) => el.isDone === 1)
+              .map((el) => (
+                <div key={Math.random()}>
+                  <TodoBox
+                    title={el?.title}
+                    desc={el?.description}
+                    id={el?._id}
+                    isTodoDone={el?.isDone}
+                    refetch={refetch}
+                  />
+                </div>
+              ))
           ) : (
             <div className="h-[200px] flex justify-center items-center font-dana">
               <span className="text-gray-400 text-sm">

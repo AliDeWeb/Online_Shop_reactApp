@@ -216,7 +216,7 @@ export default function Header() {
                 className="flex items-center gap-1.5"
                 to={
                   !isLoading &&
-                  (data.role === `ADMIN`
+                  (data.role === `ADMIN` || data.role === `ADMINASSISTANT`
                     ? "/admin-panel/home"
                     : "/user-panel/home")
                 }
@@ -488,7 +488,7 @@ export default function Header() {
                   <Link
                     to={
                       !isLoading &&
-                      (data.role === `ADMIN` || data.role === `ADMINASSISTANT` 
+                      (data.role === `ADMIN` || data.role === `ADMINASSISTANT`
                         ? "/admin-panel/home"
                         : "/user-panel/home")
                     }

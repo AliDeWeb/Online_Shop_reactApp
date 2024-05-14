@@ -67,7 +67,8 @@ export default function TodoBox({ title, desc, id, isTodoDone, refetch }) {
               });
             }}
             type="checkbox"
-            className="size-4"
+            className="size-4 cursor-pointer"
+            defaultChecked={isDone}
           />
         </div>
         <div className="font-dana">
@@ -99,12 +100,12 @@ export default function TodoBox({ title, desc, id, isTodoDone, refetch }) {
               <IoCloseCircleOutline size="1.5rem" />
             </button>
             <h2 className="font-danaDemi md:font-danaBold md:text-lg line-clamp-1">
-              افزودن کار جدید
+              ویرایش کار
             </h2>
           </div>
           <form
             onSubmit={handleSubmit(submitTodoForm)}
-            className="flex flex-col py-2 px-4 rounded-lg text-zinc-700 mt-4"
+            className="flex flex-col py-2 px-4 rounded-lg text-zinc-700 mt-4 font-dana"
           >
             <label htmlFor="todo" className="mb-1.5">
               کار
@@ -114,6 +115,7 @@ export default function TodoBox({ title, desc, id, isTodoDone, refetch }) {
                 required: "این فیلد نمیتواند خالی باشد",
               })}
               id="todo"
+              defaultValue={title}
               type="text"
               placeholder="ارسال سفارشات ..."
               className="font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
@@ -130,6 +132,7 @@ export default function TodoBox({ title, desc, id, isTodoDone, refetch }) {
               {...register(`desc`)}
               id="desc"
               type="text"
+              defaultValue={desc}
               placeholder="هرچه سریع تر ارسال شود ..."
               className="font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
             />
