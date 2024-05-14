@@ -65,6 +65,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import {
   getAdminPanelUsers,
   sendGroupEmailsToUsers,
+  BanUsers,
 } from "../../configs/axios/axiosConfigs";
 
 // React Query
@@ -100,6 +101,7 @@ export default function AdminPanelUsers() {
   const [users, setUsers] = useState([]);
   const [selectedCells, setSelectedCells] = useState([]);
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [isBanModalOpen, setIsBanModalOpen] = useState(false);
   const [isDataFetching, setIsDataFetching] = useState(false);
 
   const { isLoading } = useQuery(
@@ -175,6 +177,36 @@ export default function AdminPanelUsers() {
           setIsDataFetching(false);
         });
     }
+  };
+  const submitBanForm = (e) => {
+    e.preventDefault();
+    setIsDataFetching(true);
+
+    console.log(`hi`);
+
+    let phoneData = {
+      phoneNumbers: (() => {
+        const phoneNumbers = [];
+        selectedCells.forEach((el) => {
+          phoneNumbers.push(el[0].phone);
+        });
+
+        return phoneNumbers;
+      })(),
+    };
+
+    BanUsers({
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+      data: phoneData,
+    })
+      .then(() => {
+        setIsBanModalOpen(false);
+      })
+      .finally(() => {
+        setIsDataFetching(false);
+      });
   };
 
   return (
@@ -287,12 +319,46 @@ export default function AdminPanelUsers() {
                 <button
                   to="/user-panel/orders/processingOrders"
                   className="flex items-center gap-1 text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
+                  onClick={() => {
+                    setIsBanModalOpen(true);
+                  }}
                 >
                   <span>
                     <LuBan />
                   </span>
                   بن کردن کاربر / کاربران
                 </button>
+                <Modal isOpen={isBanModalOpen} title={"ارسال ایمیل"}>
+                  <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
+                    <button
+                      onClick={() => {
+                        setIsBanModalOpen(false);
+                      }}
+                    >
+                      <IoCloseCircleOutline size="1.5rem" />
+                    </button>
+                    <h2 className="font-danaDemi md:font-danaBold md:text-lg line-clamp-1">
+                      بن کردن کاربران انتخاب شده
+                    </h2>
+                  </div>
+                  <form
+                    onSubmit={submitBanForm}
+                    className="flex flex-col py-2 px-4 rounded-lg text-zinc-700 mt-4"
+                  >
+                    <label className="mb-1.5">آیا مطمئن هستید؟</label>
+
+                    <button
+                      className="font-danaBold mt-4 cursor-pointer w-full h-[40px] bg-orange-200 hover:bg-orange-300/80 transition-all rounded-lg flex justify-center items-center"
+                      type="submit"
+                    >
+                      {isDataFetching ? (
+                        <ClipLoader color="#d97706" size="18" />
+                      ) : (
+                        "بن کردن ..."
+                      )}
+                    </button>
+                  </form>
+                </Modal>
               </li>
             </ul>
           </nav>

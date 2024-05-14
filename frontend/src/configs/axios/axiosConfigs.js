@@ -501,3 +501,19 @@ sendGroupEmailsToUsers.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Ban Users
+export const BanUsers = axios.create({
+  method: `PUT`,
+  baseURL: `${apiUrl}${version}/users/banGroup`,
+});
+BanUsers.interceptors.response.use(
+  function (response) {
+    successSwal(response?.data?.message);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
