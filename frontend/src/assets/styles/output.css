@@ -1055,6 +1055,11 @@ img {
   height: 0.25rem;
 }
 
+.size-12 {
+  width: 3rem;
+  height: 3rem;
+}
+
 .size-2 {
   width: 0.5rem;
   height: 0.5rem;
@@ -1108,6 +1113,11 @@ img {
 .size-full {
   width: 100%;
   height: 100%;
+}
+
+.size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .h-0 {
@@ -1709,6 +1719,11 @@ img {
   background-color: rgb(24 24 27 / 0.7);
 }
 
+.bg-red-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -2016,6 +2031,11 @@ img {
 .text-zinc-700 {
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+.text-orange-300 {
+  --tw-text-opacity: 1;
+  color: rgb(253 186 116 / var(--tw-text-opacity));
 }
 
 .opacity-0 {

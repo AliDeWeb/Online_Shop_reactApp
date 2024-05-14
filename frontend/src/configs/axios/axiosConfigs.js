@@ -548,3 +548,62 @@ addNewTodo.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+//? Get Todos
+export const getTodos = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/todoList`,
+});
+getTodos.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
+//? Delete Todos
+export const deleteTodos = axios.create({
+  method: `DELETE`,
+  baseURL: `${apiUrl}${version}/todoList`,
+});
+deleteTodos.interceptors.response.use(
+  function (response) {
+    successSwal(response?.data?.message);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
+//? Update Todos Status
+export const updateTodosStatus = axios.create({
+  method: `PUT`,
+  baseURL: `${apiUrl}${version}/todoList`,
+});
+updateTodosStatus.interceptors.response.use(
+  function (response) {
+    successSwal(response?.data?.message);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
+//? Update Todos Content
+export const updateTodosContent = axios.create({
+  method: `PUT`,
+  baseURL: `${apiUrl}${version}/todoList`,
+});
+updateTodosContent.interceptors.response.use(
+  function (response) {
+    successSwal(response?.data?.message);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);

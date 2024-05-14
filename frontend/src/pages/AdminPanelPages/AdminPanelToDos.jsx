@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 // Axios
-import { addNewTodo } from "../../configs/axios/axiosConfigs";
+import { addNewTodo, getTodos } from "../../configs/axios/axiosConfigs";
 
 // React Hook Form
 import { useForm } from "react-hook-form";
@@ -14,7 +14,10 @@ import { BiLocationPlus } from "react-icons/bi";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 // Components
-import { Modal } from "../../configs/Layout/Layout";
+import { Modal, TodoBox } from "../../configs/Layout/Layout";
+
+// React Query
+import { useQuery } from "react-query";
 
 export default function AdminPanelToDos() {
   useEffect(() => {
@@ -42,9 +45,28 @@ export default function AdminPanelToDos() {
       },
       data: todosData,
     }).then(() => {
+      refetch();
       setIsTodoModalOpen(false);
     });
   };
+
+  const { data, isLoading, refetch } = useQuery(
+    `adminPanelTodos`,
+    async () => {
+      const res = await getTodos({
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      return res.data;
+    },
+    {
+      cacheTime: 800000,
+      staleTime: 0,
+      refetchOnMount: true,
+      refetchOnWindowFocus: true,
+    }
+  );
 
   return (
     <div>
@@ -118,6 +140,28 @@ export default function AdminPanelToDos() {
             </form>
           </Modal>
         </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        {!isLoading &&
+          (data.length ? (
+            data.map((el) => (
+              <div key={Math.random()}>
+                <TodoBox
+                  title={el?.title}
+                  desc={el?.description}
+                  id={el?._id}
+                  isTodoDone={el?.isDone}
+                  refetch={refetch}
+                />
+              </div>
+            ))
+          ) : (
+            <div className="h-[200px] flex justify-center items-center font-dana">
+              <span className="text-gray-400 text-sm">
+                هیچ پیغامی برای شما وجود ندارد
+              </span>
+            </div>
+          ))}
       </div>
     </div>
   );
