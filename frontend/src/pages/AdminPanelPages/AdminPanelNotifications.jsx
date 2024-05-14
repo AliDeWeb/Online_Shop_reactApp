@@ -49,10 +49,10 @@ export default function AdminPanelNotifications() {
       </div>
       <div className="divide-y divide-solid divide-gray-400/20">
         {!isLoading && data?.length ? (
-          data?.notifications.map((el) => (
+          data?.map((el) => (
             <div key={Math.random()}>
               <NotificationsBox
-                username={`${data.user.firstName} ${data.user.lastName}`}
+                username={`پیغام جدید`}
                 date={el.createdAt}
                 message={el.message}
                 isSeen={el.isSeen}
