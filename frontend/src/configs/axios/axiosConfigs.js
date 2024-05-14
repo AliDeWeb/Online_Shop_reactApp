@@ -517,3 +517,18 @@ BanUsers.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Get Admin Notifications
+export const getAdminNotifications = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/notification`,
+});
+getAdminNotifications.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
