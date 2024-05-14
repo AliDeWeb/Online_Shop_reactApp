@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -47,6 +47,10 @@ export default function AdminPanelToDos() {
     }).then(() => {
       refetch();
       setIsTodoModalOpen(false);
+
+      document.querySelectorAll(`.todoInput`).forEach((el) => {
+        el.value = null;
+      });
     });
   };
 
@@ -113,7 +117,7 @@ export default function AdminPanelToDos() {
                 id="todo"
                 type="text"
                 placeholder="ارسال سفارشات ..."
-                className="font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
+                className="todoInput font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
               />
               {errors.todo && (
                 <span className="text-red-400 mb-4 text-xs sm:text-sm">
@@ -128,7 +132,7 @@ export default function AdminPanelToDos() {
                 id="desc"
                 type="text"
                 placeholder="هرچه سریع تر ارسال شود ..."
-                className="font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
+                className="todoInput font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
               />
 
               <button
@@ -143,29 +147,22 @@ export default function AdminPanelToDos() {
       </div>
       <div className="flex flex-col gap-2">
         {!isLoading &&
-          (data.length ? (
-            data
-              .filter((el) => el.isDone === 0)
-              .map((el) => (
-                <div key={Math.random()}>
-                  <TodoBox
-                    title={el?.title}
-                    desc={el?.description}
-                    id={el?._id}
-                    isTodoDone={el?.isDone}
-                    refetch={refetch}
-                  />
-                </div>
-              ))
-          ) : (
-            <div className="h-[200px] flex justify-center items-center font-dana">
-              <span className="text-gray-400 text-sm">
-                هیچ پیغامی برای شما وجود ندارد
-              </span>
-            </div>
-          ))}
+          !!data.length &&
+          data
+            .filter((el) => el.isDone === 0)
+            .map((el) => (
+              <div key={Math.random()}>
+                <TodoBox
+                  title={el?.title}
+                  desc={el?.description}
+                  id={el?._id}
+                  isTodoDone={el?.isDone}
+                  refetch={refetch}
+                />
+              </div>
+            ))}
         {!isLoading &&
-          (data.length ? (
+          (!!data.length ? (
             data
               .filter((el) => el.isDone === 1)
               .map((el) => (
@@ -181,9 +178,7 @@ export default function AdminPanelToDos() {
               ))
           ) : (
             <div className="h-[200px] flex justify-center items-center font-dana">
-              <span className="text-gray-400 text-sm">
-                هیچ پیغامی برای شما وجود ندارد
-              </span>
+              <span className="text-gray-400 text-sm">هیچ کاری وجود ندارد</span>
             </div>
           ))}
       </div>
