@@ -122,7 +122,7 @@ export default function AdminPanelSideBar() {
             <span>
               <CiBoxList />
             </span>
-            <span className="text-sm">یادآور کارها</span>
+            <span className="text-sm">لیست کارها</span>
           </NavLink>
         </div>
         <div className="text-red-600">

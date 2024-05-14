@@ -25,7 +25,7 @@ import { AddressBox, Modal } from "../../configs/Layout/Layout";
 export default function UserPanelAddresses() {
   const { userToken } = useUserToken();
   const queryClient = useQueryClient();
-  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
   const {
     data: userData,
@@ -75,7 +75,7 @@ export default function UserPanelAddresses() {
         address: data.address,
       },
     }).then(() => {
-      setIsEmailModalOpen(false);
+      setIsAddressModalOpen(false);
       refetch();
     });
   };
@@ -91,18 +91,18 @@ export default function UserPanelAddresses() {
         <div>
           <button
             onClick={() => {
-              setIsEmailModalOpen(true);
+              setIsAddressModalOpen(true);
             }}
             className="border border-solid border-orange-400 px-3 py-1.5 rounded-lg text-orange-400 text-sm flex items-center gap-1"
           >
             <BiLocationPlus size="1.2rem" />
             <span className="hidden sm:inline">ثبت آدرس جدید</span>
           </button>
-          <Modal isOpen={isEmailModalOpen} title={"ارسال ایمیل"}>
+          <Modal isOpen={isAddressModalOpen} title={"افزودن آدرس"}>
             <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
               <button
                 onClick={() => {
-                  setIsEmailModalOpen(false);
+                  setIsAddressModalOpen(false);
                 }}
               >
                 <IoCloseCircleOutline size="1.5rem" />
