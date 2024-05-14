@@ -532,3 +532,19 @@ getAdminNotifications.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+//? Add New Todo
+export const addNewTodo = axios.create({
+  method: `POST`,
+  baseURL: `${apiUrl}${version}/todoList`,
+});
+addNewTodo.interceptors.response.use(
+  function (response) {
+    successSwal(response?.data?.message);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  }
+);
