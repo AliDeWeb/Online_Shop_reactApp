@@ -19,7 +19,7 @@ import {
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function NotificationsBox({
-  username,
+  title,
   date,
   message,
   isSeen,
@@ -54,8 +54,7 @@ export default function NotificationsBox({
             <div>
               <div className="px-4 flex items-center font-dana overflow-auto active-orders-page-wrapper child:flex-shrink-0 child:flex-grow-0">
                 <div className="font-danaBold text-sm text-zinc-700">
-                  {username}
-                  {/* {`*/}
+                  {title}
                 </div>
                 <span className="size-2 rounded-full bg-gray-400/50 mx-2 lg:mx-4"></span>
                 <div className="w-max flex flex-nowrap gap-1">
