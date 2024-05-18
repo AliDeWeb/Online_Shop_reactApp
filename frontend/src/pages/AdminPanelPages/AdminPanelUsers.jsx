@@ -234,7 +234,7 @@ export default function AdminPanelUsers() {
                   </span>
                   ارسال ایمیل
                 </button>
-                <Modal isOpen={isEmailModalOpen} title={"ارسال ایمیل"}>
+                <Modal isOpen={isEmailModalOpen} title={"ارسال ایمیل"} changeVisibility={setIsEmailModalOpen}>
                   <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
                     <button
                       onClick={() => {
@@ -327,7 +327,7 @@ export default function AdminPanelUsers() {
                   </span>
                   بن کردن کاربر / کاربران
                 </button>
-                <Modal isOpen={isBanModalOpen} title={"ارسال ایمیل"}>
+                <Modal isOpen={isBanModalOpen} title={"ارسال ایمیل"} changeVisibility={setIsBanModalOpen}>
                   <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
                     <button
                       onClick={() => {

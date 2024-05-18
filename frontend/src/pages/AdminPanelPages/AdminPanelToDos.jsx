@@ -90,7 +90,7 @@ export default function AdminPanelToDos() {
             <IoMdAddCircleOutline size="1.2rem" />
             <span className="hidden sm:inline">ثبت کار جدید</span>
           </button>
-          <Modal isOpen={isTodoModalOpen} title={"افزودن کار"}>
+          <Modal isOpen={isTodoModalOpen} title={"افزودن کار"} changeVisibility={setIsTodoModalOpen}>
             <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
               <button
                 onClick={() => {
