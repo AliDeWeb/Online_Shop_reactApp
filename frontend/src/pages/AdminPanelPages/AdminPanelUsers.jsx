@@ -14,6 +14,7 @@ import withReactContent from "sweetalert2-react-content";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { LuBan } from "react-icons/lu";
+import { FaRegUser } from "react-icons/fa";
 
 // Mui
 import { DataGrid } from "@mui/x-data-grid";
@@ -70,6 +71,9 @@ import {
 
 // React Query
 import { useQuery } from "react-query";
+
+// React Query
+import { Link } from "react-router-dom";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -226,7 +230,6 @@ export default function AdminPanelUsers() {
                   onClick={() => {
                     setIsEmailModalOpen(true);
                   }}
-                  to="/user-panel/orders/processingOrders"
                   className="flex items-center gap-1 text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
                 >
                   <span>
@@ -234,7 +237,11 @@ export default function AdminPanelUsers() {
                   </span>
                   ارسال ایمیل
                 </button>
-                <Modal isOpen={isEmailModalOpen} title={"ارسال ایمیل"} changeVisibility={setIsEmailModalOpen}>
+                <Modal
+                  isOpen={isEmailModalOpen}
+                  title={"ارسال ایمیل"}
+                  changeVisibility={setIsEmailModalOpen}
+                >
                   <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
                     <button
                       onClick={() => {
@@ -316,7 +323,6 @@ export default function AdminPanelUsers() {
               </li>
               <li>
                 <button
-                  to="/user-panel/orders/processingOrders"
                   className="flex items-center gap-1 text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
                   onClick={() => {
                     setIsBanModalOpen(true);
@@ -327,7 +333,11 @@ export default function AdminPanelUsers() {
                   </span>
                   بن کردن کاربر / کاربران
                 </button>
-                <Modal isOpen={isBanModalOpen} title={"ارسال ایمیل"} changeVisibility={setIsBanModalOpen}>
+                <Modal
+                  isOpen={isBanModalOpen}
+                  title={"ارسال ایمیل"}
+                  changeVisibility={setIsBanModalOpen}
+                >
                   <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
                     <button
                       onClick={() => {
@@ -359,6 +369,19 @@ export default function AdminPanelUsers() {
                   </form>
                 </Modal>
               </li>
+              {selectedCells.length === 1 && (
+                <li>
+                  <Link
+                    className="flex items-center gap-1 text-zinc-700 my-2 py-1 px-1 text-sm sm:text-base w-max font-dana rounded-md relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:hover:w-full before:w-0 before:rounded-lg before:transition-all"
+                    to={`/admin-panel/user/${selectedCells[0][0]._id}`}
+                  >
+                    <span>
+                      <FaRegUser size="0.8rem" />
+                    </span>
+                    صفحه کاربر
+                  </Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>

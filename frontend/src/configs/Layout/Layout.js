@@ -29,6 +29,7 @@ export { default as AdminPanelComments } from "../../pages/AdminPanelPages/Admin
 export { default as AdminPanelNotifications } from "../../pages/AdminPanelPages/AdminPanelNotifications";
 export { default as AdminPanelToDos } from "../../pages/AdminPanelPages/AdminPanelToDos";
 export { default as AdminPanelEarnings } from "../../pages/AdminPanelPages/AdminPanelEarnings";
+export { default as AdminPanelUserInfos } from "../../pages/AdminPanelPages/AdminPanelUserInfos";
 export { default as AdminLogin } from "../../pages/AdminValidation/AdminLogin";
 export { default as AdminLoginEmailValidation } from "../../pages/AdminValidation/AdminLoginEmailValidation";
 export { default as AdminRegister } from "../../pages/AdminValidation/AdminRegister";

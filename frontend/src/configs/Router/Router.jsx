@@ -32,7 +32,9 @@ import {
   AdminPanelToDos,
   AdminPanelEarnings,
   AdminLogin,
-  AdminLoginEmailValidation,AdminRegister
+  AdminLoginEmailValidation,
+  AdminRegister,
+  AdminPanelUserInfos,
 } from "../Layout/Layout";
 
 export default () => {
@@ -82,6 +84,7 @@ export default () => {
           <Route path="notifications" element={<AdminPanelNotifications />} />
           <Route path="todos" element={<AdminPanelToDos />} />
           <Route path="earnings" element={<AdminPanelEarnings />} />
+          <Route path="user/:id" element={<AdminPanelUserInfos />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>
