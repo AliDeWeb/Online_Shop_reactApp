@@ -1,6 +1,9 @@
 // Swal
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+// Axios
+import axios from "axios";
+
 const successSwal = (text, title = null) => {
   withReactContent(Swal).fire({
     title: title,
@@ -36,8 +39,6 @@ const errorSwal = (text) => {
   });
 };
 
-// Axios
-import axios from "axios";
 export const apiUrl = "https://ma-api.liara.run";
 const version = `/v1`;
 
@@ -53,7 +54,7 @@ getMainPageData.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? User Validation
@@ -76,7 +77,7 @@ usersValidation.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Admin Email Validation
@@ -99,7 +100,7 @@ adminEmailValidation.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? GetUserData
@@ -120,7 +121,7 @@ newLetter.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Product Details
@@ -135,7 +136,7 @@ getProductsInfos.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Get Categories
@@ -162,7 +163,7 @@ postProductsToCart.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Get Cart Products
@@ -177,7 +178,7 @@ getCartProducts.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Post Email To Get Change Password Code
@@ -193,7 +194,7 @@ postUserEmailToChangePassword.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 //? Post Code To Get Change Password
 export const postUserCodeToChangePassword = axios.create({
@@ -207,7 +208,7 @@ postUserCodeToChangePassword.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 //? Post New Password Change Password
 export const postNewPasswordChangePassword = axios.create({
@@ -222,7 +223,7 @@ postNewPasswordChangePassword.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Get Search Result
@@ -237,7 +238,7 @@ getSearchResult.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Add A New Address
@@ -253,7 +254,7 @@ addNewAddress.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 //? Remove A Address
 export const removeAddress = axios.create({
@@ -268,7 +269,22 @@ removeAddress.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
+);
+//? Remove A Address
+export const updateAddress = axios.create({
+  method: `PUT`,
+  baseURL: `${apiUrl}${version}/users/address`,
+});
+updateAddress.interceptors.response.use(
+  function (response) {
+    successSwal(response?.data?.message);
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  },
 );
 
 //? Add New Order
@@ -283,7 +299,7 @@ addNewOrder.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Discounted Code
@@ -299,7 +315,7 @@ DiscountedCode.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Get Payment Status
@@ -327,7 +343,7 @@ postFavoriteProduct.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Get User Panel Data
@@ -342,7 +358,7 @@ getUserPanelData.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Add Comment
@@ -358,7 +374,7 @@ addComment.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Delete Comment
@@ -374,7 +390,7 @@ deleteComment.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Edit Comment
@@ -390,7 +406,7 @@ editComment.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Update Wallet
@@ -405,7 +421,7 @@ updateWallet.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? User Update
@@ -421,7 +437,7 @@ updateUser.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Update Notification Seen Status
@@ -437,7 +453,7 @@ updateNotificationSeenStatus.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Delete Notification Seen Status
@@ -453,7 +469,7 @@ deleteNotificationSeenStatus.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Get Orders Status
@@ -468,7 +484,7 @@ getOrdersStatus.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Get Admin Panel Users
@@ -483,7 +499,7 @@ getOrdersStatus.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Send Group Emails To Users
@@ -499,7 +515,7 @@ sendGroupEmailsToUsers.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Ban Users
@@ -515,7 +531,7 @@ BanUsers.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Get Admin Notifications
@@ -530,7 +546,7 @@ getAdminNotifications.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 //? Add New Todo
@@ -546,7 +562,7 @@ addNewTodo.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 //? Get Todos
 export const getTodos = axios.create({
@@ -560,7 +576,7 @@ getTodos.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 //? Delete Todos
 export const deleteTodos = axios.create({
@@ -575,7 +591,7 @@ deleteTodos.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 //? Update Todos Status
 export const updateTodosStatus = axios.create({
@@ -590,7 +606,7 @@ updateTodosStatus.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
 //? Update Todos Content
 export const updateTodosContent = axios.create({
@@ -605,5 +621,5 @@ updateTodosContent.interceptors.response.use(
   function (error) {
     errorSwal(error?.response?.data?.message);
     return Promise.reject(error);
-  }
+  },
 );
