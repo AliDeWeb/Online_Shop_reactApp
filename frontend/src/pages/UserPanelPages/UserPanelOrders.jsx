@@ -41,7 +41,7 @@ export default function UserPanelOrders() {
 
         return data;
       },
-    }
+    },
   );
 
   useEffect(() => {
@@ -84,20 +84,6 @@ export default function UserPanelOrders() {
                   <span className="size-4 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
                     {!isLoading &&
                       userData?.orders[`successfullOrders`]?.length}
-                  </span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/user-panel/orders/pendingPaymentOrders"
-                  className={(a) => {
-                    return `${!!a.isActive && "active-orders-page"} flex items-center gap-2 py-2 px-1 text-sm sm:text-base w-max font-dana transition-all hover:bg-gray-400/20 rounded-md`;
-                  }}
-                >
-                  در انتظار پرداخت
-                  <span className="size-4 text-xs flex items-center justify-center rounded-full font-danaBold text-white bg-[#a1a3a8]">
-                    {!isLoading &&
-                      userData?.orders[`pendingPaymentOrders`]?.length}
                   </span>
                 </NavLink>
               </li>

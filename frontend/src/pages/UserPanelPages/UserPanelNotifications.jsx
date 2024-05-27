@@ -36,7 +36,7 @@ export default function UserPanelNotifications() {
 
         return data;
       },
-    }
+    },
   );
 
   useEffect(() => {
@@ -46,10 +46,15 @@ export default function UserPanelNotifications() {
 
   return (
     <div>
-      <div className="mb-8">
+      <div className="mb-8 flex items-center gap-2">
         <h2 className="inline-block font-danaBold text-lg relative before:content-[''] before:absolute before:bg-orange-300 before:left-0 before:right-0 before:-bottom-1 before:h-0.5 before:w-full before:rounded-lg">
           پیغام ها
         </h2>
+        <span className="font-danaDemi text-xs size-6 flex items-center justify-center rounded-full bg-blue-400 text-white">
+          {!isLoading &&
+            data?.notifications.length &&
+            data?.notifications?.filter((el) => el.isSeen === false).length}
+        </span>
       </div>
       <div className="divide-y divide-solid divide-gray-400/20">
         {!isLoading && data?.notifications.length ? (
