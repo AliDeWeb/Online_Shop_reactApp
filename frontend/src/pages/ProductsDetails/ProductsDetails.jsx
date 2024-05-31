@@ -162,7 +162,7 @@ export default function ProductsDetails() {
               </Swiper>
             </div>
             <div className="col-span-1">
-              <h1 className="font-danaBold text-xl line-clamp-1">
+              <h1 className="font-danaBold text-xl line-clamp-2">
                 {!isLoading && data?.product?.title}
               </h1>
               <span className="mt-2 font-dana text-sm text-gray-400 inline-block">
@@ -185,7 +185,9 @@ export default function ProductsDetails() {
                 </span>
               </div>
               <div className="mt-4 text-sm flex items-center gap-2 font-dana text-white child:w-[90px] child:h-[30px] child:flex child:justify-center child:items-center child:rounded-lg">
-                <span className="bg-orange-400">غیر اصل</span>
+                <span className="bg-orange-400">
+                  {!isLoading && data?.product?.isorg ? "اصل" : "غیر اصل"}
+                </span>
                 <span className="bg-blue-700">تحویل فوری</span>
               </div>
               <ul className="mt-4 text-gray-400 font-dana text-sm sm:text-base sm:list-disc pr-5 grid grid-cols-2 gap-y-2">
@@ -431,7 +433,7 @@ export default function ProductsDetails() {
                 >
                   <div className="font-dana flex items-center justify-between mt-8 w-full">
                     <span className="font-danaBold text-teal-600 text-center text-xl sm:text-2xl flex items-center justify-center gap-4 w-full">
-                      {productOffPrice ? (
+                      {!(productOffPrice === productPrice) ? (
                         <>
                           <del className="font-danaBold text-gray-400 text-center text-sm sm:text-base">
                             {(productPrice && productPrice).toLocaleString()}
