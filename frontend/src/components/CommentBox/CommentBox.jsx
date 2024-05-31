@@ -1,9 +1,9 @@
 import { useRef } from "react";
 
 // Icons
-import { FaReply, FaCheck } from "react-icons/fa6";
+import { FaCheck, FaReply } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
-import { MdModeEditOutline, MdDelete, MdAccessTime } from "react-icons/md";
+import { MdAccessTime, MdDelete, MdModeEditOutline } from "react-icons/md";
 
 // React Router
 import { Link } from "react-router-dom";

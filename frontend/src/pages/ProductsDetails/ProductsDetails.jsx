@@ -2,39 +2,39 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, A11y, Autoplay } from "swiper/modules";
+import { A11y, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
 // React Router
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Components
 import {
   Accordion,
-  SectionsWrapper,
   ProductBox,
+  SectionsWrapper,
 } from "../../configs/Layout/Layout";
 
 // Icon
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import {
   FaCalendarCheck,
-  FaStore,
-  FaShoppingCart,
+  FaHeart,
   FaRegStar,
+  FaShoppingCart,
   FaStar,
+  FaStore,
 } from "react-icons/fa";
 import { PiWarningCircle } from "react-icons/pi";
-import { FaHeart } from "react-icons/fa";
 
 // Axios
 import {
+  addComment,
   apiUrl,
   getProductsInfos,
-  postProductsToCart,
   postFavoriteProduct,
-  addComment,
+  postProductsToCart,
 } from "../../configs/axios/axiosConfigs";
 
 // React Query
@@ -77,7 +77,7 @@ export default function ProductsDetails() {
     {
       staleTime: 0,
       refetchOnMount: true,
-    }
+    },
   );
 
   const [productPrice, setProductPrice] = useState("-");

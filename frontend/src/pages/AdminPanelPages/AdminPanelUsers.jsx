@@ -18,6 +18,28 @@ import { FaRegUser } from "react-icons/fa";
 
 // Mui
 import { DataGrid } from "@mui/x-data-grid";
+// React Spinners
+import BeatLoader from "react-spinners/BeatLoader";
+
+// Axios
+import {
+  BanUsers,
+  getAdminPanelUsers,
+  sendGroupEmailsToUsers,
+} from "../../configs/axios/axiosConfigs";
+
+// React Query
+import { useQuery } from "react-query";
+
+// React Query
+import { Link } from "react-router-dom";
+
+// Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken";
+
+// Components
+import { Modal } from "../../configs/Layout/Layout";
+
 const tableHead = [
   { field: "id", headerName: "شناسه", width: 110 },
   {
@@ -58,28 +80,6 @@ const tableHead = [
     width: 80,
   },
 ];
-
-// React Spinners
-import BeatLoader from "react-spinners/BeatLoader";
-
-// Axios
-import {
-  getAdminPanelUsers,
-  sendGroupEmailsToUsers,
-  BanUsers,
-} from "../../configs/axios/axiosConfigs";
-
-// React Query
-import { useQuery } from "react-query";
-
-// React Query
-import { Link } from "react-router-dom";
-
-// Hooks
-import useUserToken from "../../hooks/useUserToken/useUserToken";
-
-// Components
-import { Modal } from "../../configs/Layout/Layout";
 
 export default function AdminPanelUsers() {
   const errorSwal = (text) => {
@@ -125,7 +125,7 @@ export default function AdminPanelUsers() {
           totalPayments: el.totalPayments
             ? el.totalPayments.toLocaleString()
             : `-`,
-        }))
+        })),
       );
       return res.data;
     },
@@ -134,7 +134,7 @@ export default function AdminPanelUsers() {
       staleTime: 0,
       refetchOnMount: true,
       refetchOnWindowFocus: true,
-    }
+    },
   );
 
   useEffect(() => {

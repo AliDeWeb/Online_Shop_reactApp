@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import siteLogo from "../../assets/imgs/site-logo.svg";
 
 // React Router
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // React Spinners
 import ClipLoader from "react-spinners/ClipLoader";
@@ -39,7 +39,7 @@ export default function AdminLogin() {
       .then(() =>
         setTimeout(() => {
           navigator(`/admin-login-verify/${userData.email}`);
-        }, 2000)
+        }, 2000),
       )
       .finally(() => {
         setIsDataFetching(false);

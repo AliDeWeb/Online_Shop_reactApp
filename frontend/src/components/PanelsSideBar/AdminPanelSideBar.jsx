@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 // icons
 import { MdOutlineShoppingBag } from "react-icons/md";
-import { IoHomeOutline, IoExitOutline } from "react-icons/io5";
+import { IoExitOutline, IoHomeOutline } from "react-icons/io5";
 import { FaRegComment } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FiUsers } from "react-icons/fi";
@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 export default function AdminPanelSideBar() {
-  const navigator = useNavigate()
+  const navigator = useNavigate();
   const showSwal = withReactContent(Swal);
   return (
     <div className="border border-solid border-[#E8E8E8] rounded-md py-2 px-4 font-danaDemi">

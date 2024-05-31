@@ -5,31 +5,38 @@
 ::-webkit-scrollbar {
   width: 0.5vw;
 }
+
 ::-webkit-scrollbar-track {
   background-color: #cecfd3;
   border-radius: 0.2rem;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #a2a4ac;
   border-radius: 0.2rem;
 }
+
 ::-webkit-scrollbar-thumb:active {
   background-color: #7e7f85;
   border-radius: 0.2rem;
 }
+
 ::selection {
   background-color: rgb(254, 215, 170);
   color: #097a7a;
 }
+
 ::-moz-selection {
   background-color: rgb(254, 215, 170);
   color: #097a7a;
 }
+
 *,
 *::after,
 *::before {
   box-sizing: border-box;
 }
+
 :root {
   --swiper-navigation-color: #3b3b3bb6;
   --swiper-navigation-size: 20px;
@@ -37,13 +44,16 @@
 
   user-select: none;
 }
+
 body {
   overflow-x: hidden;
   background-color: #fcfcfc;
 }
+
 input::placeholder {
   font-family: dana;
 }
+
 .swiper-button-next,
 .swiper-button-prev {
   box-sizing: content-box;
@@ -56,20 +66,25 @@ input::placeholder {
     background-color: #00000010;
   }
 }
+
 .swal2-container {
   font-family: "dana";
 }
+
 .swal2-title {
   font-family: "danaBold";
 }
+
 .MuiButtonBase-root {
   border-radius: 0.6rem;
   margin-bottom: 0.5rem;
   font-family: "dana";
 }
+
 .MuiStack-root {
   direction: ltr;
 }
+
 .active-panel-menu {
   position: relative;
 
@@ -108,6 +123,7 @@ input::placeholder {
     -o-border-radius: 1rem;
   }
 }
+
 .active-orders-page-wrapper::-webkit-scrollbar,
 .table-container::-webkit-scrollbar {
   display: none;
@@ -147,6 +163,7 @@ input::placeholder {
   box-shadow: 0 0 4px #999999;
   margin: 1rem 0.2rem;
 }
+
 .css-yrdy0g-MuiDataGrid-columnHeaderRow {
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
@@ -154,20 +171,25 @@ input::placeholder {
   -ms-border-radius: 0.5rem;
   -o-border-radius: 0.5rem;
 }
+
 .MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.MuiTablePagination-toolbar.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
   font-family: dana !important;
 }
+
 .MuiTablePagination-actions,
 .MuiTablePagination-displayedRows.css-levciy-MuiTablePagination-displayedRows {
   direction: ltr !important;
 }
+
 .MuiDataGrid-cell {
   direction: rtl !important;
   text-align: right !important;
 }
+
 .MuiDataGrid-scrollbar.MuiDataGrid-scrollbar--vertical {
   display: none !important;
 }
+
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="email"],
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="phone"],
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="totalPayments"],
@@ -175,14 +197,17 @@ div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="totalProfit"],
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft[data-field="orderCount"] {
   direction: ltr !important;
 }
+
 div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft {
   width: 100%;
   text-align: center !important;
   font-family: dana !important;
 }
-.MuiDataGrid-columnHeaderTitleContainerContent{
+
+.MuiDataGrid-columnHeaderTitleContainerContent {
   justify-content: center;
 }
+
 .MuiDataGrid-columnHeaderTitleContainerContent,
 .MuiDataGrid-columnHeaderTitle.css-t89xny-MuiDataGrid-columnHeaderTitle {
   font-family: danaDemi !important;
@@ -213,6 +238,7 @@ div.MuiDataGrid-cell.MuiDataGrid-cell--textLeft {
   .status-btns-wrapper {
     display: none;
   }
+
   @page {
     size: auto;
     margin: 0;

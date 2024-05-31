@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { StyledEngineProvider } from "@mui/material/styles";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import App from "./App.jsx";
 
@@ -24,5 +24,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <App />
     </StyledEngineProvider>
     <ReactQueryDevtools />
-  </QueryClientProvider>
+  </QueryClientProvider>,
 );

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Axios
 import { usersValidation } from "../../configs/axios/axiosConfigs";
@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import siteLogo from "../../assets/imgs/site-logo.svg";
 
 // React Router
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // React Spinners
 import ClipLoader from "react-spinners/ClipLoader";
@@ -44,7 +44,7 @@ export default function Register() {
       .then(() =>
         setTimeout(() => {
           navigator("/home");
-        }, 2000)
+        }, 2000),
       )
       .finally(() => {
         setIsDataFetching(false);

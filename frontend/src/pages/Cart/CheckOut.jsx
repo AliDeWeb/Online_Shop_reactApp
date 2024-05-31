@@ -16,11 +16,11 @@ import { useQuery, useQueryClient } from "react-query";
 
 // Axios
 import {
-  getCartProducts,
   addNewAddress,
   addNewOrder,
-  DiscountedCode,
   apiUrl,
+  DiscountedCode,
+  getCartProducts,
 } from "../../configs/axios/axiosConfigs";
 
 // Hooks
@@ -55,7 +55,7 @@ export default function CheckOut() {
 
         return dataInit;
       },
-    }
+    },
   );
 
   useEffect(() => {
@@ -250,7 +250,7 @@ export default function CheckOut() {
                                 notShowCounter={true}
                               />
                             </React.Fragment>
-                          )
+                          ),
                         )}
                     </div>
 
@@ -342,7 +342,7 @@ export default function CheckOut() {
                                 notShowCounter={true}
                               />
                             </React.Fragment>
-                          )
+                          ),
                         )}
                     </div>
 

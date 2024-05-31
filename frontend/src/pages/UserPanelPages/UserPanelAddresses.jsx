@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 // Axios
 import {
-  getUserPanelData,
   addNewAddress,
+  getUserPanelData,
 } from "../../configs/axios/axiosConfigs";
 
 // React Hook Form
@@ -52,7 +52,7 @@ export default function UserPanelAddresses() {
 
         return data;
       },
-    }
+    },
   );
 
   useEffect(() => {

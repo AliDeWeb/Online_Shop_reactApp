@@ -1,5 +1,5 @@
 // React Router
-import { useNavigate, NavLink, Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 // icons
 import { CiEdit } from "react-icons/ci";
@@ -7,8 +7,8 @@ import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineShoppingBag,
 } from "react-icons/md";
-import { IoHomeOutline, IoExitOutline } from "react-icons/io5";
-import { FaRegHeart, FaRegComment } from "react-icons/fa";
+import { IoExitOutline, IoHomeOutline } from "react-icons/io5";
+import { FaRegComment, FaRegHeart } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 
@@ -56,7 +56,7 @@ export default function UserPanelSideBar() {
 
         return data;
       },
-    }
+    },
   );
 
   return (

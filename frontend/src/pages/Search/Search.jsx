@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+// Mui
+import * as React from "react";
+import { useEffect, useState } from "react";
 
 // components
 import { ProductBox } from "../../configs/Layout/Layout";
@@ -14,14 +16,11 @@ import { useQuery } from "react-query";
 
 // Axios
 import {
-  getSearchResult,
   apiUrl,
-  getCategories,
   getBrands,
+  getCategories,
+  getSearchResult,
 } from "../../configs/axios/axiosConfigs";
-
-// Mui
-import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -54,7 +53,7 @@ export default function Search() {
     },
     {
       staleTime: 30000,
-    }
+    },
   );
 
   useEffect(() => {

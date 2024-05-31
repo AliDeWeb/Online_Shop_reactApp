@@ -10,7 +10,7 @@ import { useQuery, useQueryClient } from "react-query";
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 // Axios
-import { getUserPanelData, apiUrl } from "../../configs/axios/axiosConfigs";
+import { apiUrl, getUserPanelData } from "../../configs/axios/axiosConfigs";
 
 export default function UserPanelFavorites() {
   const queryClient = useQueryClient();
@@ -41,7 +41,7 @@ export default function UserPanelFavorites() {
 
         return data;
       },
-    }
+    },
   );
 
   useEffect(() => {

@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 // Icons
-import { MdOutlineDeleteOutline, MdEdit } from "react-icons/md";
+import { MdEdit, MdOutlineDeleteOutline } from "react-icons/md";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 // Axios
 import {
   deleteTodos,
-  updateTodosStatus,
   updateTodosContent,
+  updateTodosStatus,
 } from "../../configs/axios/axiosConfigs";
 
 // Components
@@ -90,7 +90,11 @@ export default function TodoBox({ title, desc, id, isTodoDone, refetch }) {
         >
           <MdEdit size="1.4rem" />
         </button>
-        <Modal isOpen={isTodoModalOpen} title={"افزودن کار"} changeVisibility={setIsTodoModalOpen}>
+        <Modal
+          isOpen={isTodoModalOpen}
+          title={"افزودن کار"}
+          changeVisibility={setIsTodoModalOpen}
+        >
           <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
             <button
               onClick={() => {
@@ -154,7 +158,11 @@ export default function TodoBox({ title, desc, id, isTodoDone, refetch }) {
         >
           <MdOutlineDeleteOutline size="1.5rem" />
         </button>
-        <Modal isOpen={isDeleteSubmitModalOpen} title={"ارسال ایمیل"} changeVisibility={setIsDeleteSubmitModalOpen}>
+        <Modal
+          isOpen={isDeleteSubmitModalOpen}
+          title={"ارسال ایمیل"}
+          changeVisibility={setIsDeleteSubmitModalOpen}
+        >
           <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
             <button
               onClick={() => {

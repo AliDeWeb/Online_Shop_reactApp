@@ -14,7 +14,7 @@ import { CartProductBox } from "../../configs/Layout/Layout";
 import { useQuery } from "react-query";
 
 // Axios
-import { getOrdersStatus, apiUrl } from "../../configs/axios/axiosConfigs";
+import { apiUrl, getOrdersStatus } from "../../configs/axios/axiosConfigs";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -36,7 +36,7 @@ export default function OrdersStatus() {
         });
         return res.data;
       }
-    }
+    },
   );
 
   useEffect(() => {
@@ -322,7 +322,7 @@ export default function OrdersStatus() {
                           notShowCounter={true}
                         />
                       </div>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -484,7 +484,7 @@ export default function OrdersStatus() {
                           notShowCounter={true}
                         />
                       </div>
-                    )
+                    ),
                   )}
                 </div>
               </div>

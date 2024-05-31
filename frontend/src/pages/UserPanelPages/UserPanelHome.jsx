@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Imgs
 import statusProcessing from "../../assets/imgs/icons/status-processing.svg";
@@ -53,7 +53,7 @@ export default function UserPanelHome() {
         const data = queryClient.getQueryData(`userPanelInfos`);
         return data;
       },
-    }
+    },
   );
 
   const [isDataFetching, setIsDataFetching] = useState(false);

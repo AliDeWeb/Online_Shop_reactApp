@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 // React Router
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Components
-import { Header, Footer } from "../../configs/Layout/Layout";
+import { Footer, Header } from "../../configs/Layout/Layout";
 
 // Imgs
 import gif404 from "../../assets/imgs/404-not-found.svg";

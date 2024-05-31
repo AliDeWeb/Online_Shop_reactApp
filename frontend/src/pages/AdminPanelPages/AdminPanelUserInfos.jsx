@@ -1,6 +1,3 @@
-
 export default function AdminPanelUserInfos() {
-  return (
-    <div>AdminPanelUserInfos</div>
-  )
+  return <div>AdminPanelUserInfos</div>;
 }

@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 
 // Axios
-import { getCartProducts, apiUrl } from "../../configs/axios/axiosConfigs";
+import { apiUrl, getCartProducts } from "../../configs/axios/axiosConfigs";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -34,7 +34,7 @@ export default function Cart() {
       cacheTime: 30000,
       staleTime: 0,
       refetchOnMount: true,
-    }
+    },
   );
 
   React.useEffect(() => {

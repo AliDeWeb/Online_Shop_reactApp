@@ -11,8 +11,8 @@ import MenuItem from "@mui/material/MenuItem";
 
 // Axios
 import {
-  updateNotificationSeenStatus,
   deleteNotificationSeenStatus,
+  updateNotificationSeenStatus,
 } from "../../configs/axios/axiosConfigs";
 
 // Hooks

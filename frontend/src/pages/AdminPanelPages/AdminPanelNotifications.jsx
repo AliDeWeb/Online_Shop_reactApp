@@ -32,7 +32,7 @@ export default function AdminPanelNotifications() {
       refetchOnMount: true,
       refetchOnWindowFocus: true,
       staleTime: 0,
-    }
+    },
   );
 
   useEffect(() => {

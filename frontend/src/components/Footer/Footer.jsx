@@ -53,7 +53,7 @@ export default function Footer() {
     (e) => {
       setUserNewsLetterEmail(e.target.value.trim());
     },
-    [userNewsLetterEmail]
+    [userNewsLetterEmail],
   );
 
   return (

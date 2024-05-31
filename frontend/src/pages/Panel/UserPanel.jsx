@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 // React Router
-import { useNavigate, Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 // components
 import { UserPanelSideBar } from "../../configs/Layout/Layout";

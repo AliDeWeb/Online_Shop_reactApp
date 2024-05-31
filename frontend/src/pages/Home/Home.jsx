@@ -49,7 +49,7 @@ export default function Home() {
           refetch();
         }, 20000);
       },
-    }
+    },
   );
 
   return (

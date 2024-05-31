@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 // Axios
-import { getUserPanelData, apiUrl } from "../../configs/axios/axiosConfigs";
+import { apiUrl, getUserPanelData } from "../../configs/axios/axiosConfigs";
 
 // React Query
 import { useQuery, useQueryClient } from "react-query";
@@ -40,7 +40,7 @@ export default function UserPanelComments() {
 
         return data;
       },
-    }
+    },
   );
   useEffect(() => {
     document.documentElement.scrollTop = 0;

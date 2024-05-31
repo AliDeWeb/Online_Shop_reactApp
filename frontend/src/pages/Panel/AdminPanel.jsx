@@ -5,8 +5,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 // components
 import {
-  AdminPanelSideBar,
   AdminPanelHeader,
+  AdminPanelSideBar,
   Footer,
 } from "../../configs/Layout/Layout";
 
@@ -17,7 +17,7 @@ import { useQuery, useQueryClient } from "react-query";
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 // Axios
-import { getUserData, apiUrl } from "../../configs/axios/axiosConfigs";
+import { apiUrl, getUserData } from "../../configs/axios/axiosConfigs";
 
 export default function AdminPanel() {
   const { userToken } = useUserToken();
@@ -47,7 +47,7 @@ export default function AdminPanel() {
     },
     {
       staleTime: 20000,
-    }
+    },
   );
 
   useEffect(() => {

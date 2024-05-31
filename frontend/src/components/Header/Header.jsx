@@ -5,30 +5,30 @@ import siteLogo from "../../assets/imgs/site-logo.svg";
 
 // Icons
 import {
-  IoIosSearch,
   IoIosCart,
-  IoIosMenu,
   IoIosClose,
+  IoIosMenu,
+  IoIosSearch,
   IoMdCall,
 } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { AiOutlineHome, AiOutlineQuestionCircle } from "react-icons/ai";
 import {
-  MdOutlineKeyboardArrowDown,
   MdMiscellaneousServices,
+  MdOutlineKeyboardArrowDown,
 } from "react-icons/md";
 import { CiShoppingBasket } from "react-icons/ci";
 import { GoArrowUpLeft } from "react-icons/go";
 
 // React Router
-import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 // Axios
 import {
-  getUserData,
-  getCategories,
   getBrands,
+  getCategories,
   getMenus,
+  getUserData,
 } from "../../configs/axios/axiosConfigs";
 
 // React Query
@@ -82,7 +82,7 @@ export default function Header() {
 
         return data;
       },
-    }
+    },
   );
 
   const { data: menus, isLoading: isMenusLoading } = useQuery(
@@ -91,7 +91,7 @@ export default function Header() {
       let res = await getMenus();
 
       return res.data;
-    }
+    },
   );
 
   useEffect(() => {
