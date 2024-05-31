@@ -138,7 +138,7 @@ export default function AdminPanelUsers() {
   );
 
   useEffect(() => {
-    document.title = "تیمچه - کاربران";
+    document.title = "پریمو - کاربران";
     document.documentElement.scrollTop = 0;
   }, []);
 

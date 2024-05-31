@@ -46,7 +46,7 @@ export default function UserPanelFavorites() {
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - محصولات مورد علاقه";
+    document.title = "پریمو - محصولات مورد علاقه";
   }, []);
 
   return (

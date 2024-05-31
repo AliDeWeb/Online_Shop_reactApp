@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-// Imgs
-import siteLogo from "../../assets/imgs/site-logo.svg";
-
 // Icons
 import {
   IoIosCart,
@@ -25,9 +22,11 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 // Axios
 import {
+  apiUrl,
   getBrands,
   getCategories,
   getMenus,
+  getStoreInfo,
   getUserData,
 } from "../../configs/axios/axiosConfigs";
 
@@ -46,6 +45,7 @@ export default function Header() {
   const queryClient = useQueryClient();
 
   const location = useLocation();
+  const [siteLogoUrl, setSiteLogoUrl] = useState("");
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const [isHamburgerMenuShopItemShow, setIsHamburgerMenuShopItemShow] =
     useState(true);
@@ -101,6 +101,9 @@ export default function Header() {
     getBrands().then((res) => {
       setBrands(res.data);
     });
+    getStoreInfo().then((res) => {
+      setSiteLogoUrl(`${apiUrl}/${res.data.logo}`);
+    });
   }, []);
 
   useEffect(() => {
@@ -120,7 +123,7 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <div className="w-[100px]">
             <Link to="/home" className="w-[100px]">
-              <img src={siteLogo} alt="siteLogo" />
+              <img src={siteLogoUrl} alt="siteLogo" />
             </Link>
           </div>
           <button onClick={() => setIsHamburgerMenuOpen(false)}>
@@ -376,7 +379,7 @@ export default function Header() {
                 className="w-[90px] h-[26px] lg:w-[137px] lg:h-[38px]"
                 to="/home"
               >
-                <img className="size-full" src={siteLogo} alt="site-logo" />
+                <img className="size-full" src={siteLogoUrl} alt="site-logo" />
               </Link>
             </div>
             <div className="w-full lg:w-[500px] lg:block hidden">

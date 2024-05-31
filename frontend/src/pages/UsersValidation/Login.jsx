@@ -1,23 +1,21 @@
-import { useEffect, useRef, useState } from "react";
-
-// Axios
-import { usersValidation } from "../../configs/axios/axiosConfigs";
+import { useEffect, useRef, useState } from "react"; // Axios
+import {
+  apiUrl,
+  getStoreInfo,
+  usersValidation,
+} from "../../configs/axios/axiosConfigs";
 
 // React Hook Form
 import { useForm } from "react-hook-form";
 
-// Imgs
-import siteLogo from "../../assets/imgs/site-logo.svg";
-
 // React Router
-import { Link, useNavigate } from "react-router-dom";
-
-// React Spinners
+import { Link, useNavigate } from "react-router-dom"; // React Spinners
 import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Login() {
   const navigator = useNavigate();
   const [isDataFetching, setIsDataFetching] = useState(false);
+  const [siteLogoUrl, setSiteLogoUrl] = useState("");
 
   const {
     register,
@@ -55,7 +53,11 @@ export default function Login() {
     });
 
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - ورود";
+    document.title = "پریمو - ورود";
+
+    getStoreInfo().then((res) => {
+      setSiteLogoUrl(`${apiUrl}/${res.data.logo}`);
+    });
   }, []);
 
   return (
@@ -72,7 +74,7 @@ export default function Login() {
             <div className="flex items-center justify-between mb-8">
               <div className="w-[80px]">
                 <Link className="w-[80px]" to="/home">
-                  <img src={siteLogo} alt="img" />
+                  <img src={siteLogoUrl} alt="img" />
                 </Link>
               </div>
               <Link to="/home" className="text-sm font-dana text-gray-400">
@@ -83,7 +85,7 @@ export default function Login() {
               خوش برگشتی ;)
             </h2>
             <p className="text-gray-400 text-xs sm:text-sm mb-6">
-              خرید جدیدترین محصولات با کیفیت روز با تیمچه
+              خرید جدیدترین محصولات با کیفیت روز با پریمو
             </p>
             <label htmlFor="emailAddress" className="mb-1.5">
               ایمیل

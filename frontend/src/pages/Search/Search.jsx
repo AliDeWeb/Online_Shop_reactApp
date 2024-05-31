@@ -67,7 +67,7 @@ export default function Search() {
     setSearchUrlSort(`popular`);
 
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - جستجو";
+    document.title = "پریمو - جستجو";
   }, []);
 
   useEffect(() => {

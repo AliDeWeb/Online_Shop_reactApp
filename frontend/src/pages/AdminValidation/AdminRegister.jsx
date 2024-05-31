@@ -1,18 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-
-// Axios
-import { usersValidation } from "../../configs/axios/axiosConfigs";
-
-// React Hook Form
-import { useForm } from "react-hook-form";
-
-// Imgs
-import siteLogo from "../../assets/imgs/site-logo.svg";
-
-// React Router
-import { Link, useNavigate } from "react-router-dom";
-
-// React Spinners
+import { useEffect, useRef, useState } from "react"; // Axios
+import {
+  apiUrl,
+  getStoreInfo,
+  usersValidation,
+} from "../../configs/axios/axiosConfigs"; // React Hook Form
+import { useForm } from "react-hook-form"; // React Router
+import { Link, useNavigate } from "react-router-dom"; // React Spinners
 import ClipLoader from "react-spinners/ClipLoader";
 
 export default function AdminRegister() {
@@ -58,10 +51,14 @@ export default function AdminRegister() {
       inline: "nearest",
     });
   }, []);
-
+  const [siteLogoUrl, setSiteLogoUrl] = useState("");
   useEffect(() => {
-    document.title = "تیمچه - ثبت نام ادمین";
+    document.title = "پریمو - ثبت نام ادمین";
     document.documentElement.scrollTop = 0;
+
+    getStoreInfo().then((res) => {
+      setSiteLogoUrl(`${apiUrl}/${res.data.logo}`);
+    });
   }, []);
 
   return (
@@ -78,7 +75,7 @@ export default function AdminRegister() {
             <div className="flex items-center justify-between mb-8">
               <div className="w-[80px]">
                 <Link className="w-[80px]" to="/home">
-                  <img src={siteLogo} alt="img" />
+                  <img src={siteLogoUrl} alt="img" />
                 </Link>
               </div>
               <Link to="/home" className="text-sm font-dana text-gray-400">

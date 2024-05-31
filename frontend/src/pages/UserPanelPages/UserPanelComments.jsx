@@ -44,7 +44,7 @@ export default function UserPanelComments() {
   );
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - نظرات";
+    document.title = "پریمو - نظرات";
   }, []);
 
   return (

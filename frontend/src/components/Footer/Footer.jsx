@@ -133,7 +133,7 @@ export default function Footer() {
             <div className="flex sm:flex-nowrap flex-wrap child:w-full sm:child:w-1/2 sm:gap-0 gap-5">
               <div className="sm:pl-5">
                 <h3 className="font-danaBold lg:text-lg text-zinc-700">
-                  با تیمچه ، آنلاین و ارزان خرید کنید
+                  با پریمو ، آنلاین و ارزان خرید کنید
                 </h3>
                 <p className="font-dana mt-2.5 lg:text-base text-sm lg:line-clamp-none line-clamp-5 text-gray-400">
                   لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
@@ -188,7 +188,7 @@ export default function Footer() {
             <div className="flex lg:items-start lg:justify-start flex-wrap lg:flex-nowrap child:w-full gap-4 lg:gap-0 lg:child:w-1/2">
               <div>
                 <h3 className="font-danaBold lg:text-lg text-zinc-700">
-                  خبرنامه فروشگاه تیمچه
+                  خبرنامه فروشگاه پریمو
                 </h3>
                 <div className="mt-4 border-2 border-gray-100 border-solid rounded-md py-1.5 px-4 w-full lg:w-max flex items-center">
                   <input
@@ -214,7 +214,7 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="font-danaBold lg:text-lg text-zinc-700">
-                  دانلود اپلیکیشن تیمچه
+                  دانلود اپلیکیشن پریمو
                 </h3>
                 <div className="mt-4 lg:w-max flex items-center justify-between lg:justify-start lg:gap-6 w-full">
                   <a href="#">

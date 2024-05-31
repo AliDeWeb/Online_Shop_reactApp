@@ -43,6 +43,21 @@ export const apiUrl = "https://ma-api.liara.run";
 const version = `/v1`;
 
 //? Main Page Data
+export const getStoreInfo = axios.create({
+  method: `GET`,
+  baseURL: `${apiUrl}${version}/infos/storeInfo`,
+});
+getStoreInfo.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    errorSwal(error?.response?.data?.message);
+    return Promise.reject(error);
+  },
+);
+
+//? Main Page Data
 export const getMainPageData = axios.create({
   method: `GET`,
   baseURL: `${apiUrl}${version}/infos/mainPage`,

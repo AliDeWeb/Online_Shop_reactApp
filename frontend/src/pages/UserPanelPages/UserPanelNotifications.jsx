@@ -41,7 +41,7 @@ export default function UserPanelNotifications() {
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - پیغام ها";
+    document.title = "پریمو - پیغام ها";
   }, []);
 
   return (

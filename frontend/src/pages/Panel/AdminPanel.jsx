@@ -11,7 +11,7 @@ import {
 } from "../../configs/Layout/Layout";
 
 // React Query
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 
 // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
@@ -21,7 +21,6 @@ import { apiUrl, getUserData } from "../../configs/axios/axiosConfigs";
 
 export default function AdminPanel() {
   const { userToken } = useUserToken();
-  const queryClient = useQueryClient();
   const navigator = useNavigate();
 
   useEffect(() => {

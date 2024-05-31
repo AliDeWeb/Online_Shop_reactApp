@@ -131,7 +131,7 @@ export default function ProductsDetails() {
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - محصولات";
+    document.title = "پریمو - محصولات";
   }, []);
 
   return (

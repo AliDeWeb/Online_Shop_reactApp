@@ -1,17 +1,9 @@
-import { useEffect } from "react";
-
-// React Router
-import { Link, useNavigate } from "react-router-dom";
-
-// Components
-import { Footer, Header } from "../../configs/Layout/Layout";
-
-// Imgs
+import { useEffect } from "react"; // React Router
+import { Link, useNavigate } from "react-router-dom"; // Components
+import { Footer, Header } from "../../configs/Layout/Layout"; // Imgs
 import gif404 from "../../assets/imgs/404-not-found.svg";
 
 export default function Page404() {
-  document.title = `صفحه یافت نشد!`;
-
   const navigator = useNavigate();
 
   useEffect(() => {
@@ -19,7 +11,7 @@ export default function Page404() {
       navigator(`/home`);
     }, 6000);
 
-    document.title = "تیمچه - چیزی یافت نشد";
+    document.title = "پریمو - چیزی یافت نشد";
     document.documentElement.scrollTop = 0;
   }, []);
 

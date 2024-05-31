@@ -28,7 +28,7 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 export default function Home() {
   const { userToken } = useUserToken();
   useEffect(() => {
-    document.title = "تیمچه - صفحه اصلی";
+    document.title = "پریمو - صفحه اصلی";
     document.documentElement.scrollTop = 0;
   }, []);
 

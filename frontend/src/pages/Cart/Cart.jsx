@@ -38,7 +38,7 @@ export default function Cart() {
   );
 
   React.useEffect(() => {
-    document.title = "تیمچه - سبد خرید";
+    document.title = "پریمو - سبد خرید";
     document.documentElement.scrollTop = 0;
   }, []);
 

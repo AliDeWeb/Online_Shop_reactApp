@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 
 // Axios
-import { usersValidation } from "../../configs/axios/axiosConfigs";
+import {
+  apiUrl,
+  getStoreInfo,
+  usersValidation,
+} from "../../configs/axios/axiosConfigs";
 
 // React Hook Form
 import { useForm } from "react-hook-form";
-
-// Imgs
-import siteLogo from "../../assets/imgs/site-logo.svg";
 
 // React Router
 import { Link, useNavigate } from "react-router-dom";
@@ -24,7 +25,7 @@ export default function AdminLogin() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const [siteLogoUrl, setSiteLogoUrl] = useState("");
   const submitForm = (data) => {
     setIsDataFetching(true);
     let userData = {
@@ -56,8 +57,12 @@ export default function AdminLogin() {
   }, []);
 
   useEffect(() => {
-    document.title = "تیمچه - ورود ادمین";
+    document.title = "پریمو - ورود ادمین";
     document.documentElement.scrollTop = 0;
+
+    getStoreInfo().then((res) => {
+      setSiteLogoUrl(`${apiUrl}/${res.data.logo}`);
+    });
   }, []);
 
   return (
@@ -74,7 +79,7 @@ export default function AdminLogin() {
             <div className="flex items-center justify-between mb-8">
               <div className="w-[80px]">
                 <Link className="w-[80px]" to="/home">
-                  <img src={siteLogo} alt="img" />
+                  <img src={siteLogoUrl} alt="img" />
                 </Link>
               </div>
               <Link to="/home" className="text-sm font-dana text-gray-400">

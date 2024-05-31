@@ -37,7 +37,7 @@ export default function AdminPanelNotifications() {
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - پیغام ها";
+    document.title = "پریمو - پیغام ها";
   }, []);
 
   return (

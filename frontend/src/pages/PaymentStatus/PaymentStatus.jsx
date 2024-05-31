@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react";
-
-// Icons
+import { useEffect, useState } from "react"; // Icons
 import { FaRegCheckCircle } from "react-icons/fa";
-import { IoMdCloseCircleOutline } from "react-icons/io";
-
-// React Router
-import { Link } from "react-router-dom";
-
-// Axios
-import { getPaymentStatus } from "../../configs/axios/axiosConfigs";
-
-// Hooks
+import { IoMdCloseCircleOutline } from "react-icons/io"; // React Router
+import { Link } from "react-router-dom"; // Axios
+import { getPaymentStatus } from "../../configs/axios/axiosConfigs"; // Hooks
 import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function PaymentStatus() {
@@ -30,7 +22,7 @@ export default function PaymentStatus() {
 
   useEffect(() => {
     if (status?.toUpperCase() === "OK") {
-      document.title = `تیمچه - پرداخت موفق`;
+      document.title = `پریمو - پرداخت موفق`;
       getPaymentStatus({
         url: `/${amount}/${trackingCode}/${authority}/${status}`,
         headers: {

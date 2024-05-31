@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
-
-// Axios
+import { useEffect, useState } from "react"; // Axios
 import {
   addNewAddress,
   getUserPanelData,
-} from "../../configs/axios/axiosConfigs";
-
-// React Hook Form
+} from "../../configs/axios/axiosConfigs"; // React Hook Form
 import { useForm } from "react-hook-form";
 
 // React Query
-import { useQuery, useQueryClient } from "react-query";
-
-// Hooks
-import useUserToken from "../../hooks/useUserToken/useUserToken";
-
-// Icons
+import { useQuery, useQueryClient } from "react-query"; // Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken"; // Icons
 import { BiLocationPlus } from "react-icons/bi";
-import { IoCloseCircleOutline } from "react-icons/io5";
-
-// Components
+import { IoCloseCircleOutline } from "react-icons/io5"; // Components
 import { AddressBox, Modal } from "../../configs/Layout/Layout";
 
 export default function UserPanelAddresses() {
@@ -57,7 +47,7 @@ export default function UserPanelAddresses() {
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - آدرسها";
+    document.title = "پریمو - آدرسها";
   }, []);
 
   const {

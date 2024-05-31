@@ -59,7 +59,7 @@ export default function CheckOut() {
   );
 
   useEffect(() => {
-    document.title = "تیمچه - تسویه حساب";
+    document.title = "پریمو - تسویه حساب";
     document.documentElement.scrollTop = 0;
   }, []);
 

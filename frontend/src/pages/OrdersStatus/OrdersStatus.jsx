@@ -40,7 +40,7 @@ export default function OrdersStatus() {
   );
 
   useEffect(() => {
-    document.title = "تیمچه - وضعیت سفارش";
+    document.title = "پریمو - وضعیت سفارش";
     document.documentElement.scrollTop = 0;
   }, []);
 

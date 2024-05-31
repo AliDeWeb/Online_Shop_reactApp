@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 
 // Mui
 import Button from "@mui/material/Button";
@@ -16,12 +17,14 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 // Imgs
-import siteLogo from "../../assets/imgs/site-logo.svg";
+import { apiUrl, getStoreInfo } from "../../configs/axios/axiosConfigs.js";
 
 export default function AdminPanelHeader(props) {
   const navigator = useNavigate();
   const showSwal = withReactContent(Swal);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [siteLogoUrl, setSiteLogoUrl] = useState("");
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,6 +33,12 @@ export default function AdminPanelHeader(props) {
     setAnchorEl(null);
   };
 
+  React.useEffect(() => {
+    getStoreInfo().then((res) => {
+      setSiteLogoUrl(`${apiUrl}/${res.data.logo}`);
+    });
+  }, []);
+
   return (
     <header className="py-4">
       <div className="container">
@@ -37,7 +46,7 @@ export default function AdminPanelHeader(props) {
           <div className="flex items-center gap-8">
             <div className="w-[100px]">
               <Link to="/home" className="w-[100px]">
-                <img src={siteLogo} alt="siteLogo" />
+                <img src={siteLogoUrl} alt="siteLogo" />
               </Link>
             </div>
             <div className="md:flex hidden items-center gap-2 h-[38px] bg-[#D5D5D5]/30 px-4 rounded-2xl text-[#202224]/90 border border-solid border-[#D5D5D5]">

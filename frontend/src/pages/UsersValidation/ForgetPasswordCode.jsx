@@ -3,9 +3,6 @@ import { useEffect, useRef, useState } from "react";
 // React Hook Form
 import { useForm } from "react-hook-form";
 
-// Imgs
-import siteLogo from "../../assets/imgs/site-logo.svg";
-
 // React Router
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -13,12 +10,18 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
 // Axios
-import { postUserCodeToChangePassword } from "../../configs/axios/axiosConfigs";
+import {
+  apiUrl,
+  getStoreInfo,
+  postUserCodeToChangePassword,
+} from "../../configs/axios/axiosConfigs";
 
 export default function ForgetPasswordCode() {
   const navigator = useNavigate();
   const param = useParams();
   const [isDataFetching, setIsDataFetching] = useState(false);
+
+  const [siteLogoUrl, setSiteLogoUrl] = useState("");
 
   const {
     register,
@@ -50,7 +53,11 @@ export default function ForgetPasswordCode() {
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - کد تایید";
+    document.title = "پریمو - کد تایید";
+
+    getStoreInfo().then((res) => {
+      setSiteLogoUrl(`${apiUrl}/${res.data.logo}`);
+    });
   }, []);
 
   return (
@@ -67,7 +74,7 @@ export default function ForgetPasswordCode() {
             <div className="flex items-center justify-between mb-8">
               <div className="w-[80px]">
                 <Link className="w-[80px]" to="/home">
-                  <img src={siteLogo} alt="img" />
+                  <img src={siteLogoUrl} alt="img" />
                 </Link>
               </div>
               <button

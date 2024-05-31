@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 // Imgs
-import siteLogo from "../../assets/imgs/site-logo.svg";
-
 // React Router
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -13,12 +11,18 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
 // Axios
-import { adminEmailValidation } from "../../configs/axios/axiosConfigs";
+import {
+  adminEmailValidation,
+  apiUrl,
+  getStoreInfo,
+} from "../../configs/axios/axiosConfigs";
 
 export default function AdminLoginEmailValidation() {
   const navigator = useNavigate();
   const param = useParams();
   const [isDataFetching, setIsDataFetching] = useState(false);
+
+  const [siteLogoUrl, setSiteLogoUrl] = useState("");
 
   const {
     register,
@@ -51,8 +55,12 @@ export default function AdminLoginEmailValidation() {
   }, []);
 
   useEffect(() => {
-    document.title = "تیمچه - راستی آزمایی";
+    document.title = "پریمو - راستی آزمایی";
     document.documentElement.scrollTop = 0;
+
+    getStoreInfo().then((res) => {
+      setSiteLogoUrl(`${apiUrl}/${res.data.logo}`);
+    });
   }, []);
 
   return (
@@ -69,7 +77,7 @@ export default function AdminLoginEmailValidation() {
             <div className="flex items-center justify-between mb-8">
               <div className="w-[80px]">
                 <Link className="w-[80px]" to="/home">
-                  <img src={siteLogo} alt="img" />
+                  <img src={siteLogoUrl} alt="img" />
                 </Link>
               </div>
               <button

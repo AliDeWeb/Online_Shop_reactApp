@@ -46,7 +46,7 @@ export default function UserPanelOrders() {
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
-    document.title = "تیمچه - سفارشات";
+    document.title = "پریمو - سفارشات";
   }, []);
 
   return (
