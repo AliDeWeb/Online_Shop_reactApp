@@ -1,21 +1,19 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-
+import { useCallback, useEffect, useRef, useState } from "react"; // Start Rating
+import { Rating } from "react-simple-star-rating";
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
-
-// React Router
-import { Link, useNavigate, useParams } from "react-router-dom";
-
-// Components
+import "swiper/css/navigation"; // React Router
+import { Link, useNavigate, useParams } from "react-router-dom"; // Components
 import {
   Accordion,
+  Modal,
   ProductBox,
   SectionsWrapper,
 } from "../../configs/Layout/Layout";
 
+// React Hook Form
 // Icon
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import {
@@ -26,39 +24,55 @@ import {
   FaStar,
   FaStore,
 } from "react-icons/fa";
-import { PiWarningCircle } from "react-icons/pi";
-
-// Axios
+import { PiWarningCircle } from "react-icons/pi"; // Axios
 import {
   addComment,
   apiUrl,
   getProductsInfos,
   postFavoriteProduct,
   postProductsToCart,
-} from "../../configs/axios/axiosConfigs";
-
-// React Query
-import { useQuery } from "react-query";
-
-// Hooks
-import useUserToken from "../../hooks/useUserToken/useUserToken";
-
-// React Spinners
-import BeatLoader from "react-spinners/BeatLoader";
-
-// SweetAlert
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+} from "../../configs/axios/axiosConfigs"; // React Query
+import { useQuery } from "react-query"; // Hooks
+import useUserToken from "../../hooks/useUserToken/useUserToken"; // React Spinners
+import BeatLoader from "react-spinners/BeatLoader"; // SweetAlert
+import { IoCloseCircleOutline } from "react-icons/io5";
+import ClipLoader from "react-spinners/ClipLoader.js";
+import { useForm } from "react-hook-form";
 
 export default function ProductsDetails() {
-  const showSwal = withReactContent(Swal);
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
 
-  const commentVal = useRef(``);
-  const scoreVal = useRef(``);
+  const [isDataFetching, setIsDataFetching] = useState(false);
+
+  const submitCommentForm = (data) => {
+    setIsDataFetching(true);
+
+    const comment = {
+      productHref: param.href,
+      body: data.commentDisc,
+      score: rating.current,
+    };
+
+    addComment({
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+      data: comment,
+    }).then(() => {
+      setIsDataFetching(false);
+      setIsCommentModalOpen(false);
+    });
+  };
 
   const { userToken } = useUserToken();
   const param = useParams();
   const navigator = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const { data, isLoading, refetch } = useQuery(
     `product${param.href}`,
@@ -79,6 +93,13 @@ export default function ProductsDetails() {
       refetchOnMount: true,
     },
   );
+
+  const rating = useRef(0);
+
+  // Catch Rating value
+  const handleRating = (rate) => {
+    rating.current = rate;
+  };
 
   const [productPrice, setProductPrice] = useState("-");
   const [productOffPrice, setProductOffPrice] = useState("-");
@@ -696,63 +717,72 @@ export default function ProductsDetails() {
               <div className="mt-4 ">
                 <button
                   onClick={() => {
-                    showSwal
-                      .fire({
-                        title: <i>نظر خود را بنویسید</i>,
-                        input: "text",
-                        preConfirm: () => {
-                          commentVal.current = Swal.getInput()?.value || "";
-                        },
-                        showCloseButton: true,
-                        showCancelButton: true,
-                        focusConfirm: false,
-                        confirmButtonText: "مرحله بعد",
-                        cancelButtonText: "انصراف",
-                      })
-                      .then((res) => {
-                        if (res.isConfirmed) {
-                          showSwal
-                            .fire({
-                              title: <i>به محصول امتیاز دهید</i>,
-                              input: "range",
-                              inputAttributes: {
-                                min: "1",
-                                max: "5",
-                                step: "1",
-                              },
-                              inputValue: 3,
-                              preConfirm: () => {
-                                scoreVal.current = Swal.getInput()?.value || "";
-                              },
-                              showCloseButton: true,
-                              showCancelButton: true,
-                              focusConfirm: false,
-                              confirmButtonText: "تایید",
-                              cancelButtonText: "انصراف",
-                            })
-                            .then((res) => {
-                              if (res.isConfirmed) {
-                                addComment({
-                                  headers: {
-                                    Authorization: `Bearer ${userToken}`,
-                                  },
-                                  data: {
-                                    productHref: param.href,
-                                    body: commentVal.current,
-                                    score: scoreVal.current,
-                                  },
-                                }).then(() => {
-                                  refetch();
-                                });
-                              }
-                            });
-                        }
-                      });
+                    setIsCommentModalOpen(true);
                   }}
                   className="font-danaBold w-full border-2 border-solid border-orange-300 py-1.5 px-3 rounded-lg transition-all text-zinc-700 hover:bg-orange-100"
                 >
                   ثبت دیدگاه
                 </button>
+                <Modal
+                  isOpen={isCommentModalOpen}
+                  title={"ثبت دیدگاه"}
+                  changeVisibility={setIsCommentModalOpen}
+                >
+                  <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4">
+                    <button
+                      onClick={() => {
+                        setIsCommentModalOpen(false);
+                      }}
+                    >
+                      <IoCloseCircleOutline size="1.5rem" />
+                    </button>
+                    <h2 className="font-danaDemi md:font-danaBold md:text-lg line-clamp-1">
+                      ثبت دیدگاه
+                    </h2>
+                  </div>
+                  <form
+                    onSubmit={handleSubmit(submitCommentForm)}
+                    className="flex flex-col py-2 px-4 rounded-lg text-zinc-700 mt-4 font-dana"
+                  >
+                    <label htmlFor="commentDisc" className="mb-1.5">
+                      نظر خود را بنویسید
+                    </label>
+                    <input
+                      {...register(`commentDisc`, {
+                        required: "این فیلد نمیتواند خالی باشد",
+                      })}
+                      id="commentDisc"
+                      type="text"
+                      placeholder="محصول خوبی است و خیلی سریع بدستم رسید ..."
+                      className="font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
+                    />
+                    {errors.commentDisc && (
+                      <span className="text-red-400 mb-4 text-xs sm:text-sm">
+                        * {errors.commentDisc.message}
+                      </span>
+                    )}
+                    <label htmlFor="commentScore" className="mb-1.5">
+                      به محصول امتیاز دهید
+                    </label>
+                    <div>
+                      <Rating
+                        onClick={handleRating}
+                        rtl={true}
+                        SVGclassName={`inline-block`}
+                      />
+                    </div>
+                    <button
+                      className="font-danaBold mt-4 cursor-pointer w-full h-[40px] bg-orange-200 hover:bg-orange-300/80 transition-all rounded-lg flex justify-center items-center"
+                      type="submit"
+                    >
+                      {isDataFetching ? (
+                        <ClipLoader color="#d97706" size="18" />
+                      ) : (
+                        "ثبت کامنت"
+                      )}
+                    </button>
+                  </form>
+                </Modal>
               </div>
             </div>
           </div>
