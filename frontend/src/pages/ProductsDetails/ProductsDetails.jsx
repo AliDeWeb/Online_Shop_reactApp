@@ -91,7 +91,7 @@ export default function ProductsDetails() {
     {
       staleTime: 0,
       refetchOnMount: true,
-    },
+    }
   );
 
   const rating = useRef(0);
@@ -268,10 +268,10 @@ export default function ProductsDetails() {
               <div className="mt-4 text-sm font-dana flex items-center gap-2 text-zinc-700">
                 <PiWarningCircle size="4rem" />
                 <p>
-                  هشدار سامانه همتا: در صورت انجام معامله، از فروشنده کد
-                  فعالسازی را گرفته و حتما در حضور ایشان، دستگاه را از طریق
-                  #7777*، برای سیمکارت خود فعالسازی نمایید. آموزش تصویری در آدرس
-                  اینترنتی hmti.ir/06{" "}
+                  برگشت و مرجوع کردن کالا تنها در صورتی که ممکن است که جعبه و
+                  باکس کالا باز نشده باشد و ضربه فیزیکی به آن وارد نشده باشد.
+                  لازم به ذکر است که در صورتی که کالا توسط افراد غیر متخصص تعمیر
+                  شود، صدمات ناشی از از آن به شرکت گارانتی کننده مربوط نمیشود.
                 </p>
               </div>
             </div>
