@@ -19,17 +19,6 @@ Our project aims to revolutionize online shopping, bringing the beauty of Persia
 
 You Can See A Online Demo With <a href="https://timche.liara.run">This</a> Link.
 
-Before you begin, ensure you have the following installed:
-
-## Getting Started 🚀
-
-### Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- Node.js
-- MongoDB (for backend)
-
 Contributing 💡
 We welcome contributions from everyone! If you'd like to contribute to our project, please follow these steps:
 
