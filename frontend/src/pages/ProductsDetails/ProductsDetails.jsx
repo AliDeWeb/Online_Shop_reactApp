@@ -86,6 +86,8 @@ export default function ProductsDetails() {
         navigator("/404");
       });
 
+      console.log(res.data);
+
       return res.data;
     },
     {
@@ -386,9 +388,9 @@ export default function ProductsDetails() {
                     {!isLoading && (
                       <option
                         key={Math.random()}
-                        value={`${data?.product?.warranty[0]?.warrantyItem.warrantyItem}`}
+                        value={`${data?.product?.warranty?._id}`}
                       >
-                        {data?.product?.warranty[0]?.warrantyItem.title}
+                        {data?.product?.warranty?.title}
                       </option>
                     )}
                   </select>
