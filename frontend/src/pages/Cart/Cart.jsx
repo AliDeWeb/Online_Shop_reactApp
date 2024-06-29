@@ -34,7 +34,7 @@ export default function Cart() {
       cacheTime: 30000,
       staleTime: 0,
       refetchOnMount: true,
-    },
+    }
   );
 
   React.useEffect(() => {
@@ -74,7 +74,7 @@ export default function Cart() {
                           size={el?.size?.length ? el.size[0] : null}
                           title={el.product.title}
                           cover={`${apiUrl}/${el.product.covers[0]}`}
-                          warranty={el.warranty}
+                          warranty={el.product.warranty.title}
                           transportTime={el.product.transport.title}
                           productCount={
                             el?.count

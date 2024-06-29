@@ -139,7 +139,7 @@ export default function CartProductBox({
 
           <div className="flex items-center gap-2">
             <LuShieldCheck color="rgb(248,113,113)" />
-            <span>{warranty.title}</span>
+            <span>{warranty}</span>
           </div>
           <div className="flex items-center gap-2">
             <FaStore color="rgb(248,113,113)" />

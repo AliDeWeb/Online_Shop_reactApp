@@ -218,7 +218,7 @@ export default function CheckOut() {
                                 size={null}
                                 title={el.product.title}
                                 cover={`${apiUrl}/${el.product.covers[0]}`}
-                                warranty={el.warranty}
+                                warranty={el.product.warranty.title}
                                 productCount={
                                   el?.count
                                     ? el?.count
