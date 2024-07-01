@@ -14,6 +14,9 @@ import { Link } from "react-router-dom";
 // React Query
 import { useQuery, useQueryClient } from "react-query";
 
+// React Snipper
+import BeatLoader from "react-spinners/BeatLoader";
+
 // Axios
 import {
   addNewAddress,
@@ -29,6 +32,8 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 export default function CheckOut() {
   const [isShowEditAddress, setIsShowEditAddress] = React.useState(false);
   const [newAddressVal, setNewAddressVal] = React.useState("");
+  const [isShowRedirectingLoader, setIsShowRedirectingLoader] =
+    React.useState(false);
   const discountedCode = React.useRef("");
   let addressId = React.useRef("");
   let paymentId = React.useRef("");
@@ -55,7 +60,7 @@ export default function CheckOut() {
 
         return dataInit;
       },
-    },
+    }
   );
 
   useEffect(() => {
@@ -250,7 +255,7 @@ export default function CheckOut() {
                                 notShowCounter={true}
                               />
                             </React.Fragment>
-                          ),
+                          )
                         )}
                     </div>
 
@@ -342,7 +347,7 @@ export default function CheckOut() {
                                 notShowCounter={true}
                               />
                             </React.Fragment>
-                          ),
+                          )
                         )}
                     </div>
 
@@ -482,7 +487,7 @@ export default function CheckOut() {
               <div>
                 <button
                   onClick={() => {
-                    console.log(paymentId.current, addressId.current);
+                    setIsShowRedirectingLoader(true);
                     addNewOrder({
                       headers: {
                         Authorization: `Bearer ${userToken}`,
@@ -492,16 +497,24 @@ export default function CheckOut() {
                         addressID: addressId.current,
                         description: "unset",
                       },
-                    }).then((res) => {
-                      if (res.data.url) {
-                        location.replace(res.data.url);
-                      }
-                      console.log(res);
-                    });
+                    })
+                      .then((res) => {
+                        setIsShowRedirectingLoader(false);
+                        if (res.data.url) {
+                          location.replace(res.data.url);
+                        }
+                      })
+                      .catch(() => {
+                        setIsShowRedirectingLoader(false);
+                      });
                   }}
                   className="w-full font-danaBold sm:text-lg flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95"
                 >
-                  تسویه حساب
+                  {isShowRedirectingLoader ? (
+                    <BeatLoader size={"0.6rem"} color="#fff" />
+                  ) : (
+                    "تسویه حساب"
+                  )}
                 </button>
               </div>
             </div>
