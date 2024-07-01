@@ -40,7 +40,7 @@ const errorSwal = (text) => {
 };
 
 export const apiUrl = "https://ma-api.liara.run";
-const version = `/v1`;
+const version = `/v2`;
 
 //? Main Page Data
 export const getStoreInfo = axios.create({
