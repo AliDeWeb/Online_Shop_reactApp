@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // Icons
 import { LuShieldCheck } from "react-icons/lu";
@@ -143,7 +143,7 @@ export default function CartProductBox({
           </div>
           <div className="flex items-center gap-2">
             <FaStore color="rgb(248,113,113)" />
-            <span>تیمچه</span>
+            <span>پریمو</span>
           </div>
           {!!transportTime && (
             <div className="flex items-center gap-2">
@@ -152,7 +152,7 @@ export default function CartProductBox({
             </div>
           )}
           <div className="mt-4">
-            {discounted && (
+            {discounted && !!(price - discounted) && (
               <span className="text-red-400 flex items-center gap-1">
                 {(price - discounted).toLocaleString()}
                 <span>تومان تخفیف</span>
