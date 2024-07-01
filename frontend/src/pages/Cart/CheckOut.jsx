@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 
-import { CartProductBox } from "../../configs/Layout/Layout";
+import { CartProductBox, Modal } from "../../configs/Layout/Layout";
 
 // Icons
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { FaLessThan } from "react-icons/fa6";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { IoIosClose, IoMdCheckmark } from "react-icons/io";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 // React Router
 import { Link } from "react-router-dom";
@@ -16,6 +17,7 @@ import { useQuery, useQueryClient } from "react-query";
 
 // React Snipper
 import BeatLoader from "react-spinners/BeatLoader";
+import ClipLoader from "react-spinners/ClipLoader.js";
 
 // Axios
 import {
@@ -23,6 +25,7 @@ import {
   addNewOrder,
   apiUrl,
   DiscountedCode,
+  updateWallet,
   getCartProducts,
 } from "../../configs/axios/axiosConfigs";
 
@@ -31,6 +34,9 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 export default function CheckOut() {
   const [isShowEditAddress, setIsShowEditAddress] = React.useState(false);
+  const [isWalletModalOpen, setIsWalletModalOpen] = React.useState(false);
+  const [isDataFetching, setIsDataFetching] = React.useState(false);
+  const payment = React.useRef(0);
   const [newAddressVal, setNewAddressVal] = React.useState("");
   const [isShowRedirectingLoader, setIsShowRedirectingLoader] =
     React.useState(false);
@@ -184,7 +190,7 @@ export default function CheckOut() {
                     <div className="flex justify-between items-start font-dana text-gray-400 gap-1">
                       <div className="flex flex-col">
                         <span className="md:text-xl text-zinc-700">
-                          کالاهای سبک
+                          روش ارسال
                         </span>
                         <div className="flex items-center gap-1 text-sm md:text-base">
                           <span>
@@ -276,7 +282,7 @@ export default function CheckOut() {
                     <div className="flex justify-between items-start font-dana text-gray-400 gap-1">
                       <div className="flex flex-col">
                         <span className="md:text-xl text-zinc-700">
-                          کالاهای سنگین
+                          روش ارسال
                         </span>
                         <div className="flex items-center gap-1 text-sm md:text-base">
                           <span>
@@ -374,9 +380,64 @@ export default function CheckOut() {
               </div>
 
               <div className="flex items-center justify-center gap-2.5 font-danaBold child:py-2 child:px-4">
-                <Link className="flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95">
+                <button onClick={()=> {
+                  setIsWalletModalOpen(true)
+                }} className="flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95">
                   افزایش موجودی
-                </Link>
+                </button>
+                <Modal
+                  isOpen={isWalletModalOpen}
+                  changeVisibility={setIsWalletModalOpen}
+                >
+                  <div className="flex items-center gap-2 mr-2 sm:mr-6 mt-4 text-zinc-700">
+                    <button
+                      onClick={() => {
+                        setIsWalletModalOpen(false);
+                      }}
+                    >
+                      <IoCloseCircleOutline size="1.5rem" />
+                    </button>
+                    <h2 className="font-danaDemi md:font-danaBold md:text-lg line-clamp-1">
+                      افزایش موجودی
+                    </h2>
+                  </div>
+                  <div className="flex flex-col py-2 px-4 rounded-lg text-zinc-700 mt-4 font-dana">
+                    <input
+                      id="commentDisc"
+                      type="text"
+                      placeholder="مبلغ مورد نظر خود را وارد نمایید"
+                      className="font-dana mb-4  mt-1 outline-none bg-transparent border-b border-solid border-gray-300 focus:border-orange-300 pb-2 text-sm"
+                      onInput={(e) => {
+                        payment.current = e.target.value;
+                      }}
+                    />
+                  </div>
+                  <button
+                    className="font-danaBold mt-4 cursor-pointer w-full h-[40px] bg-orange-200 hover:bg-orange-300/80 transition-all rounded-lg flex justify-center items-center text-zinc-700"
+                    type="submit"
+                    onClick={() => {
+                      setIsDataFetching(true);
+
+                      updateWallet({
+                        url: `/${payment.current}`,
+                        headers: {
+                          Authorization: `Bearer ${userToken}`,
+                        },
+                      }).then((res) => {
+                        console.log(res);
+                        window.location.replace(res.data.url);
+                        setIsDataFetching(false);
+                        refetch();
+                      });
+                    }}
+                  >
+                    {isDataFetching ? (
+                      <ClipLoader color="#d97706" size="18" />
+                    ) : (
+                      "ادامه ..."
+                    )}
+                  </button>
+                </Modal>
                 <Link className="flex items-center justify-center bg-red-400 py-2 rounded-lg text-white transition-all hover:scale-95">
                   هدیه به دیگران
                 </Link>
