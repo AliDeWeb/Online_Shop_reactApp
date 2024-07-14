@@ -789,7 +789,7 @@ export default function ProductsDetails() {
             </div>
           </div>
 
-          {!isLoading && !!data?.relatedproducts.length && (
+          {!isLoading && !!data?.relatedProducts?.length && (
             <SectionsWrapper noContainer title={"محصولات مرتبط"} href="/home">
               <Swiper
                 spaceBetween={20}
@@ -835,7 +835,7 @@ export default function ProductsDetails() {
                 }}
               >
                 {!isLoading &&
-                  data?.relatedproducts?.map((el) => (
+                  data?.relatedProducts?.map((el) => (
                     <SwiperSlide key={el.href} className="px-1">
                       <ProductBox
                         id={el?._id}
