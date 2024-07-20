@@ -55,3 +55,4 @@ export { default as NotificationsBox } from "../../components/NotificationsBox/N
 export { default as AdminPanelSideBar } from "../../components/PanelsSideBar/AdminPanelSideBar";
 export { default as Modal } from "../../components/Modal/Modal";
 export { default as TodoBox } from "../../components/TodoBox/TodoBox";
+export { default as SmoothAnimation } from "../../components/Motions/SmoothAnimation"
