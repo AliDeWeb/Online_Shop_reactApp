@@ -562,7 +562,7 @@ export default function CheckOut() {
                       .then((res) => {
                         setIsShowRedirectingLoader(false);
                         if (res.data.url) {
-                          location.replace(res.data.url);
+                          document.location.replace(res.data.url);
                         }
                       })
                       .catch(() => {

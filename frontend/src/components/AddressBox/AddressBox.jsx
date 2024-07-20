@@ -10,7 +10,7 @@ import withReactContent from "sweetalert2-react-content"; // React Hook Form
 import { useForm } from "react-hook-form"; // Components
 import { Modal } from "../../configs/Layout/Layout";
 
-export default function AddressBox(props) {
+export default function AddressBox({addressId, address, refetch, username}) {
   const showSwal = withReactContent(Swal);
   const [isShowDeleteBox, setIsShowDeleteBox] = useState(false);
   const { userToken } = useUserToken();
@@ -24,18 +24,18 @@ export default function AddressBox(props) {
 
   const submitAddressForm = (data) => {
     console.log(data.address);
-    console.log(props.addressId);
+    console.log(addressId);
     updateAddress({
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
       data: {
         address: data.address,
-        addressID: props.addressId,
+        addressID: addressId,
       },
     }).then(() => {
       setIsAddressModalOpen(false);
-      refetch();
+      refetch()
     });
   };
 
@@ -80,7 +80,7 @@ export default function AddressBox(props) {
                   آدرس
                 </label>
                 <input
-                  defaultValue={props.address}
+                  defaultValue={address}
                   {...register(`address`, {
                     required: "این فیلد نمیتواند خالی باشد",
                   })}
@@ -122,10 +122,10 @@ export default function AddressBox(props) {
                           Authorization: `Bearer ${userToken}`,
                         },
                         data: {
-                          addressID: props.addressId,
+                          addressID: addressId,
                         },
                       }).then(() => {
-                        props.refetch();
+                        refetch();
                       });
                     }
                   });
@@ -147,10 +147,10 @@ export default function AddressBox(props) {
       <div className="overflow-hidden">
         <div className="font-dana">
           <div>
-            <span>{props.username}</span> - <span>ایران</span>
+            <span>{username}</span> - <span>ایران</span>
           </div>
           <div className="mt-2 text-gray-400 text-sm">
-            <p className="line-clamp-1">{props.address}</p>
+            <p className="line-clamp-1">{address}</p>
           </div>
         </div>
       </div>

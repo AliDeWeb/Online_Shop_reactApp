@@ -17,7 +17,7 @@ export default function UserPanel() {
     if (!userToken.userToken) {
       navigator("/login");
     }
-    if (location.pathname === "/user-panel") {
+    if (document.location.pathname === "/user-panel") {
       navigator("/user-panel/home");
     }
   });

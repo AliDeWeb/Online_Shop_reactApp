@@ -27,7 +27,7 @@ export default function AdminPanel() {
     if (!userToken) {
       navigator("/404");
     }
-    if (location.pathname === "/admin-panel") {
+    if (document.location.pathname === "/admin-panel") {
       navigator("/admin-panel/home");
     }
   }, []);

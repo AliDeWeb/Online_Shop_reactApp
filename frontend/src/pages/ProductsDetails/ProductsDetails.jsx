@@ -87,7 +87,6 @@ export default function ProductsDetails() {
       });
 
       console.log(res.data);
-
       return res.data;
     },
     {
@@ -150,7 +149,7 @@ export default function ProductsDetails() {
         setProductOffPrice(data.product.discountedPrice);
       }
     }
-  }, [data]);
+  }, []);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
