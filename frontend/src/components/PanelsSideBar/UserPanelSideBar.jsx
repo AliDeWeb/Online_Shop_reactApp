@@ -39,6 +39,7 @@ import useUserToken from "../../hooks/useUserToken/useUserToken";
 
 // Components
 import { Modal } from "../../configs/Layout/Layout";
+import SideBarItems from "./SideBarItems";
 
 export default function UserPanelSideBar() {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
@@ -165,84 +166,16 @@ export default function UserPanelSideBar() {
         </div>
       </div>
       <div className="divide-y divide-solid divide-gray-400/20">
-        <div className="text-zinc-700">
-          <NavLink
-            to="home"
-            className={(a) => {
-              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
-            }}
-          >
-            <span>
-              <IoHomeOutline />
-            </span>
-            <span className="text-sm">نمای کلی</span>
-          </NavLink>
-        </div>
-        <div className="text-zinc-700">
-          <NavLink
-            to="orders/processingOrders"
-            className={(a) => {
-              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
-            }}
-          >
-            <span>
-              <MdOutlineShoppingBag />
-            </span>
-            <span className="text-sm">سفارش ها</span>
-          </NavLink>
-        </div>
-        <div className="text-zinc-700">
-          <NavLink
-            to="favorites"
-            className={(a) => {
-              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
-            }}
-          >
-            <span>
-              <FaRegHeart />
-            </span>
-            <span className="text-sm">مورد علاقه</span>
-          </NavLink>
-        </div>
-        <div className="text-zinc-700">
-          <NavLink
-            to="comments"
-            className={(a) => {
-              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
-            }}
-          >
-            <span>
-              <FaRegComment />
-            </span>
-            <span className="text-sm">دیدگاه ها</span>
-          </NavLink>
-        </div>
-        <div className="text-zinc-700">
-          <NavLink
-            to="addresses"
-            className={(a) => {
-              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
-            }}
-          >
-            <span>
-              <HiOutlineLocationMarker />
-            </span>
-            <span className="text-sm">آدرس ها</span>
-          </NavLink>
-        </div>
-        <div className="text-zinc-700">
-          <NavLink
-            to="notifications"
-            className={(a) => {
-              return `${!!a.isActive && "active-panel-menu"} flex items-center gap-2 py-4 px-2 font-danaBold transition-all hover:bg-gray-400/20 rounded-md`;
-            }}
-          >
-            <span>
-              <IoMdNotificationsOutline />
-            </span>
-            <span className="text-sm">پیغام ها</span>
-          </NavLink>
-        </div>
+        <SideBarItems items={
+          [
+            {name: "نمای کلی", link: "home", icon:<IoHomeOutline />},
+            {name: "سفارشات", link: "orders/processingOrders", icon:<MdOutlineShoppingBag />},
+            {name: "مورد علاقه", link: "favorites", icon:<FaRegHeart />},
+            {name: "کامنت ها", link: "comments", icon:<FaRegComment />},
+            {name: "آدرس ها", link: "addresses", icon:<HiOutlineLocationMarker />},
+            {name: "پیغام ها", link: "notifications", icon:<IoMdNotificationsOutline />}
+          ]
+        }/>
         <div className="text-red-600">
           <button
             onClick={() => {

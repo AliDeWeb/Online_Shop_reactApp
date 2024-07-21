@@ -87,7 +87,6 @@ input::placeholder {
 
 .active-panel-menu {
   position: relative;
-
   &::before {
     content: "";
     position: absolute;
@@ -99,6 +98,7 @@ input::placeholder {
     bottom: 0;
     right: -14px;
     border-radius: 0.5rem;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
 }
 
