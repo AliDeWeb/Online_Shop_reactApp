@@ -1,11 +1,11 @@
 import { createPortal } from "react-dom";
-import {SmoothAnimation} from "../../configs/Layout/Layout";
+import {Motion} from "../../configs/Layout/Layout";
 
 export default function Modal({ isOpen, children, changeVisibility }) {
    return createPortal(
-      <SmoothAnimation>
+      <Motion>
          {isOpen && (
-            <SmoothAnimation.motion>
+            <Motion.opacity>
                <div
                   className={` modal-wrapper fixed bottom-0 top-0 right-0 left-0 w-full h-[100dvh] bg-black/40 z-30 flex items-center justify-center transition-all`}
                >
@@ -16,9 +16,9 @@ export default function Modal({ isOpen, children, changeVisibility }) {
                      {children}
                   </div>
                </div>
-            </SmoothAnimation.motion>
+            </Motion.opacity>
          )}
-      </SmoothAnimation>,
+      </Motion>,
       document.body
    );
 }
